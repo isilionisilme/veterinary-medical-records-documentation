@@ -1,0 +1,31 @@
+name: Deploy Docs
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install MkDocs Material
+        run: pip install mkdocs-material==9.*
+
+      - name: Sync generated docs directory
+        run: python scripts/sync_mkdocs_docs.py
+
+      - name: Deploy to GitHub Pages
+        run: mkdocs gh-deploy --force

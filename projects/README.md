@@ -8,7 +8,7 @@ Active initiatives in this repository.
 
 ## Adding a new initiative
 
-Create a folder under `docs/projects/<initiative-name>/` with at least a `README.md` and the standard category folders:
+Create a folder under `projects/<initiative-name>/` with at least a `README.md` and the standard category folders:
 
 ```
 <initiative-name>/
@@ -20,4 +20,4 @@ Create a folder under `docs/projects/<initiative-name>/` with at least a `README
 └── 99-archive/     ← material histórico sin ubicación activa
 ```
 
-Then add the initiative to the table above and to [`docs/README.md`](../README.md).
+Then add the initiative to the table above and to [`README.md`](../README.md).

@@ -1,0 +1,10 @@
+FROM python:3.12-slim
+
+RUN pip install --no-cache-dir mkdocs-material==9.*
+
+WORKDIR /docs
+COPY . .
+
+EXPOSE 8000
+
+CMD ["sh", "-c", "python scripts/sync_mkdocs_docs.py && mkdocs serve --dev-addr 0.0.0.0:8000"]
