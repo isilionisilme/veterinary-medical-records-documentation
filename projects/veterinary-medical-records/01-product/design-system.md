@@ -215,13 +215,13 @@ Project wrappers standardize repeated review UI patterns:
 
 ### Confidence tooltip content (standard)
 
-Tooltip template (Spanish):
+Tooltip template (current Spanish UI copy):
 
-- `Confianza: 72% (Media)`
-- `Indica qué tan fiable es el valor extraído automáticamente.`
-- `Desglose:`
-  - `Fiabilidad de la extracción de texto: 65%`
-  - `Ajuste por histórico de revisiones: +7%`
+- `Confianza: 72% (Media)` — localized label for `Confidence: 72% (Medium)`
+- `Indica qué tan fiable es el valor extraído automáticamente.` — localized helper text for extraction reliability
+- `Desglose:` — localized label for `Breakdown:`
+  - `Fiabilidad de la extracción de texto: 65%` — extraction reliability component
+  - `Ajuste por histórico de revisiones: +7%` — review-history adjustment component
 
 Adjustment coloring rule:
 

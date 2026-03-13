@@ -225,7 +225,8 @@ Core concepts (conceptual overview):
 - **Document**: submitted medical document with identity, metadata, lifecycle state, and raw file reference.
 - **ProcessingRun / ProcessingStatus**: explicit lifecycle states representing progress through the pipeline.
 - **ExtractedText** (Raw Text Artifact in prose): extracted text with provenance and diagnostics.
-- **StructuredMedicalRecord / InterpretationVersion**: schema-validated structured medical data.
+- **Structured interpretation / InterpretationVersion**: schema-validated structured medical data for a single
+  document/run.
 - **FieldEvidence**: lightweight links between structured fields and their source (page/snippet).
 - **RecordRevisions / FieldChangeLog**: append-only records of human edits.
 
@@ -747,6 +748,22 @@ The backend supports an optional bearer-token boundary via `AUTH_TOKEN`:
 This keeps local evaluation friction low while enabling a minimal protection layer for deployments that need a basic
 access gate.
 
+### Current threat model (assessment scope)
+
+This repository targets a single-evaluator, local-first assessment workflow.
+That intentionally narrows the active threat model:
+
+- trusted operator on localhost,
+- no multi-tenant isolation,
+- no public internet exposure by default,
+- no delegated user accounts or role hierarchy.
+
+Those scope limits do **not** remove security obligations; they explain why the
+current implementation prioritizes request validation, dependency hygiene, and a
+minimal access gate over production-grade authN/authZ.
+See [§14 Known Limitations](#14-known-limitations) for the complete operational
+scope and explicit deferred hardening items.
+
 ### Design decisions
 
 - **Optional auth middleware** is included only for `/api/*` routes and is disabled by default.
@@ -756,6 +773,38 @@ access gate.
 - **UUID validation** on all `document_id` and `run_id` path parameters prevents path traversal and malformed ID
   injection (returns 422).
 - **Security audit in CI** runs `pip-audit --strict` and `npm audit --audit-level=high` on every PR.
+
+### Input validation and request boundaries
+
+- File uploads are validated before processing begins: type/content checks,
+  configured size limits, and explicit storage boundaries reduce accidental or
+  malformed ingestion.
+- Path and route identifiers use UUID validation, so repository/storage access
+  never accepts arbitrary filesystem-like path fragments.
+- Review mutations operate on schema-validated structured interpretations rather
+  than free-form backend objects; invalid payloads fail before persistence.
+
+### SQL injection and query safety
+
+The persistence layer uses raw SQL by design
+([ADR-ARCH-0003](adr/ADR-ARCH-0003-raw-sql-repository-pattern.md)), so query
+safety must be explicit.
+
+- Repository code uses parameterized statements/placeholders for runtime values.
+- Query structure is owned by repository modules, not assembled from user input
+  in route handlers.
+- UUID/path validation narrows the set of values reaching the repository layer.
+- CI security auditing complements, but does not replace, code review of query
+  construction.
+
+### Frontend XSS boundary
+
+- The frontend is a React SPA, so standard JSX rendering keeps text values
+  escaped by default.
+- The review experience renders backend-provided values as data, not as trusted
+  HTML fragments.
+- Evidence snippets and structured interpretation fields must remain plain text
+  unless a dedicated sanitization policy is introduced later.
 
 ### Production path
 
