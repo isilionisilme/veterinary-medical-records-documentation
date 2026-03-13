@@ -19,6 +19,7 @@ last-updated: 2026-03-02
 - [Frontend Stack](#frontend-stack)
 - [Project Structure](#project-structure)
 - [Frontend Architecture](#frontend-architecture)
+- [Server State Management Patterns](#server-state-management-patterns)
 - [PDF Review and Evidence Rendering](#pdf-review-and-evidence-rendering)
 - [Review Rendering Backbone (Global Schema)](#review-rendering-backbone-global-schema)
 - [Continuous Scroll Preview](#continuous-scroll-preview)
@@ -173,6 +174,57 @@ State rules:
 - **Server state** (documents, status, review payloads, raw text) lives in TanStack Query only.
 - **Local UI state** (selected field, raw text panel open, current active page) lives in the view component(s).
 - Avoid introducing a global client-state store.
+
+---
+
+## Server State Management Patterns
+
+TanStack Query is the only authority for frontend server state. The goal is to
+keep backend-derived data consistent across the document list, review panel,
+raw text, and technical-history views without introducing a second cache layer.
+
+Recommended responsibilities:
+
+- `QueryClient` is created once at app bootstrap and shared across the SPA.
+- Query keys are centralized under `/frontend/src/lib/` so list/detail/history
+  invalidation stays deterministic.
+- Mutations never write ad-hoc client copies of backend entities; they refetch
+  or invalidate the affected keys.
+
+Suggested query-key shape:
+
+- `['documents']` → document list + derived status groups
+- `['document', documentId]` → current document detail
+- `['review', documentId]` → active structured interpretation for review
+- `['raw-text', documentId, runId]` → run-scoped extracted text
+- `['history', documentId]` → processing run history / technical details
+
+Typical composition patterns:
+
+- The review workspace reads the selected document from `['document',
+  documentId]` and composes child views from narrower keys (`['review',
+  documentId]`, `['history', documentId]`).
+- Polling is allowed only for processing-related keys while a run is `QUEUED`
+  or `RUNNING`; once terminal, polling stops and the terminal payload is reused.
+- PDF viewer state (active page, zoom, pinned source panel) stays local and is
+  never stored in TanStack Query.
+
+Mutation and invalidation rules:
+
+- Field edit success → invalidate `['review', documentId]` and
+  `['document', documentId]` so review status and active interpretation stay in
+  sync.
+- Mark reviewed / reopen success → invalidate `['documents']`,
+  `['document', documentId]`, and `['review', documentId]`.
+- Reprocess success → invalidate `['documents']`, `['document', documentId]`,
+  `['history', documentId]`, and any run-scoped review/raw-text keys.
+
+Implementation guardrails:
+
+- Prefer `staleTime` / `refetchInterval` configuration over manual timers.
+- Keep optimistic UI minimal; authoritative state comes from the backend.
+- Do not duplicate status derivation in the client; render backend-derived or
+  contract-defined states only.
 
 ---
 
