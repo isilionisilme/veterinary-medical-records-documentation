@@ -49,7 +49,6 @@ nav:
           - Execution Rules: projects/veterinary-medical-records/03-ops/execution-rules.md
           - Manual QA Regression Checklist: projects/veterinary-medical-records/03-ops/manual-qa-regression-checklist.md
           - Plan Creation: projects/veterinary-medical-records/03-ops/plan-creation.md
-          - E2E Test Coverage: projects/veterinary-medical-records/03-ops/plan-e2e-test-coverage.md
           - Plan Execution Protocol: projects/veterinary-medical-records/03-ops/plan-execution-protocol.md
           - Delivery Summary: projects/veterinary-medical-records/04-delivery/delivery-summary.md
           - Implementation Plan: projects/veterinary-medical-records/04-delivery/implementation-plan.md

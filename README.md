@@ -61,7 +61,6 @@ Human-oriented index for all canonical documentation in this repository.
   - `03-ops/execution-rules.md` (compatibility stub)
   - `03-ops/manual-qa-regression-checklist.md`
   - `03-ops/plan-execution-protocol.md`
-  - `03-ops/plan-e2e-test-coverage.md`
   - `04-delivery/copilot-usage.md`
   - `04-delivery/changelog-2026-03-09.md`
   - `04-delivery/delivery-summary.md`
