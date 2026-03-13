@@ -8,8 +8,6 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 GENERATED_DOCS_DIR = REPO_ROOT / ".mkdocs"
 INCLUDE_PATHS = [REPO_ROOT / "shared", REPO_ROOT / "projects"]
 EXCLUDED_PARTS = {
-    "projects/veterinary-medical-records/04-delivery/Backlog",
-    "projects/veterinary-medical-records/04-delivery/plans",
 }
 
 
