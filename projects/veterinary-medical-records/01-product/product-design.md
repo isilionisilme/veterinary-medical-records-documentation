@@ -277,7 +277,7 @@ Product guarantees:
 This conceptual model defines how interpretation data is understood at product level. It does not prescribe storage
 tables or transport contracts.
 
-- **Local Schema (per document/run):** the structured interpretation for one case/run, with evidence + confidence,
+- **Local Schema (per document/run):** a structured interpretation for one case/run, with evidence + confidence,
   editable without friction.
 - **Global Schema (canonical):** the standardized field set the system recognizes and presents consistently across
   documents; it evolves safely and prospectively.
@@ -422,11 +422,11 @@ C) Propietario
 - `owner_name` (string)
 - `owner_address` (string; real address concept)
 
-D) Notas internas
+D) Internal notes
 
 - `notes` (string)
 
-E) Información del informe
+E) Report information
 
 - `language` (string)
 
@@ -456,19 +456,20 @@ Schema. For Medical Record canonical contract critical/taxonomy semantics, the n
 
 ## Medical Record MVP panel semantics (US-44)
 
-- The `Extracted Data / Informe` panel is a **clinical Medical Record view**.
+- The Medical Record panel (`Informe` in the current localized UI) is a **clinical Medical Record view**.
 - The panel renders a **contract-defined Medical Record field-set and taxonomy** (document-level, visit-level, and
   explicit other/unmapped bucket).
 - In `canonical contract`, required document-level panel fields (including missing-value slots) are defined by the
   Technical contract template (`medical_record_view.field_slots[]`, Appendix D9).
 - Non-clinical claim concepts are out of scope for this panel and must not be rendered here.
-- Panel section order is fixed: `Centro Veterinario` -> `Paciente` -> `Propietario` -> `Visitas` -> `Notas internas` ->
-  `Otros campos detectados` -> `Información del informe`.
+- Panel section order is fixed: `Veterinary Center` (`Centro Veterinario`) -> `Patient` (`Paciente`) -> `Owner`
+  (`Propietario`) -> `Visits` (`Visitas`) -> `Internal Notes` (`Notas internas`) -> `Other detected fields`
+  (`Otros campos detectados`) -> `Report information` (`Información del informe`).
 - Labels/copy and empty-states for this panel are defined in
   [`docs/projects/veterinary-medical-records/01-product/ux-design.md`](ux-design.md).
 - `owner_id` is not part of Medical Record panel semantics; owner address is represented by `owner_address`.
 - NHC is part of `Centro Veterinario` panel semantics and must render with label `NHC` and tooltip
-  `Número de historial clínico`.
+  `Número de historial clínico` in the current localized UI.
 - Product compatibility for age and birth date: both `age` and `dob` may coexist; any derived display behavior is
   UX-defined and does not imply new extraction requirements.
 
@@ -492,7 +493,7 @@ Status:
 
 Historical reference model:
 
-A) Identificación del caso
+A) Case identification
 
 - `claim_id`
 - `clinic_name`
@@ -500,19 +501,19 @@ A) Identificación del caso
 - `vet_name`
 - `document_date`
 
-B) Paciente
+B) Patient
 
 - `pet_name`, `species`, `breed`, `sex`, `age`, `dob`, `microchip_id`, `weight`
 
-C) Propietario
+C) Owner
 
 - `owner_name`, `owner_id`
 
-D) Visita / episodio
+D) Visit / episode
 
 - `visit_date`, `admission_date`, `discharge_date`, `reason_for_visit`
 
-E) Clínico / revisión
+E) Clinical / review
 
 - `diagnosis`, `symptoms`, `procedure`, `medication`, `treatment_plan`, `allergies`, `vaccinations`, `lab_result`,
   `imaging`

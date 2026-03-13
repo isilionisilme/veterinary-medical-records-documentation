@@ -225,7 +225,8 @@ Core concepts (conceptual overview):
 - **Document**: submitted medical document with identity, metadata, lifecycle state, and raw file reference.
 - **ProcessingRun / ProcessingStatus**: explicit lifecycle states representing progress through the pipeline.
 - **ExtractedText** (Raw Text Artifact in prose): extracted text with provenance and diagnostics.
-- **StructuredMedicalRecord / InterpretationVersion**: schema-validated structured medical data.
+- **Structured interpretation / InterpretationVersion**: schema-validated structured medical data for a single
+  document/run.
 - **FieldEvidence**: lightweight links between structured fields and their source (page/snippet).
 - **RecordRevisions / FieldChangeLog**: append-only records of human edits.
 

@@ -40,12 +40,13 @@ last-updated: 2026-03-02
 
 ## System context
 
-The system has a single external actor (the veterinarian/evaluator) and two
-internal persistence boundaries.
+The running system has a single external actor, the veterinarian. Documentation
+also references the evaluator as the human assessing the exercise, but that
+assessment role is outside the product workflow itself.
 
 ```mermaid
 graph LR
-    User(("Veterinarian /<br/>Evaluator"))
+    User(("Veterinarian"))
     subgraph System["Veterinary Medical Records"]
         FE["Frontend SPA<br/>(React + TS)"]
         BE["Backend API<br/>(FastAPI)"]
@@ -118,7 +119,8 @@ graph TB
 1. **Upload** → PDF stored on disk, metadata in SQLite, processing queued in-process
 2. **Extract** → Text extraction via PyMuPDF with built-in fallback for edge cases
 3. **Interpret** → Field identification via regex + candidate mining + confidence scoring
-4. **Review** → Evaluator sees structured fields with confidence indicators, can edit/approve/reprocess
+4. **Review** → Veterinarian sees the structured interpretation with confidence indicators and can edit, mark the
+    document as reviewed, or reprocess
 
 ## Project structure
 
