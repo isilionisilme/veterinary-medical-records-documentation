@@ -97,6 +97,18 @@ See [projects/README.md](projects/README.md) for the full initiative listing.
 
 ## Evaluator first-pass (recommended, 10-15 min)
 
+If evaluators need to run the app and wiki together locally, use:
+
+```bash
+docker compose -f docker-compose.evaluators.yml up --build
+```
+
+Then open:
+
+- App frontend: `http://localhost:5173`
+- App backend health: `http://localhost:8000/health/ready`
+- Wiki: `http://localhost:8081`
+
 1. [README.md](README.md) — documentation hub, navigation model, and canonical document entrypoints.
 2. [product-design.md](projects/veterinary-medical-records/01-product/product-design.md) — problem framing and intended
    outcomes.
