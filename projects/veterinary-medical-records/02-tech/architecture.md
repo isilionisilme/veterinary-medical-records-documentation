@@ -43,6 +43,8 @@ last-updated: 2026-03-02
 The running system has a single external actor, the veterinarian. Documentation
 also references the evaluator as the human assessing the exercise, but that
 assessment role is outside the product workflow itself.
+In this technical assessment, the evaluator uses the veterinarian-facing
+workflow to validate system behavior.
 
 ```mermaid
 graph LR
