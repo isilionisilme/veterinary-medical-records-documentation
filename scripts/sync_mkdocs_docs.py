@@ -13,6 +13,26 @@ EXCLUDED_PARTS = {
 }
 
 
+def is_excluded(relative_path: Path) -> bool:
+    relative_parent = relative_path.parent.as_posix()
+    return any(
+        relative_parent == excluded_part
+        or relative_parent.startswith(f"{excluded_part}/")
+        for excluded_part in EXCLUDED_PARTS
+    )
+
+
+def iter_included_source_docs() -> list[Path]:
+    included_docs = [REPO_ROOT / "README.md"]
+    for source_root in INCLUDE_PATHS:
+        for source_path in sorted(source_root.rglob("*.md")):
+            relative_path = source_path.relative_to(REPO_ROOT)
+            if is_excluded(relative_path):
+                continue
+            included_docs.append(source_path)
+    return included_docs
+
+
 def reset_generated_docs_dir() -> None:
     if GENERATED_DOCS_DIR.exists():
         shutil.rmtree(GENERATED_DOCS_DIR)
@@ -22,12 +42,7 @@ def reset_generated_docs_dir() -> None:
 def copy_markdown_tree(source_root: Path) -> None:
     for source_path in source_root.rglob("*.md"):
         relative_path = source_path.relative_to(REPO_ROOT)
-        relative_parent = relative_path.parent.as_posix()
-        if any(
-            relative_parent == excluded_part
-            or relative_parent.startswith(f"{excluded_part}/")
-            for excluded_part in EXCLUDED_PARTS
-        ):
+        if is_excluded(relative_path):
             continue
         target_path = GENERATED_DOCS_DIR / relative_path
         target_path.parent.mkdir(parents=True, exist_ok=True)

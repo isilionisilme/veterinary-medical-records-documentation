@@ -118,6 +118,7 @@ See [projects/README.md](projects/README.md) for the full initiative listing.
 - To override the default host port, set `DOCS_PORT` before starting Docker Compose.
 - Local non-Docker alternative: `python scripts/sync_mkdocs_docs.py && pip install mkdocs-material==9.* && mkdocs serve`.
 - Source docs remain in `README.md`, `shared/`, and `projects/`; `python scripts/sync_mkdocs_docs.py` regenerates the MkDocs input tree in `.mkdocs/`.
+- Validation suite: `python -m unittest tests.test_docs_contracts`.
 - Published docs: `.github/workflows/docs.yml` deploys the site to GitHub Pages.
 
 ## Authority & precedence
@@ -139,7 +140,7 @@ Shared docs (`shared/*`) apply globally within their scope.
 
 ## Contribution and quality gates
 
-For docs-only changes, run `python scripts/sync_mkdocs_docs.py` and validate the wiki locally with `docker compose up docs` or `mkdocs serve` before pushing.
+For docs-only changes, run `python -m unittest tests.test_docs_contracts` before pushing.
 
 ## Dependency justification (Technical Design Appendix E3)
 

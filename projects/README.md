@@ -1,3 +1,11 @@
+---
+title: "Projects"
+type: reference
+status: active
+audience: all
+last-updated: 2026-03-13
+---
+
 # Projects
 
 Active initiatives in this repository.

@@ -1,16 +1,15 @@
-name: Deploy Docs
+name: Validate Docs
 
 on:
+  pull_request:
   push:
     branches:
       - main
+      - docs/mkdocs-wiki-integration
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
-  deploy:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -21,14 +20,8 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install MkDocs Material
+      - name: Install docs tooling
         run: pip install mkdocs-material==9.*
 
       - name: Run documentation validation suite
         run: python -m unittest tests.test_docs_contracts
-
-      - name: Sync generated docs directory
-        run: python scripts/sync_mkdocs_docs.py
-
-      - name: Deploy to GitHub Pages
-        run: mkdocs gh-deploy --force

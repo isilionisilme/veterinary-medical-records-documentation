@@ -1,3 +1,11 @@
+---
+title: "Execution Rules"
+type: reference
+status: active
+audience: contributor
+last-updated: 2026-03-13
+---
+
 # Execution Rules (Compatibility Stub)
 
 This file is kept for compatibility. Canonical operational behavior lives in
