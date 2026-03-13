@@ -30,7 +30,7 @@ last-updated: 2026-03-02
   - [Step 3 — Immediate Local Correction](#step-3--immediate-local-correction)
   - [Step 4 — Mark document as reviewed (toggle)](#step-4--mark-document-as-reviewed-toggle)
 - [4.1 Review-in-Context Contract](#41-review-in-context-contract)
-- [Review UI Rendering Rules (Extracted Data / Informe — Medical Record MVP)](#review-ui-rendering-rules-extracted-data--informe--medical-record-mvp)
+- [Review UI Rendering Rules (Medical Record Panel — Medical Record MVP)](#review-ui-rendering-rules-medical-record-panel--medical-record-mvp)
 - [4.2 Confidence Propagation & Calibration (UX Contract)](#42-confidence-propagation--calibration-ux-contract)
 - [4.3 Confidence Tooltip Breakdown (Veterinarian UI)](#43-confidence-tooltip-breakdown-veterinarian-ui)
   - [Future Improvements](#future-improvements)
@@ -243,9 +243,8 @@ Normative behavior:
 - Low confidence should guide attention and inspection priority.
 - Low confidence must not block editing, marking reviewed, or any other veterinarian action.
 
----
 
-## Review UI Rendering Rules (Extracted Data / Informe — Medical Record MVP)
+## Review UI Rendering Rules (Medical Record Panel — Medical Record MVP)
 
 Panel definition and scope:
 
@@ -255,13 +254,13 @@ Panel definition and scope:
 
 Section structure and order (fixed):
 
-1. **Centro Veterinario**
-2. **Paciente**
-3. **Propietario**
-4. **Visitas** (from `visits[]`)
-5. **Notas internas**
-6. **Otros campos detectados**
-7. **Información del informe** (bottom)
+1. **Veterinary Center** (`Centro Veterinario`)
+2. **Patient** (`Paciente`)
+3. **Owner** (`Propietario`)
+4. **Visits** (`Visitas`, from `visits[]`)
+5. **Internal Notes** (`Notas internas`)
+6. **Other detected fields** (`Otros campos detectados`)
+7. **Report information** (`Información del informe`, bottom)
 
 Layout note:
 
@@ -276,13 +275,13 @@ Schema-aware rendering mode (deterministic):
   in Appendix D9, not by UI hardcoding.
 - No heuristics grouping in UI; grouping comes from `visits[]` in the canonical contract.
 
-Display labels (UI-only; internal keys unchanged):
+Display labels for the current Spanish UI locale (internal keys unchanged):
 
 - **Centro Veterinario**
   - `clinic_name` -> `Nombre`
   - `clinic_address` -> `Dirección`
   - `vet_name` renders when present
-  - `NHC`: visible label is always `NHC`; tooltip: `Número de historial clínico`.
+  - `NHC`: visible label is always `NHC`; the current localized tooltip copy is `Número de historial clínico`.
   - Backend key may be `nhc` or `medical_record_number`; visible UX label remains `NHC`.
   - NHC must be rendered as a visible field in this section even when missing; when absent in ready state, show
     placeholder `—`.
@@ -342,14 +341,14 @@ Empty states (deterministic):
 - If a visit exists but `fields[]` is empty, show `Sin campos detectados en esta visita.`
 - If `Otros campos detectados` is empty, show `Sin otros campos detectados.`
 
-Otros campos detectados:
+Other detected fields (`Otros campos detectados`):
 
 - This section is a contract-driven bucket for explicit unmapped/other items only; no UI-side classification.
 - If the contract does not expose an explicit unmapped bucket (for example `unmapped_fields[]` / `other_fields[]`),
   implementation is blocked until technical alignment is defined in
   [`docs/projects/veterinary-medical-records/02-tech/technical-design.md`](../02-tech/technical-design.md).
 
-Información del informe:
+Report information (`Información del informe`):
 
 - This section is always rendered as the final block.
 - It includes report metadata such as detected language when present in payload.
@@ -376,7 +375,7 @@ No governance terminology in veterinarian UX:
 - Numeric confidence is secondary and may appear only inside tooltip details.
 - `candidate_confidence` and `field_mapping_confidence` must not be conflated in UI copy or semantics.
 
-Tooltip structure (Spanish, standard copy):
+Tooltip structure (current Spanish UI copy, standard):
 
 - First line: `Confianza: 72% (Media)`
 - Explanation sentence: `Indica qué tan fiable es el valor extraído automáticamente.`
