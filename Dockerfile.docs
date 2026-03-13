@@ -1,0 +1,11 @@
+FROM python:3.12-slim
+
+WORKDIR /workspace
+
+RUN pip install --no-cache-dir mkdocs mkdocs-material
+
+COPY . /workspace
+
+EXPOSE 8000
+
+CMD ["sh", "-c", "python scripts/sync_mkdocs_docs.py && mkdocs serve -a 0.0.0.0:8000"]

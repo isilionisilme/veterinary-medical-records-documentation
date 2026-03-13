@@ -1,0 +1,57 @@
+site_name: Veterinary Medical Records Wiki
+site_description: Documentation portal for evaluators and contributors
+site_url: https://example.invalid/veterinary-medical-records-docs
+repo_url: https://github.com/example/veterinary-medical-records-documentation
+edit_uri: edit/main/
+
+docs_dir: .mkdocs
+site_dir: site
+strict: false
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - tables
+
+nav:
+  - Home: README.md
+  - Shared:
+      - shared/01-product/brand-guidelines.md
+      - shared/01-product/ux-guidelines.md
+      - shared/02-tech/coding-standards.md
+      - shared/02-tech/documentation-guidelines.md
+      - shared/02-tech/llm-benchmarks.md
+      - shared/03-ops/way-of-working.md
+  - Veterinary Medical Records:
+      - projects/README.md
+      - projects/veterinary-medical-records/01-product/design-system.md
+      - projects/veterinary-medical-records/01-product/product-design.md
+      - projects/veterinary-medical-records/01-product/ux-design.md
+      - projects/veterinary-medical-records/02-tech/architecture.md
+      - projects/veterinary-medical-records/02-tech/backend-implementation.md
+      - projects/veterinary-medical-records/02-tech/deployment.md
+      - projects/veterinary-medical-records/02-tech/event-architecture.md
+      - projects/veterinary-medical-records/02-tech/extraction-quality.md
+      - projects/veterinary-medical-records/02-tech/frontend-implementation.md
+      - projects/veterinary-medical-records/02-tech/technical-design.md
+      - projects/veterinary-medical-records/03-ops/architecture-audit-process.md
+      - projects/veterinary-medical-records/03-ops/execution-rules.md
+      - projects/veterinary-medical-records/03-ops/manual-qa-regression-checklist.md
+      - projects/veterinary-medical-records/03-ops/plan-creation.md
+      - projects/veterinary-medical-records/03-ops/plan-e2e-test-coverage.md
+      - projects/veterinary-medical-records/03-ops/plan-execution-protocol.md
+      - projects/veterinary-medical-records/04-delivery/delivery-summary.md
+      - projects/veterinary-medical-records/04-delivery/future-improvements.md
+      - projects/veterinary-medical-records/04-delivery/implementation-history.md
+      - projects/veterinary-medical-records/04-delivery/implementation-plan.md
