@@ -141,4 +141,4 @@ This creates a two-tier control model:
 - [ADR-ARCH-0005: Complexity Gate Thresholds for CI Enforcement](ADR-ARCH-0005-complexity-gate-thresholds.md)
 - [ADR-ARCH-0001: Modular Monolith over Microservices](ADR-ARCH-0001-modular-monolith.md)
 - [Architecture Review 2026-03-09](../audits/architecture-review-2026-03-09.md)
-- [ARCH-03 backlog item](../../04-delivery/Backlog/completed/arch-03-add-ci-complexity-gates.md)
+- ARCH-03 backlog artifact removed from active docs tree (2026-03-13 repository cleanup)

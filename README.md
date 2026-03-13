@@ -61,7 +61,6 @@ Human-oriented index for all canonical documentation in this repository.
   - `03-ops/execution-rules.md` (compatibility stub)
   - `03-ops/manual-qa-regression-checklist.md`
   - `03-ops/plan-execution-protocol.md`
-   - `04-delivery/plans/plan-e2e-test-coverage.md`
   - `04-delivery/copilot-usage.md`
   - `04-delivery/changelog-2026-03-09.md`
   - `04-delivery/delivery-summary.md`
@@ -142,9 +141,7 @@ If documents conflict, resolve in this order:
 3. [product-design.md](projects/veterinary-medical-records/01-product/product-design.md) — system meaning and governance
    boundary
 4. [implementation-plan.md](projects/veterinary-medical-records/04-delivery/implementation-plan.md) — release sequencing
-5. [Backlog/README.md](projects/veterinary-medical-records/04-delivery/Backlog/README.md) and backlog item files — story
-   scope and acceptance criteria
-6. [backend-implementation.md](projects/veterinary-medical-records/02-tech/backend-implementation.md) and
+5. [backend-implementation.md](projects/veterinary-medical-records/02-tech/backend-implementation.md) and
    [frontend-implementation.md](projects/veterinary-medical-records/02-tech/frontend-implementation.md) — implementation
    notes
 
