@@ -1,7 +1,10 @@
 services:
-  wiki:
+  docs:
     build:
       context: .
       dockerfile: Dockerfile.docs
     ports:
       - "${DOCS_PORT:-8081}:8000"
+    volumes:
+      - .:/docs
+    restart: unless-stopped

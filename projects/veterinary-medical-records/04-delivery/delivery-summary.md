@@ -63,7 +63,7 @@ last-updated: 2026-03-02
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 > Quantitative record of what was delivered across 7 phases + Iterations 2–9.  
-> Source of truth for execution details: [`implementation-history.md`](../implementation/implementation-history.md).
+> Source of truth for execution details: [`implementation-history.md`](implementation-history.md).
 
 ---
 
@@ -94,7 +94,7 @@ Audited the backend against the 12-Factor App methodology. Implemented 4 of 5 to
 | Admin CLI | New `cli.py` (54 LOC): `db-schema`, `db-check`, `config-check` commands |
 | Discarded: Worker profile | SQLite single-writer prevents reliable multi-process — documented in ADR-ARCH-0002 |
 
-**Audit record:** [`12-factor-audit.md`](12-factor-audit.md)
+**Audit record:** [`12-factor-audit.md`](../99-archive/12-factor-audit.md)
 
 ---
 
@@ -137,7 +137,7 @@ Key extracted components: `PdfViewer` (831), `DocumentsSidebar` (430), `FieldEdi
 
 `App.test.tsx` (3,693 LOC monolithic suite) → redistributed across 20 per-component test files matching the new structure.
 
-**Audit record:** [`codebase-audit.md`](codebase-audit.md)
+**Audit record:** [`codebase-audit.md`](../99-archive/codebase-audit.md)
 
 ---
 
@@ -175,15 +175,15 @@ Key improvements: removed duplicated suites, added `cli.py` tests (was 0%), impr
 
 | ADR | Decision | Key trade-off |
 |-----|----------|--------------|
-| [ADR-ARCH-0001](../adr/ADR-ARCH-0001-modular-monolith.md) | Modular monolith over microservices | Operational simplicity vs horizontal scaling |
-| [ADR-ARCH-0002](../adr/ADR-ARCH-0002-sqlite-database.md) | SQLite over PostgreSQL | Zero-ops vs multi-process concurrency |
-| [ADR-ARCH-0003](../adr/ADR-ARCH-0003-raw-sql-repository-pattern.md) | Raw SQL + Repository over ORM | Full SQL control vs maintenance burden |
-| [ADR-ARCH-0004](../adr/ADR-ARCH-0004-in-process-async-processing.md) | In-process async over Celery/RQ | Zero infrastructure vs automatic retry |
+| [ADR-ARCH-0001](../02-tech/adr/ADR-ARCH-0001-modular-monolith.md) | Modular monolith over microservices | Operational simplicity vs horizontal scaling |
+| [ADR-ARCH-0002](../02-tech/adr/ADR-ARCH-0002-sqlite-database.md) | SQLite over PostgreSQL | Zero-ops vs multi-process concurrency |
+| [ADR-ARCH-0003](../02-tech/adr/ADR-ARCH-0003-raw-sql-repository-pattern.md) | Raw SQL + Repository over ORM | Full SQL control vs maintenance burden |
+| [ADR-ARCH-0004](../02-tech/adr/ADR-ARCH-0004-in-process-async-processing.md) | In-process async over Celery/RQ | Zero infrastructure vs automatic retry |
 
 ### Other documentation
 
 - [`future-improvements.md`](future-improvements.md) — 2/4/8 week roadmap (18 items traced to audits and ADRs)
-- [`docs/projects/veterinary-medical-records/02-tech/adr/index.md`](../adr/index.md) — ADR index linking architecture decisions
+- [`docs/projects/veterinary-medical-records/02-tech/adr/index.md`](../02-tech/adr/index.md) — ADR index linking architecture decisions
 - Root `README.md` enriched: architecture overview, ADR links, evaluator quickstart, quality gates, delivery evidence
 - `docs/README.md` updated: evaluator-first reading order, audit trail section
 
@@ -212,7 +212,7 @@ Final verification: all 7 CI checks green, PR #145 updated, no regressions. Plan
 
 ## Iteration 2 — CTO Verdict Improvements (Phase 8)
 
-Targeted improvements from [`cto-review-verdict.md`](cto-review-verdict.md) — all 5 highest-leverage items addressed.
+Targeted improvements from [`cto-review-verdict.md`](../99-archive/cto-review-verdict.md) — all 5 highest-leverage items addressed.
 
 | # | Improvement | Step | Detail |
 |---|---|---|---|

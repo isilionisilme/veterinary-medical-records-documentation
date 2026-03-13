@@ -1,3 +1,11 @@
+---
+title: "ADR-ARCH-0005 — Complexity Gate Thresholds"
+type: adr
+status: active
+audience: contributor
+last-updated: 2026-03-10
+---
+
 # ADR-ARCH-0005: Complexity Gate Thresholds for CI Enforcement
 
 ## Status
@@ -83,4 +91,4 @@ Warnings do not fail CI. Failures block the local preflight and the pull request
 ## Related Decisions
 - [ADR-ARCH-0001: Modular Monolith over Microservices](ADR-ARCH-0001-modular-monolith.md)
 - [ADR-ARCH-0004: In-Process Async Processing](ADR-ARCH-0004-in-process-async-processing.md)
-- [ARCH-03 backlog item](../../04-delivery/Backlog/arch-03-add-ci-complexity-gates.md)
+- [ARCH-03 backlog item](../../04-delivery/Backlog/completed/arch-03-add-ci-complexity-gates.md)

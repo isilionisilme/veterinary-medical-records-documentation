@@ -3,40 +3,63 @@ from __future__ import annotations
 import shutil
 from pathlib import Path
 
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
-OUTPUT_DIR = REPO_ROOT / ".mkdocs"
+GENERATED_DOCS_DIR = REPO_ROOT / ".mkdocs"
+INCLUDE_PATHS = [REPO_ROOT / "shared", REPO_ROOT / "projects"]
+EXCLUDED_PARTS = {
+    "projects/veterinary-medical-records/04-delivery/Backlog",
+    "projects/veterinary-medical-records/04-delivery/plans",
+}
 
-# Keep generated docs focused for evaluators; avoid publishing planning/backlog internals.
-EXCLUDED_PARTS = {"plans", "Backlog"}
+
+def is_excluded(relative_path: Path) -> bool:
+    relative_parent = relative_path.parent.as_posix()
+    return any(
+        relative_parent == excluded_part
+        or relative_parent.startswith(f"{excluded_part}/")
+        for excluded_part in EXCLUDED_PARTS
+    )
 
 
-def copy_tree(source: Path, destination: Path) -> None:
-    for path in source.rglob("*"):
-        if any(part in EXCLUDED_PARTS for part in path.parts):
+def iter_included_source_docs() -> list[Path]:
+    included_docs = [REPO_ROOT / "README.md"]
+    for source_root in INCLUDE_PATHS:
+        for source_path in sorted(source_root.rglob("*.md")):
+            relative_path = source_path.relative_to(REPO_ROOT)
+            if is_excluded(relative_path):
+                continue
+            included_docs.append(source_path)
+    return included_docs
+
+
+def reset_generated_docs_dir() -> None:
+    if GENERATED_DOCS_DIR.exists():
+        shutil.rmtree(GENERATED_DOCS_DIR)
+    GENERATED_DOCS_DIR.mkdir(parents=True)
+
+
+def copy_markdown_tree(source_root: Path) -> None:
+    for source_path in source_root.rglob("*.md"):
+        relative_path = source_path.relative_to(REPO_ROOT)
+        if is_excluded(relative_path):
             continue
-        rel = path.relative_to(source)
-        target = destination / rel
-        if path.is_dir():
-            target.mkdir(parents=True, exist_ok=True)
-            continue
-        target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(path, target)
+        target_path = GENERATED_DOCS_DIR / relative_path
+        target_path.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source_path, target_path)
+
+
+def sync_root_index() -> None:
+    root_readme = REPO_ROOT / "README.md"
+    shutil.copy2(root_readme, GENERATED_DOCS_DIR / "README.md")
+    shutil.copy2(root_readme, GENERATED_DOCS_DIR / "index.md")
 
 
 def main() -> None:
-    if OUTPUT_DIR.exists():
-        shutil.rmtree(OUTPUT_DIR)
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-
-    for filename in ["README.md"]:
-        source = REPO_ROOT / filename
-        if source.exists():
-            shutil.copy2(source, OUTPUT_DIR / filename)
-
-    for folder in ["shared", "projects"]:
-        source = REPO_ROOT / folder
-        if source.exists():
-            copy_tree(source, OUTPUT_DIR / folder)
+    reset_generated_docs_dir()
+    sync_root_index()
+    for source_root in INCLUDE_PATHS:
+        copy_markdown_tree(source_root)
 
 
 if __name__ == "__main__":

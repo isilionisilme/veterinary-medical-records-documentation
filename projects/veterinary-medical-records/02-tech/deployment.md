@@ -94,6 +94,27 @@ cd frontend && npx playwright test
 | `VET_RECORDS_CORS_ORIGINS` | `http://localhost,...` | Comma-separated allowed CORS origins      |
 | `VITE_API_BASE_URL`    | `http://localhost:8000` | API endpoint used by the frontend build   |
 
+#### CORS origin policy (evaluation default)
+
+`VET_RECORDS_CORS_ORIGINS` defaults to localhost development/evaluation origins
+because the intended assessment topology is:
+
+- frontend served locally on `localhost:5173`,
+- backend API served locally on `localhost:8000`,
+- a single evaluator using the stack on one machine.
+
+This keeps cross-origin access narrow by default while still supporting the Vite
+dev server and the Docker-based evaluation path.
+
+Guidance:
+
+- In evaluation mode, keep the allowlist limited to the exact local frontend
+    origins in use.
+- Best practice for production: configure `VET_RECORDS_CORS_ORIGINS` with
+    explicit deployed frontend origins; avoid wildcard allowlists.
+- If frontend and backend are served behind one reverse proxy/origin, CORS can
+    be reduced or disabled in favor of same-origin routing.
+
 ### 3.2 Data & Storage
 
 | Variable                  | Default                         | Purpose                       |

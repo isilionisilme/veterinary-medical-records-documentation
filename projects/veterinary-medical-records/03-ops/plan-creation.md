@@ -1,3 +1,11 @@
+---
+title: "Plan Creation"
+type: how-to
+status: active
+audience: contributor
+last-updated: 2026-03-13
+---
+
 # Plan Creation
 
 > Project-specific operational document.
@@ -28,7 +36,7 @@ Every new plan MUST include:
 
 1. Create plan file: `plans/PLAN_<YYYY-MM-DD>_<SLUG>.md`.
 2. Title: `# Plan: <name>`
-3. Operational rules pointer: `> **Operational rules:** See [plan-execution-protocol.md](...)`
+3. Operational rules pointer: `> **Operational rules:** See plan-execution-protocol.md`
 4. Metadata:
    - `**Branch:**` — initialize as `PENDING PLAN-START RESOLUTION` until the execution branch is created or explicitly selected at plan-start.
    - `**PR:**` — Use `Pending (PR created on explicit user request)` as placeholder.
