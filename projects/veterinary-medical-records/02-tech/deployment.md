@@ -110,8 +110,8 @@ Guidance:
 
 - In evaluation mode, keep the allowlist limited to the exact local frontend
     origins in use.
-- In production, replace localhost defaults with explicit deployed frontend
-    origins; do not use a wildcard allowlist.
+- Best practice for production: configure `VET_RECORDS_CORS_ORIGINS` with
+    explicit deployed frontend origins; avoid wildcard allowlists.
 - If frontend and backend are served behind one reverse proxy/origin, CORS can
     be reduced or disabled in favor of same-origin routing.
 

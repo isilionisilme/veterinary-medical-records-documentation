@@ -760,6 +760,8 @@ That intentionally narrows the active threat model:
 Those scope limits do **not** remove security obligations; they explain why the
 current implementation prioritizes request validation, dependency hygiene, and a
 minimal access gate over production-grade authN/authZ.
+See [§14 Known Limitations](#14-known-limitations) for the complete operational
+scope and explicit deferred hardening items.
 
 ### Design decisions
 
