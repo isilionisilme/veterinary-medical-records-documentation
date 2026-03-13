@@ -1,0 +1,2060 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Wiki-style technical documentation for the Veterinary Medical Records project">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>Architecture Review — 2026-03-09 - Veterinary Medical Records Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#architecture-review-2026-03-09" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Veterinary Medical Records Documentation" class="md-header__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Veterinary Medical Records Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Architecture Review — 2026-03-09
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Veterinary Medical Records Documentation" class="md-nav__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Veterinary Medical Records Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shared Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Shared Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../shared/01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../shared/02-tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../shared/03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../shared/04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../shared/99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3_1" id="__nav_1_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+<p><strong>Table of Contents</strong> <em>generated with <a href="https://github.com/thlorenz/doctoc">DocToc</a></em></p>
+<ul>
+<li><a href="#architecture-review--2026-03-09">Architecture Review — 2026-03-09</a></li>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#1-executive-summary">1. Executive Summary</a><ul>
+<li><a href="#key-numbers">Key Numbers</a></li>
+</ul>
+</li>
+<li><a href="#2-overall-health-dashboard">2. Overall Health Dashboard</a><ul>
+<li><a href="#21-code-health-by-category">2.1 Code Health by Category</a></li>
+<li><a href="#22-documentation-health-by-viewpoint">2.2 Documentation Health by Viewpoint</a></li>
+<li><a href="#23-severity-summary-all-phases">2.3 Severity Summary (All Phases)</a></li>
+</ul>
+</li>
+<li><a href="#3-architecture-documentation-audit">3. Architecture Documentation Audit</a><ul>
+<li><a href="#31-scope">3.1 Scope</a></li>
+<li><a href="#32-health-score-34100-critical">3.2 Health Score: 34/100 (CRITICAL)</a></li>
+<li><a href="#33-key-gaps-17-total">3.3 Key Gaps (17 total)</a></li>
+<li><a href="#34-anti-patterns-detected-6">3.4 Anti-Patterns Detected (6)</a></li>
+<li><a href="#35-strengths">3.5 Strengths</a></li>
+</ul>
+</li>
+<li><a href="#4-codebase-audit-9-categories">4. Codebase Audit (9 Categories)</a><ul>
+<li><a href="#41-security--7810">4.1 Security — 7.8/10</a></li>
+<li><a href="#42-build--ci--9810">4.2 Build &amp; CI — 9.8/10</a></li>
+<li><a href="#43-code-principles--5010">4.3 Code Principles — 5.0/10</a></li>
+<li><a href="#44-code-quality--5010">4.4 Code Quality — 5.0/10</a></li>
+<li><a href="#45-dependencies--9810">4.5 Dependencies — 9.8/10</a></li>
+<li><a href="#46-dead-code--9810">4.6 Dead Code — 9.8/10</a></li>
+<li><a href="#47-observability--9010">4.7 Observability — 9.0/10</a></li>
+<li><a href="#48-concurrency--9510">4.8 Concurrency — 9.5/10</a></li>
+<li><a href="#49-lifecycle--1010">4.9 Lifecycle — 10/10</a></li>
+</ul>
+</li>
+<li><a href="#5-coupling--hotspot-analysis">5. Coupling &amp; Hotspot Analysis</a><ul>
+<li><a href="#51-hexagonal-compliance">5.1 Hexagonal Compliance</a></li>
+<li><a href="#52-critical-hotspots">5.2 Critical Hotspots</a></li>
+<li><a href="#review_servicepy---critical-new-since-feb-audit"><code>review_service.py</code> — 🔴 CRITICAL (New since Feb audit)</a></li>
+<li><a href="#candidate_miningpy---critical"><code>candidate_mining.py</code> — 🔴 CRITICAL</a></li>
+<li><a href="#53-high-hotspots">5.3 High Hotspots</a></li>
+<li><a href="#54-regression-pattern">5.4 Regression Pattern</a></li>
+</ul>
+</li>
+<li><a href="#6-evolution-since-feb-2026">6. Evolution Since Feb 2026</a><ul>
+<li><a href="#61-what-improved-7-categories">6.1 What Improved (7 categories)</a></li>
+<li><a href="#62-what-regressed-2-categories">6.2 What Regressed (2 categories)</a></li>
+<li><a href="#63-feb-decomposition-results">6.3 Feb Decomposition Results</a></li>
+</ul>
+</li>
+<li><a href="#7-risk-matrix">7. Risk Matrix</a></li>
+<li><a href="#8-recommendations">8. Recommendations</a><ul>
+<li><a href="#81-immediate-next-sprint">8.1 Immediate (next sprint)</a></li>
+<li><a href="#82-short-term-next-2-3-sprints">8.2 Short-term (next 2-3 sprints)</a></li>
+<li><a href="#83-strategic">8.3 Strategic</a></li>
+</ul>
+</li>
+<li><a href="#9-methodology">9. Methodology</a><ul>
+<li><a href="#91-process">9.1 Process</a></li>
+<li><a href="#92-scoring">9.2 Scoring</a></li>
+<li><a href="#93-tools-used">9.3 Tools Used</a></li>
+<li><a href="#94-reproducing-this-audit">9.4 Reproducing This Audit</a></li>
+<li><a href="#95-companion-documents">9.5 Companion Documents</a></li>
+</ul>
+</li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+<hr />
+<p>title: "Architecture Review — 2026-03-09" type: explanation status: active audience: all last-updated: 2026-03-09</p>
+<hr />
+<h1 id="architecture-review-2026-03-09">Architecture Review — 2026-03-09</h1>
+<blockquote>
+<p><strong>Comprehensive architecture evaluation of the veterinary-medical-records codebase.</strong> Covers documentation
+completeness, code health across 9 categories, coupling analysis, and hotspot detection. Includes methodology for
+reproducibility and comparison with Feb 23, 2026 baseline.</p>
+</blockquote>
+<p><strong>Status:</strong> Final<br />
+<strong>Date:</strong> 2026-03-09<br />
+<strong>Scope:</strong> Full re-audit (not delta)<br />
+<strong>Depth:</strong> Exhaustive<br />
+<strong>Stack:</strong> FastAPI 0.115.14 (Python 3.11.9), React 18.3 + TypeScript 5.5, SQLite WAL, Docker Compose<br />
+<strong>Architecture:</strong> Modular monolith, hexagonal/ports-and-adapters<br />
+<strong>Baseline:</strong> <a href="../../../99-archive/codebase-audit/">codebase-audit.md</a> (2026-02-23)</p>
+<hr />
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-executive-summary">Executive Summary</a></li>
+<li><a href="#2-overall-health-dashboard">Overall Health Dashboard</a></li>
+<li><a href="#3-architecture-documentation-audit">Architecture Documentation Audit</a></li>
+<li><a href="#4-codebase-audit-9-categories">Codebase Audit (9 Categories)</a></li>
+<li><a href="#5-coupling--hotspot-analysis">Coupling &amp; Hotspot Analysis</a></li>
+<li><a href="#6-evolution-since-feb-2026">Evolution Since Feb 2026</a></li>
+<li><a href="#7-risk-matrix">Risk Matrix</a></li>
+<li><a href="#8-recommendations">Recommendations</a></li>
+<li><a href="#9-methodology">Methodology</a></li>
+</ol>
+<hr />
+<h2 id="1-executive-summary">1. Executive Summary</h2>
+<p>The veterinary-medical-records system has <strong>strong architectural foundations</strong> — clean hexagonal layers, robust
+lifecycle management, minimal dependencies, and zero dead code. The Feb 2026 audit's 15 findings drove meaningful
+improvements: 7 of 9 code health categories improved, and the 3 monolithic hotspots were successfully decomposed.</p>
+<p>However, <strong>two critical concerns</strong> have emerged:</p>
+<ol>
+<li>
+<p><strong>Re-accretion pattern:</strong> Two files born from the Feb decomposition have grown into new hotspots —
+   <code>review_service.py</code> (1532 LOC, 9 responsibilities, CC 99) and <code>candidate_mining.py</code> (1013 LOC, CC 163). Without
+   complexity guardrails (CI gates, LOC budgets), decomposition alone doesn't prevent future accumulation.</p>
+</li>
+<li>
+<p><strong>Documentation gaps in security and deployment:</strong> The architecture documentation scores 34/100 — not because the
+   <em>existing</em> documentation is poor (V6 Integration 85/100, V10 Decisions 82/100), but because <em>entire viewpoints</em> are
+   missing. There is no security architecture section (V7: 28/100) and no production deployment documentation (V4:
+   42/100).</p>
+</li>
+</ol>
+<h3 id="key-numbers">Key Numbers</h3>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Score</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Documentation Health</td>
+<td>34/100</td>
+<td>CRITICAL — missing viewpoints</td>
+</tr>
+<tr>
+<td>Code Health (avg 9 categories)</td>
+<td>8.4/10</td>
+<td>GOOD — 7 categories ≥ 9.0</td>
+</tr>
+<tr>
+<td>Hexagonal Compliance</td>
+<td>96% clean</td>
+<td>3 violations (1 MEDIUM, 2 LOW)</td>
+</tr>
+<tr>
+<td>Critical Hotspots</td>
+<td>2 files</td>
+<td>review_service.py, candidate_mining.py</td>
+</tr>
+<tr>
+<td>Max Cyclomatic Complexity</td>
+<td>163</td>
+<td>candidate_mining.py (grade F)</td>
+</tr>
+<tr>
+<td>Backend Test Coverage</td>
+<td>≥91%</td>
+<td>HEALTHY</td>
+</tr>
+<tr>
+<td>Frontend Test Coverage</td>
+<td>≥87%</td>
+<td>HEALTHY</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-overall-health-dashboard">2. Overall Health Dashboard</h2>
+<h3 id="21-code-health-by-category">2.1 Code Health by Category</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Score</th>
+<th>Feb 23</th>
+<th>Delta</th>
+<th>Key Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Security</td>
+<td>7.8/10</td>
+<td>7.2</td>
+<td>+0.6 ↑</td>
+<td>Rate limiting added; auth still optional</td>
+</tr>
+<tr>
+<td>Build &amp; CI</td>
+<td>9.8/10</td>
+<td>8.4</td>
+<td>+1.4 ↑</td>
+<td>10 CI jobs, 0 lint errors</td>
+</tr>
+<tr>
+<td>Code Principles</td>
+<td>5.0/10</td>
+<td>7.8</td>
+<td>−2.8 ↓</td>
+<td>2 new God Modules emerged</td>
+</tr>
+<tr>
+<td>Code Quality</td>
+<td>5.0/10</td>
+<td>5.8</td>
+<td>−0.8 ↓</td>
+<td>CC 163 max; 54 functions above threshold</td>
+</tr>
+<tr>
+<td>Dependencies</td>
+<td>9.8/10</td>
+<td>6.7</td>
+<td>+3.1 ↑</td>
+<td>Minimal surface, all pinned</td>
+</tr>
+<tr>
+<td>Dead Code</td>
+<td>9.8/10</td>
+<td>6.2</td>
+<td>+3.6 ↑</td>
+<td>Zero TODOs, zero commented code</td>
+</tr>
+<tr>
+<td>Observability</td>
+<td>9.0/10</td>
+<td>7.4</td>
+<td>+1.6 ↑</td>
+<td>17 loggers; no metrics/tracing</td>
+</tr>
+<tr>
+<td>Concurrency</td>
+<td>9.5/10</td>
+<td>6.4</td>
+<td>+3.1 ↑</td>
+<td>WAL + busy_timeout; proper async</td>
+</tr>
+<tr>
+<td>Lifecycle</td>
+<td>10/10</td>
+<td>8.1</td>
+<td>+1.9 ↑</td>
+<td>Lifespan + crash recovery + graceful shutdown</td>
+</tr>
+<tr>
+<td><strong>Average</strong></td>
+<td><strong>8.4</strong></td>
+<td><strong>7.1</strong></td>
+<td><strong>+1.3</strong></td>
+<td><strong>7 of 9 improved</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-documentation-health-by-viewpoint">2.2 Documentation Health by Viewpoint</h3>
+<table>
+<thead>
+<tr>
+<th>Viewpoint</th>
+<th>Score</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V7: Security Architecture</td>
+<td>28/100</td>
+<td>CRITICAL</td>
+</tr>
+<tr>
+<td>V4: Deployment Topology</td>
+<td>42/100</td>
+<td>AT RISK</td>
+</tr>
+<tr>
+<td>V8: Operational Concerns</td>
+<td>48/100</td>
+<td>AT RISK</td>
+</tr>
+<tr>
+<td>V12: Event Architecture</td>
+<td>55/100</td>
+<td>AT RISK</td>
+</tr>
+<tr>
+<td>V9: Cross-Cutting Concerns</td>
+<td>68/100</td>
+<td>ADEQUATE</td>
+</tr>
+<tr>
+<td>V5: Data Architecture</td>
+<td>70/100</td>
+<td>ADEQUATE</td>
+</tr>
+<tr>
+<td>V1: Context &amp; Scope</td>
+<td>72/100</td>
+<td>ADEQUATE</td>
+</tr>
+<tr>
+<td>V3: Component Design</td>
+<td>74/100</td>
+<td>ADEQUATE</td>
+</tr>
+<tr>
+<td>V2: Container Architecture</td>
+<td>80/100</td>
+<td>HEALTHY</td>
+</tr>
+<tr>
+<td>V10: Decision Record</td>
+<td>82/100</td>
+<td>HEALTHY</td>
+</tr>
+<tr>
+<td>V6: Integration &amp; APIs</td>
+<td>85/100</td>
+<td>HEALTHY</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-severity-summary-all-phases">2.3 Severity Summary (All Phases)</h3>
+<table>
+<thead>
+<tr>
+<th>Severity</th>
+<th>Doc Gaps</th>
+<th>Code Findings</th>
+<th>Coupling</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CRITICAL</td>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td><strong>5</strong></td>
+</tr>
+<tr>
+<td>HIGH</td>
+<td>6</td>
+<td>4</td>
+<td>0</td>
+<td><strong>10</strong></td>
+</tr>
+<tr>
+<td>MEDIUM</td>
+<td>7</td>
+<td>7</td>
+<td>2</td>
+<td><strong>16</strong></td>
+</tr>
+<tr>
+<td>LOW</td>
+<td>2</td>
+<td>4</td>
+<td>2</td>
+<td><strong>8</strong></td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>17</strong></td>
+<td><strong>18</strong></td>
+<td><strong>4</strong></td>
+<td><strong>39</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-architecture-documentation-audit">3. Architecture Documentation Audit</h2>
+<p><em>Full details: <code>tmp/audit/phase1-doc-audit.md</code></em></p>
+<h3 id="31-scope">3.1 Scope</h3>
+<p>9 documents audited (~3,800 lines): architecture.md, technical-design.md, backend-implementation.md,
+frontend-implementation.md, extraction-quality.md, and 4 ADRs. Evaluated against 188-item checklist across 14
+viewpoints.</p>
+<h3 id="32-health-score-34100-critical">3.2 Health Score: 34/100 (CRITICAL)</h3>
+<p>The low score reflects <strong>documentation completeness</strong>, not documentation quality. What exists is well-organized and
+accurate. The score is driven by:</p>
+<ul>
+<li><strong>V7 Security (28/100):</strong> No security architecture section. Auth is mentioned as "optional bearer-token" scattered
+  across 3 documents. No threat model, no encryption strategy, no RBAC design.</li>
+<li><strong>V4 Deployment (42/100):</strong> Only Docker Compose dev configuration documented. No production deployment strategy,
+  scaling plan, or disaster recovery.</li>
+</ul>
+<h3 id="33-key-gaps-17-total">3.3 Key Gaps (17 total)</h3>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Gap</th>
+<th>Viewpoint</th>
+<th>Effort</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CRITICAL</td>
+<td>No security architecture section</td>
+<td>V7</td>
+<td>4-8h</td>
+</tr>
+<tr>
+<td>CRITICAL</td>
+<td>No production deployment docs</td>
+<td>V4</td>
+<td>4-8h</td>
+</tr>
+<tr>
+<td>HIGH</td>
+<td>No threat model (STRIDE)</td>
+<td>V7</td>
+<td>4-8h</td>
+</tr>
+<tr>
+<td>HIGH</td>
+<td>No monitoring/alerting strategy</td>
+<td>V8</td>
+<td>2-4h</td>
+</tr>
+<tr>
+<td>HIGH</td>
+<td>No encryption documentation</td>
+<td>V7</td>
+<td>1-2h</td>
+</tr>
+<tr>
+<td>HIGH</td>
+<td>No ER diagram</td>
+<td>V5</td>
+<td>1-2h</td>
+</tr>
+<tr>
+<td>HIGH</td>
+<td>No capacity planning</td>
+<td>V4/V8</td>
+<td>2-4h</td>
+</tr>
+<tr>
+<td>HIGH</td>
+<td>Incomplete ADR coverage (5+ missing)</td>
+<td>V10</td>
+<td>2-4h/ADR</td>
+</tr>
+</tbody>
+</table>
+<h3 id="34-anti-patterns-detected-6">3.4 Anti-Patterns Detected (6)</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Pattern</th>
+<th>Severity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AA-12</td>
+<td>View Vacuum (missing security viewpoint)</td>
+<td>CRITICAL</td>
+</tr>
+<tr>
+<td>AA-17</td>
+<td>Observability Omission (no monitoring strategy)</td>
+<td>HIGH</td>
+</tr>
+<tr>
+<td>AA-18</td>
+<td>SLO Silence (no formal SLO definitions)</td>
+<td>HIGH</td>
+</tr>
+<tr>
+<td>AA-20</td>
+<td>Capacity Blindness (no capacity planning)</td>
+<td>HIGH</td>
+</tr>
+<tr>
+<td>AA-14</td>
+<td>Prose Overload (2047-line spec, minimal diagrams)</td>
+<td>MEDIUM</td>
+</tr>
+<tr>
+<td>AA-10</td>
+<td>ADR Amnesia (5+ undocumented decisions)</td>
+<td>MEDIUM</td>
+</tr>
+</tbody>
+</table>
+<h3 id="35-strengths">3.5 Strengths</h3>
+<ul>
+<li><strong>V6 Integration (85/100):</strong> API contracts are detailed with endpoint specs, request/response formats, error codes,
+  and conflict semantics.</li>
+<li><strong>V10 Decisions (82/100):</strong> MADR-format ADRs cover the foundational architecture decisions with clear rationale and
+  consequences.</li>
+<li><strong>V2 Container (80/100):</strong> Mermaid system diagram matches actual architecture. Layer responsibilities well-described.</li>
+</ul>
+<hr />
+<h2 id="4-codebase-audit-9-categories">4. Codebase Audit (9 Categories)</h2>
+<p><em>Full details: <code>tmp/audit/phase2-codebase-audit.md</code></em></p>
+<h3 id="41-security-7810">4.1 Security — 7.8/10</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Sev</th>
+<th>Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S-1</td>
+<td>HIGH</td>
+<td>No production auth strategy. Optional bearer token; unauthenticated when <code>AUTH_TOKEN</code> unset.</td>
+</tr>
+<tr>
+<td>S-2</td>
+<td>MED</td>
+<td>f-string in <code>PRAGMA table_info({table})</code> — low risk (internal callers only) but bad pattern.</td>
+</tr>
+<tr>
+<td>S-3</td>
+<td>MED</td>
+<td>PDF upload: no content scanning beyond size limit (20MB).</td>
+</tr>
+<tr>
+<td>S-4</td>
+<td>LOW</td>
+<td>Rate limiting only on upload/download; review/reprocess have none.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Strengths:</strong> All secrets via env vars. UUID validation on all document params. No hardcoded credentials.</p>
+<h3 id="42-build-ci-9810">4.2 Build &amp; CI — 9.8/10</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Sev</th>
+<th>Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B-1</td>
+<td>LOW</td>
+<td>2 NOQA suppressions (both justified, lack explanatory comments).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Strengths:</strong> ~395 backend tests (≥91%), ~287 frontend tests (≥87%), 64 E2E specs, 10 CI jobs, 0 lint errors.</p>
+<h3 id="43-code-principles-5010">4.3 Code Principles — 5.0/10</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Sev</th>
+<th>Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P-1</td>
+<td>CRIT</td>
+<td><code>review_service.py</code>: 1532 LOC, 9 responsibilities — God Module.</td>
+</tr>
+<tr>
+<td>P-2</td>
+<td>CRIT</td>
+<td><code>candidate_mining.py</code>: 767-LOC single function, inner closure with 25+ conditional blocks.</td>
+</tr>
+<tr>
+<td>P-3</td>
+<td>MED</td>
+<td><code>_shared</code> module imported from API layer — private encapsulation violation.</td>
+</tr>
+<tr>
+<td>P-4</td>
+<td>MED</td>
+<td><code>extraction_observability/</code> — 962 LOC across 4 files, CC up to 64. Complexity rivals features it observes.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="44-code-quality-5010">4.4 Code Quality — 5.0/10</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Sev</th>
+<th>Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q-1</td>
+<td>CRIT</td>
+<td>2 functions exceed CC 100: <code>_mine_interpretation_candidates</code> (163), <code>_normalize_canonical_review_scoping</code> (99).</td>
+</tr>
+<tr>
+<td>Q-2</td>
+<td>HIGH</td>
+<td>Average CC across 54 analyzed blocks is D (25.07). Industry targets CC &lt; 10.</td>
+</tr>
+<tr>
+<td>Q-3</td>
+<td>HIGH</td>
+<td>5 functions with CC 40-64 (triage, reporting, snapshot, review, candidate modules).</td>
+</tr>
+<tr>
+<td>Q-4</td>
+<td>HIGH</td>
+<td>2 functions exceed 300 LOC in a single body.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Complexity grade distribution:</strong> 82% of all 317 functions are A/B grade (CC ≤ 10). The problem is concentrated in 7
+F-grade and 5 E-grade functions.</p>
+<h3 id="45-dependencies-9810">4.5 Dependencies — 9.8/10</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Sev</th>
+<th>Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D-1</td>
+<td>LOW</td>
+<td><code>pydantic</code> imported but not in requirements.txt (transitive via FastAPI).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Strengths:</strong> Minimal surface (7 backend, 14 frontend). All pinned. No unused deps. All imports verified against
+declarations.</p>
+<h3 id="46-dead-code-9810">4.6 Dead Code — 9.8/10</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Sev</th>
+<th>Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DC-1</td>
+<td>LOW</td>
+<td>Wildcard re-export in <code>document_service.py</code> obscures what's actually exported.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Strengths:</strong> Zero TODOs/FIXMEs. Zero commented-out code. Clean import hygiene.</p>
+<h3 id="47-observability-9010">4.7 Observability — 9.0/10</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Sev</th>
+<th>Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O-1</td>
+<td>MED</td>
+<td>22 log statements across 317 functions (7% coverage). Critical paths have zero logging.</td>
+</tr>
+<tr>
+<td>O-2</td>
+<td>MED</td>
+<td>No metrics collection (Prometheus/StatsD/OpenTelemetry).</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Strengths:</strong> 17 loggers via <code>getLogger(__name__)</code>. Extraction observability excellent (20-run ring buffer). Health
+endpoint. Event taxonomy.</p>
+<h3 id="48-concurrency-9510">4.8 Concurrency — 9.5/10</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Sev</th>
+<th>Finding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C-1</td>
+<td>MED</td>
+<td>Per-request DB connections (no pooling). Fine now; potential bottleneck at scale.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Strengths:</strong> WAL + busy_timeout=5000ms. asyncio.Event for coordination. Task lifecycle management. Thread offloading
+for CPU. No global mutable state.</p>
+<h3 id="49-lifecycle-1010">4.9 Lifecycle — 10/10</h3>
+<p>No findings. Proper lifespan handler with schema init, crash recovery (orphaned runs), scheduler start/stop.</p>
+<hr />
+<h2 id="5-coupling-hotspot-analysis">5. Coupling &amp; Hotspot Analysis</h2>
+<p><em>Full details: <code>tmp/audit/phase3-coupling-hotspots.md</code></em></p>
+<h3 id="51-hexagonal-compliance">5.1 Hexagonal Compliance</h3>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Status</th>
+<th>Violations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>domain/</td>
+<td>✅ CLEAN</td>
+<td>Zero outbound cross-layer imports</td>
+</tr>
+<tr>
+<td>ports/</td>
+<td>✅ CLEAN</td>
+<td>Zero outbound cross-layer imports</td>
+</tr>
+<tr>
+<td>application/</td>
+<td>✅ CLEAN</td>
+<td>Imports only from domain/, ports/, config (all allowed)</td>
+</tr>
+<tr>
+<td>api/</td>
+<td>⚠️ 2 violations</td>
+<td>api→infra rate_limiter (LOW), api→infra database (LOW)</td>
+</tr>
+<tr>
+<td>infra/</td>
+<td>⚠️ 1 violation</td>
+<td>infra→application scheduler (MEDIUM — inverts dependency)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Verdict:</strong> Core layers (domain, ports, application) are clean. The 3 violations are pragmatic exceptions, not
+structural rot. The most architecturally significant is <code>infra/scheduler_lifecycle.py → application/processing</code> which
+inverts the dependency direction and should be fixed with a <code>SchedulerPort</code> interface.</p>
+<h3 id="52-critical-hotspots">5.2 Critical Hotspots</h3>
+<h4 id="review_servicepy-critical-new-since-feb-audit"><code>review_service.py</code> — 🔴 CRITICAL (New since Feb audit)</h4>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LOC</td>
+<td>1,532</td>
+</tr>
+<tr>
+<td>Max CC</td>
+<td>99 (F)</td>
+</tr>
+<tr>
+<td>Commits (since Feb)</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Responsibilities</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<p>Born from <code>document_service.py</code> decomposition. Accumulated review lifecycle, interpretation normalization, microchip
+sync, age derivation, visit scoping, text segment extraction, clause normalization, medical record projection, and
+weight aggregation — all in one file.</p>
+<p><strong>Decomposition strategy:</strong> VisitAssignmentEngine + SegmentParser/ClauseClassifier + AgeNormalizer +
+ReviewPayloadProjector → 4 files, each &lt; 400 LOC.</p>
+<h4 id="candidate_miningpy-critical"><code>candidate_mining.py</code> — 🔴 CRITICAL</h4>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LOC</td>
+<td>1,013</td>
+</tr>
+<tr>
+<td>Max CC</td>
+<td>163 (F — highest in codebase)</td>
+</tr>
+<tr>
+<td>Commits (since Feb)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Largest function</td>
+<td>767 LOC (single function)</td>
+</tr>
+</tbody>
+</table>
+<p>Contains <code>_mine_interpretation_candidates()</code> — a 767-LOC function with CC 163 that embeds 25+ field-specific extraction
+branches via an inner closure.</p>
+<p><strong>Decomposition strategy:</strong> Per-entity-type FieldCandidateExtractor strategy pattern + CandidateValidator + regex
+FieldPattern registry → ~5 files.</p>
+<h3 id="53-high-hotspots">5.3 High Hotspots</h3>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>LOC</th>
+<th>Max CC</th>
+<th>Key Issue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pdf_extraction_nodeps.py</td>
+<td>878</td>
+<td>28 (D)</td>
+<td>PDF complexity is partially inherent; state machine pattern could help</td>
+</tr>
+<tr>
+<td>routes_review.py</td>
+<td>522</td>
+<td>32 (E)</td>
+<td>Complex route handlers; could extract validation logic</td>
+</tr>
+<tr>
+<td>field_normalizers.py</td>
+<td>468</td>
+<td>16 (C)</td>
+<td>High churn (9 commits); normalizer rules may benefit from data-driven approach</td>
+</tr>
+<tr>
+<td>AppWorkspace.tsx</td>
+<td>790</td>
+<td>N/A</td>
+<td>15 useState hooks; state hub pattern (down from 5760 LOC in Feb)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="54-regression-pattern">5.4 Regression Pattern</h3>
+<p>The Feb audit found 3 monoliths that were decomposed. But <strong>2 of the successor files have already re-accreted into
+hotspots</strong>. This pattern suggests:</p>
+<blockquote>
+<p><strong>Decomposition without guardrails leads to re-accretion.</strong> LOC budgets, CC gates in CI, and architectural fitness
+functions are needed to sustain the improvement.</p>
+</blockquote>
+<hr />
+<h2 id="6-evolution-since-feb-2026">6. Evolution Since Feb 2026</h2>
+<h3 id="61-what-improved-7-categories">6.1 What Improved (7 categories)</h3>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Feb → Mar</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dead Code</td>
+<td>62 → 98</td>
+<td>Zero TODOs, zero commented code, zero test duplication</td>
+</tr>
+<tr>
+<td>Dependencies</td>
+<td>67 → 98</td>
+<td>All pinned, minimal surface, no unused imports</td>
+</tr>
+<tr>
+<td>Concurrency</td>
+<td>64 → 95</td>
+<td>WAL + busy_timeout, proper async patterns, task lifecycle</td>
+</tr>
+<tr>
+<td>Lifecycle</td>
+<td>81 → 100</td>
+<td>Lifespan handler, crash recovery, graceful shutdown</td>
+</tr>
+<tr>
+<td>Observability</td>
+<td>74 → 90</td>
+<td>Structured logging, event taxonomy, extraction observability</td>
+</tr>
+<tr>
+<td>Build &amp; CI</td>
+<td>84 → 98</td>
+<td>10 CI jobs, clean linting, comprehensive test suites</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>72 → 78</td>
+<td>Rate limiting added, upload size checks, secrets in env vars</td>
+</tr>
+</tbody>
+</table>
+<h3 id="62-what-regressed-2-categories">6.2 What Regressed (2 categories)</h3>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Feb → Mar</th>
+<th>Root Cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code Principles</td>
+<td>78 → 50</td>
+<td>Post-decomposition re-accretion in review_service.py and candidate_mining.py</td>
+</tr>
+<tr>
+<td>Code Quality</td>
+<td>58 → 50</td>
+<td>CC 163 and CC 99 functions; 54 functions above CC 10 threshold</td>
+</tr>
+</tbody>
+</table>
+<h3 id="63-feb-decomposition-results">6.3 Feb Decomposition Results</h3>
+<table>
+<thead>
+<tr>
+<th>Feb Target</th>
+<th>Action Taken</th>
+<th>Current State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>App.tsx (5760 LOC)</td>
+<td>✅ Decomposed</td>
+<td>AppWorkspace.tsx at 790 LOC (−86%)</td>
+</tr>
+<tr>
+<td>processing_runner.py</td>
+<td>✅ Decomposed</td>
+<td>Split into orchestrator, scheduler, candidate_mining</td>
+</tr>
+<tr>
+<td>document_service.py</td>
+<td>✅ Decomposed</td>
+<td>Split into review_service, edit_service, query_service, upload_service</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Net assessment:</strong> Decomposition worked but successor files need a second round of refactoring (review_service.py,
+candidate_mining.py).</p>
+<hr />
+<h2 id="7-risk-matrix">7. Risk Matrix</h2>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Likelihood</th>
+<th>Impact</th>
+<th>Mitigation</th>
+<th>Priority</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Re-accretion continues without CI gates</td>
+<td>HIGH</td>
+<td>HIGH</td>
+<td>Add radon CC + LOC CI checks</td>
+<td>IMMEDIATE</td>
+</tr>
+<tr>
+<td>Security incident without auth/encryption</td>
+<td>MEDIUM</td>
+<td>CRITICAL</td>
+<td>Create security architecture; implement auth before production</td>
+<td>HIGH</td>
+</tr>
+<tr>
+<td>Untestable functions (CC &gt; 100) grow</td>
+<td>HIGH</td>
+<td>MEDIUM</td>
+<td>Decompose 2 critical hotspots</td>
+<td>IMMEDIATE</td>
+</tr>
+<tr>
+<td>Production deploy without runbooks</td>
+<td>LOW</td>
+<td>HIGH</td>
+<td>Write deployment + operational docs</td>
+<td>MEDIUM</td>
+</tr>
+<tr>
+<td>State management debt in frontend</td>
+<td>MEDIUM</td>
+<td>LOW</td>
+<td>Extract context/reducer in AppWorkspace</td>
+<td>LOW</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-recommendations">8. Recommendations</h2>
+<h3 id="81-immediate-next-sprint">8.1 Immediate (next sprint)</h3>
+<ol>
+<li><strong>Decompose <code>review_service.py</code></strong> → 4 modules, each &lt; 400 LOC, no function CC &gt; 20</li>
+<li><strong>Decompose <code>candidate_mining.py</code></strong> → strategy pattern per entity type, no function &gt; 100 LOC</li>
+<li><strong>Add CI complexity gates</strong> → <code>radon cc --min C</code> warns; <code>radon cc --min E</code> fails; <code>wc -l</code> gate at 500 LOC</li>
+</ol>
+<h3 id="82-short-term-next-2-3-sprints">8.2 Short-term (next 2-3 sprints)</h3>
+<ol>
+<li><strong>Create security-architecture.md</strong> — auth strategy, threat model (STRIDE), encryption, rate limiting policy</li>
+<li><strong>Create deployment documentation</strong> — production topology, scaling, disaster recovery, backup strategy</li>
+<li><strong>Fix infra→application violation</strong> — extract <code>SchedulerPort</code> interface; inject via DI</li>
+<li><strong>Expose <code>_shared</code> functions</strong> — re-export through <code>application.documents.__init__</code></li>
+<li><strong>Add structured logging</strong> to review and extraction critical paths (currently 0 log statements)</li>
+<li><strong>Add ER diagram</strong> — Mermaid diagram in technical-design.md for 5 core entities</li>
+<li><strong>Write missing ADRs</strong> — frontend stack, confidence scoring algorithm (minimum)</li>
+</ol>
+<h3 id="83-strategic">8.3 Strategic</h3>
+<ol>
+<li><strong>Prevent re-accretion ADR</strong> — document LOC/CC budgets as architectural decision with CI enforcement</li>
+<li><strong>Simplify <code>extraction_observability/</code></strong> — triage.py (CC 64) may be over-engineered</li>
+<li><strong>Frontend state management</strong> — extract React Context + useReducer from AppWorkspace</li>
+<li><strong>Operational runbooks</strong> — backup, database maintenance, log rotation, failure modes</li>
+<li><strong>Metrics collection</strong> — Prometheus/OpenTelemetry for production observability</li>
+</ol>
+<hr />
+<h2 id="9-methodology">9. Methodology</h2>
+<h3 id="91-process">9.1 Process</h3>
+<p>This audit followed a 4-phase process designed for reproducibility:</p>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Goal</th>
+<th>Tool/Skill</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Documentation completeness</td>
+<td><code>architecture-doc-auditor</code> (188-item, 14 viewpoints)</td>
+<td>Document health score + gap inventory</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Code health (9 categories)</td>
+<td><code>ln-620-codebase-auditor</code> (9 workers, adapted)</td>
+<td>Per-category scores + finding inventory</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Coupling &amp; hotspots</td>
+<td>Manual analysis (imports, radon, git log, LOC)</td>
+<td>Hex compliance + hotspot table</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Synthesis</td>
+<td>Cross-phase synthesis</td>
+<td>This report + improvement backlog</td>
+</tr>
+</tbody>
+</table>
+<h3 id="92-scoring">9.2 Scoring</h3>
+<p><strong>Documentation (Phase 1):</strong> Viewpoint scores (0-100) based on 188-item checklist. Overall score = weighted average −
+severity penalties (capped at -30).</p>
+<p><strong>Code Health (Phase 2):</strong> Per-category scoring formula:
+<code>penalty = (C×2.0) + (H×1.0) + (M×0.5) + (L×0.2); score = max(0, 10 - penalty)</code>. Normalized to 0-100 for comparison with
+Feb baseline.</p>
+<p><strong>Hotspots (Phase 3):</strong> 4-signal scoring (LOC &gt; 500, CC &gt; 10, imports &gt; 8, churn &gt; 8 commits). Files flagged as hotspot
+when ≥ 2 signals triggered.</p>
+<h3 id="93-tools-used">9.3 Tools Used</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>radon cc</code></td>
+<td>Cyclomatic complexity analysis (Python)</td>
+</tr>
+<tr>
+<td><code>Select-String</code> / <code>Get-ChildItem</code></td>
+<td>Pattern scanning (secrets, SQL, TODOs, imports)</td>
+</tr>
+<tr>
+<td><code>git log --oneline --since</code></td>
+<td>Churn analysis (commit frequency)</td>
+</tr>
+<tr>
+<td><code>wc -l</code> / <code>Measure-Object</code></td>
+<td>Lines of code measurement</td>
+</tr>
+<tr>
+<td>Python import parsing</td>
+<td>Cross-layer dependency mapping</td>
+</tr>
+<tr>
+<td><code>get_errors()</code></td>
+<td>Compile/lint error verification</td>
+</tr>
+</tbody>
+</table>
+<h3 id="94-reproducing-this-audit">9.4 Reproducing This Audit</h3>
+<p>To reproduce or update this audit:</p>
+<ol>
+<li>
+<p><strong>Phase 1:</strong> Read all 9 docs in <code>02-tech/</code> + <code>02-tech/adr/</code>. Apply <code>architecture-doc-auditor</code> skill with parameters:
+   <code>audit_depth=exhaustive, include_debt_assessment=true, include_anti_patterns=true</code>.</p>
+</li>
+<li>
+<p><strong>Phase 2:</strong> Run security scan (secrets + SQL patterns), TODO scan, dependency verification, import mapping,
+   concurrency pattern check, logging count, lifecycle review. Score each of 9 categories using the penalty formula.</p>
+</li>
+<li>
+<p><strong>Phase 3:</strong> Extract all Python imports, map to hexagonal layers, verify allowed directions. Run
+   <code>radon cc -s -n C backend/app/</code> for complexity. Run <code>git log --oneline --since=&lt;baseline_date&gt;</code> for churn. Score
+   files against 4-signal hotspot criteria.</p>
+</li>
+<li>
+<p><strong>Phase 4:</strong> Synthesize phases 1-3 into this report format. Compare with previous baseline.</p>
+</li>
+</ol>
+<h3 id="95-companion-documents">9.5 Companion Documents</h3>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../improvement-backlog-2026-03-09/">improvement-backlog-2026-03-09.md</a></td>
+<td>Prioritized action items with effort estimates</td>
+</tr>
+<tr>
+<td><code>tmp/audit/phase1-doc-audit.md</code></td>
+<td>Full Phase 1 raw output</td>
+</tr>
+<tr>
+<td><code>tmp/audit/phase2-codebase-audit.md</code></td>
+<td>Full Phase 2 raw output</td>
+</tr>
+<tr>
+<td><code>tmp/audit/phase3-coupling-hotspots.md</code></td>
+<td>Full Phase 3 raw output</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "toc.integrate"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

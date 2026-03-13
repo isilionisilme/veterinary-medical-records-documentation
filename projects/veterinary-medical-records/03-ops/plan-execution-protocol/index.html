@@ -1,0 +1,1669 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Wiki-style technical documentation for the Veterinary Medical Records project">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>Plan Execution Protocol - Veterinary Medical Records Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#plan-execution-protocol" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-header__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Veterinary Medical Records Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Plan Execution Protocol
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-nav__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Veterinary Medical Records Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shared Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Shared Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/02-tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3_1" id="__nav_1_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="plan-execution-protocol">Plan Execution Protocol</h1>
+<blockquote>
+<p><strong>Canonical source of truth.</strong>
+This document is the single authoritative reference for how AI agents execute plan steps in this project.</p>
+<p><strong>Governance:</strong>
+- This file is a canonical document maintained by humans.
+- Router modules are derived outputs generated from this canonical source.
+- Flow is <strong>canonical → router only</strong>. Router files MUST NOT be edited directly.
+- Any direct edit to a router file may be overwritten during the next regeneration cycle.</p>
+</blockquote>
+<hr />
+<h2 id="purpose">Purpose</h2>
+<p>This protocol governs how AI agents execute plan steps in a structured, auditable manner using the plan's configured execution mode. It defines execution rules, completion integrity, CI verification, handoff conventions, and the full iteration lifecycle.</p>
+<h3 id="role-taxonomy-availability-safe">Role taxonomy (availability-safe)</h3>
+<ul>
+<li><strong>Planning agent</strong>: owns plan authoring/updates, hard-gate decisions, and prompt preparation.</li>
+<li><strong>Execution agent</strong>: owns implementation steps from pre-written prompts.</li>
+</ul>
+<p>All routing and handoff rules in this document MUST use role labels (not model or vendor names).</p>
+<p>AI assistants must stop and report the blocker when a protocol step cannot be completed as defined.</p>
+<hr />
+<h2 id="file-structure">File Structure</h2>
+<pre><code>docs/projects/veterinary-medical-records/03-ops/
+└── plan-execution-protocol.md      ← YOU ARE HERE
+
+docs/projects/veterinary-medical-records/04-delivery/plans/
+├── PLAN_&lt;YYYY-MM-DD&gt;_&lt;SLUG&gt;.md     ← Active plan (single flat file)
+└── completed/
+    └── PLAN_&lt;YYYY-MM-DD&gt;_&lt;SLUG&gt;.md ← Completed plan
+</code></pre>
+<p><strong>Active plan file:</strong> For new plans, the agent attaches <code>plans/PLAN_&lt;YYYY-MM-DD&gt;_&lt;SLUG&gt;.md</code> when executing a continuation-intent request (for example: "continue", "go", "let's go", "proceed", "resume").
+New plans are single flat files — no plan folders, no annex files. Legacy folder-based active plans remain accepted during migration while any active branch still resolves to <code>plans/&lt;plan-folder&gt;/PLAN_&lt;YYYY-MM-DD&gt;_&lt;SLUG&gt;.md</code>. Active-plan resolution searches for a matching <code>PLAN_*.md</code> outside <code>completed/</code>, regardless of nesting.
+See <a href="../plan-creation/#1-how-to-create-a-plan"><code>plan-creation.md</code> §1</a> for naming and location conventions.
+The active plan source file contains: Execution Status (checkboxes), Prompt Queue, Active Prompt, and iteration-specific context.</p>
+<hr />
+<h2 id="1-execution-mode-defaults">1. Execution Mode Defaults</h2>
+<p>There is no implicit default execution mode for a new or unresolved plan. If the active plan already records a resolved value in <code>**Execution Mode:**</code>, follow it. Otherwise, the agent must stop at plan-start, require an explicit user selection, and only then apply the chosen mode's closure rules and the <strong>decision table in §10</strong>.</p>
+<h3 id="single-chat-execution-rule-hard-rule">Single-Chat Execution Rule (Hard Rule)</h3>
+<p>Keep execution in the current chat by default.</p>
+<p>The agent may recommend switching chat only when:
+1. expected token-efficiency benefit is significant, or
+2. a hard capability blocker requires another agent/model.</p>
+<p>In both cases, the agent MUST explain the reason briefly and wait for explicit user decision.</p>
+<p><strong>Safety limit:</strong> if the agent detects context exhaustion (truncated responses, state loss), it must stop at the current step, complete it cleanly (full SCOPE BOUNDARY) and generate the handoff.</p>
+<hr />
+<h2 id="2-atomic-iterations">2. Atomic Iterations</h2>
+<p>Never mix scope between steps. Each step in Execution Status is an atomic unit: execute its objective and mark progress. Commit and push behavior are governed by the plan's execution mode (see §7 — Execution Mode). If a step fails, report — do not continue to the next one.</p>
+<p><strong>Plan-mode governance (hard rule):</strong> While a plan is active, all git operations (commit, push, branch) are governed by this protocol. Ad-hoc user requests that imply git operations are interpreted through the lens of the active plan step and routed to SCOPE BOUNDARY (§13). There is no "just commit and push" shortcut.</p>
+<hr />
+<h2 id="3-extended-execution-state">3. Extended Execution State</h2>
+<p>For visibility and traceability, mark the active step with the appropriate label <strong>without changing the base checkbox</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Syntax</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pending</td>
+<td><code>- [ ] F?-? ...</code></td>
+</tr>
+<tr>
+<td>In progress</td>
+<td><code>- [ ] F?-? ... ⏳ IN PROGRESS (&lt;agent&gt;, &lt;date&gt;)</code></td>
+</tr>
+<tr>
+<td>Blocked</td>
+<td><code>- [ ] F?-? ... 🚫 BLOCKED (&lt;short reason&gt;)</code></td>
+</tr>
+<tr>
+<td>Completed</td>
+<td><code>- [x] F?-? ...</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mandatory rules:</strong>
+1. Do not use <code>[-]</code>, <code>[~]</code>, <code>[...]</code> or variants: only <code>[ ]</code> or <code>[x]</code>.
+2. Before executing a <code>[ ]</code> step, mark it <code>⏳ IN PROGRESS (&lt;agent&gt;, &lt;date&gt;)</code>.
+3. <code>IN PROGRESS</code> and <code>BLOCKED</code> are text labels, not checkbox states.
+4. On completion, remove any label and mark <code>[x]</code>.
+5. On completion, <strong>append the code commit short SHA</strong> for traceability: <code>- [x] F?-? — Description — ✅ \</code>abc1234f`<code>. If the step produced no code change (e.g., a verification or check step), use</code>✅ `no-commit (<reason>)`<code>instead of a SHA.
+6. For</code>BLOCKED`, include brief reason and next action.</p>
+<hr />
+<h2 id="4-step-eligibility-rule-hard-rule">4. Step Eligibility Rule (Hard Rule)</h2>
+<p><strong>If the user expresses continuation intent (for example: "continue", "go", "let's go", "proceed", "resume"):</strong>
+Interpret continuation intent semantically, not as a literal command token.
+1. Read the Execution Status and find the first <code>[ ]</code> (includes lines with <code>⏳ IN PROGRESS</code> or <code>🚫 BLOCKED</code> labels).
+2. Apply the <strong>decision table in §10</strong> to determine the action (auto-chain, stop, or report).
+3. If ambiguous: STOP and ask the user for clarification.</p>
+<hr />
+<h2 id="5-continuation-intent-only-rule">5. Continuation-Intent-Only Rule</h2>
+<p><strong>When the user expresses continuation intent, the agent executes ONLY what the plan dictates.</strong> If the user's message includes additional instructions alongside the continuation request, the agent must:
+1. <strong>Pause and request scope confirmation</strong> (do not silently ignore extra instructions).
+2. Respond with two options: continue with the exact next plan step, or switch scope and ask the planning agent to update the plan and prompt.
+3. Execute only after the user explicitly confirms one option.</p>
+<h3 id="task-chaining-policy">Task Chaining Policy</h3>
+<p>Defines how AI assistants must behave when executing chained plan steps.</p>
+<h4 id="default-behavior-in-chained-mode">Default behavior in chained mode</h4>
+<ul>
+<li>Do <strong>not</strong> auto-fix failures by default when chaining steps.</li>
+<li>Record the failure with evidence (what failed, which files, and error output).</li>
+<li>Continue to the next step only if the failure is <strong>non-blocking</strong> for the current step.</li>
+<li><strong>STOP and escalate</strong> on blocking conditions.</li>
+</ul>
+<h4 id="blocking-conditions-must-stop">Blocking conditions (must STOP)</h4>
+<ul>
+<li>A required preflight or CI gate failed and the step depends on it.</li>
+<li>Instructions contradict a canonical document or plan constraint.</li>
+<li>A dependency, permission, or required tool is missing.</li>
+<li>A security or data-loss risk is identified.</li>
+<li>An explicit hard-gate in the plan requires user review before proceeding.</li>
+</ul>
+<h4 id="non-blocking-failures-may-continue">Non-blocking failures (may continue)</h4>
+<ul>
+<li>Pre-existing lint/test failures unrelated to the current step.</li>
+<li>Cosmetic or formatting issues that do not affect correctness.</li>
+<li>Warnings that do not block commit/push/PR gates.</li>
+</ul>
+<h4 id="auto-fix-allowance">Auto-fix allowance</h4>
+<ul>
+<li>In <strong>interactive single-task mode</strong> (no plan), the assistant may attempt focused auto-fixes (max 2 attempts, scoped to the current change).</li>
+<li>In <strong>chained-plan mode</strong>, auto-fix is <strong>not default</strong>. The assistant documents the failure and lets the plan dictate the next action (continue, escalation, or explicit fix step).</li>
+<li>Auto-fixes must never go beyond the current change scope or introduce unrelated refactors.</li>
+<li><strong>Never bypass quality gates</strong> (<code>--no-verify</code>, disabling tests/checks, weakening assertions) to force a pass.</li>
+</ul>
+<h4 id="required-output-per-step">Required output per step</h4>
+<p>Before handoff or auto-chain to the next step, each completed step must include:</p>
+<ul>
+<li>What changed (files and commits)</li>
+<li>Evidence (test output, CI status, and verification)</li>
+<li>Risks or open items</li>
+<li>Next-step handoff decision (continue, STOP, or handoff)</li>
+</ul>
+<hr />
+<h2 id="6-rollback-procedure">6. Rollback Procedure</h2>
+<p>If a completed step causes an issue not detected by tests:
+1. <code>git revert HEAD</code> (reverts commit without losing history)
+2. Edit Execution Status: change <code>[x]</code> back to <code>[ ]</code> for the affected step
+3. Report to the planning agent for diagnosis before retrying</p>
+<hr />
+<h2 id="7-plan-governance">7. Plan Governance</h2>
+<h3 id="plan-structure-rules">Plan Structure Rules</h3>
+<p>For plan scope principle, operational override step schema, and commit task specification rules, see <a href="../plan-creation/#2-plan-scope-principle-hard-rule"><code>plan-creation.md</code> §2 - Plan Scope Principle</a>.</p>
+<p>These rules are enforced at plan creation time. The execution agent validates override step schema completeness before executing any operational step. If a required field is missing, STOP and ask the planning agent to update the plan.</p>
+<h3 id="pull-request-progress-tracking-conditional">Pull Request progress tracking (conditional)</h3>
+<p>If a PR already exists and the user requested update in this step, reflect completed-step progress in the PR body using <code>gh pr edit &lt;pr_number&gt; --body "..."</code>.</p>
+<h3 id="pr-traceability-in-plan-metadata-mandatory">PR traceability in plan metadata (mandatory)</h3>
+<p>When a PR is created for the plan branch, the execution agent MUST update the <code>**PR:**</code> field in the plan file with the actual PR link (e.g., <code>[#220](https://github.com/…/pull/220)</code>) in the same commit or the immediately following plan-update commit. A plan with a merged or open PR whose <code>**PR:**</code> field still shows the placeholder text is a compliance failure.</p>
+<h3 id="pre-pr-requirements">Pre-PR Requirements</h3>
+<p>Before opening or updating a PR, the pre-PR commit history review hard rule defined in <a href="../../../../shared/03-ops/way-of-working/#5-pull-request-workflow">way-of-working.md §5</a> must be satisfied.</p>
+<h3 id="agent-user-interaction-rule">Agent-user interaction rule</h3>
+<p>See <strong>AGENTS.md → Global rules → Agent-user interaction rule</strong>. That rule is the authoritative, cross-cutting definition. All references to "Agent-user interaction rule (§7)" in this document defer to it.</p>
+<h4 id="auto-resolution-of-unambiguous-choices">Auto-resolution of unambiguous choices</h4>
+<p>When a mandatory plan-start choice has a <strong>single unambiguous answer derivable from the current execution context</strong>, the agent MUST:</p>
+<ol>
+<li>Resolve it automatically (do not ask the user).</li>
+<li>State the resolved value and the evidence used.
+   Example: <em>"Worktree: <code>d:\Git\worktrees\tercero</code> (current active workspace)."</em></li>
+<li>Record it in the plan file as usual.</li>
+</ol>
+<p>A choice is unambiguous when:
+- <strong>Worktree:</strong> The agent is already operating inside a specific worktree (e.g., the VS Code workspace root). Asking the user to "select" the worktree they already opened is redundant.
+- <strong>Execution Mode / Model Assignment:</strong> These always require user input (multiple valid options exist) unless the plan file already records a prior selection.</p>
+<p>If the agent is uncertain whether a choice is unambiguous, it MUST ask.</p>
+<h3 id="execution-worktree-selection-mandatory-plan-start-choice">Execution Worktree Selection (Mandatory Plan-Start Choice)</h3>
+<p>Before executing the first step of a plan, the agent must ask the user where to execute the plan.</p>
+<p><strong>Mandatory behavior:</strong>
+- List <strong>all existing worktrees</strong> first (for example using <code>git worktree list</code>).
+- Offer two choices:
+  1. Use one of the listed existing worktrees.
+  2. Create a new worktree (user chooses path and base branch, unless explicitly delegated).
+- Do not start step 1 until the user explicitly selects one option.
+- Record the selected execution worktree path in the active plan source file.
+- All plan execution commands and file edits must stay within the selected worktree.</p>
+<p><strong>Auto-resolution:</strong> If the agent is already executing inside a worktree (e.g., the active VS Code workspace), that worktree is auto-resolved per the Agent-user interaction rule (§7). The agent records it in the plan and informs the user without asking. The interactive selection (list worktrees + offer create) only applies when the worktree cannot be determined from context.</p>
+<h3 id="execution-mode-mandatory-plan-start-choice">Execution Mode (Mandatory Plan-Start Choice)</h3>
+<p>Before executing the first step of a plan, the agent must ask the user to select the execution mode.</p>
+<p><strong>Options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Per-task gate</th>
+<th>Per-checkpoint gate</th>
+<th>Commit</th>
+<th>Push</th>
+<th>Hard-gates (🚧)</th>
+<th>Max retries</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Supervised</strong></td>
+<td>L2</td>
+<td>L3</td>
+<td>Manual (user approval)</td>
+<td>Manual</td>
+<td>User decides</td>
+<td>2</td>
+</tr>
+<tr>
+<td><strong>Semi-supervised</strong></td>
+<td>L1</td>
+<td>L2</td>
+<td>Manual (user approval)</td>
+<td>Manual</td>
+<td>User decides</td>
+<td>2</td>
+</tr>
+<tr>
+<td><strong>Autonomous</strong></td>
+<td>L2</td>
+<td>L3</td>
+<td>Automatic</td>
+<td>Automatic</td>
+<td>Agent decides (documented)</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mandatory behavior:</strong>
+- Ask the user to choose one mode before step 1 starts.
+- Present options using the Agent-user interaction rule (§7).
+- Record the selected mode in the active plan source file.
+- Record format: <code>**Execution Mode:** &lt;selected-mode&gt;</code>
+- If the user does not choose, do not start step 1. Re-present the question and require an explicit selection.
+- The selected mode applies to the full plan unless the user explicitly changes it.</p>
+<h4 id="mode-definitions">Mode definitions</h4>
+<p><strong>Supervised:</strong>
+- After completing each task, run L2 (<code>scripts/ci/test-L2.ps1 -BaseRef main</code>). Fix until green (max 2 attempts; on 3rd failure STOP and report). Then wait for user instructions.
+- At <code>📌</code> commit checkpoints, escalate to L3 (<code>scripts/ci/test-L3.ps1 -BaseRef main</code>). Fix until green (max 2 attempts; on 3rd failure STOP and report). Then wait for user instructions.
+- Commit and push require explicit user approval.
+- Hard-gates require user decision.</p>
+<p><strong>Semi-supervised:</strong>
+- After completing each task, run L1 (<code>scripts/ci/test-L1.ps1 -BaseRef HEAD</code>). Fix until green (max 2 attempts; on 3rd failure STOP and report).
+- At <code>📌</code> commit checkpoints, run L2 (<code>scripts/ci/test-L2.ps1 -BaseRef main</code>). Fix until green (max 2 attempts; on 3rd failure STOP and report). Then wait for user instructions.
+- Commit and push require explicit user approval.
+- Hard-gates require user decision.</p>
+<p><strong>Autonomous:</strong>
+- After completing each task, run L2 (<code>scripts/ci/test-L2.ps1 -BaseRef main</code>). Fix until green (max 10 attempts; on 11th failure STOP and report).
+- At <code>📌</code> commit checkpoints, run L3 (<code>scripts/ci/test-L3.ps1 -BaseRef main</code>). Fix until green (max 10 attempts; on 11th failure STOP and report).
+- Commit and push are automatic after tests pass.
+- Hard-gates: the agent uses its best judgment, documents the decision and rationale, and continues. Exception: hard-gates marked <code>🚧🔒 NEVER-SKIP</code> still require user decision.
+- <strong>Autonomous decision log:</strong> After plan completion, include an "Autonomous decisions" section in the PR body listing every hard-gate decision with rationale.</p>
+<h4 id="git-policy-by-execution-mode">Git policy by execution mode</h4>
+<ul>
+<li><code>commit</code>:</li>
+<li><code>Supervised</code> / <code>Semi-supervised</code>: requires explicit user approval.</li>
+<li><code>Autonomous</code>: automatic after tests pass.</li>
+<li><code>push</code>: always manual/user-triggered in Supervised and Semi-supervised. Automatic in Autonomous.</li>
+<li>Pull Request creation/update: always manual/user-triggered.</li>
+<li>Merge: always explicit user approval.</li>
+</ul>
+<h4 id="plan-file-commit-hygiene-hard-rule">Plan-file commit hygiene (hard rule)</h4>
+<ul>
+<li><strong>Progress marks (<code>[x]</code>):</strong> Include the plan-file update in the same commit as the implementation it tracks. Do not create a separate commit solely to mark a step complete.</li>
+<li><strong>Scope changes</strong> (adding, removing, or rewriting steps mid-execution): Use a dedicated commit with message <code>docs(plan): &lt;description of scope change&gt;</code>. A scope change is a deliberate decision, not noise.</li>
+<li><strong>Never amend the plan-start snapshot.</strong> That commit is the execution baseline and may already be pushed. Amending it would require a force-push and destroy the temporal reference.</li>
+</ul>
+<h4 id="task-completion-all-modes">Task completion (all modes)</h4>
+<p>Mark the task <code>[x]</code> immediately upon completing the work — do not wait for CI or test results. Test verification is a subsequent obligation, not a prerequisite for marking completion.</p>
+<h4 id="checkpoint-pause-rule-hard-rule">Checkpoint pause rule (hard rule)</h4>
+<p>After any commit checkpoint (<code>📌</code>) whose instruction includes waiting for the user (e.g., "Then wait for user"), no further plan step may be read, explored, or executed until the user explicitly authorizes continuation after the checkpoint validation result. The checkpoint acts as a blocking gate equivalent to a hard-gate (<code>🚧</code>). This applies to all execution modes, including Autonomous.</p>
+<h4 id="checkpoint-commit-gate-hard-rule">Checkpoint commit gate (hard rule)</h4>
+<p>When the agent pauses at a <code>📌</code> checkpoint (per the checkpoint pause rule), the pause MUST include a <strong>commit proposal</strong> before the agent waits for user instructions. The proposal contains:</p>
+<ol>
+<li>A proposed commit message (following the project's <code>conventional-commits</code> convention).</li>
+<li>The list of changed files (<code>git status --short</code>).</li>
+</ol>
+<p>Present using the Agent-user interaction rule (§7). Place the commit message in the question header and the options below.
+If the environment supports interactive UI option selectors, the agent MUST use them for this proposal. Text fallback is allowed only when UI selection is unavailable.</p>
+<p><strong>Supervised / Semi-supervised response handling:</strong></p>
+<table>
+<thead>
+<tr>
+<th>User response</th>
+<th>Agent action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Commit</strong> (recommended default)</td>
+<td>Stage, commit with the proposed message, then continue.</td>
+</tr>
+<tr>
+<td><strong>Skip</strong></td>
+<td>Continue to next phase without committing.</td>
+</tr>
+<tr>
+<td><strong>Amend message</strong> (freeform input)</td>
+<td>Stage, commit with the user-provided message, then continue.</td>
+</tr>
+<tr>
+<td>Bare continuation ("continue", "sigue", "next", "go") without addressing the proposal</td>
+<td>Re-present the commit proposal and require an explicit selection before proceeding.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Autonomous mode:</strong> The agent auto-commits after tests pass (per Git policy). No proposal is presented.</p>
+<blockquote>
+<p><strong>Default:</strong> Commit proposals remain pending until the user explicitly chooses <code>Commit</code>, <code>Skip</code>, or <code>Amend message</code>. No implicit approval is allowed.</p>
+</blockquote>
+<h4 id="interrupted-checkpoint-proposals-hard-rule">Interrupted checkpoint proposals (hard rule)</h4>
+<p>If execution stops before the user explicitly answers a checkpoint commit proposal, the proposal expires for that turn.</p>
+<p>On the next resume/continuation message (for example: <code>go</code>, <code>continue</code>, <code>sigue</code>), the agent MUST:</p>
+<ol>
+<li>Recompute or restate the current commit proposal.</li>
+<li>Present it again using the Agent-user interaction rule (§7).</li>
+<li>Wait for an explicit user selection.</li>
+</ol>
+<p>The agent MUST NOT treat a resume message by itself as prior approval.</p>
+<h4 id="plan-start-snapshot-hard-rule">Plan-start snapshot (hard rule)</h4>
+<p>After all mandatory plan-start choices are resolved and recorded in the plan file, the agent MUST:</p>
+<ol>
+<li>Verify <code>**Branch:**</code>, <code>**Worktree:**</code>, <code>**Execution Mode:**</code>, and <code>**Model Assignment:**</code> all contain resolved non-placeholder values.</li>
+<li>Run <code>scripts/ci/test-L1.ps1 -BaseRef HEAD</code>.</li>
+<li>Commit the plan file with message: <code>docs(plan): record plan-start choices for &lt;plan-slug&gt;</code>.</li>
+<li>This commit establishes the execution baseline. No implementation step may begin before this commit exists.</li>
+</ol>
+<h3 id="model-assignment-mandatory-plan-start-choice">Model Assignment (Mandatory Plan-Start Choice)</h3>
+<p>Before executing the first step of a plan, the agent must ask the user to select the model assignment mode.</p>
+<p><strong>Options:</strong>
+1. <strong>Default</strong> — Planning agent uses the most-capable available model; Execution agent uses the standard-cost model.
+2. <strong>Uniform</strong> — Both roles use the standard-cost model.
+3. <strong>Custom</strong> — User specifies which model to use for each role.</p>
+<p><strong>Mandatory behavior:</strong>
+- Ask the user to choose one mode before step 1 starts.
+- Present options using the Agent-user interaction rule (§7).
+- Record the selected mode in the active plan source file.
+- Record format: <code>**Model Assignment:** &lt;selected-mode&gt;</code>
+- If the user does not choose, do not start step 1. Re-present the question and require an explicit selection.
+- The selected mode applies to the full plan unless the user explicitly changes it.</p>
+<h4 id="plan-start-preflight-gate-hard-rule">Plan-start preflight gate (hard rule)</h4>
+<p>On the first <code>go</code> / <code>continue</code> / <code>resume</code> turn for an active plan, the agent MUST inspect <code>**Branch:**</code>, <code>**Worktree:**</code>, <code>**Execution Mode:**</code>, and <code>**Model Assignment:**</code> before attempting normal execution.</p>
+<p>If any of those fields is blank or still contains placeholder text such as <code>PENDING PLAN-START RESOLUTION</code>, <code>PENDING USER SELECTION</code>, <code>Pending</code>, or equivalent unresolved wording, the agent MUST suspend normal execution and complete plan-start first.</p>
+<p>Until plan-start is fully resolved and the snapshot commit exists, the agent may only:</p>
+<ol>
+<li>Read the plan/protocol and inspect repository safety state.</li>
+<li>List worktrees or auto-resolve the current workspace worktree.</li>
+<li>Create, select, or switch to the execution branch documented for the plan.</li>
+<li>Ask the user the mandatory plan-start questions.</li>
+<li>Update the plan file with the resolved values.</li>
+<li>Run <code>scripts/ci/test-L1.ps1 -BaseRef HEAD</code> for the snapshot preflight.</li>
+<li>Commit <code>docs(plan): record plan-start choices for &lt;plan-slug&gt;</code>.</li>
+</ol>
+<p>Until that snapshot commit exists, the agent MUST NOT mark any non-plan-start step <code>⏳ IN PROGRESS</code>, edit implementation files, or run implementation-targeted tests.</p>
+<h4 id="task-type-criteria-for-model-tags">Task-type criteria for model tags</h4>
+<table>
+<thead>
+<tr>
+<th>Task type</th>
+<th>Assigned model</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Read-only verification, prerequisite checks, baseline snapshots, evidence recording, documentation</td>
+<td>Standard</td>
+<td>Low complexity, structured output</td>
+</tr>
+<tr>
+<td>Test writing, scaffolding, mechanical extraction, wiring, validation, dead code removal, cleanup</td>
+<td>Standard</td>
+<td>Good for structured code tasks</td>
+</tr>
+<tr>
+<td>High-complexity decomposition, deep conditional logic refactoring, behavior-preserving rewrites of high-CC code</td>
+<td>Most-capable</td>
+<td>Justified only for tasks requiring deep reasoning</td>
+</tr>
+<tr>
+<td>Hard-gates (🚧)</td>
+<td>No tag</td>
+<td>User decision, not model-dependent</td>
+</tr>
+</tbody>
+</table>
+<p>Use the most-capable model only when the step involves decomposing functions with cyclomatic complexity &gt; 30, rewriting deeply nested conditional logic, or tasks where behavioral equivalence is hard to verify mechanically. Default to the standard model when in doubt.</p>
+<h4 id="model-routing-rule-hard-rule">Model routing rule (hard rule)</h4>
+<p>Each step in Execution Status carries a <code>[Model]</code> tag (e.g., <code>[GPT 5.4]</code>, <code>[Claude Opus 4.6]</code>).</p>
+<p><strong>Pre-execution check:</strong> Before starting any step, the agent MUST verify that its own model matches the step's <code>[Model]</code> tag. If the tag names a different model, the agent MUST NOT execute the step. Instead, STOP and tell the user:</p>
+<blockquote>
+<p>"This step is assigned to [Model X]. I am [Model Y]. Please switch to the correct model and say 'continue'."</p>
+</blockquote>
+<p><strong>Post-completion check:</strong> On step completion, check the <code>[Model]</code> tag of the next pending step. If it differs from the current model, STOP immediately and tell the user:</p>
+<blockquote>
+<p>"Next step recommends [Model X]. Switch to that model and say 'continue'."</p>
+</blockquote>
+<p>Do NOT auto-chain across model boundaries.</p>
+<h4 id="mid-execution-pr-split-guided-protocol">Mid-Execution PR Split (Guided Protocol)</h4>
+<p>When a plan was created with a single PR but during execution the scope grows beyond what a single PR can reasonably deliver, the agent MUST follow this guided protocol:</p>
+<ol>
+<li><strong>Halt</strong> — Complete the current step. Do NOT start a new one. Tell the user: <em>"Step [current] is done. Before continuing, I need to address a scope issue."</em></li>
+<li><strong>Diagnose and propose</strong> — Explain why a split is needed and present a proposed split table showing which steps go into which PR. Ask: <em>"Do you approve this split, or would you adjust the boundaries?"</em></li>
+<li><strong>Await approval (🚧 hard-gate)</strong> — The user approves or adjusts.</li>
+<li><strong>Restructure in-place</strong> — Apply all changes in the existing plan file following the <code>plan-creation.md</code> §5 "Retrofitting a PR split during execution" procedure. Then tell the user: <em>"I've restructured the plan. Here is the updated Execution Status and PR Roadmap. Please review."</em></li>
+<li><strong>Confirm</strong> — Wait for user confirmation.</li>
+<li><strong>Commit</strong> — <code>docs(plan): retrofit PR split for &lt;plan-slug&gt;</code></li>
+<li><strong>Resume</strong> — Continue execution. Use branch-transition protocol (§13 STEP 0) when crossing PR boundaries.</li>
+</ol>
+<p>The agent MUST guide the user step-by-step through this process, explicitly stating which protocol step is current, what will be done next, and what remains.</p>
+<hr />
+<h2 id="8-step-completion-integrity-hard-rules">8. Step Completion Integrity (Hard Rules)</h2>
+<h3 id="no-batch">NO-BATCH</h3>
+<p><strong>Prohibited: batching unrelated plan steps in a single commit.</strong></p>
+<p>Commits must remain coherent to the currently closed implementation step(s) and their validated scope.</p>
+<h3 id="evidence-block-mandatory-on-every-step-close">EVIDENCE BLOCK (Mandatory on Every Step Close)</h3>
+<p>Every step completion message <strong>MUST</strong> include:</p>
+<pre><code>📋 Evidence:
+- Step: F?-?
+- Code commit: &lt;SHA&gt;
+- Plan commit: &lt;SHA&gt;
+</code></pre>
+<p>If any field is missing, the step is NOT considered completed.</p>
+<hr />
+<h2 id="9-format-before-commit-mandatory">9. Format-Before-Commit (Mandatory)</h2>
+<p><strong>Before every <code>git commit</code>, the agent ALWAYS runs the project formatters:</strong>
+1. <code>cd frontend &amp;&amp; npx prettier --write 'src/**/*.{ts,tsx,css}' &amp;&amp; cd ..</code>
+2. <code>ruff check backend/ --fix --quiet &amp;&amp; ruff format backend/ --quiet</code>
+3. If commit fails: re-run formatters, re-add, retry ONCE. Second failure: STOP.</p>
+<blockquote>
+<p><strong>Tip:</strong> Running <code>scripts/ci/test-L1.ps1 -BaseRef HEAD</code> covers formatting, linting, and doc guards in a single command.</p>
+</blockquote>
+<h3 id="local-preflight-integration">Local Preflight Integration</h3>
+<table>
+<thead>
+<tr>
+<th>SCOPE BOUNDARY moment</th>
+<th>Min. level</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Before commit (STEP A)</td>
+<td>L1</td>
+<td><code>scripts/ci/test-L1.ps1 -BaseRef HEAD</code></td>
+</tr>
+<tr>
+<td>Before push (STEP C)</td>
+<td>L2</td>
+<td><code>scripts/ci/test-L2.ps1 -BaseRef main</code></td>
+</tr>
+<tr>
+<td>Before PR creation/update</td>
+<td>L3</td>
+<td><code>scripts/ci/test-L3.ps1 -BaseRef main</code></td>
+</tr>
+<tr>
+<td>Before merge to main</td>
+<td>CI green</td>
+<td>No local run needed</td>
+</tr>
+</tbody>
+</table>
+<h3 id="per-task-and-per-checkpoint-test-gates-hard-rule">Per-Task and Per-Checkpoint Test Gates (Hard Rule)</h3>
+<p>During plan execution, agents MUST run tests at two granularities: per-task and per-checkpoint. The specific test level at each granularity is determined by the active Execution Mode (see §7).</p>
+<table>
+<thead>
+<tr>
+<th>Trigger</th>
+<th>Command by level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>After completing any plan task</td>
+<td>L1: <code>scripts/ci/test-L1.ps1 -BaseRef HEAD</code> · L2: <code>scripts/ci/test-L2.ps1 -BaseRef main</code></td>
+</tr>
+<tr>
+<td>At every commit checkpoint (📌)</td>
+<td>L2: <code>scripts/ci/test-L2.ps1 -BaseRef main</code> · L3: <code>scripts/ci/test-L3.ps1 -BaseRef main</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Retry limits</strong> are defined per Execution Mode (see §7). On exceeding the retry limit: STOP and report to the user.</p>
+<p>These gates complement the SCOPE BOUNDARY preflight levels. The per-task gate ensures each individual task leaves the codebase in a passing state. The per-checkpoint gate validates the cumulative branch state at natural commit boundaries.</p>
+<h3 id="user-validation-environment-mandatory">User Validation Environment (Mandatory)</h3>
+<p>When the agent asks the user to validate or test behavior manually, the agent MUST first start the project in <strong>dev mode with hot reload enabled</strong>.</p>
+<p>Canonical command (this project):
+1. <code>docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build</code></p>
+<p>Canonical stop command (this project):
+1. <code>docker compose -f docker-compose.yml -f docker-compose.dev.yml down</code></p>
+<p>Mandatory checks before asking user validation:
+1. Backend reachable: <code>http://localhost:8000/health</code> returns HTTP 200.
+2. Frontend reachable: <code>http://localhost:5173</code> returns HTTP 200.
+3. If either check fails, STOP and report the blocker instead of asking the user to test.</p>
+<hr />
+<h2 id="10-next-step-message-mandatory">10. Next-Step Message (Mandatory)</h2>
+<p>On completing a step, the agent ALWAYS tells the user the next move with concrete instructions.</p>
+<p><strong>Decision table:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Prompt exists?</th>
+<th>Hard-gate?</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>YES</td>
+<td>NO</td>
+<td><strong>AUTO-CHAIN</strong> — execute the next step directly.</td>
+</tr>
+<tr>
+<td>YES</td>
+<td>YES (🚧)</td>
+<td><strong>STOP</strong> — report: "The next step is a hard-gate requiring user decision."</td>
+</tr>
+<tr>
+<td>NO</td>
+<td>NO</td>
+<td><strong>STOP</strong> — report: "No prompt exists for F?-?. The planning agent must write one."</td>
+</tr>
+<tr>
+<td>NO</td>
+<td>YES (🚧)</td>
+<td><strong>STOP</strong> — report: "The next step is a hard-gate requiring user decision."</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11-prompt-strategy">11. Prompt Strategy</h2>
+<p>For prompt types and creation lifecycle, see <a href="../plan-creation/#6-prompt-strategy"><code>plan-creation.md</code> §6 - Prompt Strategy</a>.</p>
+<h3 id="resolution-priority-execution-time">Resolution Priority (Execution-Time)</h3>
+<p>Prompt Queue -&gt; Active Prompt -&gt; STOP (ask the planning agent).</p>
+<h3 id="prompt-consumption-execution-agent">Prompt Consumption (Execution Agent)</h3>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Who</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Consume</strong></td>
+<td>Execution agent</td>
+<td>On step start, per resolution priority in this section</td>
+</tr>
+<tr>
+<td><strong>Clean</strong></td>
+<td>Execution agent</td>
+<td>After step execution, clear <code>## Active Prompt</code> section content</td>
+</tr>
+</tbody>
+</table>
+<h3 id="routing-for-continuation-intent">Routing for Continuation Intent</h3>
+<p>Follow the <strong>Step Eligibility Rule (§4)</strong> to determine and execute the next step. After execution, run STEP F of SCOPE BOUNDARY.</p>
+<hr />
+<h2 id="12-hard-gates-structured-decision-protocol">12. Hard-Gates: Structured Decision Protocol</h2>
+<blockquote>
+<p><strong>Presentation rule:</strong> All options in hard-gates MUST be presented following the Agent-user interaction rule (AGENTS.md → Global rules).</p>
+</blockquote>
+<p>In 🚧 steps, the planning agent presents options:</p>
+<pre><code>Backlog items:
+1. ✅ Centralize config — Impact: High, Effort: S
+2. ✅ Add health check — Impact: Medium, Effort: S
+3. ❌ Migrate to PostgreSQL — Impact: High, Effort: L (OUT OF SCOPE)
+</code></pre>
+<p>The user responds with numbers: <code>1, 2, 4</code> or <code>all</code> or <code>none</code>.
+The planning agent records the decision, commits, prepares the prompt, and directs to the execution agent.</p>
+<hr />
+<h2 id="13-scope-boundary-procedure">13. SCOPE BOUNDARY Procedure</h2>
+<blockquote>
+<p><strong>Activation rule:</strong> Any commit or push request during active plan execution MUST go through this procedure. If the user requests "commit", "push", or another git operation while a plan step is active, treat it as a SCOPE BOUNDARY trigger — not as an isolated command.</p>
+</blockquote>
+<p>Execute the <strong>applicable</strong> steps in the order below. For commit-only requests, execute STEP 0/STEP A/STEP B and skip push/PR/CI steps unless explicitly requested.</p>
+<h3 id="step-0-branch-verification-hard-stop">STEP 0 — Branch Verification (Hard-Stop)</h3>
+<ol>
+<li>Read <code>**Branch:**</code> from the plan file.</li>
+<li>If <code>**Branch:**</code> is missing, blank, or still contains placeholder text such as <code>PENDING PLAN-START RESOLUTION</code>: create the branch following the branching convention in AGENTS.md, record it in the plan's <code>**Branch:**</code> field, and commit the plan update before proceeding.</li>
+<li>Check current branch: <code>git branch --show-current</code>.</li>
+<li>If current branch matches <code>**Branch:**</code>: proceed.</li>
+<li>If mismatch: <strong>STOP immediately.</strong> Alert the user: "Current branch <code>&lt;actual&gt;</code> does not match plan branch <code>&lt;expected&gt;</code>. Switch to the correct branch before continuing." Do NOT commit, push, or checkout.</li>
+</ol>
+<p><strong>Branch-transition protocol.</strong> To change branches during plan execution, the agent MUST:
+1. Verify the target branch is documented in the plan's PR Roadmap table. If not, add it first.
+2. If there are uncommitted changes in the working tree, commit them with a <code>WIP: &lt;description&gt;</code> message on the current branch. WIP commits bypass pre-commit checks (they will be amended or squashed before push/PR).
+3. Update the plan's <code>**Branch:**</code> field to the target branch.
+4. Switch to the target branch.
+5. Inform the user which branch is now active.
+Switching without following this protocol is a compliance failure.</p>
+<h3 id="step-a-commit-code-plan-file-untouched">STEP A — Commit Code (plan file untouched)</h3>
+<ol>
+<li>Stage files defined by the active implementation step scope (never unrelated files).</li>
+<li>Commit with test proof in message.</li>
+</ol>
+<h3 id="step-b-commit-plan-update">STEP B — Commit Plan Update</h3>
+<ol>
+<li>Apply completion rules per §3.</li>
+<li>Stage and commit plan file only.</li>
+</ol>
+<h3 id="step-c-push-both-commits-conditional">STEP C — Push Both Commits (Conditional)</h3>
+<p>Run this step only if the user explicitly requested push in the current step.
+1. <code>git push origin &lt;branch&gt;</code>
+2. If the user explicitly requested PR creation/update in this step, apply PR workflow rules per §14. Otherwise, skip PR creation/update.</p>
+<h3 id="step-d-update-active-pr-description-conditional">STEP D — Update Active PR Description (Conditional)</h3>
+<p>Run this step only if:
+1. STEP C ran, and
+2. the user explicitly requested PR creation/update in the current step.
+Then update PR body per §7.</p>
+<h3 id="step-e-ci-gate-conditional">STEP E — CI Gate (Conditional)</h3>
+<p>Run this step only if STEP C ran.
+1. Check CI: <code>gh run list --branch &lt;branch&gt; --limit 1 --json status,conclusion,databaseId</code>
+2. If in_progress: wait 30s and retry (up to 10).
+3. If CI fails, report the failure details and wait for user instructions.</p>
+<h3 id="step-f-chain-or-stop">STEP F — Chain or Stop</h3>
+<ul>
+<li><strong>PRE-CONDITION:</strong> STEP A must have completed.</li>
+<li>Apply decision table per §10.</li>
+</ul>
+<hr />
+<h2 id="14-iteration-lifecycle-protocol">14. Iteration Lifecycle Protocol</h2>
+<pre><code>Branch creation → Plan steps → PR readiness → User approval → Close-out → Merge
+  [automatic]     [SCOPE BOUNDARY]  [automatic]   [hard-gate]   [automatic]  [automatic]
+</code></pre>
+<h3 id="branch-creation-before-any-plan-step">Branch Creation (Before Any Plan Step)</h3>
+<ol>
+<li>Read <code>**Branch:**</code> from the plan.</li>
+<li><code>git fetch origin</code></li>
+<li>Create from latest main: <code>git checkout -b &lt;branch&gt; origin/main</code>.</li>
+<li>If branch exists remotely: checkout and pull.</li>
+<li>If <code>**Branch:**</code> was missing, blank, or still unresolved in the plan file, the agent must have already created and recorded it in STEP 0. Verify the field is populated with a non-placeholder value before proceeding.</li>
+</ol>
+<h3 id="pr-creation-user-triggered">PR Creation (User-Triggered)</h3>
+<p>PR creation remains mandatory for delivery through review, but it is <strong>not automatic</strong>. The agent creates or updates a PR only when the user explicitly requests it. When created, record the PR number in the plan. If a PR already exists for the branch, update it instead of creating a new one.</p>
+<h3 id="pr-readiness-automatic">PR Readiness (Automatic)</h3>
+<p>When all steps are <code>[x]</code> and CI is green:
+1. If a PR exists: update title/body/classification and report PR number + URL to user.
+2. If no PR exists: STOP and ask the user whether to create it now (PR is required before merge).
+3. <strong>Hard-gate:</strong> user decides when to merge.</p>
+<h3 id="iteration-close-out-procedure-pre-merge">Iteration Close-Out Procedure (Pre-Merge)</h3>
+<blockquote>
+<p><strong>Hard rule:</strong> Close-out runs BEFORE the merge, on the feature branch itself. This avoids creating artificial close-out branches and PRs.</p>
+</blockquote>
+<p>When user says "merge", execute close-out first:</p>
+<ol>
+<li><strong>Verify clean working tree</strong> and <code>git fetch --prune</code>.</li>
+<li><strong>Plan reconciliation</strong> — If any steps are <code>[ ]</code>, present each to user: Defer / Drop / Mark complete.</li>
+<li><strong>Update IMPLEMENTATION_HISTORY.md</strong> — Add timeline row and cumulative progress.</li>
+<li><strong>Move plan file to completed archive</strong> — <code>git mv plans/&lt;plan-file&gt; plans/completed/&lt;plan-file&gt;</code>.
+  Keep the file name unchanged to preserve links.</li>
+<li><strong>DOC_UPDATES normalization</strong> — For qualifying <code>.md</code> files only.</li>
+<li><strong>Commit + push</strong> — <code>docs(closeout): archive &lt;plan-slug&gt; and backlog artifacts</code> on the feature branch.</li>
+<li><strong>Wait for CI green</strong> on the close-out commit.</li>
+<li><strong>Mirror to docs repository</strong> — If applicable.</li>
+</ol>
+<h4 id="backlog-item-lifecycle">Backlog item lifecycle</h4>
+<p>Backlog items (<code>US-*.md</code>, <code>IMP-*.md</code>, <code>ARCH-*.md</code>) follow this status lifecycle:
+- <code>Planned</code> — initial state.
+- <code>In Progress</code> — set when plan execution starts (first step marked in-progress).
+- <code>Done</code> — set automatically during closeout, before moving to <code>completed/</code>.</p>
+<p>The agent updates <code>**Status:**</code> at each transition automatically.</p>
+<h4 id="closeout-commit-uniform-rule-single-pr-and-multi-pr">Closeout commit (uniform rule — single-PR and multi-PR)</h4>
+<p>Every plan's <strong>last PR</strong> (or only PR) includes a closeout commit as its final commit before merge. This commit:</p>
+<ol>
+<li>Sets the backlog item's <code>**Status:**</code> to <code>Done</code>.</li>
+<li><strong>Moves the plan file</strong> to <code>plans/completed/</code>.</li>
+<li><strong>Moves the backlog artifact</strong> (<code>US-*.md</code>, <code>IMP-*.md</code>, <code>ARCH-*.md</code>, or equivalent) to <code>Backlog/completed/</code> — if the artifact exists.</li>
+<li><strong>Updates every relative link</strong> in surrounding docs that pointed to the old paths so they resolve to the new <code>completed/</code> locations.</li>
+<li>If any of the above does not apply, states <code>N/A</code> explicitly in the commit message body.</li>
+</ol>
+<p><strong>Commit message:</strong> <code>docs(closeout): archive &lt;plan-slug&gt; and backlog artifacts</code></p>
+<p><strong>Stacked PRs rule:</strong> Only the last PR of the stack performs the closeout move. Intermediate PRs must NOT move artifacts to <code>completed/</code>; doing so breaks link resolution in sibling branches that haven't rebased yet.</p>
+<p><strong>Validation before push:</strong>
+- Run doc-contract / doc-link tests locally and confirm green.
+- Verify with <code>git diff --name-status main...HEAD</code> that the expected <code>R</code> (rename) or <code>D</code>+<code>A</code> entries appear for the moved files.</p>
+<p><strong>PR closeout checklist (add to last PR body):</strong></p>
+<pre><code class="language-markdown">### Closeout
+- [ ] Backlog status set to `Done`
+- [ ] Plan moved to `completed/` (or N/A)
+- [ ] Backlog artifact moved to `completed/` (or N/A)
+- [ ] Relative links updated after move
+- [ ] Doc-contract tests pass locally
+</code></pre>
+<h3 id="merge-automatic-after-close-out">Merge (Automatic, After Close-Out)</h3>
+<p>Only after close-out is committed and CI is green:
+1. Confirm PR is mergeable (CI green, no conflicts).
+2. Squash merge: <code>gh pr merge &lt;number&gt; --squash --delete-branch</code>.
+3. Switch to main, pull, delete local branch, clean stashes.</p>
+<hr />
+<h2 id="15-plan-todo-projection-chat-hard-rule">15. Plan Todo Projection (Chat) (Hard Rule)</h2>
+<p>During plan execution, the agent MUST project plan progress into chat todos.</p>
+<h3 id="required-behavior">Required behavior</h3>
+<ol>
+<li>On continuation-intent requests, read <code>Execution Status</code> and create one chat todo per pending plan step (<code>- [ ]</code>).</li>
+<li>Mark exactly one todo as <code>in_progress</code>: the current active step.</li>
+<li>Mark a todo as <code>completed</code> only when the corresponding plan step is <code>[x]</code>.</li>
+<li>If a plan step is <code>🚫 BLOCKED</code>, keep its todo as <code>in_progress</code> and include blocker context in the chat progress update.</li>
+<li>Keep a rolling window of at least the next 3 pending steps visible in chat todos.</li>
+<li>Todo titles MUST preserve plan step identifiers (for example: <code>F2-C — Update wiki section indexes</code>).</li>
+</ol>
+<h3 id="synchronization-rules">Synchronization rules</h3>
+<ul>
+<li>The active plan source file checkboxes are the source of truth (<code>PLAN_&lt;YYYY-MM-DD&gt;_&lt;SLUG&gt;.md</code>).</li>
+<li>Chat todos are an execution-time projection and MUST stay synchronized with the plan.</li>
+<li>If plan and chat todos diverge, reconcile immediately from the plan before continuing.</li>
+</ul>
+<hr />
+<h2 id="16-token-efficiency-policy">16. Token-Efficiency Policy</h2>
+<p>To avoid context explosion:
+1. <strong>iterative-retrieval</strong> before each step: load only current state, step objective, target files, guardrails, validation outputs.
+2. <strong>strategic-compact</strong> at step close: summarize only the delta, validation, risks, and next move.
+3. Do not carry full chat history if not necessary.
+4. For chat-switch decisions, apply the <strong>Single-Chat Execution Rule</strong>.</p>
+<blockquote>
+<p><strong>Mandatory compact template:</strong>
+- Step: F?-?
+- Delta: <concrete changes>
+- Validation: <tests/guards + result>
+- Risks/Open: <if applicable></p>
+</blockquote>
+<hr />
+<h2 id="17-commit-conventions">17. Commit Conventions</h2>
+<p>All commits in this flow follow the format:</p>
+<pre><code>&lt;type&gt;(plan-&lt;id&gt;): &lt;short description&gt;
+</code></pre>
+<p>Examples:
+- <code>audit(plan-f1a): 12-factor compliance report + backlog</code>
+- <code>refactor(plan-f2c): split App.tsx into page and API modules</code>
+- <code>test(plan-f4c): add frontend coverage gaps for upload flow</code>
+- <code>docs(plan-f5c): add ADR-ARCH-001 through ADR-ARCH-004</code></p>
+<hr />
+<h2 id="18-how-to-add-a-new-user-story">18. How to Add a New User Story</h2>
+<p>When asked to add a new User Story, update the delivery docs in three places:</p>
+<ol>
+<li>Add the story in the relevant <strong>User Stories (in order)</strong> list for its release.</li>
+<li>Create or update the dedicated backlog item file for that story.</li>
+<li>Add or update the story row in the <strong>Backlog Index</strong>.</li>
+</ol>
+<p>If the requested story is not yet scheduled in any release, schedule it in the Release Plan:
+- Add it to an existing release, or
+- Create a new release section when needed.</p>
+<h3 id="minimal-required-fields">Minimal required fields</h3>
+<ul>
+<li><strong>ID</strong> (e.g., <code>US-22</code>)</li>
+<li><strong>Title</strong></li>
+<li><strong>Goal</strong> (via <code>User Story</code> statement)</li>
+<li><strong>Acceptance Criteria</strong></li>
+<li><strong>Tech Requirements</strong> (in <code>Authoritative References</code>)</li>
+<li><strong>Dependencies</strong> (in <code>Scope Clarification</code> and/or ordering references)</li>
+</ul>
+<h3 id="release-assignment-rules">Release assignment rules</h3>
+<ul>
+<li>If the requester names a release explicitly, use that release.</li>
+<li>Otherwise, assign to the earliest viable release based on dependencies and existing story order.</li>
+<li>If no existing release is viable, create a new release after the last dependent release.</li>
+</ul>
+<h3 id="completion-checklist">Completion checklist</h3>
+<ul>
+<li>Story appears in release-level <strong>User Stories (in order)</strong>.</li>
+<li>Story has a dedicated backlog item file with required fields.</li>
+<li>Story appears in <strong>Backlog Index</strong> with the correct release assignment.</li>
+<li>Formatting and section structure remain consistent with existing stories.</li>
+<li>No unrelated documentation edits are bundled.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

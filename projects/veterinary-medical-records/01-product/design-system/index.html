@@ -1,0 +1,1328 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Wiki-style technical documentation for the Veterinary Medical Records project">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>Lean Design System (Tokens + Primitives) - Veterinary Medical Records Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lean-design-system-tokens-primitives" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-header__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Veterinary Medical Records Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lean Design System (Tokens + Primitives)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-nav__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Veterinary Medical Records Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shared Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Shared Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/02-tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3_1" id="__nav_1_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<!-- markdownlint-disable MD013 -->
+
+<h1 id="lean-design-system-tokens-primitives">Lean Design System (Tokens + Primitives)</h1>
+<p><strong>Breadcrumbs:</strong> <a href="../../../README.md">Docs</a> / <a href="../../../">Projects</a> / veterinary-medical-records / 01-product</p>
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+<ul>
+<li><a href="#purpose">Purpose</a></li>
+<li><a href="#token-strategy">Token strategy</a></li>
+<li><a href="#color-tokens">Color tokens</a></li>
+<li><a href="#surface-levels-l0l3">Surface levels (L0–L3)</a></li>
+<li><a href="#semanticstatus-tokens">Semantic/status tokens</a></li>
+<li><a href="#spacing-scale">Spacing scale</a></li>
+<li><a href="#radius-scale">Radius scale</a></li>
+<li><a href="#text-hierarchy">Text hierarchy</a></li>
+<li><a href="#focus-ring--accent-usage">Focus ring &amp; accent usage</a></li>
+<li><a href="#primitives-shadcnui--radix">Primitives (shadcn/ui + Radix)</a></li>
+<li><a href="#app-level-wrappers-componentsapp">App-level wrappers (<code>components/app</code>)</a></li>
+<li><a href="#accessibility-rules">Accessibility rules</a></li>
+<li><a href="#tooltip-policy-mandatory">Tooltip policy (mandatory)</a></li>
+<li><a href="#confidence-tooltip-content-standard">Confidence tooltip content (standard)</a></li>
+<li><a href="#icon-only-controls-do--dont">Icon-only controls: do / don't</a></li>
+<li><a href="#exception-process-allowlist">Exception process (allowlist)</a></li>
+<li><a href="#usage-examples">Usage examples</a></li>
+<li><a href="#example-1--viewer-toolbar-icon-action">Example 1 — Viewer toolbar icon action</a></li>
+<li><a href="#example-2--structured-field-row">Example 2 — Structured field row</a></li>
+<li><a href="#example-3--layered-panel-composition">Example 3 — Layered panel composition</a></li>
+<li><a href="#enforcement">Enforcement</a></li>
+<li><a href="#do--dont">Do / Don't</a></li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+<h2 id="purpose">Purpose</h2>
+<p>This document defines the minimal design-system contract for the internal Claims Review UI.</p>
+<p>Goals:</p>
+<ul>
+<li>prevent ad-hoc styling drift,</li>
+<li>provide a consistent base for editable structured fields,</li>
+<li>keep UI implementation lightweight and maintainable.</li>
+</ul>
+<p>This is an implementation-facing UI contract. It does not redefine workflow behavior from UX/Product docs.</p>
+<hr />
+<h2 id="token-strategy">Token strategy</h2>
+<p>The project uses <strong>CSS variables as canonical tokens</strong> in <code>frontend/src/index.css</code>, then maps those tokens into Tailwind
+in <code>frontend/tailwind.config.cjs</code>.</p>
+<p>Rule:</p>
+<ul>
+<li>Define/adjust token values in CSS variables.</li>
+<li>Consume tokens through Tailwind utility names (not ad-hoc hex values in components).</li>
+</ul>
+<p>All new user-visible UI must use tokens instead of scattered hard-coded values.</p>
+<h3 id="color-tokens">Color tokens</h3>
+<blockquote>
+<p>Brand-level color decisions (accent, page bg, text hierarchy, semantic status) are defined in
+<a href="../../../../shared/01-product/brand-guidelines/">brand-guidelines.md</a>. This table reflects <strong>actual implementation values</strong> from
+<code>frontend/src/index.css</code>. When brand and implementation diverge, this table tracks the code.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Value</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--app-bg</code></td>
+<td><code>#ebf5ff</code></td>
+<td>outer page background</td>
+</tr>
+<tr>
+<td><code>--canvas-bg</code></td>
+<td><code>#ffffff</code></td>
+<td>main app canvas/container</td>
+</tr>
+<tr>
+<td><code>--card-bg</code></td>
+<td><code>#ffffff</code></td>
+<td>cards/panels (inner surfaces)</td>
+</tr>
+<tr>
+<td><code>--app-frame</code></td>
+<td><code>var(--canvas-bg)</code></td>
+<td>canvas alias</td>
+</tr>
+<tr>
+<td><code>--surface</code></td>
+<td><code>var(--card-bg)</code></td>
+<td>card alias</td>
+</tr>
+<tr>
+<td><code>--surface-muted</code></td>
+<td><code>#f2f5f8</code></td>
+<td>subtle inner surfaces / toolbar blocks</td>
+</tr>
+<tr>
+<td><code>--border-subtle</code></td>
+<td><code>#cfd8e3</code></td>
+<td>subtle separators and panel borders</td>
+</tr>
+<tr>
+<td><code>--shadow-soft</code></td>
+<td><code>none</code></td>
+<td>soft elevation for frame/cards</td>
+</tr>
+<tr>
+<td><code>--color-page-bg</code></td>
+<td><code>var(--app-bg)</code></td>
+<td>app/page background alias</td>
+</tr>
+<tr>
+<td><code>--color-surface</code></td>
+<td><code>var(--surface)</code></td>
+<td>cards/panels alias</td>
+</tr>
+<tr>
+<td><code>--color-surface-muted</code></td>
+<td><code>var(--surface-muted)</code></td>
+<td>muted surface alias</td>
+</tr>
+<tr>
+<td><code>--color-text</code></td>
+<td><code>#1f2933</code></td>
+<td>primary text</td>
+</tr>
+<tr>
+<td><code>--color-text-secondary</code></td>
+<td><code>#4b5563</code></td>
+<td>secondary text</td>
+</tr>
+<tr>
+<td><code>--color-text-muted</code></td>
+<td><code>#6b7280</code></td>
+<td>metadata/helper text</td>
+</tr>
+<tr>
+<td><code>--text-title</code></td>
+<td><code>var(--color-text)</code></td>
+<td>panel/section title text</td>
+</tr>
+<tr>
+<td><code>--text-body</code></td>
+<td><code>var(--color-text)</code></td>
+<td>default body text</td>
+</tr>
+<tr>
+<td><code>--text-muted</code></td>
+<td><code>var(--color-text-secondary)</code></td>
+<td>secondary metadata</td>
+</tr>
+<tr>
+<td><code>--color-border</code></td>
+<td><code>#d7dee7</code></td>
+<td>default borders</td>
+</tr>
+<tr>
+<td><code>--color-border-subtle</code></td>
+<td><code>var(--border-subtle)</code></td>
+<td>subtle separators alias</td>
+</tr>
+<tr>
+<td><code>--color-accent</code></td>
+<td><code>#e5603d</code></td>
+<td>primary accent</td>
+</tr>
+<tr>
+<td><code>--color-accent-foreground</code></td>
+<td><code>#ffffff</code></td>
+<td>text on accent</td>
+</tr>
+<tr>
+<td><code>--shadow-subtle</code></td>
+<td><code>none</code></td>
+<td>gentle elevation alias</td>
+</tr>
+</tbody>
+</table>
+<h3 id="surface-levels-l0l3">Surface levels (L0–L3)</h3>
+<ul>
+<li><strong>L0 (<code>--app-bg</code>)</strong>: page background outside the app frame.</li>
+<li><strong>L1 (<code>--canvas-bg</code>)</strong>: main application canvas/frame.</li>
+<li><strong>L2 (<code>--card-bg</code> / <code>--surface</code>)</strong>: primary panels/cards (sidebar, viewer, data panel).</li>
+<li><strong>L3 (<code>--surface-muted</code>)</strong>: inner controls/toolbar blocks/secondary containers.</li>
+</ul>
+<p>Rule:</p>
+<ul>
+<li>Prefer alternating levels to avoid flat “same color everywhere” composition.</li>
+<li>Use one logical boundary per block; avoid unnecessary nested frames.</li>
+</ul>
+<h3 id="semanticstatus-tokens">Semantic/status tokens</h3>
+<table>
+<thead>
+<tr>
+<th>Token</th>
+<th>Value</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--status-success</code></td>
+<td><code>#3f9e86</code></td>
+<td>semantic success / ready</td>
+</tr>
+<tr>
+<td><code>--status-warn</code></td>
+<td><code>#c99645</code></td>
+<td>semantic warning / processing</td>
+</tr>
+<tr>
+<td><code>--status-error</code></td>
+<td><code>#c45f5c</code></td>
+<td>semantic error / failure</td>
+</tr>
+<tr>
+<td><code>--confidence-low</code></td>
+<td><code>var(--status-error)</code></td>
+<td>low-confidence indicator</td>
+</tr>
+<tr>
+<td><code>--confidence-med</code></td>
+<td><code>var(--status-warn)</code></td>
+<td>medium-confidence indicator</td>
+</tr>
+<tr>
+<td><code>--confidence-high</code></td>
+<td><code>var(--status-success)</code></td>
+<td>high-confidence indicator</td>
+</tr>
+<tr>
+<td><code>--status-critical</code></td>
+<td><code>var(--status-error)</code></td>
+<td>critical badge border/text accent</td>
+</tr>
+<tr>
+<td><code>--status-missing</code></td>
+<td><code>#9ca3af</code></td>
+<td>missing/placeholder state tone</td>
+</tr>
+<tr>
+<td><code>--status-success-bg</code></td>
+<td><code>#e7f4ef</code></td>
+<td>success background fill</td>
+</tr>
+<tr>
+<td><code>--status-info-bg</code></td>
+<td><code>#f3f6f9</code></td>
+<td>info background fill</td>
+</tr>
+<tr>
+<td><code>--status-error-bg</code></td>
+<td><code>#f9eceb</code></td>
+<td>error background fill</td>
+</tr>
+</tbody>
+</table>
+<p>Brand constraint:</p>
+<ul>
+<li>Barkibu Orange (see <a href="../../../../shared/01-product/brand-guidelines/">BRAND_GUIDELINES</a>) is used as accent/CTA only.</li>
+<li>Semantic status colors stay muted and never use orange.</li>
+</ul>
+<h3 id="spacing-scale">Spacing scale</h3>
+<p><code>4, 8, 12, 16, 20, 24, 32</code> px</p>
+<h3 id="radius-scale">Radius scale</h3>
+<p><code>--radius-frame: 14px</code>, <code>--radius-card: 10px</code>, <code>--radius-control: 8px</code></p>
+<p>Guideline:</p>
+<ul>
+<li>Frame uses <code>radius-frame</code>.</li>
+<li>Cards and major panels use <code>radius-card</code>.</li>
+<li>Controls (buttons/inputs/toggles/chips) use <code>radius-control</code>.</li>
+</ul>
+<h3 id="text-hierarchy">Text hierarchy</h3>
+<ul>
+<li><strong>Section titles</strong>: stronger size/weight (<code>text-lg</code>, <code>font-semibold</code>).</li>
+<li><strong>Body text</strong>: default readable text tokens (<code>text-text</code>).</li>
+<li><strong>Metadata/help</strong>: compact muted hierarchy (<code>text-xs</code>, <code>text-textSecondary</code>/<code>text-muted</code>).</li>
+</ul>
+<h3 id="focus-ring-accent-usage">Focus ring &amp; accent usage</h3>
+<ul>
+<li>Focus ring token uses <code>accent</code> (<code>focus-visible:outline-accent</code>) for keyboard visibility.</li>
+<li>Accent is reserved for primary actions, selected states, and key highlights.</li>
+<li>Accent must not be used as a background wash for all surfaces.</li>
+</ul>
+<hr />
+<h2 id="primitives-shadcnui-radix">Primitives (shadcn/ui + Radix)</h2>
+<p>The frontend uses local shadcn-style wrappers backed by Radix primitives under <code>frontend/src/components/ui</code>.</p>
+<p>Required primitives:</p>
+<ul>
+<li><code>Badge</code> (status / severity variants)</li>
+<li><code>Button</code> (including ghost/icon variants)</li>
+<li><code>Card</code> (content container with header/footer slots)</li>
+<li><code>Dialog</code> (modal overlay for editing / confirmation)</li>
+<li><code>Tooltip</code> + <code>TooltipProvider</code></li>
+<li><code>Tabs</code></li>
+<li><code>Separator</code></li>
+<li><code>Input</code></li>
+<li><code>ToggleGroup</code></li>
+<li><code>ScrollArea</code></li>
+</ul>
+<p>Rules:</p>
+<ul>
+<li><code>Tooltip</code> content defaults to top placement and renders through portal.</li>
+<li>Tooltip behavior must remain keyboard-accessible (focus/blur + Escape via Radix behavior).</li>
+<li>Use primitive variants and tokens first; avoid one-off utility-class styling when a primitive exists.</li>
+</ul>
+<hr />
+<h2 id="app-level-wrappers-componentsapp">App-level wrappers (<code>components/app</code>)</h2>
+<p>Project wrappers standardize repeated review UI patterns:</p>
+<ul>
+<li><code>IconButton</code>: icon-only button with required accessible name + tooltip.</li>
+<li><code>Section</code> / <code>SectionHeader</code>: report-like section container and heading row.</li>
+<li><code>FieldRow</code> / <code>FieldBlock</code>: label/value row and grouped field block with right-aligned status cluster.</li>
+<li><code>ConfidenceDot</code>: semantic confidence indicator with tooltip (may include a compact breakdown; adjustment text supports
+  positive/negative/neutral treatment).</li>
+<li><code>CriticalBadge</code>: consistent critical marker.</li>
+<li><code>RepeatableList</code>: list container for repeatable values.</li>
+<li><code>DocumentStatusChip</code> (<code>DocumentStatusCluster</code> compatibility alias): compact, reusable status chip for document
+  list/sidebar (primary status signal).</li>
+</ul>
+<hr />
+<h2 id="accessibility-rules">Accessibility rules</h2>
+<ul>
+<li><strong>MUST</strong>: icon-only interactive controls must use <code>IconButton</code> with required <code>label</code>.</li>
+<li>Raw icon-only <code>&lt;button&gt;</code> / <code>&lt;Button&gt;</code> are forbidden unless explicitly allow-listed as an approved exception.</li>
+<li>Confidence and critical signals cannot rely on color alone (tooltips/labels remain available).</li>
+<li>Tooltips must be keyboard-accessible and must not clip inside scroll containers.</li>
+</ul>
+<h2 id="tooltip-policy-mandatory">Tooltip policy (mandatory)</h2>
+<ul>
+<li>Use only <code>frontend/src/components/ui/tooltip.tsx</code> for tooltip behavior.</li>
+<li>Default placement is <code>top</code>.</li>
+<li>Content is rendered via Radix <code>Portal</code> to avoid clipping in overflow/scroll containers.</li>
+<li>Do not implement local tooltip logic with ad-hoc <code>@radix-ui/react-tooltip</code> usage outside the shared wrapper.</li>
+</ul>
+<h3 id="confidence-tooltip-content-standard">Confidence tooltip content (standard)</h3>
+<p>Tooltip template (current Spanish UI copy):</p>
+<ul>
+<li><code>Confianza: 72% (Media)</code> — localized label for <code>Confidence: 72% (Medium)</code></li>
+<li><code>Indica qué tan fiable es el valor extraído automáticamente.</code> — localized helper text for extraction reliability</li>
+<li><code>Desglose:</code> — localized label for <code>Breakdown:</code></li>
+<li><code>Fiabilidad de la extracción de texto: 65%</code> — extraction reliability component</li>
+<li><code>Ajuste por histórico de revisiones: +7%</code> — review-history adjustment component</li>
+</ul>
+<p>Adjustment coloring rule:</p>
+<ul>
+<li><code>+</code> uses success semantic styling, <code>-</code> uses error semantic styling, <code>0</code> uses muted/neutral styling.</li>
+<li>Reuse existing semantic tokens/classes (for example <code>status-success</code>, <code>status-error</code>, <code>text-muted</code>).</li>
+<li>Do not introduce new hex colors for this tooltip pattern.</li>
+</ul>
+<p>Accessibility reminder:</p>
+<ul>
+<li>Confidence tooltips must remain keyboard-accessible and must render through the shared tooltip wrapper defined in
+  <code>frontend/src/components/ui/tooltip.tsx</code>.</li>
+</ul>
+<h3 id="icon-only-controls-do-dont">Icon-only controls: do / don't</h3>
+<p>Do:</p>
+<ul>
+<li><code>&lt;IconButton label="Cerrar panel"&gt;✕&lt;/IconButton&gt;</code></li>
+<li><code>&lt;IconButton label="Actualizar" tooltip="Actualizar"&gt; &lt;RefreshCw /&gt; &lt;/IconButton&gt;</code></li>
+</ul>
+<p>Don't:</p>
+<ul>
+<li><code>&lt;button aria-label="Cerrar"&gt;&amp;times;&lt;/button&gt;</code></li>
+<li><code>&lt;Button aria-label="Actualizar"&gt;&lt;RefreshCw /&gt;&lt;/Button&gt;</code></li>
+</ul>
+<h3 id="exception-process-allowlist">Exception process (allowlist)</h3>
+<p>Use exceptions only when <code>IconButton</code> cannot represent the interaction semantics (for example, a non-button resize
+handle).</p>
+<p>Required steps:</p>
+<ol>
+<li>Add a narrow token-based allowlist entry in <code>scripts/check_design_system.mjs</code> (<code>ICON_ONLY_ALLOWLIST</code>) scoped to
+   file + unique marker.</li>
+<li>Add rationale to the PR description (why <code>IconButton</code> is not viable).</li>
+<li>Keep keyboard and screen-reader accessibility equivalent or better than the default <code>IconButton</code> contract.</li>
+</ol>
+<hr />
+<h2 id="usage-examples">Usage examples</h2>
+<h3 id="example-1-viewer-toolbar-icon-action">Example 1 — Viewer toolbar icon action</h3>
+<ul>
+<li>Use <code>IconButton</code> for page/zoom/view actions.</li>
+<li>Provide <code>label</code> and concise tooltip text.</li>
+</ul>
+<h3 id="example-2-structured-field-row">Example 2 — Structured field row</h3>
+<ul>
+<li>Wrap field in <code>FieldBlock</code>.</li>
+<li>Use <code>FieldRow</code> with:</li>
+<li>left: field label,</li>
+<li>right: value,</li>
+<li>status cluster: <code>CriticalBadge</code> + <code>ConfidenceDot</code>.</li>
+</ul>
+<h3 id="example-3-layered-panel-composition">Example 3 — Layered panel composition</h3>
+<ul>
+<li>App shell at L1 (<code>bg-canvas</code>) over L0 (<code>bg-page</code>).</li>
+<li>Main panels at L2 (<code>bg-surface</code>, <code>rounded-card</code>).</li>
+<li>Toolbars and control groups at L3 (<code>bg-surfaceMuted</code>, <code>rounded-control</code>).</li>
+</ul>
+<hr />
+<h2 id="enforcement">Enforcement</h2>
+<p>Use <code>npm run check:design-system</code> in <code>frontend/</code>.</p>
+<p>Current checks:</p>
+<ul>
+<li>flags hard-coded hex colors outside token/config allowlist,</li>
+<li>flags direct inline Radix tooltip primitive usage outside the shared tooltip wrapper,</li>
+<li>flags inline <code>style={{...}}</code> outside allowlist,</li>
+<li>flags <code>IconButton</code> usage without <code>label</code>,</li>
+<li>flags raw icon-only <code>&lt;button&gt;</code> and <code>&lt;Button&gt;</code> usage outside explicit allowlist.</li>
+</ul>
+<h2 id="do-dont">Do / Don't</h2>
+<p>Do:</p>
+<ul>
+<li>Use tokenized Tailwind classes (<code>bg-surface</code>, <code>text-textSecondary</code>, <code>border-border</code>, etc.).</li>
+<li>Use <code>IconButton</code>, <code>DocumentStatusCluster</code>, and field/section wrappers in review UI.</li>
+</ul>
+<p>Don't:</p>
+<ul>
+<li>Add new ad-hoc hex values in component implementation files.</li>
+<li>Reimplement tooltip primitives inline.</li>
+<li>Introduce one-off status chips when <code>DocumentStatusCluster</code> matches the need.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

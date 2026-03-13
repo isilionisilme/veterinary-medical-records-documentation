@@ -1,0 +1,1427 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Wiki-style technical documentation for the Veterinary Medical Records project">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>Product Design — Document Interpretation & Layout Evolution - Veterinary Medical Records Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#product-design-document-interpretation-layout-evolution" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-header__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Veterinary Medical Records Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Product Design — Document Interpretation & Layout Evolution
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-nav__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Veterinary Medical Records Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shared Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Shared Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/02-tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3_1" id="__nav_1_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="product-design-document-interpretation-layout-evolution">Product Design — Document Interpretation &amp; Layout Evolution</h1>
+<p><strong>Breadcrumbs:</strong> <a href="../../../README.md">Docs</a> / <a href="../../../">Projects</a> / veterinary-medical-records / 01-product</p>
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+<ul>
+<li><a href="#note-for-readers">Note for readers</a></li>
+<li><a href="#high-level-product-approach">High-level product approach</a></li>
+<li><a href="#1-core-product-strategy">1. Core Product Strategy</a></li>
+<li><a href="#2-human-in-the-loop-philosophy-product-level">2. Human-in-the-Loop Philosophy (Product-Level)</a></li>
+<li><a href="#21-confidence-principles-product-level">2.1 Confidence Principles (Product-Level)</a></li>
+<li><a href="#3-structural-signals--pending-review">3. Structural Signals &amp; Pending Review</a></li>
+<li><a href="#31-definition">3.1 Definition</a></li>
+<li><a href="#32-pending-review-state">3.2 Pending Review State</a></li>
+<li><a href="#33-scope-of-impact">3.3 Scope of Impact</a></li>
+<li><a href="#4-critical-concepts">4. Critical Concepts</a></li>
+<li><a href="#41-semantics">4.1 Semantics</a></li>
+<li><a href="#42-interaction-with-structural-signals">4.2 Interaction with Structural Signals</a></li>
+<li><a href="#43-governance-boundary">4.3 Governance Boundary</a></li>
+<li><a href="#44-critical--non-reversible-changes-policy">4.4 Critical / Non-Reversible Changes Policy</a></li>
+<li><a href="#conceptual-model-local-schema-global-schema-and-mapping">Conceptual Model: Local Schema, Global Schema, and Mapping</a></li>
+<li><a href="#confidence-semantics-stability-not-truth">Confidence Semantics (Stability, not Truth)</a></li>
+<li><a href="#context-deterministic">Context (Deterministic)</a></li>
+<li><a href="#learnable-unit-mapping_id">Learnable Unit (<code>mapping_id</code>)</a></li>
+<li><a href="#signals--weighting-qualitative">Signals &amp; Weighting (qualitative)</a></li>
+<li><a href="#policy-state-soft-behavior">Policy State (soft behavior)</a></li>
+<li><a href="#confidence-propagation--calibration">Confidence Propagation &amp; Calibration</a><ul>
+<li><a href="#future-improvements">Future Improvements</a></li>
+</ul>
+</li>
+<li><a href="#governance-and-safeguards-pending_review-critical-non-reversible">Governance and Safeguards (pending_review, critical, non-reversible)</a></li>
+<li><a href="#visit-grouping-mvp">Visit grouping (MVP)</a></li>
+<li><a href="#global-schema-canonical-field-list--medical-record-mvp">Global Schema (Canonical Field List — Medical Record MVP)</a></li>
+<li><a href="#critical_keys-authoritative-closed-set">CRITICAL_KEYS (Authoritative, closed set)</a></li>
+<li><a href="#medical-record-mvp-panel-semantics-us-44">Medical Record MVP panel semantics (US-44)</a></li>
+<li><a href="#authority--cross-doc">Authority / cross-doc</a></li>
+<li><a href="#appendix-historical-global-schema-reference-non-normative">Appendix: Historical Global Schema Reference (Non-normative)</a></li>
+<li><a href="#5-separation-of-responsibilities-product-level">5. Separation of Responsibilities (Product-Level)</a></li>
+<li><a href="#6-learning--governance">6. Learning &amp; Governance</a></li>
+<li><a href="#7-final-product-rule">7. Final Product Rule</a></li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+<h2 id="note-for-readers">Note for readers</h2>
+<blockquote>
+<p><strong>How to read this page</strong></p>
+<p>This document defines the <strong>product meaning</strong> — what the system does and why — without prescribing
+implementation or UI layout.</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Sections</th>
+<th>Focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Strategy &amp; philosophy</strong></td>
+<td>§1 – §4</td>
+<td>Core product strategy, human-in-the-loop philosophy, confidence principles, structural signals, and critical concepts.</td>
+</tr>
+<tr>
+<td><strong>Conceptual model</strong></td>
+<td>"Conceptual Model: Local Schema, Global Schema, and Mapping"</td>
+<td>How interpretation data is understood at product level — schemas, mapping, confidence semantics, calibration, and governance.</td>
+</tr>
+<tr>
+<td><strong>MVP field spec</strong></td>
+<td>"Global Schema", "Medical Record MVP panel semantics"</td>
+<td>Canonical field list and panel rendering contract for the Medical Record MVP.</td>
+</tr>
+<tr>
+<td><strong>Governance</strong></td>
+<td>§5 – §7</td>
+<td>Separation of responsibilities, learning principles, and the final product rule.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Authority boundaries:</strong></p>
+<ul>
+<li>UX layout, labels, and interaction patterns → <a href="../ux-design/">ux-design.md</a></li>
+<li>Architecture, persistence, and API contracts → <a href="../../02-tech/technical-design/">technical-design.md</a></li>
+<li>Implementation scope and sequencing → <a href="../../04-delivery/implementation-plan/">implementation-plan.md</a></li>
+</ul>
+</blockquote>
+<p>This repository includes a minimal summary of the product approach for technical context only.</p>
+<p>The complete product design — including problem framing, user experience, rationale, and business considerations — is
+maintained as a single source of truth in the following document:</p>
+<p><a href="https://docs.google.com/document/d/1eUCXDTYX3Vw_EJ_nfiJKlRghMO7mZOfitVpMrM5kjFc">https://docs.google.com/document/d/1eUCXDTYX3Vw_EJ_nfiJKlRghMO7mZOfitVpMrM5kjFc</a></p>
+<p>Readers interested in the full product and user experience design should refer to that document.</p>
+<hr />
+<h2 id="high-level-product-approach">High-level product approach</h2>
+<p>The product approach focuses on improving the interpretation of unstructured veterinary medical documents in a <strong>safe,
+incremental, and non-disruptive way</strong>.</p>
+<p>Instead of attempting full automation, the system:</p>
+<ul>
+<li>assists veterinarians during document review,</li>
+<li>makes uncertainty and confidence explicit,</li>
+<li>and passively captures corrections as signals for gradual improvement.</li>
+</ul>
+<p>The key principle is to convert <strong>inevitable human review work into cumulative system learning</strong>, without changing how
+veterinarians work or introducing operational risk.</p>
+<p>This high-level approach informs the technical and implementation decisions described elsewhere in the repository.</p>
+<h2 id="1-core-product-strategy">1. Core Product Strategy</h2>
+<p>The system is designed to enable <strong>incremental, human-in-the-loop automation</strong> without disrupting existing veterinary
+workflows.</p>
+<p>The product assumes that:</p>
+<ul>
+<li>deterministic checks can eventually be automated safely,</li>
+<li>interpretative reasoning must remain <strong>assistive</strong>, never authoritative,</li>
+<li>high-stakes or irreversible decisions always require <strong>explicit human action</strong>.</li>
+</ul>
+<p>The long-term goal is to convert <strong>inevitable human corrections</strong> into <strong>cumulative system improvement</strong>, without asking
+users to:</p>
+<ul>
+<li>change how they work,</li>
+<li>provide explicit feedback,</li>
+<li>or take responsibility for system behavior.</li>
+</ul>
+<p>This strategy deliberately prioritizes:</p>
+<ul>
+<li>safety over speed,</li>
+<li>clarity over automation depth,</li>
+<li>evolvability over premature optimization.</li>
+</ul>
+<hr />
+<h2 id="2-human-in-the-loop-philosophy-product-level">2. Human-in-the-Loop Philosophy (Product-Level)</h2>
+<p>Human involvement is not a fallback mechanism; it is a <strong>first-class design choice</strong>.</p>
+<p>Product-level rules:</p>
+<ul>
+<li>The system may suggest, highlight, and assist.</li>
+<li>The system must never silently decide or override.</li>
+<li>All meaningful changes remain observable and auditable.</li>
+<li>Human judgment always has the final word.</li>
+</ul>
+<p>Automation is introduced <strong>incrementally</strong>, and only where its behavior is well understood, explainable, and reversible.</p>
+<hr />
+<h2 id="21-confidence-principles-product-level">2.1 Confidence Principles (Product-Level)</h2>
+<p>Confidence is a <strong>signal about interpretation stability</strong>, not a decision or a truth claim.</p>
+<p>Product guarantees:</p>
+<ul>
+<li>Confidence guides attention and prioritization; it never blocks decisions or actions.</li>
+<li>Confidence reflects consistency over time/context for similar interpretations.</li>
+<li>Confidence may decrease faster than it increases when new contradictory evidence appears.</li>
+<li>Detailed semantics for confidence in mapping context are defined in <strong>Confidence Semantics (Stability, not Truth)</strong>
+  below.</li>
+</ul>
+<hr />
+<h2 id="3-structural-signals-pending-review">3. Structural Signals &amp; Pending Review</h2>
+<p>Some human actions carry <strong>system-level meaning</strong> beyond a single document.</p>
+<p>These actions generate <strong>structural signals</strong>.</p>
+<h3 id="31-definition">3.1 Definition</h3>
+<p>A structural signal represents a <strong>repeated, semantically similar correction</strong> observed across multiple documents under
+comparable conditions.</p>
+<p>Structural signals:</p>
+<ul>
+<li>are accumulated over time,</li>
+<li>are evaluated in aggregate,</li>
+<li>never trigger automatic system changes.</li>
+</ul>
+<p>They exist to support <strong>deliberate, informed human governance</strong>.</p>
+<hr />
+<h3 id="32-pending-review-state">3.2 Pending Review State</h3>
+<p>Structural signals may enter a <code>pending_review</code> state when they indicate a potential need for system-level intervention.</p>
+<p>Rules:</p>
+<ul>
+<li><code>pending_review</code> is an <strong>internal system state</strong>.</li>
+<li>It never blocks or alters veterinary workflows.</li>
+<li>It never affects previously processed documents.</li>
+<li>It never triggers implicit reprocessing.</li>
+</ul>
+<p>Pending review exists solely to surface <strong>candidates for human review</strong>.</p>
+<hr />
+<h3 id="33-scope-of-impact">3.3 Scope of Impact</h3>
+<p>Any decision derived from structural signals:</p>
+<ul>
+<li>applies <strong>prospectively only</strong>,</li>
+<li>never modifies past interpretations,</li>
+<li>never silently alters system behavior.</li>
+</ul>
+<p>The system must remain explainable at all times.</p>
+<hr />
+<h2 id="4-critical-concepts">4. Critical Concepts</h2>
+<p>Some concepts are inherently <strong>high-risk or high-impact</strong> if misinterpreted.</p>
+<p>These are referred to as <strong>critical concepts</strong>.</p>
+<p>Examples include (non-exhaustive):</p>
+<ul>
+<li>patient or pet identity,</li>
+<li>species,</li>
+<li>visit or invoice dates,</li>
+<li>monetary amounts.</li>
+</ul>
+<hr />
+<h3 id="41-semantics">4.1 Semantics</h3>
+<p>Critical concepts:</p>
+<ul>
+<li>are defined explicitly by product policy,</li>
+<li>are not inferred dynamically by the system,</li>
+<li>may evolve only through deliberate human review.</li>
+</ul>
+<p>The classification of a concept as “critical” is:</p>
+<ul>
+<li>intentional,</li>
+<li>explicit,</li>
+<li>conservative by design.</li>
+</ul>
+<hr />
+<h3 id="42-interaction-with-structural-signals">4.2 Interaction with Structural Signals</h3>
+<p>Edits affecting critical concepts:</p>
+<ul>
+<li>always apply <strong>locally and immediately</strong>,</li>
+<li>generate <strong>high-priority structural signals</strong>,</li>
+<li>never block document review or completion.</li>
+</ul>
+<p>No additional friction is introduced for operational users.</p>
+<hr />
+<h3 id="43-governance-boundary">4.3 Governance Boundary</h3>
+<p>Critical concepts introduce a stricter governance threshold:</p>
+<ul>
+<li>No automatic promotion to system-wide behavior.</li>
+<li>Explicit human review is required before any global effect.</li>
+<li>Decisions affect <strong>future interpretations only</strong>.</li>
+</ul>
+<p>Criticality is a governance concern, not a workflow constraint.</p>
+<hr />
+<h3 id="44-critical-non-reversible-changes-policy">4.4 Critical / Non-Reversible Changes Policy</h3>
+<p>Some system-level changes are treated as <strong>critical/non-reversible</strong> because they can reshape future interpretation
+semantics and are costly to safely undo.</p>
+<p>Critical/non-reversible changes include (non-exhaustive):</p>
+<ul>
+<li>schema-level key add/remove/rename decisions,</li>
+<li>key remapping that changes canonical meaning,</li>
+<li>changes affecting the definition/classification of critical concepts.</li>
+</ul>
+<p>Product guarantees:</p>
+<ul>
+<li>Veterinarian workflow remains local to single-document resolution and never carries governance burden.</li>
+<li>Reviewer governance handles cross-document/system-level policy decisions explicitly and prospectively.</li>
+<li>Stricter handling applies only to governance decisions, never as added friction for veterinarians.</li>
+</ul>
+<hr />
+<h2 id="conceptual-model-local-schema-global-schema-and-mapping">Conceptual Model: Local Schema, Global Schema, and Mapping</h2>
+<p>This conceptual model defines how interpretation data is understood at product level. It does not prescribe storage
+tables or transport contracts.</p>
+<ul>
+<li><strong>Local Schema (per document/run):</strong> a structured interpretation for one case/run, with evidence + confidence,
+  editable without friction.</li>
+<li><strong>Global Schema (canonical):</strong> the standardized field set the system recognizes and presents consistently across
+  documents; it evolves safely and prospectively.</li>
+<li><strong>Field:</strong> semantic unit that can exist locally and/or globally.</li>
+<li><strong>Mapping:</strong> "this local field/value maps to this global key in this context"; context can include document type,
+  language, clinic, and similar operational conditions.</li>
+</ul>
+<pre><code class="language-mermaid">flowchart LR
+    subgraph &quot;Per document/run&quot;
+        LS[&quot;Local Schema&lt;br&gt;fields + evidence + confidence&quot;]
+    end
+    subgraph &quot;System-wide&quot;
+        GS[&quot;Global Schema&lt;br&gt;canonical field set&quot;]
+    end
+
+    LS -- &quot;mapping&lt;br&gt;(context-aware)&quot; --&gt; GS
+
+    VET[&quot;Veterinarian&lt;br&gt;corrections&quot;] -.-&gt;|&quot;weak signal&quot;| CAL[&quot;Calibration&lt;br&gt;field_mapping_confidence&quot;]
+    CAL -.-&gt;|&quot;updates over time&quot;| GS
+
+    style LS fill:#2d333b,stroke:#6d5dfc,color:#e6edf3
+    style GS fill:#2d333b,stroke:#6d5dfc,color:#e6edf3
+    style VET fill:#2d333b,stroke:#30363d,color:#e6edf3
+    style CAL fill:#2d333b,stroke:#30363d,color:#e6edf3
+</code></pre>
+<h3 id="confidence-semantics-stability-not-truth">Confidence Semantics (Stability, not Truth)</h3>
+<ul>
+<li><code>candidate_confidence</code> is an extractor diagnostic for a local candidate in one run; it indicates extraction certainty,
+  not cross-document stability.</li>
+<li><code>field_mapping_confidence</code> is assigned to a mapping in context; it is a proxy for operational stability, not medical
+  truth.</li>
+<li>Confidence guides attention and defaults over time, but must never block veterinary workflow.</li>
+<li>Safety asymmetry applies: <code>field_mapping_confidence</code> decreases fast on contradiction, increases slowly on repeated
+  consistency, and remains reversible.</li>
+</ul>
+<h3 id="context-deterministic">Context (Deterministic)</h3>
+<ul>
+<li>Purpose: deterministic aggregation key for correction/review signals and <code>field_mapping_confidence</code> propagation.</li>
+<li>Context fields: <code>doc_family</code>/<code>document_type</code>, <code>language</code>, <code>country</code>, <code>layout_fingerprint</code>, <code>extractor_version</code>,
+  <code>schema_contract</code>.</li>
+<li>Context is computed per document/run and persisted alongside review/correction signals; it is deterministic system
+  metadata, not LLM-defined.</li>
+<li><code>veterinarian_id</code> is explicitly excluded from Context.</li>
+<li><code>clinic_id</code> is not a first-class context key; use <code>layout_fingerprint</code> for layout-level grouping.</li>
+<li>Context semantics are deterministic and stable for the current MVP contract.</li>
+</ul>
+<h3 id="learnable-unit-mapping_id">Learnable Unit (<code>mapping_id</code>)</h3>
+<ul>
+<li>The learnable unit is the pair (<code>field_key</code>, <code>mapping_id</code>).</li>
+<li><code>mapping_id</code> is a stable identifier for the extraction/mapping strategy that produced a value.</li>
+<li>Representative stable forms include: <code>label_regex::&lt;label&gt;</code>, <code>anchor::&lt;anchor_id&gt;</code>, <code>fallback::&lt;heuristic_name&gt;</code>.</li>
+</ul>
+<h3 id="signals-weighting-qualitative">Signals &amp; Weighting (qualitative)</h3>
+<ul>
+<li>Weak positive: veterinarian marks document reviewed and field remains unchanged.</li>
+<li>Negative: field value is edited/corrected.</li>
+<li>Negative (when applicable): value is reassigned/moved away from this field.</li>
+<li>Future strong positive: explicit per-field confirm.</li>
+<li>Confidence increases slowly, decreases quickly; requires minimum volume; and remains reversible.</li>
+</ul>
+<h3 id="policy-state-soft-behavior">Policy State (soft behavior)</h3>
+<ul>
+<li><code>neutral</code>: no bias adjustment.</li>
+<li><code>boosted</code>: preferred default suggestion/ranking in context.</li>
+<li><code>demoted</code>/<code>suppressed</code>: reduced or hidden default suggestion priority.</li>
+<li>Policy state (not the metric itself) is what may enter <code>pending_review</code> where applicable.</li>
+</ul>
+<h3 id="confidence-propagation-calibration">Confidence Propagation &amp; Calibration</h3>
+<ul>
+<li><code>field_mapping_confidence</code> propagates continuously as new reviewed documents arrive, using smoothing to avoid abrupt
+  oscillations from isolated events.</li>
+<li>Product policy actions (for example default suggestion promotion/demotion or review prioritization) are triggered only
+  when thresholds are met with hysteresis and minimum volume.</li>
+<li>Policy actions adjust default ranking/selection behavior and do not add/remove Global Schema keys.</li>
+<li><code>candidate_confidence</code> can influence extraction diagnostics, but governance and policy actions use
+  <code>field_mapping_confidence</code> in context.</li>
+<li>By default, we do not require explicit per-field confirmation: implicit review is used as a weak positive signal when
+  a veterinarian marks the document as reviewed and a field remains unchanged.</li>
+<li>Global Schema keys/order do not change automatically during this propagation; only <code>field_mapping_confidence</code> and
+  policy state may change.</li>
+</ul>
+<h4 id="future-improvements">Future Improvements</h4>
+<ul>
+<li>Random audit sampling to periodically validate high-confidence mappings and detect drift.</li>
+<li>Explicit per-field confirmation as a strong positive signal (stronger than implicit unchanged-on-complete signals).</li>
+<li>Veterinarian-proposed fields from <strong>Other extracted fields</strong> as high-priority reviewer proposals; naming
+  reconciliation across synonyms/aliases is tracked as future complexity.</li>
+</ul>
+<h3 id="governance-and-safeguards-pending_review-critical-non-reversible">Governance and Safeguards (pending_review, critical, non-reversible)</h3>
+<ul>
+<li><code>pending_review</code> means "captured as a structural signal", not blocked workflow.</li>
+<li>Global schema changes are prospective only and never silently rewrite history.</li>
+<li>Any change that can affect money, coverage, or medical/legal interpretation must not auto-promote.</li>
+<li><code>CRITICAL_KEYS</code> remains authoritative and closed.</li>
+</ul>
+<h2 id="visit-grouping-mvp">Visit grouping (MVP)</h2>
+<ul>
+<li><strong>Visita</strong> means one care episode identified primarily by <code>visit_date</code>, with optional <code>admission_date</code>,
+  <code>discharge_date</code>, and <code>reason_for_visit</code>.</li>
+<li>Clinical concepts are <strong>visit-scoped</strong>. In <code>canonical contract</code>, they are grouped under <code>visits[].fields[]</code> as defined
+  in <a href="../../02-tech/technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix D9.</li>
+<li>The UI must not infer or heuristic-group visits. Grouping comes from the structured payload (<code>visits[]</code>).</li>
+<li>MVP excludes cross-document deduplication, merge/reconciliation, and longitudinal visit tracking.</li>
+<li>Review completion remains <strong>document-level</strong>: <code>Mark as reviewed</code> applies to the full document, including all its
+  visits.</li>
+</ul>
+<h2 id="global-schema-canonical-field-list-medical-record-mvp">Global Schema (Canonical Field List — Medical Record MVP)</h2>
+<p>Canonical source location:</p>
+<ul>
+<li>This section in <code>docs/projects/veterinary-medical-records/01-product/product-design.md</code> is the canonical product
+  source for the Global Schema Medical Record MVP field list.</li>
+<li>The historical appendix in this document is reference-only and non-normative.</li>
+</ul>
+<p>Purpose: define the canonical contract-aligned field universe for the Medical Record panel.</p>
+<p>Document-level sections (top-level fields):</p>
+<p>A) Centro Veterinario</p>
+<ul>
+<li><code>clinic_name</code> (string)</li>
+<li><code>clinic_address</code> (string)</li>
+<li><code>vet_name</code> (string)</li>
+<li><code>nhc</code> (string; canonical NHC concept)</li>
+</ul>
+<p>B) Paciente</p>
+<ul>
+<li><code>pet_name</code> (string)</li>
+<li><code>species</code> (string)</li>
+<li><code>breed</code> (string)</li>
+<li><code>sex</code> (string)</li>
+<li><code>age</code> (string)</li>
+<li><code>dob</code> (date)</li>
+<li><code>microchip_id</code> (string)</li>
+<li><code>weight</code> (string)</li>
+<li><code>reproductive_status</code> (string)</li>
+</ul>
+<p>C) Propietario</p>
+<ul>
+<li><code>owner_name</code> (string)</li>
+<li><code>owner_address</code> (string; real address concept)</li>
+</ul>
+<p>D) Internal notes</p>
+<ul>
+<li><code>notes</code> (string)</li>
+</ul>
+<p>E) Report information</p>
+<ul>
+<li><code>language</code> (string)</li>
+</ul>
+<p>Visit-level fields:</p>
+<ul>
+<li>Visit-level clinical data is canonical in <code>canonical contract</code> under <code>visits[]</code> and <code>visits[].fields[]</code> (see Appendix
+  D9 in <a href="../../02-tech/technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a>).</li>
+<li>Visit fields are not part of the document-level top-level list above.</li>
+</ul>
+<p>Panel boundary (Medical Record MVP):</p>
+<ul>
+<li>Non-clinical claim concepts are not part of this canonical panel field-set by definition.</li>
+<li>Classification and taxonomy boundaries are defined by contract metadata in
+  <a href="../../02-tech/technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a>, not by frontend
+  denylists.</li>
+</ul>
+<p>Product compatibility rule:</p>
+<ul>
+<li><code>age</code> and <code>dob</code> may coexist; any derived display behavior is defined by UX and does not imply new extraction
+  requirements.</li>
+</ul>
+<h3 id="critical_keys-authoritative-closed-set">CRITICAL_KEYS (Authoritative, closed set)</h3>
+<p>Historical continuity note: Appendix D7.4 keeps the same closed CRITICAL_KEYS set defined in the historical Global
+Schema. For Medical Record canonical contract critical/taxonomy semantics, the normative authority is
+<a href="../../02-tech/technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix D9.</p>
+<h2 id="medical-record-mvp-panel-semantics-us-44">Medical Record MVP panel semantics (US-44)</h2>
+<ul>
+<li>The Medical Record panel (<code>Informe</code> in the current localized UI) is a <strong>clinical Medical Record view</strong>.</li>
+<li>The panel renders a <strong>contract-defined Medical Record field-set and taxonomy</strong> (document-level, visit-level, and
+  explicit other/unmapped bucket).</li>
+<li>In <code>canonical contract</code>, required document-level panel fields (including missing-value slots) are defined by the
+  Technical contract template (<code>medical_record_view.field_slots[]</code>, Appendix D9).</li>
+<li>Non-clinical claim concepts are out of scope for this panel and must not be rendered here.</li>
+<li>Panel section order is fixed: <code>Veterinary Center</code> (<code>Centro Veterinario</code>) -&gt; <code>Patient</code> (<code>Paciente</code>) -&gt; <code>Owner</code>
+  (<code>Propietario</code>) -&gt; <code>Visits</code> (<code>Visitas</code>) -&gt; <code>Internal Notes</code> (<code>Notas internas</code>) -&gt; <code>Other detected fields</code>
+  (<code>Otros campos detectados</code>) -&gt; <code>Report information</code> (<code>Información del informe</code>).</li>
+<li>Labels/copy and empty-states for this panel are defined in
+  <a href="../ux-design/"><code>docs/projects/veterinary-medical-records/01-product/ux-design.md</code></a>.</li>
+<li><code>owner_id</code> is not part of Medical Record panel semantics; owner address is represented by <code>owner_address</code>.</li>
+<li>NHC is part of <code>Centro Veterinario</code> panel semantics and must render with label <code>NHC</code> and tooltip
+  <code>Número de historial clínico</code> in the current localized UI.</li>
+<li>Product compatibility for age and birth date: both <code>age</code> and <code>dob</code> may coexist; any derived display behavior is
+  UX-defined and does not imply new extraction requirements.</li>
+</ul>
+<h3 id="authority-cross-doc">Authority / cross-doc</h3>
+<ul>
+<li><a href="./"><code>docs/projects/veterinary-medical-records/01-product/product-design.md</code></a> defines panel meaning and
+  scope (clinical Medical Record view).</li>
+<li><a href="../ux-design/"><code>docs/projects/veterinary-medical-records/01-product/ux-design.md</code></a> defines layout, labels, and empty
+  states.</li>
+<li><a href="../../02-tech/technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> defines canonical
+  payload contracts (<code>schema_contract</code> visit-grouped), field taxonomy, and explicit <code>other/unmapped</code> contract bucket.</li>
+</ul>
+<h2 id="appendix-historical-global-schema-reference-non-normative">Appendix: Historical Global Schema Reference (Non-normative)</h2>
+<p>Status:</p>
+<ul>
+<li>Global Schema here is retained only for historical reference.</li>
+<li>It is not the canonical schema for the Medical Record MVP panel.</li>
+<li>For this panel, canonical behavior is defined by Global Schema + contract taxonomy.</li>
+<li>Additional non-clinical keys are outside this MVP panel scope.</li>
+</ul>
+<p>Historical reference model:</p>
+<p>A) Case identification</p>
+<ul>
+<li><code>claim_id</code></li>
+<li><code>clinic_name</code></li>
+<li><code>clinic_address</code></li>
+<li><code>vet_name</code></li>
+<li><code>document_date</code></li>
+</ul>
+<p>B) Patient</p>
+<ul>
+<li><code>pet_name</code>, <code>species</code>, <code>breed</code>, <code>sex</code>, <code>age</code>, <code>dob</code>, <code>microchip_id</code>, <code>weight</code></li>
+</ul>
+<p>C) Owner</p>
+<ul>
+<li><code>owner_name</code>, <code>owner_id</code></li>
+</ul>
+<p>D) Visit / episode</p>
+<ul>
+<li><code>visit_date</code>, <code>admission_date</code>, <code>discharge_date</code>, <code>reason_for_visit</code></li>
+</ul>
+<p>E) Clinical / review</p>
+<ul>
+<li><code>diagnosis</code>, <code>symptoms</code>, <code>procedure</code>, <code>medication</code>, <code>treatment_plan</code>, <code>allergies</code>, <code>vaccinations</code>, <code>lab_result</code>,
+  <code>imaging</code></li>
+<li><code>notes</code>, <code>language</code></li>
+</ul>
+<h2 id="5-separation-of-responsibilities-product-level">5. Separation of Responsibilities (Product-Level)</h2>
+<p>The product enforces a strict separation of responsibility:</p>
+<ul>
+<li><strong>Veterinarians</strong></li>
+<li>Resolve individual documents.</li>
+<li>Correct and validate information locally.</li>
+<li>
+<p>Never manage system behavior or learning.</p>
+</li>
+<li>
+<p><strong>Reviewers</strong></p>
+</li>
+<li>Oversee system-level meaning and evolution.</li>
+<li>Review aggregated patterns and signals.</li>
+<li>Never participate in operational document workflows.</li>
+</ul>
+<p>This separation is:</p>
+<ul>
+<li>intentional,</li>
+<li>asymmetric,</li>
+<li>non-negotiable.</li>
+</ul>
+<p>No user is responsible for both document resolution and system governance within the same workflow.</p>
+<hr />
+<h2 id="6-learning-governance">6. Learning &amp; Governance</h2>
+<p>This project is designed to keep veterinary workflows operational and safe while enabling deliberate, auditable
+system-level evolution over time.</p>
+<p>Any change that affects global behavior or schema meaning should be introduced via explicit governance and corresponding
+product, UX, and technical design updates.</p>
+<hr />
+<h2 id="7-final-product-rule">7. Final Product Rule</h2>
+<p>This document defines <strong>what the system means and why</strong>.</p>
+<p>It does not define UI layout or interaction patterns, architectural or implementation details, or API/persistence
+contracts.</p>
+<p>If a decision cannot be justified using:</p>
+<ul>
+<li>this document,</li>
+<li>UX Design,</li>
+<li>or Technical Design,</li>
+</ul>
+<p><strong>STOP and clarify before proceeding.</strong></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

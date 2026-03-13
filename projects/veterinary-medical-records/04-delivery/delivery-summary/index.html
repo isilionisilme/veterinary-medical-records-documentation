@@ -1,0 +1,2465 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Wiki-style technical documentation for the Veterinary Medical Records project">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>Delivery Summary — improvement/refactor - Veterinary Medical Records Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#delivery-summary-improvementrefactor" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-header__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Veterinary Medical Records Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Delivery Summary — improvement/refactor
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-nav__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Veterinary Medical Records Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shared Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Shared Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/02-tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3_1" id="__nav_1_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="delivery-summary-improvementrefactor">Delivery Summary — <code>improvement/refactor</code></h1>
+<p><strong>Breadcrumbs:</strong> <a href="../../../README.md">Docs</a> / <a href="../../../">Projects</a> / veterinary-medical-records / 04-delivery</p>
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+<ul>
+<li><a href="#at-a-glance">At a glance</a></li>
+<li><a href="#phase-1--architecture-audit-12-factor">Phase 1 — Architecture audit (12-Factor)</a></li>
+<li><a href="#phase-2--structural-refactor">Phase 2 — Structural refactor</a></li>
+<li><a href="#frontend-apptsx-5998-loc-%E2%86%92-9-line-shell--8-modules">Frontend: <code>App.tsx</code> (5,998 LOC → 9-line shell + 8 modules)</a></li>
+<li><a href="#backend-processing_runnerpy-2901-loc-%E2%86%92-5-modules">Backend: <code>processing_runner.py</code> (2,901 LOC → 5 modules)</a></li>
+<li><a href="#backend-document_servicepy-1874-loc-%E2%86%92-8-modules">Backend: <code>document_service.py</code> (1,874 LOC → 8 modules)</a></li>
+<li><a href="#test-redistribution">Test redistribution</a></li>
+<li><a href="#phase-3--tooling-quick-wins">Phase 3 — Tooling quick wins</a></li>
+<li><a href="#phase-4--test-quality">Phase 4 — Test quality</a></li>
+<li><a href="#phase-5--documentation">Phase 5 — Documentation</a></li>
+<li><a href="#new-architecture-decision-records-4">New Architecture Decision Records (4)</a></li>
+<li><a href="#other-documentation">Other documentation</a></li>
+<li><a href="#phase-6--evaluator-smoke-test">Phase 6 — Evaluator smoke test</a></li>
+<li><a href="#phase-7--closeout">Phase 7 — Closeout</a></li>
+<li><a href="#iteration-2--cto-verdict-improvements-phase-8">Iteration 2 — CTO Verdict Improvements (Phase 8)</a></li>
+<li><a href="#iteration-3--hardening--maintainability-phase-9">Iteration 3 — Hardening &amp; Maintainability (Phase 9)</a></li>
+<li><a href="#appworkspace-decomposition-detail">AppWorkspace decomposition detail</a></li>
+<li><a href="#iteration-4--docs--lint-polish-phase-10">Iteration 4 — Docs + Lint Polish (Phase 10)</a></li>
+<li><a href="#iteration-5--production-readiness-phase-11">Iteration 5 — Production Readiness (Phase 11)</a></li>
+<li><a href="#iteration-6--coverage--security-hardening-phase-12">Iteration 6 — Coverage + Security Hardening (Phase 12)</a></li>
+<li><a href="#iteration-7--modularization-phase-13">Iteration 7 — Modularization (Phase 13)</a></li>
+<li><a href="#iteration-8--bugs--ci-governance--refactor-round-3-phase-14">Iteration 8 — Bugs + CI Governance + Refactor Round 3 (Phase 14)</a></li>
+<li><a href="#pr-a--ci-governance-156">PR A — CI governance (#156)</a></li>
+<li><a href="#pr-b--refactor--coverage-157">PR B — Refactor + coverage (#157)</a></li>
+<li><a href="#iteration-9--e2e-testing--evaluator-experience-polish-phase-15">Iteration 9 — E2E Testing + Evaluator Experience Polish (Phase 15)</a></li>
+<li><a href="#e2e-test-evidence">E2E test evidence</a></li>
+<li><a href="#ci-integration">CI integration</a></li>
+<li><a href="#operational-improvements-iter-9">Operational improvements (Iter 9)</a></li>
+<li><a href="#iteration-10--security-resilience--performance-hardening-phase-16">Iteration 10 — Security, Resilience &amp; Performance Hardening (Phase 16)</a></li>
+<li><a href="#security">Security</a></li>
+<li><a href="#resilience">Resilience</a></li>
+<li><a href="#performance">Performance</a></li>
+<li><a href="#ci--process">CI &amp; Process</a></li>
+<li><a href="#iteration-11--e2e-expansion--error-ux--testing-depth--dx-hardening-phase-18">Iteration 11 — E2E Expansion + Error UX + Testing Depth + DX Hardening (Phase 18)</a></li>
+<li><a href="#phase-a--quick-wins">Phase A — Quick wins</a></li>
+<li><a href="#phase-b--e2e-expansion-5%E2%86%9220-tests">Phase B — E2E expansion (5→20 tests)</a></li>
+<li><a href="#phase-c--error-ux--performance">Phase C — Error UX + performance</a></li>
+<li><a href="#phase-d--testing-depth--architecture">Phase D — Testing depth + architecture</a></li>
+<li><a href="#operational-improvements-iter-11">Operational improvements (Iter 11)</a></li>
+<li><a href="#iteration-12--e2e-coverage-expansion--accessibility--project-close-out-phase-19">Iteration 12 — E2E Coverage Expansion + Accessibility + Project Close-Out (Phase 19)</a></li>
+<li><a href="#phase-a--e2e-expansion-20%E2%86%9265-tests-8%E2%86%9222-specs">Phase A — E2E expansion (20→65 tests, 8→22 specs)</a></li>
+<li><a href="#phase-b--wcag-accessibility">Phase B — WCAG accessibility</a></li>
+<li><a href="#phase-c--architecture--readme">Phase C — Architecture &amp; README</a></li>
+<li><a href="#phase-d--documentation-close-out">Phase D — Documentation close-out</a></li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+<blockquote>
+<p>Quantitative record of what was delivered across 7 phases + Iterations 2–9.<br />
+Source of truth for execution details: <a href="../implementation-history/"><code>implementation-history.md</code></a>.</p>
+</blockquote>
+<hr />
+<h2 id="at-a-glance">At a glance</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Iter 3 (Phase 9)</th>
+<th>Iter 6</th>
+<th>Iter 8</th>
+<th>Iter 9</th>
+<th>Iter 10</th>
+<th>Iter 11</th>
+<th>Iter 12 (current)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backend tests</td>
+<td>263</td>
+<td>317</td>
+<td>372</td>
+<td>372+</td>
+<td>372+</td>
+<td>395</td>
+<td><strong>395</strong></td>
+</tr>
+<tr>
+<td>Frontend tests</td>
+<td>168</td>
+<td>226</td>
+<td>263</td>
+<td>263+</td>
+<td>263+</td>
+<td>287</td>
+<td><strong>287</strong></td>
+</tr>
+<tr>
+<td>E2E tests</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td><strong>5 specs</strong></td>
+<td>5 specs</td>
+<td>20 tests (8 specs)</td>
+<td><strong>64 tests (21 specs)</strong></td>
+</tr>
+<tr>
+<td>Backend coverage</td>
+<td>87%</td>
+<td>90%</td>
+<td>90%</td>
+<td>90%</td>
+<td>90% (≥85% enforced)</td>
+<td>91% (≥85% enforced)</td>
+<td><strong>91%</strong> (≥85% enforced)</td>
+</tr>
+<tr>
+<td>Frontend coverage</td>
+<td>~65%</td>
+<td>82.6%</td>
+<td>85%</td>
+<td>85%</td>
+<td>85% (≥80% enforced)</td>
+<td>~87% (≥80% enforced)</td>
+<td><strong>~87%</strong> (≥80% enforced)</td>
+</tr>
+<tr>
+<td>CI jobs</td>
+<td>7</td>
+<td>6</td>
+<td>8</td>
+<td>9 (+E2E)</td>
+<td>9 (path-filtered + cached)</td>
+<td>9 (path-filtered + cached)</td>
+<td>10 (+ a11y audit)</td>
+</tr>
+<tr>
+<td>Lint issues</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>PRs merged</td>
+<td>#145</td>
+<td>#152</td>
+<td>#156, #157</td>
+<td>#163</td>
+<td>#165</td>
+<td>#167</td>
+<td><strong>#169</strong> (in progress)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="phase-1-architecture-audit-12-factor">Phase 1 — Architecture audit (12-Factor)</h2>
+<p>Audited the backend against the 12-Factor App methodology. Implemented 4 of 5 top-priority items (1 discarded — SQLite concurrency risk).</p>
+<table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Centralized configuration</td>
+<td>Scattered <code>os.getenv</code> → single <code>settings.py</code> (67 LOC) with typed validation</td>
+</tr>
+<tr>
+<td>Release metadata</td>
+<td><code>app_version</code>, <code>git_commit</code>, <code>build_date</code> exposed via <code>Settings</code></td>
+</tr>
+<tr>
+<td>Scheduler decoupling</td>
+<td>Processing scheduler lifecycle extracted to <code>scheduler_lifecycle.py</code> (36 LOC)</td>
+</tr>
+<tr>
+<td>Admin CLI</td>
+<td>New <code>cli.py</code> (54 LOC): <code>db-schema</code>, <code>db-check</code>, <code>config-check</code> commands</td>
+</tr>
+<tr>
+<td>Discarded: Worker profile</td>
+<td>SQLite single-writer prevents reliable multi-process — documented in ADR-ARCH-0002</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Audit record:</strong> <a href="../../99-archive/12-factor-audit/"><code>12-factor-audit.md</code></a></p>
+<hr />
+<h2 id="phase-2-structural-refactor">Phase 2 — Structural refactor</h2>
+<p>Three monolithic files decomposed into cohesive modules. No behavioral changes.</p>
+<h3 id="frontend-apptsx-5998-loc-9-line-shell-8-modules">Frontend: <code>App.tsx</code> (5,998 LOC → 9-line shell + 8 modules)</h3>
+<table>
+<thead>
+<tr>
+<th>Before</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 file, 5,998 lines</td>
+<td><code>App.tsx</code> (9 LOC shell) + <code>AppWorkspace.tsx</code> (5,760 LOC) + 37 component files (5,457 LOC)</td>
+</tr>
+</tbody>
+</table>
+<p>Key extracted components: <code>PdfViewer</code> (831), <code>DocumentsSidebar</code> (430), <code>FieldEditDialog</code> (417), <code>ToastHost</code> (159), <code>UploadDropzone</code> (77), <code>SourcePanel</code> (60), plus 20+ UI primitives.</p>
+<h3 id="backend-processing_runnerpy-2901-loc-5-modules">Backend: <code>processing_runner.py</code> (2,901 LOC → 5 modules)</h3>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Lines</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>interpretation.py</code></td>
+<td>1,263</td>
+<td>Artifact assembly, candidate mining, schema mapping</td>
+</tr>
+<tr>
+<td><code>pdf_extraction.py</code></td>
+<td>1,001</td>
+<td>3-strategy PDF text extraction</td>
+</tr>
+<tr>
+<td><code>orchestrator.py</code></td>
+<td>416</td>
+<td>Run execution, step tracking, timeout</td>
+</tr>
+<tr>
+<td><code>scheduler.py</code></td>
+<td>165</td>
+<td>Queue polling, tick loop, dequeue</td>
+</tr>
+<tr>
+<td><code>__init__.py</code></td>
+<td>9</td>
+<td>Public re-exports</td>
+</tr>
+</tbody>
+</table>
+<h3 id="backend-document_servicepy-1874-loc-8-modules">Backend: <code>document_service.py</code> (1,874 LOC → 8 modules)</h3>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Lines</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>review_service.py</code></td>
+<td>418</td>
+<td>Review projection, normalization, toggle</td>
+</tr>
+<tr>
+<td><code>edit_service.py</code></td>
+<td>324</td>
+<td>Interpretation edits, confidence, audit</td>
+</tr>
+<tr>
+<td><code>calibration.py</code></td>
+<td>244</td>
+<td>Build/apply/revert calibration deltas</td>
+</tr>
+<tr>
+<td><code>_shared.py</code></td>
+<td>231</td>
+<td>Shared utilities</td>
+</tr>
+<tr>
+<td><code>_edit_helpers.py</code></td>
+<td>202</td>
+<td>Edit normalization/merge helpers</td>
+</tr>
+<tr>
+<td><code>query_service.py</code></td>
+<td>180</td>
+<td>Document queries and DTOs</td>
+</tr>
+<tr>
+<td><code>__init__.py</code></td>
+<td>70</td>
+<td>Façade with backward-compatible imports</td>
+</tr>
+<tr>
+<td><code>upload_service.py</code></td>
+<td>65</td>
+<td>Document upload registration</td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-redistribution">Test redistribution</h3>
+<p><code>App.test.tsx</code> (3,693 LOC monolithic suite) → redistributed across 20 per-component test files matching the new structure.</p>
+<p><strong>Audit record:</strong> <a href="../../99-archive/codebase-audit/"><code>codebase-audit.md</code></a></p>
+<hr />
+<h2 id="phase-3-tooling-quick-wins">Phase 3 — Tooling quick wins</h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Configuration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ESLint 9</td>
+<td>Flat config (<code>frontend/eslint.config.mjs</code>) with <code>@eslint/js</code>, <code>typescript-eslint</code>, <code>eslint-plugin-react-hooks</code></td>
+</tr>
+<tr>
+<td>Prettier 3</td>
+<td><code>frontend/.prettierrc</code> + <code>format:check</code> script</td>
+</tr>
+<tr>
+<td>ruff</td>
+<td>v0.9.9, lint + format, in <code>.pre-commit-config.yaml</code></td>
+</tr>
+<tr>
+<td>pre-commit</td>
+<td>ruff (lint + format) + local hooks for ESLint + Prettier</td>
+</tr>
+<tr>
+<td>Coverage</td>
+<td><code>@vitest/coverage-v8</code> (frontend) + <code>pytest-cov</code> (backend)</td>
+</tr>
+<tr>
+<td>CI integration</td>
+<td>ESLint, Prettier check, ruff format check in existing CI jobs</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="phase-4-test-quality">Phase 4 — Test quality</h2>
+<p>Frontend and backend test suites audited for fragile patterns, duplicated fixtures, and coverage gaps.</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Before</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backend tests</td>
+<td>~240</td>
+<td>249</td>
+</tr>
+<tr>
+<td>Backend coverage</td>
+<td>~84%</td>
+<td>87%</td>
+</tr>
+<tr>
+<td>Frontend test files</td>
+<td>~15</td>
+<td>20</td>
+</tr>
+<tr>
+<td>Frontend tests</td>
+<td>~145</td>
+<td>162</td>
+</tr>
+</tbody>
+</table>
+<p>Key improvements: removed duplicated suites, added <code>cli.py</code> tests (was 0%), improved <code>_edit_helpers.py</code> coverage, consolidated fragile timer-based patterns.</p>
+<hr />
+<h2 id="phase-5-documentation">Phase 5 — Documentation</h2>
+<h3 id="new-architecture-decision-records-4">New Architecture Decision Records (4)</h3>
+<table>
+<thead>
+<tr>
+<th>ADR</th>
+<th>Decision</th>
+<th>Key trade-off</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../02-tech/adr/ADR-ARCH-0001-modular-monolith/">ADR-ARCH-0001</a></td>
+<td>Modular monolith over microservices</td>
+<td>Operational simplicity vs horizontal scaling</td>
+</tr>
+<tr>
+<td><a href="../../02-tech/adr/ADR-ARCH-0002-sqlite-database/">ADR-ARCH-0002</a></td>
+<td>SQLite over PostgreSQL</td>
+<td>Zero-ops vs multi-process concurrency</td>
+</tr>
+<tr>
+<td><a href="../../02-tech/adr/ADR-ARCH-0003-raw-sql-repository-pattern/">ADR-ARCH-0003</a></td>
+<td>Raw SQL + Repository over ORM</td>
+<td>Full SQL control vs maintenance burden</td>
+</tr>
+<tr>
+<td><a href="../../02-tech/adr/ADR-ARCH-0004-in-process-async-processing/">ADR-ARCH-0004</a></td>
+<td>In-process async over Celery/RQ</td>
+<td>Zero infrastructure vs automatic retry</td>
+</tr>
+</tbody>
+</table>
+<h3 id="other-documentation">Other documentation</h3>
+<ul>
+<li><a href="../future-improvements/"><code>future-improvements.md</code></a> — 2/4/8 week roadmap (18 items traced to audits and ADRs)</li>
+<li><a href="../../02-tech/adr/"><code>docs/projects/veterinary-medical-records/02-tech/adr/index.md</code></a> — ADR index linking architecture decisions</li>
+<li>Root <code>README.md</code> enriched: architecture overview, ADR links, evaluator quickstart, quality gates, delivery evidence</li>
+<li><code>docs/README.md</code> updated: evaluator-first reading order, audit trail section</li>
+</ul>
+<hr />
+<h2 id="phase-6-evaluator-smoke-test">Phase 6 — Evaluator smoke test</h2>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>README → running system</td>
+<td>3 commands (<code>docker compose up --build</code>, browse, <code>docker compose down</code>)</td>
+</tr>
+<tr>
+<td>Tests green</td>
+<td>249 backend + 162 frontend</td>
+</tr>
+<tr>
+<td>Empty state UX</td>
+<td>Clear CTA, skeleton loading, Spanish copy</td>
+</tr>
+<tr>
+<td>Upload flow</td>
+<td>Client validation, drag-and-drop, progress toasts</td>
+</tr>
+<tr>
+<td>Processing feedback</td>
+<td>Status polling (1.5s→5s), long-processing warning</td>
+</tr>
+<tr>
+<td>Error handling</td>
+<td>Connectivity dedup, graceful degradation, expandable tech details</td>
+</tr>
+</tbody>
+</table>
+<p>Frictions fixed: ~20 missing Spanish accent marks in UI strings, CSS loading spinner added to <code>index.html</code>, page language set to <code>es</code>.</p>
+<hr />
+<h2 id="phase-7-closeout">Phase 7 — Closeout</h2>
+<p>Final verification: all 7 CI checks green, PR #145 updated, no regressions. Plan <code>AI_ITERATIVE_EXECUTION_PLAN.md</code> fully executed — all steps <code>[x]</code>.</p>
+<hr />
+<h2 id="iteration-2-cto-verdict-improvements-phase-8">Iteration 2 — CTO Verdict Improvements (Phase 8)</h2>
+<p>Targeted improvements from <a href="../../99-archive/cto-review-verdict/"><code>cto-review-verdict.md</code></a> — all 5 highest-leverage items addressed.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Improvement</th>
+<th>Step</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>SQLite WAL + busy_timeout</td>
+<td>F8-B</td>
+<td><code>PRAGMA journal_mode=WAL</code> and <code>PRAGMA busy_timeout=5000</code> on every connection in <code>database.py</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Security boundary docs</td>
+<td>F8-D</td>
+<td>New §13 Security Boundary + §14 Known Limitations in <code>technical-design.md</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>AppWorkspace.tsx header</td>
+<td>F8-D</td>
+<td>9-line docstring acknowledging LOC debt and referencing decomposition roadmap</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>lib/utils.ts</code> coverage</td>
+<td>F8-C</td>
+<td>Error-path tests added; coverage from 24% to ≥70%</td>
+</tr>
+<tr>
+<td>5</td>
+<td>FUTURE_IMPROVEMENTS AppWorkspace entry</td>
+<td>F8-D</td>
+<td>Item #7b: decomposition into ReviewWorkspace, StructuredDataView, PdfViewerContainer</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Commits</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Files changed</td>
+<td>18 (3 added, 15 modified)</td>
+</tr>
+<tr>
+<td>Net delta</td>
+<td>+411 / −34 lines</td>
+</tr>
+<tr>
+<td>Test suite</td>
+<td><strong>423 tests</strong> (255 backend + 168 frontend), all green</td>
+</tr>
+<tr>
+<td>Backend coverage</td>
+<td>87%</td>
+</tr>
+<tr>
+<td>CI checks</td>
+<td>All green on each step</td>
+</tr>
+<tr>
+<td>Guardrails added</td>
+<td>Cross-chat agent routing, mandatory new-chat handoff, token-efficiency policy</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="iteration-3-hardening-maintainability-phase-9">Iteration 3 — Hardening &amp; Maintainability (Phase 9)</h2>
+<p>Targeted hardening: upload safety, security boundary, and frontend decomposition.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Improvement</th>
+<th>Step</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Upload streaming guard</td>
+<td>F9-B</td>
+<td>Early <code>Content-Length</code> check + chunked streaming read; rejects oversized uploads before full memory allocation</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Auth boundary (optional)</td>
+<td>F9-C</td>
+<td>New <code>AUTH_TOKEN</code> env var; when set, all <code>/api/</code> endpoints require <code>Authorization: Bearer &lt;token&gt;</code>; disabled by default for evaluator flow</td>
+</tr>
+<tr>
+<td>3</td>
+<td>AppWorkspace.tsx decomposition</td>
+<td>F9-D</td>
+<td>Extracted 7 modules from <code>AppWorkspace.tsx</code> (5,770 → 3,758 LOC, −35%): <code>documentApi.ts</code>, <code>ReviewFieldRenderers.tsx</code>, <code>ReviewSectionLayout.tsx</code>, <code>SourcePanelContent.tsx</code>, <code>appWorkspace.ts</code> (constants), <code>appWorkspaceUtils.ts</code>, <code>appWorkspace.ts</code> (types)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="appworkspace-decomposition-detail">AppWorkspace decomposition detail</h3>
+<table>
+<thead>
+<tr>
+<th>Extracted module</th>
+<th>Lines</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>api/documentApi.ts</code></td>
+<td>424</td>
+<td>API client hooks, queries, mutations, polling</td>
+</tr>
+<tr>
+<td><code>components/review/ReviewFieldRenderers.tsx</code></td>
+<td>488</td>
+<td>Field rendering: values, adjustments, confidence badges</td>
+</tr>
+<tr>
+<td><code>components/review/ReviewSectionLayout.tsx</code></td>
+<td>456</td>
+<td>Canonical section layout, visit grouping, field rows</td>
+</tr>
+<tr>
+<td><code>components/review/SourcePanelContent.tsx</code></td>
+<td>55</td>
+<td>Source drawer content panel</td>
+</tr>
+<tr>
+<td><code>constants/appWorkspace.ts</code></td>
+<td>180</td>
+<td>UI constants, labels, configuration maps</td>
+</tr>
+<tr>
+<td><code>lib/appWorkspaceUtils.ts</code></td>
+<td>427</td>
+<td>Pure utility functions (formatters, normalizers, helpers)</td>
+</tr>
+<tr>
+<td><code>types/appWorkspace.ts</code></td>
+<td>249</td>
+<td>TypeScript interfaces and type definitions</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Commits</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Files changed</td>
+<td>22 (8 added, 14 modified)</td>
+</tr>
+<tr>
+<td>Net delta</td>
+<td>+2,869 / −2,316 lines</td>
+</tr>
+<tr>
+<td>Test suite</td>
+<td><strong>431 tests</strong> (263 backend + 168 frontend), all green</td>
+</tr>
+<tr>
+<td>Backend coverage</td>
+<td>87%</td>
+</tr>
+<tr>
+<td>New backend tests</td>
+<td>8 (upload streaming + auth boundary)</td>
+</tr>
+<tr>
+<td>AppWorkspace.tsx reduction</td>
+<td>5,770 → 3,758 LOC (−35%)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="iteration-4-docs-lint-polish-phase-10">Iteration 4 — Docs + Lint Polish (Phase 10)</h2>
+<p>ESLint 0 warnings, Vite build clean, README quality gates.</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PR</td>
+<td>#150</td>
+</tr>
+<tr>
+<td>Key outcomes</td>
+<td>ESLint 0 warnings across frontend, Vite production build clean, README quality gates defined</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="iteration-5-production-readiness-phase-11">Iteration 5 — Production Readiness (Phase 11)</h2>
+<p>Prettier bulk format, Docker non-root containers, <code>_edit_helpers</code> coverage push.</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PR</td>
+<td>#151</td>
+</tr>
+<tr>
+<td>Key outcomes</td>
+<td>Prettier format enforced on all frontend source, Docker images run as non-root <code>appuser</code>, <code>_edit_helpers.py</code> coverage 85 %+</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="iteration-6-coverage-security-hardening-phase-12">Iteration 6 — Coverage + Security Hardening (Phase 12)</h2>
+<p>Major coverage push and security headers.</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Before</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backend tests</td>
+<td>~180</td>
+<td>317</td>
+</tr>
+<tr>
+<td>Frontend tests</td>
+<td>~120</td>
+<td>226</td>
+</tr>
+<tr>
+<td>Backend coverage</td>
+<td>~75 %</td>
+<td>90 %</td>
+</tr>
+<tr>
+<td>Frontend coverage</td>
+<td>~65 %</td>
+<td>82.6 %</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Improvement</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Backend coverage 90 %</td>
+<td>Comprehensive test expansion across all domain + application modules</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Frontend coverage 82.6 %</td>
+<td>New test files for hooks, API layer, and utility modules</td>
+</tr>
+<tr>
+<td>3</td>
+<td>nginx CSP</td>
+<td><code>Content-Security-Policy</code> header with <code>default-src 'self'</code>, blob/worker support</td>
+</tr>
+<tr>
+<td>4</td>
+<td>CORS tightening</td>
+<td>Restricted to configured origins, no wildcard in production</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Routes decomposed</td>
+<td>API route files split for maintainability</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="iteration-7-modularization-phase-13">Iteration 7 — Modularization (Phase 13)</h2>
+<p>Monolithic files &gt;500 LOC decomposed into cohesive modules.</p>
+<table>
+<thead>
+<tr>
+<th>Target</th>
+<th>Before</th>
+<th>After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>interpretation.py</code></td>
+<td>1,398 LOC</td>
+<td><code>candidate_mining.py</code> + <code>confidence_scoring.py</code> + thin dispatcher</td>
+</tr>
+<tr>
+<td><code>pdf_extraction.py</code></td>
+<td>1,150 LOC</td>
+<td><code>pdf_extraction_nodeps.py</code> (878 LOC fallback) + thin dispatcher</td>
+</tr>
+<tr>
+<td><code>AppWorkspace.tsx</code></td>
+<td>4,011 LOC</td>
+<td>5 custom hooks extracted (−49 %)</td>
+</tr>
+<tr>
+<td><code>extraction_observability.py</code></td>
+<td>995 LOC</td>
+<td>4 sub-modules (snapshot, persistence, triage, reporting)</td>
+</tr>
+<tr>
+<td><code>constants.py</code></td>
+<td>scattered</td>
+<td>Consolidated ~97 lines DRY</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PR</td>
+<td>#153</td>
+</tr>
+<tr>
+<td>Backend tests</td>
+<td>340+</td>
+</tr>
+<tr>
+<td>Frontend tests</td>
+<td>240+</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="iteration-8-bugs-ci-governance-refactor-round-3-phase-14">Iteration 8 — Bugs + CI Governance + Refactor Round 3 (Phase 14)</h2>
+<p>Two-PR strategy: PR A (CI governance) + PR B (refactor + coverage).</p>
+<h3 id="pr-a-ci-governance-156">PR A — CI governance (#156)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Improvement</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>PdfViewer hotfix</td>
+<td>Accept <code>ArrayBuffer</code>, remove fetch indirection (fixed 3 recurring breakages)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Doc guard CI split</td>
+<td>3 independent CI jobs: parity, sync, brand</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Doc change classifier</td>
+<td>Rule/Clarification/Navigation classification with CI integration</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Navigation exemption</td>
+<td>Relaxed Clarification mode in <code>check_doc_test_sync.py</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="pr-b-refactor-coverage-157">PR B — Refactor + coverage (#157)</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Improvement</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Workspace panel extraction</td>
+<td><code>UploadPanel</code>, <code>StructuredDataPanel</code>, <code>PdfViewerPanel</code> as standalone components</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Hook tests</td>
+<td>Unit tests for hooks extracted in Iter 7</td>
+</tr>
+<tr>
+<td>3</td>
+<td>PdfViewer coverage</td>
+<td>47 % → 65 %+ branch coverage</td>
+</tr>
+<tr>
+<td>4</td>
+<td>documentApi coverage</td>
+<td>67 % → 80 %+ branch coverage</td>
+</tr>
+<tr>
+<td>5</td>
+<td>config.py coverage</td>
+<td>83 % → 90 %+</td>
+</tr>
+<tr>
+<td>6</td>
+<td>candidate_mining split</td>
+<td>789 LOC → 2 modules &lt; 400 LOC each</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Backend tests</td>
+<td>372 (90 % coverage)</td>
+</tr>
+<tr>
+<td>Frontend tests</td>
+<td>263 (85 % coverage)</td>
+</tr>
+<tr>
+<td>AppWorkspace.tsx</td>
+<td>2,221 LOC (−62 % from original 5,770)</td>
+</tr>
+<tr>
+<td>CI jobs</td>
+<td>8 (all green)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="iteration-9-e2e-testing-evaluator-experience-polish-phase-15">Iteration 9 — E2E Testing + Evaluator Experience Polish (Phase 15)</h2>
+<p><strong>PR:</strong> #163<br />
+<strong>Branch:</strong> <code>improvement/iteration-9-e2e</code></p>
+<p>First end-to-end test suite for the application, covering the 4 critical user flows. Added Playwright infrastructure with CI integration.</p>
+<h3 id="e2e-test-evidence">E2E test evidence</h3>
+<table>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Flow covered</th>
+<th>Key assertions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>app-loads.spec.ts</code></td>
+<td>App bootstrap</td>
+<td>Page loads, sidebar visible, no JS errors</td>
+</tr>
+<tr>
+<td><code>upload-smoke.spec.ts</code></td>
+<td>Upload → process</td>
+<td>Upload PDF → document appears in sidebar → clickable → center panel reacts</td>
+</tr>
+<tr>
+<td><code>review-workflow.spec.ts</code></td>
+<td>Review workspace</td>
+<td>Select document → PDF viewer renders (toolbar + pages) → structured panel loads</td>
+</tr>
+<tr>
+<td><code>edit-flow.spec.ts</code></td>
+<td>Field editing</td>
+<td>Open edit dialog → modify value → save → verify API call</td>
+</tr>
+<tr>
+<td><code>mark-reviewed.spec.ts</code></td>
+<td>Mark reviewed toggle</td>
+<td>Click "Marcar revisado" → verify state change → verify read-only mode</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ci-integration">CI integration</h3>
+<ul>
+<li>New <code>e2e</code> job in GitHub Actions: starts Docker stack, runs <code>npm run test:e2e</code>, uploads artifacts on failure.</li>
+<li>Playwright configured: Chromium-only, headless, <code>baseURL: http://localhost:80</code>, HTML reporter.</li>
+<li><code>data-testid</code> attributes added to key components: <code>review-toggle-btn</code>, <code>field-edit-dialog</code>, <code>field-edit-input</code>, <code>field-edit-save</code>, <code>field-edit-cancel</code>, <code>field-edit-btn-${id}</code>.</li>
+</ul>
+<h3 id="operational-improvements-iter-9">Operational improvements (Iter 9)</h3>
+<table>
+<thead>
+<tr>
+<th>Improvement</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Step completion integrity</td>
+<td>6 new hard rules: NO-BATCH, CI-FIRST-BEFORE-HANDOFF, PLAN-UPDATE-IMMEDIATE, STEP-LOCK, EVIDENCE BLOCK, AUTO-HANDOFF GUARD</td>
+</tr>
+<tr>
+<td>execution-rules.md</td>
+<td>New § "Step completion integrity" with post-mortem origin</td>
+</tr>
+<tr>
+<td>🔒 STEP LOCKED state</td>
+<td>Explicit plan state blocking progress until CI green + plan commit</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="iteration-10-security-resilience-performance-hardening-phase-16">Iteration 10 — Security, Resilience &amp; Performance Hardening (Phase 16)</h2>
+<p><strong>PR:</strong> #165 (in progress)<br />
+<strong>Branch:</strong> <code>improvement/iteration-10-hardening</code></p>
+<p>Comprehensive hardening pass targeting security gaps, resilience, performance, and CI velocity.</p>
+<h3 id="security">Security</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Improvement</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>UUID validation</td>
+<td>All <code>document_id</code> and <code>run_id</code> path parameters validated via regex pattern — rejects path traversal and malformed IDs with 422</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Rate limiting</td>
+<td><code>slowapi</code> middleware on upload (10/min) and download (30/min) endpoints; configurable via env vars</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Security audit in CI</td>
+<td><code>pip-audit --strict</code> for backend dependencies + <code>npm audit --audit-level=high</code> for frontend</td>
+</tr>
+</tbody>
+</table>
+<h3 id="resilience">Resilience</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Improvement</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>React Error Boundary</td>
+<td>Global error boundary wrapping app tree; renders recovery UI with reload button + collapsible stack trace</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Deep health check</td>
+<td><code>/health</code> endpoint verifies DB connectivity (SELECT 1) + storage directory writability; returns 503 with degraded status on failure</td>
+</tr>
+</tbody>
+</table>
+<h3 id="performance">Performance</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Improvement</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>Database indexes</td>
+<td>4 secondary indexes on FK columns: <code>processing_runs(document_id)</code>, <code>document_status_history(document_id)</code>, <code>artifacts(run_id)</code>, <code>artifacts(run_id, artifact_type)</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td>nginx cache headers</td>
+<td>Immutable 1-year cache for hashed static assets (JS/CSS/fonts); no-cache for HTML; HSTS header</td>
+</tr>
+<tr>
+<td>8</td>
+<td>PdfViewer lazy loading</td>
+<td><code>React.lazy</code> + <code>Suspense</code> for PdfViewer (852 LOC), removing it from the main bundle</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ci-process">CI &amp; Process</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Improvement</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>9</td>
+<td>Coverage thresholds</td>
+<td><code>--cov-fail-under=85</code> in pytest; vitest thresholds at 80/80/70/80 (lines/functions/branches/statements)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>CI path filtering</td>
+<td><code>dorny/paths-filter</code> detects changed areas; backend-only pushes skip frontend jobs and vice versa</td>
+</tr>
+<tr>
+<td>11</td>
+<td>CI caching</td>
+<td><code>actions/cache@v4</code> for pip, node_modules, and Playwright browsers</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Conditional E2E</td>
+<td>E2E suite runs only on PRs and pushes to <code>main</code>, not on every branch push</td>
+</tr>
+<tr>
+<td>13</td>
+<td>CI concurrency</td>
+<td><code>cancel-in-progress: true</code> cancels stale runs for the same branch</td>
+</tr>
+<tr>
+<td>14</td>
+<td>CI-PIPELINE rule</td>
+<td>New EXECUTION_RULES rule: agents work on next step while CI runs; verify before committing (zero idle time, max 1 task drift)</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Duplicate cleanup</td>
+<td>Removed duplicate <code>@playwright/test</code> entry from <code>package.json</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Commits</td>
+<td>21</td>
+</tr>
+<tr>
+<td>Files changed</td>
+<td>32</td>
+</tr>
+<tr>
+<td>Net delta</td>
+<td>+690 / −220 lines</td>
+</tr>
+<tr>
+<td>Test suite</td>
+<td>372+ backend, 263+ frontend, 5 E2E — all green</td>
+</tr>
+<tr>
+<td>Backend coverage</td>
+<td>90% (enforced ≥85%)</td>
+</tr>
+<tr>
+<td>Frontend coverage</td>
+<td>85% (enforced ≥80%)</td>
+</tr>
+<tr>
+<td>---</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="iteration-11-e2e-expansion-error-ux-testing-depth-dx-hardening-phase-18">Iteration 11 — E2E Expansion + Error UX + Testing Depth + DX Hardening (Phase 18)</h2>
+<p><strong>PR:</strong> #167<br />
+<strong>Branch:</strong> <code>improvement/iteration-11</code></p>
+<p>Massive E2E expansion (5→20 tests), user-facing error UX, latency benchmarks, backend failure-path coverage, repository split by aggregate, and OpenAPI polish.</p>
+<h3 id="phase-a-quick-wins">Phase A — Quick wins</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Improvement</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Centralize env reads</td>
+<td>2 remaining <code>os.getenv</code> calls → <code>Settings</code> dataclass, completing 12-Factor Factor III</td>
+</tr>
+<tr>
+<td>2</td>
+<td>PdfViewer mock dedup</td>
+<td>Shared <code>__mocks__/react-pdf</code> auto-mock replacing 9 duplicated mocks</td>
+</tr>
+<tr>
+<td>3</td>
+<td>OpenAPI polish</td>
+<td>Route tags, error response schemas (<code>ErrorResponse</code> model), health response model for <code>/docs</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="phase-b-e2e-expansion-520-tests">Phase B — E2E expansion (5→20 tests)</h3>
+<p>Playwright E2E suite expanded from 5 tests to <strong>20 tests across 8 spec files</strong>, covering the core Phases 0–2 of the E2E coverage plan.</p>
+<table>
+<thead>
+<tr>
+<th>Spec</th>
+<th>Tests</th>
+<th>Flows covered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>app-loads.spec.ts</code></td>
+<td>1</td>
+<td>App bootstrap + viewer empty state</td>
+</tr>
+<tr>
+<td><code>upload-smoke.spec.ts</code></td>
+<td>1</td>
+<td>Upload → document appears in sidebar</td>
+</tr>
+<tr>
+<td><code>review-workflow.spec.ts</code></td>
+<td>1</td>
+<td>Select document → PDF viewer → structured panel</td>
+</tr>
+<tr>
+<td><code>pdf-viewer.spec.ts</code></td>
+<td>6</td>
+<td>PDF render, page navigation, zoom, error states</td>
+</tr>
+<tr>
+<td><code>document-sidebar.spec.ts</code></td>
+<td>3</td>
+<td>Sidebar listing, selection, search functionality</td>
+</tr>
+<tr>
+<td><code>extracted-data.spec.ts</code></td>
+<td>3</td>
+<td>Structured data display, field groups, confidence indicators</td>
+</tr>
+<tr>
+<td><code>field-editing.spec.ts</code></td>
+<td>3</td>
+<td>Open edit dialog → modify → save → verify</td>
+</tr>
+<tr>
+<td><code>review-workflow.spec.ts</code></td>
+<td>2</td>
+<td>Mark reviewed toggle + read-only mode</td>
+</tr>
+</tbody>
+</table>
+<p>Infrastructure: 17 new <code>data-testid</code> attributes, <code>e2e/helpers.ts</code> reusable helpers, tiered Playwright projects (smoke/core/extended), npm scripts (<code>test:e2e:smoke</code>, <code>test:e2e:all</code>).</p>
+<h3 id="phase-c-error-ux-performance">Phase C — Error UX + performance</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Improvement</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>Error UX mapping</td>
+<td><code>errorMessages.ts</code> with regex-based <code>errorCodeMap</code>; 8 patterns map raw API errors to user-friendly Spanish toasts</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Latency benchmarks</td>
+<td><code>test_endpoint_latency.py</code> with P50/P95 measurement for list, get, upload endpoints; P95 &lt; 500ms threshold</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phase-d-testing-depth-architecture">Phase D — Testing depth + architecture</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Improvement</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>Backend failure-path tests</td>
+<td>Orchestrator partial failures + DB lock/retry resilience (22 new tests)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>SourcePanel + UploadDropzone depth</td>
+<td>Branch coverage + interaction edge cases (21 new tests)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Repository split by aggregate</td>
+<td><code>sqlite_document_repository.py</code> (751 LOC) → 3 aggregate modules + façade: <code>sqlite_document_repo.py</code> (241), <code>sqlite_run_repo.py</code> (302), <code>sqlite_calibration_repo.py</code> (123), façade (182)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="operational-improvements-iter-11">Operational improvements (Iter 11)</h3>
+<table>
+<thead>
+<tr>
+<th>Improvement</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CI path filtering</td>
+<td>Effective <code>paths</code> filters in <code>ci.yml</code> skip heavy jobs on docs-only changes</td>
+</tr>
+<tr>
+<td>Pipeline execution</td>
+<td>Agents work on next step while CI runs; no idle wait between auto-chain steps</td>
+</tr>
+<tr>
+<td>Targeted local tests</td>
+<td>Only run tests relevant to the changed module, not full suite</td>
+</tr>
+<tr>
+<td>Cancelled CI handling</td>
+<td>When <code>cancel-in-progress</code> cancels a prior run, agent uses latest green run</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Commits</td>
+<td>48</td>
+</tr>
+<tr>
+<td>Files changed</td>
+<td>70</td>
+</tr>
+<tr>
+<td>Net delta</td>
+<td>+4,591 / −2,309 lines</td>
+</tr>
+<tr>
+<td>Test suite</td>
+<td><strong>395 backend, 287 frontend, 20 E2E</strong> — all green</td>
+</tr>
+<tr>
+<td>Backend coverage</td>
+<td><strong>91%</strong> (enforced ≥85%)</td>
+</tr>
+<tr>
+<td>Frontend coverage</td>
+<td><strong>~87%</strong> (enforced ≥80%)</td>
+</tr>
+<tr>
+<td>E2E specs</td>
+<td><strong>8 files, 20 tests</strong> (up from 5 tests / 5 files)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="iteration-12-e2e-coverage-expansion-accessibility-project-close-out-phase-19">Iteration 12 — E2E Coverage Expansion + Accessibility + Project Close-Out (Phase 19)</h2>
+<p><strong>PR:</strong> #169<br />
+<strong>Branch:</strong> <code>improvement/iteration-12-final</code></p>
+<p>Final iteration: massive E2E expansion (20→65 tests), automated accessibility auditing, architecture documentation, and project close-out documentation.</p>
+<h3 id="phase-a-e2e-expansion-2065-tests-822-specs">Phase A — E2E expansion (20→65 tests, 8→22 specs)</h3>
+<p>Playwright E2E suite expanded from 20 tests to <strong>65 tests across 22 spec files</strong>, completing all 4 phases of the E2E coverage plan.</p>
+<table>
+<thead>
+<tr>
+<th>Spec (new)</th>
+<th>Tests</th>
+<th>Plan step</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>viewer-tabs.spec.ts</code></td>
+<td>4</td>
+<td>F19-A</td>
+</tr>
+<tr>
+<td><code>raw-text.spec.ts</code></td>
+<td>5</td>
+<td>F19-A</td>
+</tr>
+<tr>
+<td><code>zoom-advanced.spec.ts</code></td>
+<td>2</td>
+<td>F19-A</td>
+</tr>
+<tr>
+<td><code>structured-filters.spec.ts</code></td>
+<td>6</td>
+<td>F19-B</td>
+</tr>
+<tr>
+<td><code>field-validation.spec.ts</code></td>
+<td>5</td>
+<td>F19-B</td>
+</tr>
+<tr>
+<td><code>add-field.spec.ts</code></td>
+<td>2</td>
+<td>F19-B</td>
+</tr>
+<tr>
+<td><code>reprocess.spec.ts</code></td>
+<td>2</td>
+<td>F19-C</td>
+</tr>
+<tr>
+<td><code>toasts.spec.ts</code></td>
+<td>3</td>
+<td>F19-C</td>
+</tr>
+<tr>
+<td><code>source-panel.spec.ts</code></td>
+<td>3</td>
+<td>F19-D</td>
+</tr>
+<tr>
+<td><code>split-panel.spec.ts</code></td>
+<td>2</td>
+<td>F19-D</td>
+</tr>
+<tr>
+<td><code>sidebar-interactions.spec.ts</code></td>
+<td>3</td>
+<td>F19-D</td>
+</tr>
+<tr>
+<td><code>visit-grouping.spec.ts</code></td>
+<td>3</td>
+<td>F19-E</td>
+</tr>
+<tr>
+<td><code>upload-validation.spec.ts</code></td>
+<td>2</td>
+<td>F19-E</td>
+</tr>
+<tr>
+<td><code>accessibility.spec.ts</code></td>
+<td>3</td>
+<td>F19-I</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phase-b-wcag-accessibility">Phase B — WCAG accessibility</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Improvement</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>axe-core E2E audit</td>
+<td><code>@axe-core/playwright</code> integrated; 3 tests assert zero critical/serious WCAG 2.1 AA violations on upload and review views</td>
+</tr>
+<tr>
+<td>2</td>
+<td>aria-labels + focus</td>
+<td>Missing <code>aria-label</code>, <code>role</code>, <code>tabIndex</code> attributes added to ~16 component files; focus trapping in dialogs; color contrast fixes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phase-c-architecture-readme">Phase C — Architecture &amp; README</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Improvement</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>architecture.md</td>
+<td>One-page architecture overview with Mermaid system diagram, tech stack table, ADR decision summary, data flow, and quality metrics</td>
+</tr>
+<tr>
+<td>4</td>
+<td>README polish</td>
+<td>CI/Python/React/License badges, tech stack one-liner, demo screenshot placeholder, link to architecture.md</td>
+</tr>
+</tbody>
+</table>
+<h3 id="phase-d-documentation-close-out">Phase D — Documentation close-out</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Improvement</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>FUTURE_IMPROVEMENTS reframe</td>
+<td>Renamed to "Known Limitations &amp; Future Directions"; reorganized into completed summary, conscious trade-offs with rationale, and production evolution bullets</td>
+</tr>
+<tr>
+<td>6</td>
+<td>TECHNICAL_DESIGN §14</td>
+<td>Updated with Iter 12 outcomes: E2E coverage, accessibility, resolved limitations</td>
+</tr>
+<tr>
+<td>7</td>
+<td>E2E plan metrics</td>
+<td>plan-e2e-test-coverage.md §7 checkboxes all marked complete with per-spec counts</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Test suite</td>
+<td><strong>395 backend, 287 frontend, 65 E2E</strong> — all green</td>
+</tr>
+<tr>
+<td>Backend coverage</td>
+<td><strong>91%</strong> (enforced ≥85%)</td>
+</tr>
+<tr>
+<td>Frontend coverage</td>
+<td><strong>~87%</strong> (enforced ≥80%)</td>
+</tr>
+<tr>
+<td>E2E specs</td>
+<td><strong>22 files, 65 tests</strong> (up from 20 tests / 8 files)</td>
+</tr>
+<tr>
+<td>Accessibility</td>
+<td>axe-core WCAG 2.1 AA: 0 critical violations</td>
+</tr>
+<tr>
+<td>New docs</td>
+<td>architecture.md, Known Limitations reframe</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

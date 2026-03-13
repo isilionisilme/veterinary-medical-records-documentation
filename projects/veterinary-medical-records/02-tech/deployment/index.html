@@ -1,0 +1,1403 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Wiki-style technical documentation for the Veterinary Medical Records project">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>Deployment Guide - Veterinary Medical Records Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deployment-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-header__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Veterinary Medical Records Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Deployment Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-nav__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Veterinary Medical Records Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shared Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Shared Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/02-tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3_1" id="__nav_1_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="deployment-guide">Deployment Guide</h1>
+<blockquote>
+<p>How the system is built, configured, and run. Covers Docker topology, environment
+variables, volume mounts, health checks, and operational modes.</p>
+</blockquote>
+<h2 id="1-topology">1. Topology</h2>
+<p>The system runs as two Docker containers behind a single <code>docker compose</code> invocation.</p>
+<pre><code class="language-mermaid">graph LR
+    subgraph Host
+        direction TB
+        subgraph Docker[&quot;Docker Compose&quot;]
+            FE[&quot;frontend&lt;br/&gt;nginx:alpine · :8080&quot;]
+            BE[&quot;backend&lt;br/&gt;python:3.11-slim · :8000&quot;]
+        end
+        DATA[&quot;./backend/data&lt;br/&gt;(SQLite DB)&quot;]
+        STORAGE[&quot;./backend/storage&lt;br/&gt;(uploaded files)&quot;]
+    end
+
+    User((User)) --&gt;|HTTP :5173| FE
+    FE --&gt;|reverse proxy| BE
+    BE --&gt;|read/write| DATA
+    BE --&gt;|read/write| STORAGE
+
+    style FE fill:#2d333b,stroke:#6d5dfc,color:#e6edf3
+    style BE fill:#2d333b,stroke:#6d5dfc,color:#e6edf3
+    style DATA fill:#161b22,stroke:#30363d,color:#e6edf3
+    style STORAGE fill:#161b22,stroke:#30363d,color:#e6edf3
+</code></pre>
+<!-- Sources: docker-compose.yml, Dockerfile.backend, Dockerfile.frontend -->
+
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Base Image</th>
+<th>Container Port</th>
+<th>Default Host Port</th>
+<th>Health Check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>backend</td>
+<td>python:3.11-slim</td>
+<td>8000</td>
+<td>8000</td>
+<td><code>GET /health/ready</code></td>
+</tr>
+<tr>
+<td>frontend</td>
+<td>nginx:alpine</td>
+<td>8080</td>
+<td>5173</td>
+<td><code>wget http://127.0.0.1:8080/</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-operating-modes">2. Operating Modes</h2>
+<h3 id="21-evaluation-mode-default">2.1 Evaluation Mode (default)</h3>
+<pre><code class="language-bash">docker compose up --build
+</code></pre>
+<ul>
+<li>Deterministic image builds (no source bind mounts).</li>
+<li>Frontend served as static build via nginx.</li>
+<li>Data persists across restarts via host-mounted volumes.</li>
+<li>Reset: <code>docker compose down</code> then delete <code>backend/data/</code> and <code>backend/storage/</code>.</li>
+</ul>
+<h3 id="22-development-mode">2.2 Development Mode</h3>
+<pre><code class="language-bash">docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+</code></pre>
+<ul>
+<li>Source code bind-mounted for live reload (uvicorn <code>--reload</code>, Vite HMR).</li>
+<li>Backend watches <code>backend/</code> and <code>shared/</code>.</li>
+<li>Frontend watches <code>frontend/</code> and <code>shared/</code>.</li>
+<li>Polling enabled for Windows/WSL2 compatibility (<code>CHOKIDAR_USEPOLLING</code>, <code>WATCHPACK_POLLING</code>).</li>
+</ul>
+<h3 id="23-running-tests">2.3 Running Tests</h3>
+<pre><code class="language-bash"># Backend (pytest)
+docker compose --profile test run --rm backend-tests
+
+# Frontend (vitest)
+docker compose --profile test run --rm frontend-tests
+
+# E2E (Playwright — requires running containers)
+docker compose up -d --build
+cd frontend &amp;&amp; npx playwright test
+</code></pre>
+<h2 id="3-environment-variables">3. Environment Variables</h2>
+<h3 id="31-ports-networking">3.1 Ports &amp; Networking</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>BACKEND_PORT</code></td>
+<td><code>8000</code></td>
+<td>Host port mapped to backend container :8000</td>
+</tr>
+<tr>
+<td><code>FRONTEND_PORT</code></td>
+<td><code>5173</code></td>
+<td>Host port mapped to frontend container :8080</td>
+</tr>
+<tr>
+<td><code>VET_RECORDS_CORS_ORIGINS</code></td>
+<td><code>http://localhost,...</code></td>
+<td>Comma-separated allowed CORS origins</td>
+</tr>
+<tr>
+<td><code>VITE_API_BASE_URL</code></td>
+<td><code>http://localhost:8000</code></td>
+<td>API endpoint used by the frontend build</td>
+</tr>
+</tbody>
+</table>
+<h4 id="cors-origin-policy-evaluation-default">CORS origin policy (evaluation default)</h4>
+<p><code>VET_RECORDS_CORS_ORIGINS</code> defaults to localhost development/evaluation origins
+because the intended assessment topology is:</p>
+<ul>
+<li>frontend served locally on <code>localhost:5173</code>,</li>
+<li>backend API served locally on <code>localhost:8000</code>,</li>
+<li>a single evaluator using the stack on one machine.</li>
+</ul>
+<p>This keeps cross-origin access narrow by default while still supporting the Vite
+dev server and the Docker-based evaluation path.</p>
+<p>Guidance:</p>
+<ul>
+<li>In evaluation mode, keep the allowlist limited to the exact local frontend
+    origins in use.</li>
+<li>Best practice for production: configure <code>VET_RECORDS_CORS_ORIGINS</code> with
+    explicit deployed frontend origins; avoid wildcard allowlists.</li>
+<li>If frontend and backend are served behind one reverse proxy/origin, CORS can
+    be reduced or disabled in favor of same-origin routing.</li>
+</ul>
+<h3 id="32-data-storage">3.2 Data &amp; Storage</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VET_RECORDS_DB_PATH</code></td>
+<td><code>/app/backend/data/documents.db</code></td>
+<td>SQLite database file path</td>
+</tr>
+<tr>
+<td><code>VET_RECORDS_STORAGE_PATH</code></td>
+<td><code>/app/backend/storage</code></td>
+<td>Uploaded file storage path</td>
+</tr>
+<tr>
+<td><code>BACKEND_DATA_DIR</code></td>
+<td><code>./backend/data</code></td>
+<td>Host directory for DB volume</td>
+</tr>
+<tr>
+<td><code>BACKEND_STORAGE_DIR</code></td>
+<td><code>./backend/storage</code></td>
+<td>Host directory for file volume</td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-processing-feature-flags">3.3 Processing &amp; Feature Flags</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VET_RECORDS_DISABLE_PROCESSING</code></td>
+<td><code>False</code></td>
+<td>Disable background document processing</td>
+</tr>
+<tr>
+<td><code>VET_RECORDS_EXTRACTION_OBS</code></td>
+<td><code>False</code></td>
+<td>Enable extraction observability debug endpoints</td>
+</tr>
+<tr>
+<td><code>VET_RECORDS_INCLUDE_INTERPRETATION_CANDIDATES</code></td>
+<td><code>False</code></td>
+<td>Include candidate debug payloads in artifacts</td>
+</tr>
+<tr>
+<td><code>PDF_EXTRACTOR_FORCE</code></td>
+<td><code>""</code></td>
+<td>Force a specific PDF extractor</td>
+</tr>
+</tbody>
+</table>
+<h3 id="34-confidence-policy">3.4 Confidence Policy</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VET_RECORDS_CONFIDENCE_POLICY_VERSION</code></td>
+<td><code>v1-local</code></td>
+<td>Confidence band policy identifier</td>
+</tr>
+<tr>
+<td><code>VET_RECORDS_CONFIDENCE_LOW_MAX</code></td>
+<td><code>0.50</code></td>
+<td>Upper threshold for "low" confidence band</td>
+</tr>
+<tr>
+<td><code>VET_RECORDS_CONFIDENCE_MID_MAX</code></td>
+<td><code>0.75</code></td>
+<td>Upper threshold for "mid" confidence band</td>
+</tr>
+<tr>
+<td><code>VET_RECORDS_HUMAN_EDIT_NEUTRAL_CANDIDATE_CONFIDENCE</code></td>
+<td><code>0.50</code></td>
+<td>Confidence floor for human-edited values</td>
+</tr>
+</tbody>
+</table>
+<h3 id="35-rate-limiting">3.5 Rate Limiting</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>VET_RECORDS_RATE_LIMIT_UPLOAD</code></td>
+<td><code>10/minute</code></td>
+<td>Upload endpoint throttle</td>
+</tr>
+<tr>
+<td><code>VET_RECORDS_RATE_LIMIT_DOWNLOAD</code></td>
+<td><code>30/minute</code></td>
+<td>Download endpoint throttle</td>
+</tr>
+</tbody>
+</table>
+<h3 id="36-authentication">3.6 Authentication</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AUTH_TOKEN</code></td>
+<td><em>(none)</em></td>
+<td>Optional static bearer token. When unset, auth is disabled</td>
+</tr>
+</tbody>
+</table>
+<h3 id="37-runtime-logging">3.7 Runtime &amp; Logging</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LOG_LEVEL</code></td>
+<td><code>INFO</code></td>
+<td>Python logging level</td>
+</tr>
+<tr>
+<td><code>UVICORN_RELOAD</code></td>
+<td><em>(none)</em></td>
+<td>Enable uvicorn auto-reload</td>
+</tr>
+</tbody>
+</table>
+<h3 id="38-build-metadata">3.8 Build Metadata</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Default</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>APP_VERSION</code></td>
+<td><code>dev</code></td>
+<td>Embedded version string</td>
+</tr>
+<tr>
+<td><code>GIT_COMMIT</code></td>
+<td><code>unknown</code></td>
+<td>Embedded commit SHA</td>
+</tr>
+<tr>
+<td><code>BUILD_DATE</code></td>
+<td><code>unknown</code></td>
+<td>Embedded build timestamp</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-volume-mounts">4. Volume Mounts</h2>
+<h3 id="41-evaluation-mode">4.1 Evaluation Mode</h3>
+<table>
+<thead>
+<tr>
+<th>Container Path</th>
+<th>Host Path (default)</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/app/backend/data</code></td>
+<td><code>./backend/data</code></td>
+<td>SQLite database</td>
+</tr>
+<tr>
+<td><code>/app/backend/storage</code></td>
+<td><code>./backend/storage</code></td>
+<td>Uploaded PDF files</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-development-mode-additional">4.2 Development Mode (additional)</h3>
+<table>
+<thead>
+<tr>
+<th>Container Path</th>
+<th>Host Path</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/app/backend</code></td>
+<td><code>./backend</code></td>
+<td>Source code (live reload)</td>
+</tr>
+<tr>
+<td><code>/app/shared</code></td>
+<td><code>./shared</code></td>
+<td>Shared modules</td>
+</tr>
+<tr>
+<td><code>/app/frontend</code></td>
+<td><code>./frontend</code></td>
+<td>Source code (HMR)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-health-checks">5. Health Checks</h2>
+<p>Both containers include Docker health checks with identical timing:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>interval</code></td>
+<td>10s</td>
+</tr>
+<tr>
+<td><code>timeout</code></td>
+<td>5s</td>
+</tr>
+<tr>
+<td><code>retries</code></td>
+<td>8</td>
+</tr>
+<tr>
+<td><code>start_period</code></td>
+<td>10s</td>
+</tr>
+</tbody>
+</table>
+<p>The frontend container uses <code>depends_on: backend (service_healthy)</code> to wait for
+the backend to be ready before starting.</p>
+<p>The backend <code>stop_grace_period</code> is <strong>45s</strong>, and uvicorn uses a <strong>30s</strong> graceful
+shutdown timeout (<code>--timeout-graceful-shutdown 30</code>).</p>
+<h2 id="6-container-security">6. Container Security</h2>
+<ul>
+<li>Both containers run as non-root (<code>appuser</code>).</li>
+<li>Backend Dockerfile uses <code>STOPSIGNAL SIGTERM</code> for graceful shutdown.</li>
+<li>Test stage copies test files but switches back to <code>appuser</code> before running.</li>
+<li>Frontend nginx config is owned by <code>appuser:appgroup</code>.</li>
+</ul>
+<h2 id="7-capacity-constraints">7. Capacity &amp; Constraints</h2>
+<p>This is a <strong>technical assessment project</strong> with a single-evaluator workload.
+The following constraints are by design, not oversight.</p>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>Current Limit</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single-process model</td>
+<td>1 API + 1 scheduler thread</td>
+<td><a href="../adr/ADR-ARCH-0004-in-process-async-processing/">ADR-ARCH-0004</a> — no external task queue</td>
+</tr>
+<tr>
+<td>SQLite single-writer</td>
+<td>~50 concurrent writes/s</td>
+<td><a href="../adr/ADR-ARCH-0002-sqlite-database/">ADR-ARCH-0002</a> — WAL + busy_timeout mitigate</td>
+</tr>
+<tr>
+<td>No horizontal scaling</td>
+<td>1 container per service</td>
+<td>Monolith by design; worker profile path documented in ADR-0004</td>
+</tr>
+<tr>
+<td>Processing timeout</td>
+<td>120s per document</td>
+<td>Hardcoded in orchestrator; sufficient for PDF sizes in scope</td>
+</tr>
+<tr>
+<td>Max upload size</td>
+<td>20 MB per file</td>
+<td>Validated at API layer; configurable</td>
+</tr>
+<tr>
+<td>Rate limits</td>
+<td>Upload 10/min, download 30/min</td>
+<td>Via <code>slowapi</code>; configurable via env vars</td>
+</tr>
+<tr>
+<td>Observability ring buffer</td>
+<td>20 runs per document</td>
+<td>FIFO eviction; sufficient for trend analysis</td>
+</tr>
+<tr>
+<td>Intended concurrent users</td>
+<td>1 (evaluator)</td>
+<td>Demo/assessment workload</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Production evolution:</strong> PostgreSQL adapter, Celery/RQ workers, connection
+pooling, streaming uploads with early size rejection. See
+<a href="../adr/ADR-ARCH-0001-modular-monolith/">ADR-ARCH-0001</a> for the migration path.</p>
+<h2 id="8-related-documents">8. Related Documents</h2>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Relationship</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../architecture/">architecture.md</a></td>
+<td>System overview and tech stack</td>
+</tr>
+<tr>
+<td><a href="../technical-design/">technical-design.md</a></td>
+<td>Data persistence and processing rules</td>
+</tr>
+<tr>
+<td><a href="../adr/ADR-ARCH-0001-modular-monolith/">ADR-ARCH-0001</a></td>
+<td>Why single-process monolith</td>
+</tr>
+<tr>
+<td><a href="../adr/ADR-ARCH-0004-in-process-async-processing/">ADR-ARCH-0004</a></td>
+<td>Why in-process scheduler (no Celery)</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

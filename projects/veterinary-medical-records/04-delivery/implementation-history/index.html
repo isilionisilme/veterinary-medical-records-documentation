@@ -1,0 +1,1098 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Wiki-style technical documentation for the Veterinary Medical Records project">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>Implementation History - Veterinary Medical Records Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#implementation-history-iterative-improvement-timeline" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-header__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Veterinary Medical Records Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Implementation History
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-nav__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Veterinary Medical Records Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shared Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Shared Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/02-tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3_1" id="__nav_1_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="implementation-history-iterative-improvement-timeline">Implementation History — Iterative Improvement Timeline</h1>
+<blockquote>
+<p>Consolidated timeline of all improvement iterations. Each row links to a detailed completed file with step-by-step execution logs.</p>
+</blockquote>
+<h2 id="active-iteration">Active iteration</h2>
+<p><strong>None</strong> — Iteration 19 closed. Next iteration plan pending.</p>
+<h2 id="timeline">Timeline</h2>
+<table>
+<thead>
+<tr>
+<th>Iteration</th>
+<th>Date</th>
+<th>PR(s)</th>
+<th>Theme</th>
+<th>Key Metrics</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2026-02-24</td>
+<td>#144</td>
+<td>Architecture audit, structural refactor, tooling &amp; documentation</td>
+<td>First CI pipeline, hexagonal backend, ESLint + Prettier</td>
+<td><a href="completed/completed-iter-1-2.md">completed-iter-1-2.md</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>2026-02-24</td>
+<td>#145, #148</td>
+<td>CTO verdict + guardrails</td>
+<td>SQLite WAL, frontend utils coverage, agent handoff protocol</td>
+<td><a href="completed/completed-iter-1-2.md">completed-iter-1-2.md</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>2026-02-25</td>
+<td>#149</td>
+<td>Hardening &amp; maintainability</td>
+<td>Upload streaming guard, auth boundary, AppWorkspace −35%</td>
+<td><a href="completed/completed-iter-3.md">completed-iter-3.md</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>2026-02-25</td>
+<td>#150</td>
+<td>Docs + lint polish</td>
+<td>ESLint 0 warnings, Vite build clean, README quality gates</td>
+<td><a href="completed/completed-iter-4.md">completed-iter-4.md</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>2026-02-25</td>
+<td>#151</td>
+<td>Production-readiness</td>
+<td>Prettier bulk format, Docker non-root, _edit_helpers 85%+</td>
+<td><a href="completed/completed-iter-5.md">completed-iter-5.md</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>2026-02-25</td>
+<td>#152</td>
+<td>Coverage + security hardening</td>
+<td>Backend 90%, frontend 82.6%, nginx CSP, CORS restricted, routes decomposed</td>
+<td><a href="completed/completed-iter-6.md">completed-iter-6.md</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>2026-02-26</td>
+<td>#153</td>
+<td>Modularization</td>
+<td>interpretation.py split, pdf_extraction split, AppWorkspace hooks, observability 4-module</td>
+<td><a href="completed/completed-iter-7.md">completed-iter-7.md</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td>2026-02-26</td>
+<td>#156, #157</td>
+<td>Bugs + CI governance + refactor round 3</td>
+<td>372 backend, 263 frontend, 3 doc guard CI jobs, AppWorkspace −62%</td>
+<td><a href="completed/completed-iter-8.md">completed-iter-8.md</a></td>
+</tr>
+<tr>
+<td>9</td>
+<td>2026-02-27</td>
+<td>#163</td>
+<td>E2E testing + evaluator polish</td>
+<td>5 Playwright E2E specs, 17 data-testid attrs, docs refresh, 6 EXECUTION_RULES integrity rules</td>
+<td><a href="completed/completed-2026-02-26-iter-9-e2e.md">completed-2026-02-26-iter-9-e2e.md</a></td>
+</tr>
+<tr>
+<td>10</td>
+<td>2026-02-27</td>
+<td>#165</td>
+<td>Security, resilience &amp; performance hardening</td>
+<td>DB indexes, UUID validation, Error Boundary, rate limiting, pip-audit + npm audit CI, deep health, lazy PdfViewer, cache headers, coverage thresholds</td>
+<td><a href="completed/completed-2026-02-26-iter-10-hardening.md">completed-2026-02-26-iter-10-hardening.md</a></td>
+</tr>
+<tr>
+<td>11</td>
+<td>2026-02-27</td>
+<td>#167</td>
+<td>E2E expansion + Error UX + testing depth + DX hardening</td>
+<td>395 backend tests (91%), 287 frontend (87%), 20 E2E (8 specs), error UX mapping, P50/P95 benchmarks, repo split 3 aggregates, OpenAPI polish, 70 files changed</td>
+<td><a href="completed/completed-2026-02-27-iter-11-fullstack-hardening.md">completed-2026-02-27-iter-11-fullstack-hardening.md</a></td>
+</tr>
+<tr>
+<td>12</td>
+<td>2026-02-27</td>
+<td>#169</td>
+<td>E2E Phase 3-4 expansion + WCAG accessibility + architecture docs + project close-out</td>
+<td>65 E2E tests (22 specs), axe-core WCAG audit, architecture.md, README badges, Known Limitations reframe, 47 files changed</td>
+<td><a href="completed/completed-2026-02-27-iter-12-final.md">completed-2026-02-27-iter-12-final.md</a></td>
+</tr>
+<tr>
+<td>13</td>
+<td>2026-02-28</td>
+<td>#171</td>
+<td>AppWorkspace decomposition round 4 + integration hardening</td>
+<td>AppWorkspace 2221→726 LOC (−67%), useReviewDataPipeline 875→357 LOC, 318 frontend tests (48 files), 4 new hook suites</td>
+<td><a href="completed/completed-2026-02-28-decompose-app-workspace.md">completed-2026-02-28-decompose-app-workspace.md</a></td>
+</tr>
+<tr>
+<td>14</td>
+<td>2026-02-28</td>
+<td>#174</td>
+<td>PdfViewer decomposition (hooks + debug modules)</td>
+<td>PdfViewer 944→199 LOC, 6 extracted modules, 327 frontend tests (52 files), CI stable after extraction</td>
+<td><a href="completed/completed-2026-02-28-decompose-pdf-viewer.md">completed-2026-02-28-decompose-pdf-viewer.md</a></td>
+</tr>
+<tr>
+<td>15</td>
+<td>2026-03-02</td>
+<td>#182</td>
+<td>Golden loop hardening for <code>pet_name</code> extraction</td>
+<td>Synthetic benchmark 53.3% → 100.0% EM, null misses 26.7% → 0.0%, false positives 13.3% → 0.0%, focused suite 50 passed</td>
+<td><a href="completed/completed-2026-03-02-golden-loop-pet-name.md">completed-2026-03-02-golden-loop-pet-name.md</a></td>
+</tr>
+<tr>
+<td>16</td>
+<td>2026-03-03</td>
+<td>#186</td>
+<td>Golden loop hardening for <code>clinic_name</code> extraction</td>
+<td>Hard-gate GO: 340/340 tests green, clinic benchmark 11/11, 0 regressions; review follow-ups merged</td>
+<td><a href="plans/completed/completed-2026-03-02-golden-loop-clinic-name.md">completed-2026-03-02-golden-loop-clinic-name.md</a></td>
+</tr>
+<tr>
+<td>17</td>
+<td>2026-03-03</td>
+<td>#192</td>
+<td>L1/L2/L3 preflight rules alignment in execution protocol</td>
+<td><code>execution-rules.md</code> now references L1/L2/L3 + <code>ForceFull</code>; contract coverage added for doc references; CI green at merge</td>
+<td><a href="plans/completed/COMPLETED_2026-03-03_L1-L2-L3-RULES-ALIGNMENT.md">COMPLETED_2026-03-03_L1-L2-L3-RULES-ALIGNMENT.md</a></td>
+</tr>
+<tr>
+<td>18</td>
+<td>2026-03-04</td>
+<td>#198</td>
+<td>Clinic address enrichment with production online resolver chain</td>
+<td>User-consented lookup UX, online resolver chain (<code>nominatim</code> + <code>web_search</code> proxy fallback), no local stored clinic addresses by default, CI green at merge</td>
+<td><a href="plans/completed/COMPLETED_2026-03-04_CLINIC-ENRICHMENT-BIDIRECTIONAL.md">COMPLETED_2026-03-04_CLINIC-ENRICHMENT-BIDIRECTIONAL.md</a></td>
+</tr>
+<tr>
+<td>19</td>
+<td>2026-03-05</td>
+<td>#207</td>
+<td>Plan-mode routing hardening for ad-hoc git commands</td>
+<td>Expanded <code>AGENTS.md</code> trigger for active plan git requests, added explicit plan-mode governance/activation clauses in <code>plan-execution-protocol.md</code>, aligned DOC_UPDATES guard mapping, CI green at merge</td>
+<td><a href="plans/completed/COMPLETED_2026-03-05_PLAN-MODE-ROUTING-FIX.md">COMPLETED_2026-03-05_PLAN-MODE-ROUTING-FIX.md</a></td>
+</tr>
+<tr>
+<td>20</td>
+<td>2026-03-10</td>
+<td>#264</td>
+<td>Public API encapsulation fix for documents review helper</td>
+<td>Re-exported <code>_locate_visit_date_occurrences_from_raw_text</code> via public documents API, removed private <code>_shared</code> import from API route layer, extracted review debug helper for maintainability gates, L3 green at merge</td>
+<td><a href="plans/completed/PLAN_2026-03-10_ARCH-08-EXPOSE-SHARED-PUBLICLY.md">PLAN_2026-03-10_ARCH-08-EXPOSE-SHARED-PUBLICLY.md</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="cumulative-progress">Cumulative progress</h2>
+<ul>
+<li>Iteration 15 cumulative extraction outcome (<code>pet_name</code> golden loop): baseline 8/15 exact matches to final 15/15 exact matches with zero null misses and zero false positives on synthetic fixtures.</li>
+<li>Iteration 16 cumulative extraction outcome (<code>clinic_name</code> golden loop): final synthetic benchmark 11/11 exact matches with no benchmark regressions after review follow-ups.</li>
+<li>Iteration 17 cumulative process-governance outcome: <code>execution-rules.md</code> and local preflight policy are aligned on L1/L2/L3 flow, reducing drift between agent protocol and CI/local guardrails.</li>
+<li>Iteration 18 cumulative clinic-enrichment outcome: on-demand resolver is production-ready with explicit source semantics (<code>clinic_catalog|nominatim|web_search|none</code>), proxy fallback observability events, and merged completed plan archive.</li>
+<li>Iteration 19 cumulative plan-governance outcome: plan-mode now captures ad-hoc git intents through protocol routing (<code>AGENTS.md</code> trigger + protocol §2/§13), reducing risk of bypassing SCOPE BOUNDARY during active plan execution.</li>
+<li>Iteration 20 cumulative architecture-hardening outcome: API encapsulation now avoids private-module imports for ARCH-08 scope, with helper logic extracted and covered by targeted unit tests plus green L3 validation.</li>
+<li>See <a href="../delivery-summary/">delivery-summary.md</a> for the broader cumulative metrics table across all iterations.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

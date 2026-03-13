@@ -1,0 +1,1437 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Wiki-style technical documentation for the Veterinary Medical Records project">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>UX Design — Project Interaction Contract - Veterinary Medical Records Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ux-design-project-interaction-contract" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-header__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Veterinary Medical Records Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UX Design — Project Interaction Contract
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-nav__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Veterinary Medical Records Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shared Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Shared Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/02-tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3_1" id="__nav_1_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ux-design-project-interaction-contract">UX Design — Project Interaction Contract</h1>
+<p><strong>Breadcrumbs:</strong> <a href="../../../README.md">Docs</a> / <a href="../../../">Projects</a> / veterinary-medical-records / 01-product</p>
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+<ul>
+<li><a href="#1-user-roles--ux-goals">1. User Roles &amp; UX Goals</a></li>
+<li><a href="#11-veterinarian--document-review-under-time-pressure">1.1 Veterinarian — Document Review Under Time Pressure</a><ul>
+<li><a href="#ux-goals">UX Goals</a></li>
+<li><a href="#mental-model">Mental Model</a></li>
+</ul>
+</li>
+<li><a href="#12-reviewer--system-level-oversight">1.2 Reviewer — System-Level Oversight</a><ul>
+<li><a href="#ux-goals-1">UX Goals</a></li>
+<li><a href="#mental-model-1">Mental Model</a></li>
+</ul>
+</li>
+<li><a href="#2-confidence--ux-definition">2. Confidence — UX Definition</a></li>
+<li><a href="#3-confidence-visibility">3. Confidence Visibility</a></li>
+<li><a href="#31-qualitative-signal-primary">3.1 Qualitative Signal (Primary)</a></li>
+<li><a href="#32-quantitative-signal-secondary">3.2 Quantitative Signal (Secondary)</a></li>
+<li><a href="#4-veterinarian-review-flow">4. Veterinarian Review Flow</a></li>
+<li><a href="#step-1--document--interpretation-together">Step 1 — Document &amp; Interpretation Together</a></li>
+<li><a href="#step-2--confidence-guided-attention">Step 2 — Confidence-Guided Attention</a></li>
+<li><a href="#step-3--immediate-local-correction">Step 3 — Immediate Local Correction</a></li>
+<li><a href="#step-4--mark-document-as-reviewed-toggle">Step 4 — Mark document as reviewed (toggle)</a></li>
+<li><a href="#41-review-in-context-contract">4.1 Review-in-Context Contract</a></li>
+<li><a href="#review-ui-rendering-rules-medical-record-panel--medical-record-mvp">Review UI Rendering Rules (Medical Record Panel — Medical Record MVP)</a></li>
+<li><a href="#42-confidence-propagation--calibration-ux-contract">4.2 Confidence Propagation &amp; Calibration (UX Contract)</a></li>
+<li><a href="#43-confidence-tooltip-breakdown-veterinarian-ui">4.3 Confidence Tooltip Breakdown (Veterinarian UI)</a></li>
+<li><a href="#future-improvements">Future Improvements</a></li>
+<li><a href="#5-structural-effects--ux-consequences-only">5. Structural Effects — UX Consequences Only</a></li>
+<li><a href="#veterinarian-ux-rules">Veterinarian UX Rules</a></li>
+<li><a href="#reviewer-ux-rules">Reviewer UX Rules</a></li>
+<li><a href="#6-sensitive-changes--ux-rules">6. Sensitive Changes — UX Rules</a></li>
+<li><a href="#7-reviewer-interaction-model">7. Reviewer Interaction Model</a></li>
+<li><a href="#8-separation-of-responsibilities-non-negotiable">8. Separation of Responsibilities (Non-Negotiable)</a></li>
+<li><a href="#9-final-ux-rule">9. Final UX Rule</a></li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+<p>This document defines the <strong>project-specific UX and interaction design contract</strong> for the Veterinary Medical Records
+Processing system.</p>
+<p>It complements the global UX principles defined in
+<a href="../../../../shared/01-product/ux-guidelines/"><code>docs/shared/01-product/ux-guidelines.md</code></a>.</p>
+<blockquote>
+<p><strong>How to read this page</strong></p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Sections</th>
+<th>Focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Roles &amp; goals</strong></td>
+<td>§1 – §2</td>
+<td>Who the users are, what confidence means in UX terms.</td>
+</tr>
+<tr>
+<td><strong>Review flow</strong></td>
+<td>§3 – §4</td>
+<td>Veterinarian review steps, rendering rules, confidence tooltip.</td>
+</tr>
+<tr>
+<td><strong>System effects</strong></td>
+<td>§5 – §7</td>
+<td>Structural effects on UX, sensitive changes, reviewer model.</td>
+</tr>
+<tr>
+<td><strong>Boundaries</strong></td>
+<td>§8 – §9</td>
+<td>Separation of responsibilities and final rule.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Authority boundaries:</strong></p>
+<ul>
+<li>Product meaning and strategy → <a href="../product-design/">product-design.md</a></li>
+<li>Implementation details → <a href="../../02-tech/frontend-implementation/">frontend-implementation.md</a> / <a href="../../02-tech/backend-implementation/">backend-implementation.md</a></li>
+</ul>
+</blockquote>
+<p>All UI and interaction decisions for this project must comply with this document. If a design choice conflicts with
+these rules, it must be reconsidered.</p>
+<hr />
+<h2 id="1-user-roles-ux-goals">1. User Roles &amp; UX Goals</h2>
+<h3 id="11-veterinarian-document-review-under-time-pressure">1.1 Veterinarian — Document Review Under Time Pressure</h3>
+<p><strong>Context</strong><br />
+Veterinarians review medical documents as part of their normal clinical and operational work.</p>
+<h4 id="ux-goals">UX Goals</h4>
+<ul>
+<li>Reduce cognitive load.</li>
+<li>Minimize context switching.</li>
+<li>Make uncertainty, confidence, and provenance explicit.</li>
+<li>Optimize for scanning, not reading.</li>
+<li>Every screen answers: <em>“What do I need to decide or fix now?”</em></li>
+</ul>
+<h4 id="mental-model">Mental Model</h4>
+<ul>
+<li>“I am reviewing this document.”</li>
+<li>“I fix what is wrong and move on.”</li>
+<li>I am not managing schemas, learning, or system behavior.</li>
+</ul>
+<hr />
+<h3 id="12-reviewer-system-level-oversight">1.2 Reviewer — System-Level Oversight</h3>
+<p><strong>Context</strong><br />
+Reviewers operate at system level and are responsible for overseeing global patterns and long-term consistency.</p>
+<p>They do not resolve individual documents and do not participate in operational review workflows.</p>
+<h4 id="ux-goals_1">UX Goals</h4>
+<ul>
+<li>Make global impact explicit and inspectable.</li>
+<li>Support deliberate, high-stakes decisions.</li>
+<li>Prioritize safety, auditability, and coherence over speed.</li>
+<li>Focus attention on patterns, not individual actions.</li>
+</ul>
+<h4 id="mental-model_1">Mental Model</h4>
+<ul>
+<li>“I am reviewing system behavior over time.”</li>
+<li>“I decide what should change globally.”</li>
+<li>My decisions never affect past documents.</li>
+</ul>
+<hr />
+<h2 id="2-confidence-ux-definition">2. Confidence — UX Definition</h2>
+<p>Confidence is <strong>not correctness</strong>.</p>
+<p>From a UX perspective, confidence means:</p>
+<blockquote>
+<p>“How stable a given interpretation appears across similar documents.”</p>
+</blockquote>
+<p>UX rules:</p>
+<ul>
+<li>Confidence guides <strong>attention</strong>, not decisions.</li>
+<li>Confidence never blocks actions.</li>
+<li>Confidence never overrides human judgment.</li>
+<li><code>candidate_confidence</code> and <code>field_mapping_confidence</code> are distinct and must not be conflated in UX copy.</li>
+</ul>
+<hr />
+<h2 id="3-confidence-visibility">3. Confidence Visibility</h2>
+<h3 id="31-qualitative-signal-primary">3.1 Qualitative Signal (Primary)</h3>
+<ul>
+<li>Confidence must be visible at a glance.</li>
+<li>Use qualitative signals (e.g. emphasis, grouping, visual weight).</li>
+<li>Low-confidence elements should naturally attract attention first.</li>
+</ul>
+<p>Exact thresholds and scoring models are product decisions, not UX logic.</p>
+<hr />
+<h3 id="32-quantitative-signal-secondary">3.2 Quantitative Signal (Secondary)</h3>
+<ul>
+<li>Numeric confidence may be visible via secondary affordances (tooltips, expandable details).</li>
+<li>Quantitative signals must never be required to complete work.</li>
+<li>Domain-intrinsic numbers (dates, amounts, quantities) remain fully usable.</li>
+</ul>
+<hr />
+<h2 id="4-veterinarian-review-flow">4. Veterinarian Review Flow</h2>
+<pre><code class="language-mermaid">flowchart LR
+    S1[&quot;1. View doc +&lt;br&gt;interpretation +&lt;br&gt;confidence&quot;] --&gt; S2[&quot;2. Attention guided&lt;br&gt;by confidence&quot;]
+    S2 --&gt; S3[&quot;3. Edit/correct&lt;br&gt;locally&quot;]
+    S3 --&gt; S4[&quot;4. Mark as&lt;br&gt;reviewed&quot;]
+    S4 -.-&gt;|&quot;implicit signal&quot;| SYS[&quot;System&lt;br&gt;calibration&quot;]
+
+    style S1 fill:#2d333b,stroke:#6d5dfc,color:#e6edf3
+    style S2 fill:#2d333b,stroke:#6d5dfc,color:#e6edf3
+    style S3 fill:#2d333b,stroke:#6d5dfc,color:#e6edf3
+    style S4 fill:#2d333b,stroke:#6d5dfc,color:#e6edf3
+    style SYS fill:#161b22,stroke:#30363d,color:#8b949e
+</code></pre>
+<h3 id="step-1-document-interpretation-together">Step 1 — Document &amp; Interpretation Together</h3>
+<p>The veterinarian reviews, in a single unified context:</p>
+<ul>
+<li>the original document,</li>
+<li>the structured interpretation,</li>
+<li>confidence indicators per field.</li>
+</ul>
+<p>These elements must never be split into separate screens.</p>
+<hr />
+<h3 id="step-2-confidence-guided-attention">Step 2 — Confidence-Guided Attention</h3>
+<ul>
+<li>Low-confidence fields stand out visually.</li>
+<li>High-confidence fields recede into the background.</li>
+</ul>
+<p>The UI guides <em>where to look first</em>, not <em>what to decide</em>.</p>
+<hr />
+<h3 id="step-3-immediate-local-correction">Step 3 — Immediate Local Correction</h3>
+<p>The veterinarian can:</p>
+<ul>
+<li>edit existing values,</li>
+<li>reassign information,</li>
+<li>create new fields when needed.</li>
+</ul>
+<p>UX rules:</p>
+<ul>
+<li>Changes apply immediately to the current document.</li>
+<li>No explicit actions exist to submit feedback or “teach” the system.</li>
+<li>No explicit per-field confirmation is required in the current phase.</li>
+<li>
+<p>A single explicit action may exist to mark the document as reviewed.</p>
+</li>
+<li>
+<p>If the veterinarian marks the document as reviewed and a field remains unchanged, that outcome is treated as a weak
+  positive signal for mapping stability.</p>
+</li>
+<li>This implicit signal must not introduce extra steps or friction in veterinarian flow.</li>
+</ul>
+<p>From the veterinarian’s perspective:</p>
+<blockquote>
+<p>“I am done with this document.”</p>
+</blockquote>
+<hr />
+<h3 id="step-4-mark-document-as-reviewed-toggle">Step 4 — Mark document as reviewed (toggle)</h3>
+<p>The veterinarian can explicitly toggle review state from document view.</p>
+<p>UX rules:</p>
+<ul>
+<li>A single action button <code>Mark as reviewed</code> is available in document view.</li>
+<li><code>Mark as reviewed</code> is the canonical user action that completes review for a document.</li>
+<li>When marked as reviewed, the document list shows a checkmark indicator and the status label <code>Reviewed</code>.</li>
+<li>The veterinarian can unmark/reopen the document, returning it to the review queue and restoring the non-reviewed list
+  indicator/label state.</li>
+<li>Unmark/reopen does not delete extracted values, corrections, or prior edits.</li>
+<li>Implicit review signal fires when the veterinarian marks reviewed and a field remains unchanged.</li>
+</ul>
+<hr />
+<h2 id="41-review-in-context-contract">4.1 Review-in-Context Contract</h2>
+<p>The review experience must remain usable and explainable even when evidence rendering is imperfect.</p>
+<p>Normative behavior:</p>
+<ul>
+<li>Selecting a field must navigate the document viewer to the field evidence context (at minimum, page jump).</li>
+<li><code>View evidence</code> must always present useful context (page + snippet), including when precise highlighting is
+  unavailable.</li>
+<li>Highlighting should be treated as progressive enhancement (best effort only), and failure to highlight must not block
+  review flow.</li>
+<li>Low confidence should guide attention and inspection priority.</li>
+<li>Low confidence must not block editing, marking reviewed, or any other veterinarian action.</li>
+</ul>
+<h2 id="review-ui-rendering-rules-medical-record-panel-medical-record-mvp">Review UI Rendering Rules (Medical Record Panel — Medical Record MVP)</h2>
+<p>Panel definition and scope:</p>
+<ul>
+<li>The panel represents a <strong>Medical Record</strong> (clinical summary).</li>
+<li>In Medical Record MVP, non-clinical concepts are excluded from this panel by contract taxonomy (<code>medical_record_view</code>,
+  <code>scope</code>, <code>section</code>, <code>classification</code>, <code>other_fields[]</code>), not by UI heuristics or denylists.</li>
+</ul>
+<p>Section structure and order (fixed):</p>
+<ol>
+<li><strong>Veterinary Center</strong> (<code>Centro Veterinario</code>)</li>
+<li><strong>Patient</strong> (<code>Paciente</code>)</li>
+<li><strong>Owner</strong> (<code>Propietario</code>)</li>
+<li><strong>Visits</strong> (<code>Visitas</code>, from <code>visits[]</code>)</li>
+<li><strong>Internal Notes</strong> (<code>Notas internas</code>)</li>
+<li><strong>Other detected fields</strong> (<code>Otros campos detectados</code>)</li>
+<li><strong>Report information</strong> (<code>Información del informe</code>, bottom)</li>
+</ol>
+<p>Layout note:</p>
+<ul>
+<li>Sections render as normal blocks (no tabs), preserving the current visual system without redesign.</li>
+</ul>
+<p>Schema-aware rendering mode (deterministic):</p>
+<ul>
+<li>Medical Record MVP panel uses a single canonical structured contract (non-versioned).</li>
+<li>Render the fixed section order above, with <strong>Visitas</strong> sourced from <code>visits[]</code> (per
+  <a href="../../02-tech/technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a>, Appendix D9).</li>
+<li>Required document-level placeholders (for example NHC when missing) are driven by <code>medical_record_view.field_slots[]</code>
+  in Appendix D9, not by UI hardcoding.</li>
+<li>No heuristics grouping in UI; grouping comes from <code>visits[]</code> in the canonical contract.</li>
+</ul>
+<p>Display labels for the current Spanish UI locale (internal keys unchanged):</p>
+<ul>
+<li><strong>Centro Veterinario</strong></li>
+<li><code>clinic_name</code> -&gt; <code>Nombre</code></li>
+<li><code>clinic_address</code> -&gt; <code>Dirección</code></li>
+<li><code>vet_name</code> renders when present</li>
+<li><code>NHC</code>: visible label is always <code>NHC</code>; the current localized tooltip copy is <code>Número de historial clínico</code>.</li>
+<li>Backend key may be <code>nhc</code> or <code>medical_record_number</code>; visible UX label remains <code>NHC</code>.</li>
+<li>NHC must be rendered as a visible field in this section even when missing; when absent in ready state, show
+    placeholder <code>—</code>.</li>
+<li>Deterministic mapping rule: the contract/taxonomy must map backend key variants (<code>nhc</code> or <code>medical_record_number</code>)
+    to the single NHC concept before rendering; UI must not guess concept mapping.</li>
+<li><strong>Paciente</strong></li>
+<li><code>pet_name</code> -&gt; <code>Nombre</code></li>
+<li><code>dob</code> -&gt; <code>Nacimiento</code></li>
+<li><code>Estado reproductivo</code> renders when present/extracted</li>
+<li><code>Capa/Pelo</code> is not mapped in Medical Record MVP; if detected, it goes to <code>Otros campos detectados</code>.</li>
+<li><strong>Propietario</strong></li>
+<li><code>owner_name</code> -&gt; <code>Nombre</code></li>
+<li><code>owner_address</code> -&gt; <code>Dirección</code></li>
+<li><code>owner_id</code> is not shown in Medical Record MVP.</li>
+</ul>
+<p>Key -&gt; UI label -&gt; Section (UI):</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>UI label</th>
+<th>Section (UI)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clinic_name</td>
+<td>Nombre</td>
+<td>Centro Veterinario</td>
+</tr>
+<tr>
+<td>clinic_address</td>
+<td>Dirección</td>
+<td>Centro Veterinario</td>
+</tr>
+<tr>
+<td>vet_name</td>
+<td>Veterinario/a</td>
+<td>Centro Veterinario</td>
+</tr>
+<tr>
+<td>nhc</td>
+<td>NHC</td>
+<td>Centro Veterinario</td>
+</tr>
+<tr>
+<td>medical_record_number</td>
+<td>NHC</td>
+<td>Centro Veterinario</td>
+</tr>
+<tr>
+<td>pet_name</td>
+<td>Nombre</td>
+<td>Paciente</td>
+</tr>
+<tr>
+<td>dob</td>
+<td>Nacimiento</td>
+<td>Paciente</td>
+</tr>
+<tr>
+<td>reproductive_status</td>
+<td>Estado reproductivo</td>
+<td>Paciente</td>
+</tr>
+<tr>
+<td>owner_name</td>
+<td>Nombre</td>
+<td>Propietario</td>
+</tr>
+<tr>
+<td>owner_address</td>
+<td>Dirección</td>
+<td>Propietario</td>
+</tr>
+<tr>
+<td>visit_date</td>
+<td>Fecha</td>
+<td>Visitas</td>
+</tr>
+<tr>
+<td>admission_date</td>
+<td>Admisión</td>
+<td>Visitas</td>
+</tr>
+<tr>
+<td>discharge_date</td>
+<td>Alta</td>
+<td>Visitas</td>
+</tr>
+<tr>
+<td>reason_for_visit</td>
+<td>Motivo</td>
+<td>Visitas</td>
+</tr>
+</tbody>
+</table>
+<p>Visit rendering rules for the canonical contract:</p>
+<ul>
+<li>UI does not infer visits and does not regroup items by date/content.</li>
+<li>Render one visual unit per <code>VisitGroup</code> from <code>visits[]</code> only (Appendix D9 is authoritative).</li>
+<li>Recommended in-visit rendering order (display-only):</li>
+<li><code>Fecha</code> / <code>Motivo</code></li>
+<li><code>Síntomas</code></li>
+<li><code>Diagnóstico</code></li>
+<li><code>Procedimientos</code></li>
+<li><code>Medicación</code></li>
+<li><code>Plan de tratamiento</code></li>
+<li>If <code>visit_date</code> is null, show <code>Sin fecha</code>.</li>
+<li>If synthetic/unassigned visit group is present (<code>visit_id = "unassigned"</code>), show fixed group label <code>Sin asignar</code>.</li>
+</ul>
+<p>Missing vs loading (deterministic):</p>
+<ul>
+<li>While structured data is loading, show a clear loading state and do not show missing placeholders yet.</li>
+<li>Once the run is ready, any absent/non-extracted value must render an explicit placeholder.</li>
+</ul>
+<p>Empty states (deterministic):</p>
+<ul>
+<li>If <code>visits = []</code>, render <strong>Visitas</strong> with empty state.</li>
+<li>If a visit exists but <code>fields[]</code> is empty, show <code>Sin campos detectados en esta visita.</code></li>
+<li>If <code>Otros campos detectados</code> is empty, show <code>Sin otros campos detectados.</code></li>
+</ul>
+<p>Other detected fields (<code>Otros campos detectados</code>):</p>
+<ul>
+<li>This section is a contract-driven bucket for explicit unmapped/other items only; no UI-side classification.</li>
+<li>If the contract does not expose an explicit unmapped bucket (for example <code>unmapped_fields[]</code> / <code>other_fields[]</code>),
+  implementation is blocked until technical alignment is defined in
+  <a href="../../02-tech/technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a>.</li>
+</ul>
+<p>Report information (<code>Información del informe</code>):</p>
+<ul>
+<li>This section is always rendered as the final block.</li>
+<li>It includes report metadata such as detected language when present in payload.</li>
+</ul>
+<p>No governance terminology in veterinarian UX:</p>
+<ul>
+<li>The veterinarian UI copy must not expose terms such as <code>pending_review</code>, <code>governance</code>, or <code>reviewer</code>.</li>
+</ul>
+<h2 id="42-confidence-propagation-calibration-ux-contract">4.2 Confidence Propagation &amp; Calibration (UX Contract)</h2>
+<ul>
+<li><code>candidate_confidence</code> is an extraction-time diagnostic signal for a local candidate.</li>
+<li><code>field_mapping_confidence</code> is a context stability signal used over time for the same semantic mapping.</li>
+<li><code>field_mapping_confidence</code> is the primary UX signal; <code>candidate_confidence</code> is diagnostic and should not be shown by
+  default.</li>
+<li>Veterinarian-facing review UI shows only <code>field_mapping_confidence</code> by default.</li>
+<li><code>field_mapping_confidence</code> propagates continuously with smoothing; UI state should remain stable and avoid abrupt
+  visual churn.</li>
+<li>Product policy actions (for example default suggestion or demotion) occur only via thresholds + hysteresis + minimum
+  volume; UX should reflect outcomes, not expose calibration mechanics.</li>
+</ul>
+<h2 id="43-confidence-tooltip-breakdown-veterinarian-ui">4.3 Confidence Tooltip Breakdown (Veterinarian UI)</h2>
+<ul>
+<li>The veterinarian UI must show <code>field_mapping_confidence</code> as the default confidence signal.</li>
+<li>Numeric confidence is secondary and may appear only inside tooltip details.</li>
+<li><code>candidate_confidence</code> and <code>field_mapping_confidence</code> must not be conflated in UI copy or semantics.</li>
+</ul>
+<p>Tooltip structure (current Spanish UI copy, standard):</p>
+<ul>
+<li>First line: <code>Confianza: 72% (Media)</code></li>
+<li>Explanation sentence: <code>Indica qué tan fiable es el valor extraído automáticamente.</code></li>
+<li><code>Desglose:</code></li>
+<li><code>Fiabilidad de la extracción de texto: 65%</code></li>
+<li><code>Ajuste por histórico de revisiones: +7%</code></li>
+</ul>
+<p>Semantic rules:</p>
+<ul>
+<li><code>Fiabilidad de la extracción de texto</code> is a per-document diagnostic component tied to extraction quality for the
+  current run.</li>
+<li><code>Ajuste por histórico de revisiones</code> is an aggregated cross-document, system-level adjustment and is not about this
+  single document only.</li>
+<li>The displayed confidence remains a field-level result; no document-level confidence policy UI is shown.</li>
+</ul>
+<p>Visual rule:</p>
+<ul>
+<li>Adjustment value color is green when <code>&gt; 0</code>, red when <code>&lt; 0</code>, and neutral/muted when <code>= 0</code>.</li>
+</ul>
+<p>Edge cases:</p>
+<ul>
+<li>If there is no review history, show <code>Ajuste por histórico de revisiones: 0%</code>.</li>
+<li>If extraction reliability is unavailable, show <code>Fiabilidad de la extracción de texto: No disponible</code>.</li>
+</ul>
+<p>The rule "No governance terminology in veterinarian UX" remains in force for confidence tooltip copy.</p>
+<h3 id="future-improvements">Future Improvements</h3>
+<ul>
+<li>Random audit sampling support for occasional spot checks.</li>
+<li>Explicit per-field confirmation as an optional strong positive signal, stronger than implicit unchanged-on-complete
+  signals.</li>
+<li>Fields proposed by veterinarians from <strong>Other extracted fields</strong> become high-priority reviewer proposals; naming
+  reconciliation is expected future complexity.</li>
+</ul>
+<hr />
+<h2 id="5-structural-effects-ux-consequences-only">5. Structural Effects — UX Consequences Only</h2>
+<p>Some user actions may have <strong>system-level consequences</strong>.</p>
+<p>From a UX standpoint:</p>
+<h3 id="veterinarian-ux-rules">Veterinarian UX Rules</h3>
+<ul>
+<li>These consequences are <strong>not exposed</strong> to veterinarians.</li>
+<li>No warnings, confirmations, or explanations are shown.</li>
+<li>No responsibility beyond the current document is implied.</li>
+<li>Workflows remain identical regardless of downstream effects.</li>
+</ul>
+<h3 id="reviewer-ux-rules">Reviewer UX Rules</h3>
+<ul>
+<li>Reviewers may see aggregated effects of repeated actions.</li>
+<li>Signals are presented as patterns, never as individual blame.</li>
+<li>High-impact patterns are visually distinguishable.</li>
+</ul>
+<hr />
+<h2 id="6-sensitive-changes-ux-rules">6. Sensitive Changes — UX Rules</h2>
+<p>Some edits may be considered more sensitive at system level.</p>
+<p>UX implications:</p>
+<ul>
+<li>Veterinarians can always edit fields without friction.</li>
+<li>No additional confirmations are introduced.</li>
+<li>Sensitive edits never block completion of review.</li>
+</ul>
+<p>Any escalation, prioritization, or governance resulting from these edits is <strong>not defined by this document</strong> and must
+not surface in the veterinarian UI.</p>
+<hr />
+<h2 id="7-reviewer-interaction-model">7. Reviewer Interaction Model</h2>
+<p>Reviewers interact with <strong>aggregated patterns</strong>, not individual edits.</p>
+<p>UX principles:</p>
+<ul>
+<li>Patterns emerge over time.</li>
+<li>Single actions have no standalone meaning.</li>
+<li>Review focuses on trends, stability, and risk.</li>
+</ul>
+<p>Reviewer decisions:</p>
+<ul>
+<li>never block veterinary work,</li>
+<li>never affect past documents,</li>
+<li>apply prospectively only.</li>
+</ul>
+<hr />
+<h2 id="8-separation-of-responsibilities-non-negotiable">8. Separation of Responsibilities (Non-Negotiable)</h2>
+<ul>
+<li>Veterinarians resolve documents.</li>
+<li>Reviewers oversee system-level meaning.</li>
+<li>The workflows are asymmetric and decoupled.</li>
+</ul>
+<p>The veterinarian UI must not:</p>
+<ul>
+<li>surface reviewer decisions,</li>
+<li>preempt governance workflows,</li>
+<li>imply responsibility for system behavior.</li>
+</ul>
+<hr />
+<h2 id="9-final-ux-rule">9. Final UX Rule</h2>
+<p>This document defines <strong>how the system feels and behaves to users</strong>.</p>
+<p>It does not define:</p>
+<ul>
+<li>product strategy,</li>
+<li>system semantics,</li>
+<li>governance rules,</li>
+<li>learning mechanisms.</li>
+</ul>
+<p>If a UX decision cannot be resolved using this document and
+<a href="../../../../shared/01-product/ux-guidelines/"><code>docs/shared/01-product/ux-guidelines.md</code></a>, it must be escalated to
+Product Design.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

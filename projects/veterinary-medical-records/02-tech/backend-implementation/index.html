@@ -1,0 +1,1397 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Wiki-style technical documentation for the Veterinary Medical Records project">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>Backend Implementation Notes - Veterinary Medical Records Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#note-for-readers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-header__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Veterinary Medical Records Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Backend Implementation Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-nav__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Veterinary Medical Records Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shared Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Shared Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/02-tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3_1" id="__nav_1_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<!-- markdownlint-disable MD013 -->
+
+<h1 id="note-for-readers">Note for readers</h1>
+<p><strong>Breadcrumbs:</strong> <a href="../../../README.md">Docs</a> / <a href="../../../">Projects</a> / veterinary-medical-records / 02-tech</p>
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+<ul>
+<li><a href="#purpose">Purpose</a></li>
+<li><a href="#scope">Scope</a></li>
+<li><a href="#in-scope">In scope</a></li>
+<li><a href="#running-the-backend">Running The Backend</a></li>
+<li><a href="#backend-architecture">Backend architecture</a></li>
+<li><a href="#layering-mandatory">Layering (mandatory)</a></li>
+<li><a href="#persistence-model-sqlite">Persistence model (SQLite)</a></li>
+<li><a href="#minimum-entities-authoritative">Minimum entities (authoritative)</a></li>
+<li><a href="#document-status-derivation-authoritative">Document status derivation (authoritative)</a></li>
+<li><a href="#run-invariants-authoritative">Run invariants (authoritative)</a></li>
+<li><a href="#sqlite-guard-pattern-authoritative">SQLite guard pattern (authoritative)</a></li>
+<li><a href="#filesystem-storage">Filesystem storage</a></li>
+<li><a href="#deterministic-paths-authoritative">Deterministic paths (authoritative)</a></li>
+<li><a href="#run-scoped-artifacts-implementation">Run-scoped artifacts (implementation)</a></li>
+<li><a href="#atomicity-rules">Atomicity rules</a></li>
+<li><a href="#missing-artifacts">Missing artifacts</a></li>
+<li><a href="#processing-execution-model-in-process">Processing execution model (in-process)</a></li>
+<li><a href="#asynchronous-behavior">Asynchronous behavior</a></li>
+<li><a href="#scheduler-semantics">Scheduler semantics</a></li>
+<li><a href="#runner-lifecycle-implementation">Runner lifecycle (implementation)</a></li>
+<li><a href="#crash-recovery-startup">Crash recovery (startup)</a></li>
+<li><a href="#retry--timeout-policy">Retry + timeout policy</a></li>
+<li><a href="#step-model">Step model</a></li>
+<li><a href="#step-names-closed-set">Step names (closed set)</a></li>
+<li><a href="#step-tracking-via-artifacts">Step tracking via artifacts</a></li>
+<li><a href="#failure-mapping">Failure mapping</a></li>
+<li><a href="#structured-interpretation-schema">Structured interpretation schema</a></li>
+<li><a href="#storage-contract">Storage contract</a></li>
+<li><a href="#critical-keys">Critical keys</a></li>
+<li><a href="#review-events-contract">Review Events (contract)</a></li>
+<li><a href="#calibration-store-contract">Calibration Store (contract)</a></li>
+<li><a href="#confidence-calibration--policy-mvp-contracts">Confidence calibration &amp; policy (MVP contracts)</a></li>
+<li><a href="#tooltip-breakdown-data-sourcing-mvp">Tooltip breakdown data sourcing (MVP)</a></li>
+<li><a href="#reviewed-toggle-persistence-mvp-contract">Reviewed toggle persistence (MVP contract)</a></li>
+<li><a href="#api-implementation">API implementation</a></li>
+<li><a href="#authoritative-api-contracts-do-not-duplicate">Authoritative API contracts (do not duplicate)</a></li>
+<li><a href="#editing-while-active-run-exists">Editing while active run exists</a></li>
+<li><a href="#text-extraction--language-detection">Text extraction + language detection</a></li>
+<li><a href="#pdf-extraction">PDF extraction</a></li>
+<li><a href="#language-detection">Language detection</a></li>
+<li><a href="#logging-structured">Logging (structured)</a></li>
+<li><a href="#testing-expectations">Testing expectations</a></li>
+<li><a href="#unit-tests-minimum">Unit tests (minimum)</a></li>
+<li><a href="#integration-tests-minimum">Integration tests (minimum)</a></li>
+<li><a href="#stop-rule">STOP rule</a></li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+<p>This document is intended to provide <strong>implementation guidance for backend work</strong> and to provide structured context to
+an AI Coding Assistant during implementation.</p>
+<p>Reading order, document responsibilities, and precedence rules are defined in <a href="../../../README.md"><code>docs/README.md</code></a>.</p>
+<p>If any requirement here conflicts with a higher-precedence document, <strong>STOP</strong> and defer to the authority defined in the
+README.</p>
+<h2 id="purpose">Purpose</h2>
+<blockquote>
+<p><strong>How to read this page</strong></p>
+<p>This document is <strong>implementation guidance</strong>, not a design authority. It translates the
+<a href="../technical-design/">Technical Design</a> into backend responsibilities.</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Sections</th>
+<th>Focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Architecture</strong></td>
+<td>Architecture, Persistence, Filesystem</td>
+<td>Module layering, SQLite model, filesystem paths.</td>
+</tr>
+<tr>
+<td><strong>Execution</strong></td>
+<td>Processing execution model, Step model</td>
+<td>Async runner, scheduler, retry/timeout, step tracking.</td>
+</tr>
+<tr>
+<td><strong>Data contracts</strong></td>
+<td>Structured interpretation schema, API</td>
+<td>Schema storage, calibration, review events, API wiring.</td>
+</tr>
+<tr>
+<td><strong>Quality</strong></td>
+<td>Logging, Testing</td>
+<td>Structured logs, unit/integration test expectations.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Authority boundaries:</strong></p>
+<ul>
+<li>System design, contracts, and invariants → <a href="../technical-design/">technical-design.md</a> (Appendices A–E)</li>
+<li>Product meaning → <a href="../../01-product/product-design/">product-design.md</a></li>
+<li>Frontend implementation → <a href="../frontend-implementation/">frontend-implementation.md</a></li>
+</ul>
+</blockquote>
+<p>This document translates the <strong>authoritative system design</strong> into backend implementation responsibilities, focusing on:</p>
+<ul>
+<li>backend module boundaries and layering</li>
+<li>persistence + filesystem responsibilities</li>
+<li>in-process processing runner + scheduler semantics</li>
+<li>API implementation wiring and enforcement of the authoritative contract</li>
+<li>logging and test expectations</li>
+</ul>
+<h2 id="scope">Scope</h2>
+<h3 id="in-scope">In scope</h3>
+<ul>
+<li>Implementation of the authoritative endpoint surface (as defined in Technical Design Appendix B3)</li>
+<li>Persistence model and invariants</li>
+<li>Filesystem storage responsibilities</li>
+<li>In-process asynchronous execution model</li>
+<li>Step-based processing tracked via persisted artifacts</li>
+<li>Centralized enforcement of the authoritative error contract</li>
+<li>Structured logging and event taxonomy</li>
+<li>Unit and integration testing expectations</li>
+</ul>
+<h2 id="running-the-backend">Running The Backend</h2>
+<p>Run instructions live in the repository root <a href="../../../"><code>README.md</code></a>.</p>
+<h2 id="backend-architecture">Backend architecture</h2>
+<h3 id="layering-mandatory">Layering (mandatory)</h3>
+<p>Use a modular-monolith layered architecture:</p>
+<pre><code class="language-mermaid">graph TD
+    subgraph &quot;backend/app/&quot;
+        API[&quot;api/&lt;br&gt;FastAPI routers, error mapping&quot;]
+        APP[&quot;application/&lt;br&gt;use cases, orchestration&quot;]
+        DOM[&quot;domain/&lt;br&gt;entities, invariants&quot;]
+        PRT[&quot;ports/&lt;br&gt;repo/storage/runner interfaces&quot;]
+        INF[&quot;infra/&lt;br&gt;SQLite repos, filesystem, scheduler&quot;]
+    end
+
+    API --&gt; APP
+    APP --&gt; DOM
+    APP --&gt; PRT
+    PRT -.-&gt;|&quot;implements&quot;| INF
+    INF --&gt; DOM
+
+    style API fill:#2d333b,stroke:#6d5dfc,color:#e6edf3
+    style APP fill:#2d333b,stroke:#6d5dfc,color:#e6edf3
+    style DOM fill:#2d333b,stroke:#6d5dfc,color:#e6edf3
+    style PRT fill:#2d333b,stroke:#6d5dfc,color:#e6edf3
+    style INF fill:#2d333b,stroke:#6d5dfc,color:#e6edf3
+</code></pre>
+<ul>
+<li><code>domain</code></li>
+<li>entities/value objects/invariants</li>
+<li>no imports from FastAPI or infrastructure</li>
+<li><code>application</code></li>
+<li>use cases and orchestration</li>
+<li><code>ports</code></li>
+<li>interfaces for repos, storage, and runner/scheduler</li>
+<li><code>infra</code> (infrastructure)</li>
+<li>SQLite repositories, filesystem adapter, runner/scheduler</li>
+<li><code>api</code></li>
+<li>FastAPI routers, request/response models, error mapping</li>
+</ul>
+<p>Rules:</p>
+<ul>
+<li>Domain logic MUST be independent from infrastructure.</li>
+<li>Persistence invariants MUST be enforced at the persistence layer (transactional), not in memory.</li>
+</ul>
+<h2 id="persistence-model-sqlite">Persistence model (SQLite)</h2>
+<h3 id="minimum-entities-authoritative">Minimum entities (authoritative)</h3>
+<p>Authority: <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix B2
+(Minimal Persistent Data Model).</p>
+<p>Implementation responsibility: provide repositories/adapters for:</p>
+<ul>
+<li>Document</li>
+<li>ProcessingRun</li>
+<li>Artifacts</li>
+<li>InterpretationVersion</li>
+<li>FieldChangeLog</li>
+</ul>
+<h3 id="document-status-derivation-authoritative">Document status derivation (authoritative)</h3>
+<p>Authority: <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix A
+(Contracts, States &amp; Invariants).</p>
+<p>Implementation guidance:</p>
+<ul>
+<li>Implement status derivation as a pure domain rule (e.g., a function that maps “latest run summary” to a status).</li>
+<li>Do not store or mutate <code>Document.status</code>; it is derived.</li>
+</ul>
+<h3 id="run-invariants-authoritative">Run invariants (authoritative)</h3>
+<p>Authority: <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix A2 +
+Appendix B1.2.</p>
+<p>Implementation reminder: enforce invariants transactionally at the persistence layer; never via in-memory locks.</p>
+<h3 id="sqlite-guard-pattern-authoritative">SQLite guard pattern (authoritative)</h3>
+<p>Authority: <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix B1.2.1
+(Persistence-Level Guard Pattern).</p>
+<p>Implementation guidance:</p>
+<ul>
+<li>Encapsulate <code>BEGIN IMMEDIATE</code> + “check for RUNNING” + “transition to RUNNING” into a single repository method.</li>
+<li>Never perform the check and the transition in separate transactions (no partial transitions).</li>
+</ul>
+<h2 id="filesystem-storage">Filesystem storage</h2>
+<h3 id="deterministic-paths-authoritative">Deterministic paths (authoritative)</h3>
+<p>Authority: <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix B5
+(Filesystem Management Rules).</p>
+<p>Store the original upload under:</p>
+<ul>
+<li><code>/storage/{document_id}/original{ext}</code></li>
+</ul>
+<p>Where <code>ext</code> is derived from the normalized file type.</p>
+<h3 id="run-scoped-artifacts-implementation">Run-scoped artifacts (implementation)</h3>
+<p>Define deterministic run artifact paths (minimum required):</p>
+<ul>
+<li><code>RAW_TEXT</code>: <code>/storage/{document_id}/runs/{run_id}/raw-text.txt</code></li>
+</ul>
+<p>Note:</p>
+<ul>
+<li>Step artifacts (<code>artifact_type = STEP_STATUS</code>) are DB-resident JSON; no filesystem path is required for step tracking.</li>
+</ul>
+<h3 id="atomicity-rules">Atomicity rules</h3>
+<ul>
+<li>Writes must be atomic (write temp → rename).</li>
+<li>Upload endpoint must avoid partial persistence:</li>
+<li>no DB row without filesystem artifact on success</li>
+<li>no filesystem artifact without DB row on success</li>
+</ul>
+<p>Implementation guidance (paired DB + filesystem writes):</p>
+<ol>
+<li>Pre-generate IDs needed to compute deterministic final paths (e.g., <code>document_id</code>, <code>run_id</code>).</li>
+<li>Write content to a temp file adjacent to the final path (<code>.tmp</code>), flush, <code>fsync</code>, then <code>os.replace</code> temp → final.</li>
+<li>Wrap DB writes in a transaction and only <code>COMMIT</code> after the final filesystem rename succeeds.</li>
+<li>On any failure, best-effort cleanup:</li>
+<li>delete temp file,</li>
+<li>roll back DB transaction,</li>
+<li>if a final file was created but DB commit failed, delete the final file best-effort.</li>
+<li>Never return success unless both DB state and final filesystem paths are present.</li>
+</ol>
+<p>Environment knobs (current codebase):</p>
+<ul>
+<li>Storage root override: <code>VET_RECORDS_STORAGE_PATH</code></li>
+<li>DB path override: <code>VET_RECORDS_DB_PATH</code></li>
+</ul>
+<h3 id="missing-artifacts">Missing artifacts</h3>
+<p>If DB references an artifact but the filesystem is missing, return:</p>
+<ul>
+<li><code>410 Gone</code> with <code>error_code = ARTIFACT_MISSING</code></li>
+</ul>
+<p>Authority: <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix B3.2 +
+Appendix B5.</p>
+<h2 id="processing-execution-model-in-process">Processing execution model (in-process)</h2>
+<h3 id="asynchronous-behavior">Asynchronous behavior</h3>
+<ul>
+<li>API requests MUST NOT block on processing completion.</li>
+<li>Processing runs in background, in-process (task runner / executor / internal loop).</li>
+</ul>
+<h3 id="scheduler-semantics">Scheduler semantics</h3>
+<p>Authority: <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix B1.5 +
+B1.5.1.</p>
+<p>Implementation guidance:</p>
+<ul>
+<li>Use a fixed tick with sleep (no busy-loop).</li>
+<li>Treat scheduler execution as best-effort and never block API request handling.</li>
+</ul>
+<h3 id="runner-lifecycle-implementation">Runner lifecycle (implementation)</h3>
+<ul>
+<li>Start the scheduler as a long-lived background task from FastAPI lifespan/startup.</li>
+<li>Store the task handle on <code>app.state</code> so shutdown can cancel it.</li>
+<li>Loop behavior:</li>
+<li>on each tick, attempt to start eligible queued runs (per Appendix B1.5.1),</li>
+<li>apply the persistence guard pattern for <code>QUEUED → RUNNING</code> (Appendix B1.2.1),</li>
+<li>log best-effort scheduler/step events per Appendix A8.1.</li>
+<li>Shutdown behavior:</li>
+<li>cancel the task and await best-effort for a clean exit.</li>
+<li>Avoid event-loop blocking:</li>
+<li>if a step performs blocking I/O or CPU-heavy work (e.g., PDF parsing), run it off the event loop (threadpool) so
+    requests remain responsive.</li>
+</ul>
+<h3 id="crash-recovery-startup">Crash recovery (startup)</h3>
+<p>On application startup:</p>
+<ul>
+<li>Any run found in <code>RUNNING</code> is considered orphaned.</li>
+<li>Transition it to <code>FAILED</code> with <code>failure_type = PROCESS_TERMINATED</code>.</li>
+<li>Emit log event <code>RUN_RECOVERED_AS_FAILED</code>.</li>
+</ul>
+<p>Authority: <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix B1.3 +
+Appendix C3.</p>
+<h3 id="retry-timeout-policy">Retry + timeout policy</h3>
+<p>Authority: <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix B1.4 +
+B1.4.1.</p>
+<p>Implementation guidance:</p>
+<ul>
+<li>Retries are local to a single run and limited to the fixed default (no new runs).</li>
+<li>Timeouts transition the run to <code>TIMED_OUT</code> (terminal).</li>
+<li>Reprocessing always creates a <strong>new</strong> run.</li>
+</ul>
+<h2 id="step-model">Step model</h2>
+<h3 id="step-names-closed-set">Step names (closed set)</h3>
+<p>Authority: <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix C1.1
+(StepName).</p>
+<ul>
+<li><code>EXTRACTION</code></li>
+<li><code>INTERPRETATION</code></li>
+</ul>
+<h3 id="step-tracking-via-artifacts">Step tracking via artifacts</h3>
+<p>Persist step lifecycle as append-only <code>Artifacts</code>:</p>
+<ul>
+<li><code>artifact_type = STEP_STATUS</code></li>
+<li>Payload schema is authoritative:
+  <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix C1.3.</li>
+</ul>
+<h3 id="failure-mapping">Failure mapping</h3>
+<p>Authority: <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix C3
+(Error Codes and Failure Mapping).</p>
+<h2 id="structured-interpretation-schema">Structured interpretation schema</h2>
+<p>Authority: <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix D
+(Structured Interpretation Schema visit-grouped canonical contract). Product semantics for confidence are defined in
+<a href="../../01-product/product-design/"><code>docs/projects/veterinary-medical-records/01-product/product-design.md</code></a>; UX behavior remains in
+<a href="../../01-product/ux-design/"><code>docs/projects/veterinary-medical-records/01-product/ux-design.md</code></a>.</p>
+<p>Alignment note:</p>
+<ul>
+<li>Interpretation output may be partial with respect to the full Global Schema key universe.</li>
+<li>Backend does not backfill missing keys for presentation; frontend materializes the full schema view per Product Design
+  authority.</li>
+</ul>
+<h3 id="storage-contract">Storage contract</h3>
+<p>Authority:</p>
+<ul>
+<li><a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix D3
+  (Relationship to Persistent Model)</li>
+<li><a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix B2.4
+  (InterpretationVersion)</li>
+<li><a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix A3
+  (Interpretation &amp; Versioning Invariants)</li>
+</ul>
+<p>Implementation responsibility:</p>
+<ul>
+<li>Store the structured interpretation JSON as <code>InterpretationVersion.data</code>.</li>
+<li>Any edit creates a new <code>InterpretationVersion</code> (append-only).</li>
+<li>Exactly one active interpretation version per run.</li>
+</ul>
+<h3 id="critical-keys">Critical keys</h3>
+<p><code>StructuredField.is_critical</code> MUST be derived from <code>key ∈ CRITICAL_KEYS</code>. Source of truth:
+<a href="../../01-product/product-design/"><code>docs/projects/veterinary-medical-records/01-product/product-design.md</code></a>.</p>
+<p>Backend responsibility:</p>
+<ul>
+<li>Apply deterministic derivation at write-time (or validate on write).</li>
+<li>Do not allow the model to decide criticality.</li>
+</ul>
+<h3 id="review-events-contract">Review Events (contract)</h3>
+<p>Emit review/calibration-relevant events on:</p>
+<ul>
+<li><code>mark_reviewed</code></li>
+<li><code>unmark_reviewed</code> (reopen)</li>
+<li><code>field_edited</code></li>
+<li><code>field_reassigned</code></li>
+</ul>
+<p>Event handling rules:</p>
+<ul>
+<li>On <code>mark_reviewed</code>, compute weak-positive signals only for non-missing fields with a value that remains unchanged.</li>
+<li>On <code>field_edited</code>, emit negative correction signals for the affected mapping unit.</li>
+<li>On <code>field_reassigned</code>, emit negative reassignment signals for the previous field mapping unit.</li>
+<li><code>unmark_reviewed</code> records a separate event and does not retroactively revert previously emitted signals by default.</li>
+</ul>
+<h3 id="calibration-store-contract">Calibration Store (contract)</h3>
+<p>Persist calibration state keyed by (<code>context_key</code>, <code>field_key</code>, <code>mapping_id</code>):</p>
+<ul>
+<li><code>field_mapping_confidence</code></li>
+<li><code>policy_state</code> (<code>neutral|boosted|demoted|suppressed</code>)</li>
+<li>supporting counters/metadata required by the active policy version</li>
+</ul>
+<p>Update behavior:</p>
+<ul>
+<li>use smoothing and asymmetric updates (slow increase / faster decrease),</li>
+<li>enforce minimum-volume and hysteresis thresholds from policy configuration.</li>
+</ul>
+<h3 id="confidence-calibration-policy-mvp-contracts">Confidence calibration &amp; policy (MVP contracts)</h3>
+<ul>
+<li>Compute Context during interpretation/review event handling and derive <code>context_key</code> as a stable canonical
+  serialization/hash.</li>
+<li>Context-key serialization is stable across runs (for example, prefix with <code>ctx:</code> before serialization/hash).</li>
+<li><code>mapping_id</code> originates from the extraction/mapping strategy used for each field result and is persisted with the
+  field payload used for calibration events.</li>
+<li><code>candidate_confidence</code> is diagnostic and is exposed only via debug endpoints/flags, never by default veterinarian UI
+  endpoints.</li>
+<li>Persist signal-source events with deterministic identifiers:</li>
+<li>reviewed toggle: <code>document_id</code>, <code>reviewed_at</code>, <code>review_status</code></li>
+<li>field edits/corrections: persisted via existing edit/override flow as negative signals</li>
+<li>field reassignment signal: optional/future where reassignment detection is not yet emitted in all paths</li>
+<li>Persist aggregates by (<code>context_key</code>, <code>field_key</code>, <code>mapping_id</code>):</li>
+<li><code>field_mapping_confidence</code></li>
+<li><code>policy_state</code> derived via thresholds/hysteresis/min_volume</li>
+<li>Load thresholds from versioned <code>config/confidence_policy.yaml</code> and persist/emit the active policy version with
+  calibration updates.</li>
+<li>Structured logs for calibration updates must include: <code>document_id</code>, <code>run_id</code>, <code>context_key</code>, <code>field_key</code>,
+  <code>mapping_id</code>, old/new <code>field_mapping_confidence</code>, and policy-state transitions.</li>
+</ul>
+<h3 id="tooltip-breakdown-data-sourcing-mvp">Tooltip breakdown data sourcing (MVP)</h3>
+<ul>
+<li>Backend is responsible for deriving/providing tooltip breakdown values when available.</li>
+<li><code>field_candidate_confidence</code> is required for fields with value and must be in <code>[0,1]</code>.</li>
+<li><code>field_review_history_adjustment</code> is sourced from calibration aggregates for (<code>context_key</code>, <code>field_key</code>,
+  <code>mapping_id</code>) under the active <code>policy_version</code>; when no history exists, expose deterministic <code>0</code>.</li>
+<li><code>field_mapping_confidence</code> must be composed as
+  <code>clamp01(field_candidate_confidence + field_review_history_adjustment / 100)</code>.</li>
+<li>Frontend must not compute these values.</li>
+</ul>
+<h3 id="reviewed-toggle-persistence-mvp-contract">Reviewed toggle persistence (MVP contract)</h3>
+<ul>
+<li>Reviewed toggle is reversible (<code>mark_reviewed</code>/<code>unmark_reviewed</code>) and must not delete extracted/corrected values.</li>
+<li>Backend persists <code>review_status</code> and review timestamps as source of truth for reviewed state.</li>
+<li>Default list exclusion of reviewed items is a UI behavior; backend exposes persisted reviewed state and timestamps
+  consistently.</li>
+</ul>
+<h2 id="api-implementation">API implementation</h2>
+<h3 id="authoritative-api-contracts-do-not-duplicate">Authoritative API contracts (do not duplicate)</h3>
+<ul>
+<li>Endpoint map: <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix
+  B3 (+ B3.1)</li>
+<li>Run resolution per endpoint:
+  <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix B3.1</li>
+<li>Error response format: <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a>
+  Appendix B2.6</li>
+<li>Endpoint error semantics &amp; error codes:
+  <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix B3.2</li>
+</ul>
+<p>Implementation guidance (wiring and enforcement):</p>
+<ul>
+<li>Keep routers thin adapters: parse/validate → call an <code>application</code> use case → map to response schema.</li>
+<li>Centralize error handling so the Technical Design error contract is enforced by default:</li>
+<li>Prefer a shared <code>AppError</code> type plus FastAPI exception handlers that emit <code>{error_code, message, details?}</code>.</li>
+<li>Avoid per-route ad-hoc error payloads.</li>
+<li>When returning <code>409 CONFLICT</code>, ensure <code>details.reason</code> uses the Technical Design closed set (e.g., <code>NO_COMPLETED_RUN</code>,
+  <code>REVIEW_BLOCKED_BY_ACTIVE_RUN</code>).</li>
+</ul>
+<h3 id="editing-while-active-run-exists">Editing while active run exists</h3>
+<p>Authority: <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix B3.2
+(Conflict reasons and error semantics).</p>
+<p>Implementation guidance:</p>
+<ul>
+<li>When a workflow is blocked by an active run, return the authoritative conflict response using
+  <code>details.reason = REVIEW_BLOCKED_BY_ACTIVE_RUN</code>.</li>
+</ul>
+<h2 id="text-extraction-language-detection">Text extraction + language detection</h2>
+<h3 id="pdf-extraction">PDF extraction</h3>
+<p>Authority: <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> (PyMuPDF
+extraction).</p>
+<p>Implementation note: if extracted text is empty/near-empty, the run may fail as <code>EXTRACTION_FAILED</code> (per Technical
+Design step failure mapping; Appendix C3).</p>
+<h3 id="language-detection">Language detection</h3>
+<p>Authority: <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> (langdetect
+selection and rationale).</p>
+<p>Implementation note: if detection fails, set <code>language_used = "unknown"</code> and continue best-effort.</p>
+<h2 id="logging-structured">Logging (structured)</h2>
+<p>Each log entry MUST include:</p>
+<ul>
+<li><code>document_id</code></li>
+<li><code>run_id</code> (nullable only when not yet created)</li>
+<li><code>step_name</code> (nullable)</li>
+<li><code>event_type</code></li>
+<li><code>timestamp</code></li>
+<li><code>error_code</code> (nullable)</li>
+</ul>
+<p>Authority: <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix A8.1
+(Event Type Taxonomy).</p>
+<h2 id="testing-expectations">Testing expectations</h2>
+<p>Authority: <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix B7
+(Testability Expectations).</p>
+<h3 id="unit-tests-minimum">Unit tests (minimum)</h3>
+<ul>
+<li><code>document_status</code> derivation from latest run state</li>
+<li>persistence guard: cannot produce two <code>RUNNING</code> runs for the same document</li>
+<li>interpretation versioning: append-only + single active version per run</li>
+<li>error mapping: stable <code>error_code</code> and <code>details.reason</code></li>
+</ul>
+<h3 id="integration-tests-minimum">Integration tests (minimum)</h3>
+<ul>
+<li>upload → background processing → review view</li>
+<li>reprocess creates queued run; scheduler starts oldest; no parallel running</li>
+<li>crash recovery transitions orphaned RUNNING to FAILED with <code>PROCESS_TERMINATED</code></li>
+<li>missing artifact returns 410 with <code>ARTIFACT_MISSING</code></li>
+</ul>
+<h2 id="stop-rule">STOP rule</h2>
+<p>If an implementation decision is not explicitly covered by:</p>
+<ul>
+<li><a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> (including appendices),
+  or</li>
+<li><a href="../../04-delivery/implementation-plan/"><code>docs/projects/veterinary-medical-records/04-delivery/implementation-plan.md</code></a> (scope and
+  sequencing), or</li>
+<li>this document,</li>
+</ul>
+<p><strong>STOP and clarify before implementing.</strong> No implicit behavior is allowed.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

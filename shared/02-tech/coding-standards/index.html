@@ -1,0 +1,1141 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Wiki-style technical documentation for the Veterinary Medical Records project">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>Coding Standards - Veterinary Medical Records Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#coding-standards" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Veterinary Medical Records Documentation" class="md-header__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Veterinary Medical Records Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Coding Standards
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Veterinary Medical Records Documentation" class="md-nav__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Veterinary Medical Records Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shared Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Shared Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3_1" id="__nav_1_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../projects/veterinary-medical-records/01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../projects/veterinary-medical-records/02-tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../projects/veterinary-medical-records/03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../projects/veterinary-medical-records/04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../projects/veterinary-medical-records/99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+<p><strong>Table of Contents</strong> <em>generated with <a href="https://github.com/thlorenz/doctoc">DocToc</a></em></p>
+<ul>
+<li><a href="#coding-standards">Coding Standards</a></li>
+<li><a href="#purpose">Purpose</a></li>
+<li><a href="#change-discipline">Change Discipline</a></li>
+<li><a href="#code-style--consistency">Code Style &amp; Consistency</a></li>
+<li><a href="#structure--separation-of-concerns">Structure &amp; Separation of Concerns</a></li>
+<li><a href="#explicit-contracts--schemas">Explicit Contracts &amp; Schemas</a></li>
+<li><a href="#state-management--workflow-safety">State Management &amp; Workflow Safety</a></li>
+<li><a href="#traceability--human-control">Traceability &amp; Human Control</a></li>
+<li><a href="#error-handling--observability">Error Handling &amp; Observability</a><ul>
+<li><a href="#error-classification">Error classification</a></li>
+<li><a href="#observability--metrics">Observability &amp; metrics</a></li>
+</ul>
+</li>
+<li><a href="#testing-discipline">Testing Discipline</a></li>
+<li><a href="#data-handling--safety">Data Handling &amp; Safety</a></li>
+<li><a href="#configuration--environment-separation">Configuration &amp; Environment Separation</a></li>
+<li><a href="#versioning--evolution">Versioning &amp; Evolution</a></li>
+<li><a href="#dependency-management">Dependency Management</a></li>
+<li><a href="#naming-conventions">Naming Conventions</a><ul>
+<li><a href="#api-and-endpoints">API and endpoints</a></li>
+<li><a href="#domain-concepts-and-models">Domain concepts and models</a></li>
+<li><a href="#lifecycle-states">Lifecycle states</a></li>
+<li><a href="#persistence-artifacts">Persistence artifacts</a></li>
+</ul>
+</li>
+<li><a href="#architectural-layering-review-criteria">Architectural Layering (Review Criteria)</a></li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+<hr />
+<p>title: "Coding Standards" type: reference status: active audience: all last-updated: 2026-03-09</p>
+<hr />
+<h1 id="coding-standards">Coding Standards</h1>
+<blockquote>
+<p><strong>Canonical source of truth.</strong> This document is the single authoritative reference for all technical coding standards
+in this project.</p>
+<p><strong>Governance:</strong></p>
+<ul>
+<li>This file is a canonical document maintained by humans.</li>
+<li>Derived router modules are generated from this canonical source.</li>
+<li>Flow is <strong>canonical → router only</strong>. Router files MUST NOT be edited directly.</li>
+<li>Any direct edit to a router file may be overwritten during the next regeneration cycle.</li>
+</ul>
+</blockquote>
+<hr />
+<h2 id="purpose">Purpose</h2>
+<p>These standards define the <strong>mandatory technical rules</strong> for all code in this project. They apply to every approved
+implementation and must be followed consistently by all contributors (human and AI). These standards are normative for
+implementation and review decisions.</p>
+<p>AI assistants must not silently skip or partially comply with these standards. If a standard cannot be satisfied, they
+must stop and explain the blocker before proceeding.</p>
+<hr />
+<h2 id="change-discipline">Change Discipline</h2>
+<ul>
+<li>Implement <strong>one user story at a time</strong> (or a single technical concern for non-story work).</li>
+<li>Do <strong>not</strong> bundle unrelated changes.</li>
+<li>Keep commits logically scoped to a single story (or a single technical concern for non-story work).</li>
+</ul>
+<hr />
+<h2 id="code-style-consistency">Code Style &amp; Consistency</h2>
+<ul>
+<li>Follow <strong>PEP 8</strong> conventions consistently across the codebase.</li>
+<li>Prefer <strong>clear, readable naming</strong> over brevity.</li>
+<li>Prefer <strong>explicitness to cleverness</strong>.</li>
+<li>Use <strong>type hints</strong> where they add clarity, especially in:</li>
+<li>Public APIs</li>
+<li>Domain services</li>
+<li>Schemas and data transfer objects</li>
+</ul>
+<hr />
+<h2 id="structure-separation-of-concerns">Structure &amp; Separation of Concerns</h2>
+<ul>
+<li>Keep <strong>domain logic independent</strong> from frameworks and infrastructure.</li>
+<li>FastAPI routes must act as <strong>thin adapters only</strong>, limited to:</li>
+<li>Input validation</li>
+<li>Orchestration</li>
+<li>Response mapping</li>
+<li><strong>Business rules must live in domain services</strong>, never in API handlers.</li>
+<li>Access persistence, file storage, and external services <strong>only through explicit interfaces or adapters</strong>.</li>
+</ul>
+<hr />
+<h2 id="explicit-contracts-schemas">Explicit Contracts &amp; Schemas</h2>
+<ul>
+<li>Define and validate <strong>all API inputs and outputs</strong> using explicit schemas.</li>
+<li>Internal data passed between components must follow <strong>well-defined contracts</strong>.</li>
+<li>Structured domain records must be <strong>schema-validated and versioned</strong>.</li>
+</ul>
+<hr />
+<h2 id="state-management-workflow-safety">State Management &amp; Workflow Safety</h2>
+<ul>
+<li>Model <strong>lifecycle states explicitly</strong> and persist them.</li>
+<li>State transitions must be <strong>deterministic and safe to retry</strong>.</li>
+<li>Every state change must be <strong>observable and auditable</strong>.</li>
+</ul>
+<hr />
+<h2 id="traceability-human-control">Traceability &amp; Human Control</h2>
+<ul>
+<li><strong>Never silently overwrite human edits</strong>.</li>
+<li>Persist human corrections as <strong>append-only revisions</strong>, including:</li>
+<li>Before value</li>
+<li>After value</li>
+<li>Timestamp</li>
+<li>Preserve the ability to <strong>distinguish machine-generated data from human-validated data</strong>.</li>
+</ul>
+<hr />
+<h2 id="error-handling-observability">Error Handling &amp; Observability</h2>
+<h3 id="error-classification">Error classification</h3>
+<ul>
+<li>Classify errors clearly:</li>
+<li>User-facing errors</li>
+<li>Internal/system errors</li>
+<li><strong>Fail explicitly and early</strong> when inputs or states are invalid.</li>
+<li>Log key operations and state transitions using <strong>correlation identifiers</strong>.</li>
+</ul>
+<h3 id="observability-metrics">Observability &amp; metrics</h3>
+<ul>
+<li>Key pipeline stages must be <strong>measurable</strong> (e.g., processing time per stage).</li>
+<li>Failures must be <strong>attributable to specific workflow stages</strong>.</li>
+</ul>
+<hr />
+<h2 id="testing-discipline">Testing Discipline</h2>
+<ul>
+<li>Domain logic must be <strong>testable independently</strong> from frameworks and infrastructure.</li>
+<li>Automated tests must cover:</li>
+<li>Happy paths</li>
+<li>Meaningful failure scenarios</li>
+<li>Integration tests must validate <strong>critical end-to-end flows</strong>.</li>
+</ul>
+<hr />
+<h2 id="data-handling-safety">Data Handling &amp; Safety</h2>
+<ul>
+<li>Treat <strong>external inputs as untrusted by default</strong>.</li>
+<li>Validate file <strong>type and size before processing</strong>.</li>
+<li>Store <strong>raw files outside the database</strong>; persist only references.</li>
+<li>Persist metadata, states, structured outputs, and audit information in the database.</li>
+</ul>
+<hr />
+<h2 id="configuration-environment-separation">Configuration &amp; Environment Separation</h2>
+<ul>
+<li>Configuration must be <strong>environment-driven</strong>.</li>
+<li>No environment-specific values are hardcoded.</li>
+<li><strong>Secrets are never committed</strong> to the repository.</li>
+</ul>
+<hr />
+<h2 id="versioning-evolution">Versioning &amp; Evolution</h2>
+<ul>
+<li>APIs and schemas must be <strong>versioned from the start</strong>.</li>
+<li>Prefer <strong>backward-compatible changes</strong> over breaking ones.</li>
+<li>Schema evolution must be <strong>explicit and intentional</strong>.</li>
+</ul>
+<hr />
+<h2 id="dependency-management">Dependency Management</h2>
+<ul>
+<li>Keep the dependency footprint <strong>minimal</strong>.</li>
+<li>Do <strong>not introduce new third-party dependencies by default</strong>.</li>
+<li>Prefer <strong>standard library solutions</strong> when reasonable.</li>
+<li>Any new dependency must be <strong>explicitly justified</strong>.</li>
+</ul>
+<hr />
+<h2 id="naming-conventions">Naming Conventions</h2>
+<blockquote>
+<p>Git naming conventions (branches, commits, Pull Requests) are defined in
+<a href="../../03-ops/way-of-working/">way-of-working.md §2–§5</a>.</p>
+</blockquote>
+<h3 id="api-and-endpoints">API and endpoints</h3>
+<ul>
+<li>Use clear, predictable REST conventions, for example:</li>
+<li><code>POST /documents/upload</code></li>
+<li><code>GET /documents/{id}</code></li>
+<li><code>GET /documents/{id}/download</code></li>
+<li><code>GET /documents/{id}/text</code></li>
+<li><code>PUT /documents/{id}/structured-data</code></li>
+</ul>
+<h3 id="domain-concepts-and-models">Domain concepts and models</h3>
+<ul>
+<li>Use explicit, domain-oriented names for core concepts, such as:</li>
+<li><code>Document</code></li>
+<li><code>ProcessingStatus</code></li>
+<li><code>ExtractedText</code></li>
+<li><code>StructuredMedicalRecord</code></li>
+<li><code>FieldEvidence</code></li>
+<li><code>RecordRevision</code></li>
+</ul>
+<h3 id="lifecycle-states">Lifecycle states</h3>
+<ul>
+<li>Lifecycle states must be enums using <strong>UPPERCASE_SNAKE_CASE</strong>, for example:</li>
+<li><code>UPLOADED</code></li>
+<li><code>TEXT_EXTRACTED</code></li>
+<li><code>STRUCTURED</code></li>
+<li><code>READY_FOR_REVIEW</code></li>
+</ul>
+<h3 id="persistence-artifacts">Persistence artifacts</h3>
+<ul>
+<li>Use consistent, descriptive table names, such as:</li>
+<li><code>documents</code></li>
+<li><code>document_status_history</code></li>
+<li><code>document_text_artifacts</code></li>
+<li><code>document_structured_artifacts</code></li>
+<li><code>field_evidence</code></li>
+</ul>
+<hr />
+<h2 id="architectural-layering-review-criteria">Architectural Layering (Review Criteria)</h2>
+<p>When reviewing code, validate correct layering and dependency direction:</p>
+<ol>
+<li><strong>Domain layer</strong> (<code>domain/</code>): No framework or database imports. Pure business logic, frozen dataclasses, domain
+   services.</li>
+<li><strong>Application layer</strong> (<code>application/</code>): Depends only on <code>domain/</code> and <code>ports/</code>. Orchestration and use cases.</li>
+<li><strong>API layer</strong> (<code>api/</code>): Thin HTTP adapter only — mapping and validation. No SQL or business logic.</li>
+<li><strong>Infrastructure layer</strong> (<code>infra/</code>): Persistence, I/O, and external service adapters only.</li>
+</ol>
+<p>Maintainability priorities (in order):</p>
+<ul>
+<li>Clear naming and responsibilities</li>
+<li>Low duplication</li>
+<li>Small, cohesive modules and functions</li>
+<li>Logic located in the correct layer</li>
+</ul>
+<p>Testability requirements:</p>
+<ul>
+<li>Core application logic must be testable without FastAPI or SQLite.</li>
+<li>Unit tests for services; integration tests for HTTP + wiring.</li>
+</ul>
+<p>Simplicity principle:</p>
+<ul>
+<li>Flag overengineering risks.</li>
+<li>Prefer removing complexity over adding abstraction.</li>
+<li>Prefer small, high-impact fixes over large refactors.</li>
+<li>Do not propose new dependencies or architectural patterns unless explicitly required.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

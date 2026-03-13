@@ -1,0 +1,3840 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Wiki-style technical documentation for the Veterinary Medical Records project">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>Technical Design — Instructions for Implementation - Veterinary Medical Records Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#note-for-readers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-header__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Veterinary Medical Records Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Technical Design — Instructions for Implementation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-nav__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Veterinary Medical Records Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shared Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Shared Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/02-tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3_1" id="__nav_1_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<!-- markdownlint-disable MD013 -->
+
+<h1 id="note-for-readers">Note for readers</h1>
+<p><strong>Breadcrumbs:</strong> <a href="../../../README.md">Docs</a> / <a href="../../../">Projects</a> / veterinary-medical-records / 02-tech</p>
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+<ul>
+<li><a href="#technical-design--instructions-for-implementation">Technical Design — Instructions for Implementation</a></li>
+<li><a href="#purpose">Purpose</a></li>
+<li><a href="#1-system-overview-technical">1. System Overview (Technical)</a></li>
+<li><a href="#11-deployment-model-intent">1.1 Deployment Model (Intent)</a></li>
+<li><a href="#12-domain-model-overview-conceptual">1.2 Domain Model Overview (Conceptual)</a></li>
+<li><a href="#13-persistence-strategy-intent">1.3 Persistence Strategy (Intent)</a></li>
+<li><a href="#14-safety--design-guardrails">1.4 Safety &amp; Design Guardrails</a></li>
+<li><a href="#2-architecture">2. Architecture</a></li>
+<li><a href="#3-processing-model">3. Processing Model</a><ul>
+<li><a href="#31-pipeline">3.1 Pipeline</a></li>
+<li><a href="#32-asynchronous-execution">3.2 Asynchronous Execution</a></li>
+<li><a href="#33-processing-runs">3.3 Processing Runs</a></li>
+<li><a href="#active-run-rule">Active Run Rule</a></li>
+</ul>
+</li>
+<li><a href="#4-reprocessing-rules">4. Reprocessing Rules</a></li>
+<li><a href="#5-review--editing-rules">5. Review &amp; Editing Rules</a></li>
+<li><a href="#6-data-persistence-rules">6. Data Persistence Rules</a><ul>
+<li><a href="#61-general-principles">6.1 General Principles</a></li>
+<li><a href="#62-storage">6.2 Storage</a></li>
+<li><a href="#63-structured-data--versioning">6.3 Structured Data &amp; Versioning</a></li>
+</ul>
+</li>
+<li><a href="#7-confidence-technical-contract">7. Confidence (Technical Contract)</a><ul>
+<li><a href="#context-deterministic">Context (Deterministic)</a></li>
+<li><a href="#learnable-unit-key-mapping_id">Learnable Unit Key (<code>mapping_id</code>)</a></li>
+<li><a href="#policy-thresholds--hysteresis">Policy Thresholds &amp; Hysteresis</a></li>
+<li><a href="#mvp-payload--storage-implications">MVP payload &amp; storage implications</a></li>
+<li><a href="#confidence-breakdown-for-veterinarian-tooltip-mvp-visibility-contract">Confidence breakdown for veterinarian tooltip (MVP visibility contract)</a></li>
+<li><a href="#confidence_policyyaml-minimum-spec"><code>confidence_policy.yaml</code> (minimum spec)</a></li>
+<li><a href="#reviewed-signal-semantics-deterministic">Reviewed signal semantics (deterministic)</a></li>
+</ul>
+</li>
+<li><a href="#8-error-handling--states">8. Error Handling &amp; States</a><ul>
+<li><a href="#81-user-facing-error-messages">8.1 User-facing error messages</a></li>
+</ul>
+</li>
+<li><a href="#9-observability">9. Observability</a><ul>
+<li><a href="#91-logging">9.1 Logging</a></li>
+<li><a href="#92-future-observability">9.2 Future Observability</a></li>
+</ul>
+</li>
+<li><a href="#10-api-notes">10. API Notes</a></li>
+<li><a href="#11-scope-ownership">11. Scope Ownership</a></li>
+<li><a href="#12-data-lifecycle">12. Data Lifecycle</a></li>
+<li><a href="#13-security-boundary">13. Security Boundary</a><ul>
+<li><a href="#design-decisions">Design decisions</a></li>
+<li><a href="#production-path">Production path</a></li>
+</ul>
+</li>
+<li><a href="#14-known-limitations">14. Known Limitations</a></li>
+<li><a href="#15-final-instruction">15. Final Instruction</a></li>
+<li><a href="#appendix-a--contracts-states--invariants-normative">Appendix A — Contracts, States &amp; Invariants (Normative)</a></li>
+<li><a href="#a1-state-model--source-of-truth">A1. State Model &amp; Source of Truth</a><ul>
+<li><a href="#a11-processing-run-state-authoritative">A1.1 Processing Run State (authoritative)</a></li>
+<li><a href="#rules">Rules</a></li>
+<li><a href="#a12-document-status-derived-not-stored">A1.2 Document Status (derived, not stored)</a></li>
+<li><a href="#rule">Rule</a></li>
+<li><a href="#a13-review-status-human-workflow-only">A1.3 Review Status (human workflow only)</a></li>
+<li><a href="#rules-1">Rules</a></li>
+<li><a href="#a14-source-of-truth-summary">A1.4 Source of Truth Summary</a></li>
+</ul>
+</li>
+<li><a href="#a2-processing-run-invariants">A2. Processing Run Invariants</a></li>
+<li><a href="#a3-interpretation--versioning-invariants">A3. Interpretation &amp; Versioning Invariants</a><ul>
+<li><a href="#a31-structured-interpretations">A3.1 Structured Interpretations</a></li>
+<li><a href="#active-version-invariant-operational-normative">Active version invariant (Operational, normative)</a></li>
+<li><a href="#a32-field-level-changes">A3.2 Field-Level Changes</a></li>
+</ul>
+</li>
+<li><a href="#a4-confidence-rules">A4. Confidence Rules</a></li>
+<li><a href="#a5-api-contract-principles">A5. API Contract Principles</a><ul>
+<li><a href="#a51-run-resolution-rule">A5.1 Run Resolution Rule</a></li>
+</ul>
+</li>
+<li><a href="#a6-concurrency--idempotency-rules">A6. Concurrency &amp; Idempotency Rules</a></li>
+<li><a href="#a7-governance-invariants">A7. Governance Invariants</a></li>
+<li><a href="#a8-audit--observability-rules">A8. Audit &amp; Observability Rules</a><ul>
+<li><a href="#a81-event-type-taxonomy-authoritative">A8.1 Event Type Taxonomy (Authoritative)</a></li>
+</ul>
+</li>
+<li><a href="#a10-final-rule">A10. Final Rule</a></li>
+<li><a href="#appendix-b--operational-clarifications-normative">Appendix B — Operational Clarifications (Normative)</a></li>
+<li><a href="#b1-asynchronous-in-process-processing-model-authoritative">B1. Asynchronous In-Process Processing Model (Authoritative)</a><ul>
+<li><a href="#b11-assumed-execution-model">B1.1 Assumed Execution Model</a></li>
+<li><a href="#b12-single-running-run-guarantee">B1.2 Single <code>RUNNING</code> Run Guarantee</a></li>
+<li><a href="#b121-persistence-level-guard-pattern-sqlite-authoritative">B1.2.1 Persistence-Level Guard Pattern (SQLite, Authoritative)</a></li>
+<li><a href="#b13-crash--restart-semantics">B1.3 Crash &amp; Restart Semantics</a></li>
+<li><a href="#b14-retry--timeout-policy">B1.4 Retry &amp; Timeout Policy</a></li>
+<li><a href="#b141-fixed-defaults-normative">B1.4.1 Fixed defaults (Normative)</a></li>
+<li><a href="#b15-in-process-scheduler-semantics-authoritative">B1.5 In-Process Scheduler Semantics (Authoritative)</a></li>
+<li><a href="#b151-scheduler-tick--fairness-normative">B1.5.1 Scheduler tick &amp; fairness (Normative)</a></li>
+</ul>
+</li>
+<li><a href="#b2-minimal-persistent-data-model-textual-erd">B2. Minimal Persistent Data Model (Textual ERD)</a><ul>
+<li><a href="#b21-document">B2.1 Document</a></li>
+<li><a href="#b22-processingrun">B2.2 ProcessingRun</a></li>
+<li><a href="#b23-artifacts">B2.3 Artifacts</a></li>
+<li><a href="#artifacttype-closed-set-normative">ArtifactType (Closed Set, normative)</a></li>
+<li><a href="#b24-interpretationversion">B2.4 InterpretationVersion</a></li>
+<li><a href="#b25-fieldchangelog">B2.5 FieldChangeLog</a></li>
+<li><a href="#b251-field-path-format-authoritative">B2.5.1 Field path format (Authoritative)</a></li>
+<li><a href="#b26-api-error-response-format--naming-authority-normative">B2.6 API Error Response Format &amp; Naming Authority (Normative)</a></li>
+<li><a href="#api-error-response-format-normative">API Error Response Format (Normative)</a></li>
+<li><a href="#api-naming-authority-normative">API Naming Authority (Normative)</a></li>
+<li><a href="#b27-schemaversion-authoritative">B2.7 SchemaVersion (Authoritative)</a></li>
+<li><a href="#b28-structuralchangecandidate-authoritative">B2.8 StructuralChangeCandidate (Authoritative)</a></li>
+<li><a href="#b29-governancedecision-authoritative">B2.9 GovernanceDecision (Authoritative)</a></li>
+</ul>
+</li>
+<li><a href="#b3-minimal-api-endpoint-map-authoritative">B3. Minimal API Endpoint Map (Authoritative)</a><ul>
+<li><a href="#document-level">Document-Level</a></li>
+<li><a href="#supported-upload-types-normative">Supported upload types (Normative)</a></li>
+<li><a href="#run--review">Run / Review</a></li>
+<li><a href="#reviewer--governance-reviewer-facing-only">Reviewer / Governance (Reviewer-facing only)</a></li>
+<li><a href="#b31-run-resolution-per-endpoint-authoritative">B3.1 Run Resolution per Endpoint (Authoritative)</a></li>
+<li><a href="#response-shape-minimum-normative">Response shape (minimum, normative)</a></li>
+<li><a href="#field-candidate-suggestions-standard-review-payload">Field Candidate Suggestions (standard review payload)</a></li>
+<li><a href="#processing-history-endpoint-minimum-normative">Processing history endpoint (minimum, normative)</a></li>
+<li><a href="#language-override-endpoint-minimum-normative">Language override endpoint (minimum, normative)</a></li>
+<li><a href="#interpretation-edit-endpoint-minimum-normative">Interpretation edit endpoint (minimum, normative)</a></li>
+<li><a href="#reviewer-governance-endpoints-minimum-normative">Reviewer governance endpoints (minimum, normative)</a></li>
+</ul>
+</li>
+<li><a href="#b32-endpoint-error-semantics--error-codes-normative">B3.2 Endpoint error semantics &amp; error codes (Normative)</a><ul>
+<li><a href="#error-response-format-authoritative">Error response format (Authoritative)</a></li>
+<li><a href="#common-http-statuses">Common HTTP statuses</a></li>
+<li><a href="#notes">Notes</a></li>
+<li><a href="#upload-size-limit-normative">Upload size limit (Normative)</a></li>
+<li><a href="#get-runsrun_idartifactsraw-text-normative">GET /runs/{run_id}/artifacts/raw-text (Normative)</a></li>
+<li><a href="#post-runsrun_idinterpretations-normative">POST /runs/{run_id}/interpretations (Normative)</a></li>
+</ul>
+</li>
+<li><a href="#b4-idempotency--safe-retry-rules-authoritative">B4. Idempotency &amp; Safe Retry Rules (Authoritative)</a><ul>
+<li><a href="#b41-endpoint-semantics">B4.1 Endpoint Semantics</a></li>
+<li><a href="#post-documentsupload">POST /documents/upload</a></li>
+<li><a href="#post-documentsidreprocess">POST /documents/{id}/reprocess</a></li>
+<li><a href="#post-documentsidreviewed">POST /documents/{id}/reviewed</a></li>
+</ul>
+</li>
+<li><a href="#b5-filesystem-management-rules">B5. Filesystem Management Rules</a></li>
+<li><a href="#b6-blocking-rules-normative">B6. Blocking Rules (Normative)</a></li>
+<li><a href="#b7-testability-expectations">B7. Testability Expectations</a></li>
+<li><a href="#final-rule">Final Rule</a></li>
+<li><a href="#appendix-c--step-model--run-execution-semantics-normative">Appendix C — Step Model &amp; Run Execution Semantics (Normative)</a></li>
+<li><a href="#c1-processing-step-model-authoritative">C1. Processing Step Model (Authoritative)</a><ul>
+<li><a href="#c11-stepname-closed-set">C1.1 StepName (Closed Set)</a></li>
+<li><a href="#c12-stepstatus-closed-set">C1.2 StepStatus (Closed Set)</a></li>
+<li><a href="#c13-step-artifact-payload-json">C1.3 Step Artifact Payload (JSON)</a></li>
+<li><a href="#c14-append-only-rule">C1.4 Append-Only Rule</a></li>
+</ul>
+</li>
+<li><a href="#c2-run-state-derivation-from-steps-authoritative">C2. Run State Derivation from Steps (Authoritative)</a></li>
+<li><a href="#c3-error-codes-and-failure-mapping-authoritative">C3. Error Codes and Failure Mapping (Authoritative)</a></li>
+<li><a href="#c4-relationship-between-step-artifacts-and-logs-normative">C4. Relationship between Step Artifacts and Logs (Normative)</a></li>
+<li><a href="#appendix-d--structured-interpretation-schema-canonical-normative">Appendix D — Structured Interpretation Schema (Canonical) (Normative)</a></li>
+<li><a href="#d1-scope-and-design-principles">D1. Scope and Design Principles</a></li>
+<li><a href="#d2-versioning">D2. Versioning</a></li>
+<li><a href="#d3-relationship-to-persistent-model-authoritative">D3. Relationship to Persistent Model (Authoritative)</a></li>
+<li><a href="#d4-top-level-object-structuredinterpretation-json">D4. Top-Level Object: StructuredInterpretation (JSON)</a></li>
+<li><a href="#d5-structuredfield-authoritative">D5. StructuredField (Authoritative)</a><ul>
+<li><a href="#field-identity-rule-authoritative">Field identity rule (Authoritative)</a></li>
+</ul>
+</li>
+<li><a href="#d6-evidence-approximate-by-design">D6. Evidence (Approximate by Design)</a></li>
+<li><a href="#d7-semantics--rules-authoritative">D7. Semantics &amp; Rules (Authoritative)</a><ul>
+<li><a href="#d71-confidence">D7.1 Confidence</a></li>
+<li><a href="#d72-multiple-values">D7.2 Multiple Values</a></li>
+<li><a href="#d73-governance-future-facing">D7.3 Governance (Future-Facing)</a></li>
+<li><a href="#d74-critical-concepts-authoritative">D7.4 Critical Concepts (Authoritative)</a></li>
+</ul>
+</li>
+<li><a href="#d8-example-multiple-fields">D8. Example (Multiple Fields)</a></li>
+<li><a href="#d9-structured-interpretation-schema-visit-grouped-canonical-normative">D9. Structured Interpretation Schema (Visit-grouped Canonical) (Normative)</a><ul>
+<li><a href="#d91-top-level-object-structuredinterpretation-canonical-visit-grouped-json">D9.1 Top-Level Object: StructuredInterpretation (Canonical Visit-grouped) (JSON)</a></li>
+<li><a href="#d91a-medical-record-view-template--field-slots-normative-us-44">D9.1.a Medical Record View Template / Field Slots (Normative, US-44)</a></li>
+<li><a href="#d92-visitgroup-normative">D9.2 VisitGroup (Normative)</a></li>
+<li><a href="#d93-scoping-rules-normative">D9.3 Scoping Rules (Normative)</a></li>
+<li><a href="#d94-determinism-and-unassigned-rule-normative">D9.4 Determinism and Unassigned Rule (Normative)</a></li>
+<li><a href="#d95-contract-note-normative">D9.5 Contract Note (Normative)</a></li>
+<li><a href="#d96-authoritative-contract-boundary-for-medical-record-rendering">D9.6 Authoritative Contract Boundary for Medical Record Rendering</a></li>
+</ul>
+</li>
+<li><a href="#appendix-e--minimal-libraries-for-pdf-text-extraction--language-detection-normative">Appendix E — Minimal Libraries for PDF Text Extraction &amp; Language Detection (Normative)</a></li>
+<li><a href="#e1-pdf-text-extraction">E1. PDF Text Extraction</a></li>
+<li><a href="#e2-language-detection">E2. Language Detection</a></li>
+<li><a href="#e3-dependency-justification-repository-requirement">E3. Dependency Justification (Repository Requirement)</a></li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+<h1 id="technical-design-instructions-for-implementation">Technical Design — Instructions for Implementation</h1>
+<blockquote>
+<p><strong>How to read this page</strong></p>
+<p>This is the largest canonical document in the repository (~2 100 lines). It is organized in three layers:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Sections</th>
+<th>What you find there</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Design decisions</strong></td>
+<td>§1 – §15 (main body)</td>
+<td>System overview, architecture, processing model, data rules, confidence contract, error handling, security, and known limitations. Start here for the "why" and "what".</td>
+</tr>
+<tr>
+<td><strong>Normative contracts</strong></td>
+<td>Appendix A</td>
+<td>State model, invariants, concurrency rules, and governance contracts. Authoritative — implementation must conform.</td>
+</tr>
+<tr>
+<td><strong>Operational detail</strong></td>
+<td>Appendices B – E</td>
+<td>Data model (B2), API surface (B3), step model (C), interpretation schema (D), and extraction libraries (E). Reference these when implementing a specific subsystem.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reading paths:</strong></p>
+<ul>
+<li><em>New contributor:</em> read §1 – §3 for orientation, then jump to the appendix relevant to your task.</li>
+<li><em>Reviewing a PR:</em> use the TOC to locate the authoritative section, then check the corresponding appendix contract.</li>
+<li><em>AI assistant:</em> read the full document; implement exactly what is described and nothing more.</li>
+</ul>
+</blockquote>
+<h2 id="purpose">Purpose</h2>
+<p>This document defines the <strong>technical design, system contracts, and invariants</strong> that must be followed when implementing
+the system.</p>
+<p>This can be read by humans for evaluation and iteration purposes, and by AI assistants to <strong>implement exactly this
+design</strong>, respecting all requirements and decisions. Do <strong>not</strong> add features, infrastructure, or abstractions that are
+not explicitly described.</p>
+<p>If any requirement in this document cannot be satisfied, STOP and explain the blocker before proceeding.</p>
+<hr />
+<h2 id="1-system-overview-technical">1. System Overview (Technical)</h2>
+<p>The system is implemented as a <strong>modular monolith</strong> with an <strong>explicit, observable, step-based processing pipeline</strong>.</p>
+<hr />
+<h2 id="11-deployment-model-intent">1.1 Deployment Model (Intent)</h2>
+<p>The system is implemented as a <strong>modular monolith</strong>.</p>
+<ul>
+<li>Logical boundaries must be preserved in code (modules, explicit interfaces).</li>
+<li>Domain logic must remain independent from infrastructure.</li>
+<li>The design must remain evolvable into independent services in the future.</li>
+<li>Do not introduce infrastructure complexity that is not strictly required for the scope defined in this repository.</li>
+</ul>
+<hr />
+<h2 id="12-domain-model-overview-conceptual">1.2 Domain Model Overview (Conceptual)</h2>
+<p>The system is built around a small set of explicit, persistent domain concepts.<br />
+All relevant domain concepts must be persisted to support auditability, traceability, and human-in-the-loop workflows.</p>
+<p>Core concepts (conceptual overview):</p>
+<ul>
+<li><strong>Document</strong>: submitted medical document with identity, metadata, lifecycle state, and raw file reference.</li>
+<li><strong>ProcessingRun / ProcessingStatus</strong>: explicit lifecycle states representing progress through the pipeline.</li>
+<li><strong>ExtractedText</strong> (Raw Text Artifact in prose): extracted text with provenance and diagnostics.</li>
+<li><strong>Structured interpretation / InterpretationVersion</strong>: schema-validated structured medical data for a single
+  document/run.</li>
+<li><strong>FieldEvidence</strong>: lightweight links between structured fields and their source (page/snippet).</li>
+<li><strong>RecordRevisions / FieldChangeLog</strong>: append-only records of human edits.</li>
+</ul>
+<h3 id="entity-relationship-diagram">Entity-Relationship Diagram</h3>
+<p>The physical schema maps the conceptual model above into 5 SQLite tables. Artifacts
+(extracted text, structured interpretations) are stored as JSON payloads inside the
+<code>artifacts</code> table, scoped to a specific <code>processing_run</code>. Calibration aggregates
+track accept/edit statistics independently for confidence tuning.</p>
+<pre><code class="language-mermaid">erDiagram
+    documents {
+        TEXT document_id PK
+        TEXT original_filename
+        TEXT content_type
+        INTEGER file_size
+        TEXT storage_path
+        TEXT review_status
+        TEXT created_at
+        TEXT updated_at
+        TEXT reviewed_at
+        TEXT reviewed_by
+        TEXT reviewed_run_id
+    }
+
+    document_status_history {
+        TEXT id PK
+        TEXT document_id FK
+        TEXT status
+        TEXT run_id
+        TEXT created_at
+    }
+
+    processing_runs {
+        TEXT run_id PK
+        TEXT document_id FK
+        TEXT state
+        TEXT created_at
+        TEXT started_at
+        TEXT completed_at
+        TEXT failure_type
+    }
+
+    artifacts {
+        TEXT artifact_id PK
+        TEXT run_id FK
+        TEXT artifact_type
+        TEXT payload
+        TEXT created_at
+    }
+
+    calibration_aggregates {
+        TEXT context_key PK
+        TEXT field_key PK
+        TEXT mapping_id
+        TEXT mapping_id_scope_key PK
+        TEXT policy_version PK
+        INTEGER accept_count
+        INTEGER edit_count
+        TEXT updated_at
+    }
+
+    documents ||--o{ document_status_history : &quot;status changes&quot;
+    documents ||--o{ processing_runs : &quot;processed by&quot;
+    processing_runs ||--o{ artifacts : &quot;produces&quot;
+</code></pre>
+<!-- Sources: backend/app/infra/database.py (schema init), backend/app/domain/models.py (domain dataclasses) -->
+
+<p>This section provides conceptual orientation only.<br />
+Authoritative contracts and invariants are defined in
+<strong><a href="#appendix-a--contracts-states--invariants-normative">Appendix A</a></strong> and
+<strong><a href="#appendix-b--operational-clarifications-normative">Appendix B</a></strong>.</p>
+<hr />
+<h2 id="13-persistence-strategy-intent">1.3 Persistence Strategy (Intent)</h2>
+<p>Intent:<br />
+Persist the <strong>minimum set of artifacts</strong> required to make the system debuggable, auditable, and safe for
+human-in-the-loop workflows.</p>
+<p>Persistence moments:</p>
+<ul>
+<li>On ingestion: persist document metadata and initial lifecycle state.</li>
+<li>After each pipeline stage: persist produced artifacts and state transitions.</li>
+<li>On human edits: persist new append-only revisions; never overwrite silently.</li>
+</ul>
+<p>Storage mapping and invariants are defined normatively in
+<strong><a href="#appendix-b--operational-clarifications-normative">Appendix B</a></strong>.</p>
+<hr />
+<h2 id="14-safety-design-guardrails">1.4 Safety &amp; Design Guardrails</h2>
+<ul>
+<li>Logical stages remain explicit and observable.</li>
+<li>State transitions remain explicit and persisted.</li>
+<li>Machine-generated data and human-validated data remain separate and traceable.</li>
+<li>Prefer clarity and traceability over performance or abstraction.</li>
+<li>Preserve the ability to evolve this modular monolith into independent services.</li>
+</ul>
+<p>Technical guardrails:</p>
+<ul>
+<li>Machine-produced structured outputs are stored as run-scoped artifacts; prior artifacts remain unchanged.</li>
+<li>Structured interpretation outputs MUST conform to the schema in
+  <a href="#appendix-d--structured-interpretation-schema-canonical-normative">Appendix D</a> (schema validation required).</li>
+<li>Human edits create new interpretation versions (append-only); machine-produced outputs remain preserved as produced.</li>
+</ul>
+<hr />
+<h2 id="2-architecture">2. Architecture</h2>
+<ul>
+<li>Implement a <strong>modular monolith</strong>.</li>
+<li>Use a layered architecture:</li>
+<li><code>domain</code></li>
+<li><code>application</code></li>
+<li><code>ports</code></li>
+<li><code>infra</code> (infrastructure)</li>
+<li><code>api</code></li>
+<li>Prefer <strong>explicit, readable code</strong> over abstractions.</li>
+</ul>
+<pre><code class="language-mermaid">graph TD
+    subgraph &quot;API Layer&quot;
+        API[&quot;api/&quot;]
+    end
+    subgraph &quot;Application Layer&quot;
+        APP[&quot;application/&quot;]
+    end
+    subgraph &quot;Domain Layer&quot;
+        DOM[&quot;domain/&quot;]
+    end
+    subgraph &quot;Ports&quot;
+        PRT[&quot;ports/ (abstractions)&quot;]
+    end
+    subgraph &quot;Infrastructure Layer&quot;
+        INF[&quot;infra/ (SQLite, filesystem, LLM clients)&quot;]
+    end
+
+    API --&gt; APP
+    APP --&gt; DOM
+    APP --&gt; PRT
+    PRT -.-&gt;|implements| INF
+    INF --&gt; DOM
+
+    style API fill:#4a90d9,color:#fff
+    style APP fill:#7ab648,color:#fff
+    style DOM fill:#f5a623,color:#fff
+    style PRT fill:#9b59b6,color:#fff
+    style INF fill:#e74c3c,color:#fff
+</code></pre>
+<blockquote>
+<p><strong>Dependency rule:</strong> outer layers depend on inner layers. <code>infra</code> implements <code>ports</code> interfaces — domain never depends
+on infrastructure.</p>
+</blockquote>
+<hr />
+<h2 id="3-processing-model">3. Processing Model</h2>
+<h3 id="31-pipeline">3.1 Pipeline</h3>
+<p>Document processing follows a <strong>linear pipeline</strong>:</p>
+<ol>
+<li>Upload</li>
+<li>Text extraction</li>
+<li>Interpretation into structured data</li>
+<li>Review &amp; correction</li>
+<li>Review completion</li>
+</ol>
+<pre><code class="language-mermaid">flowchart LR
+    A[&quot;1. Upload&quot;] --&gt; B[&quot;2. Text Extraction&quot;]
+    B --&gt; C[&quot;3. Interpretation&quot;]
+    C --&gt; D[&quot;4. Review &amp; Correction&quot;]
+    D --&gt; E[&quot;5. Review Completion&quot;]
+
+    A -.-&gt;|&quot;persist doc metadata&quot;| DB[(SQLite)]
+    B -.-&gt;|&quot;persist raw text&quot;| FS[(Filesystem)]
+    C -.-&gt;|&quot;persist structured data&quot;| DB
+    D -.-&gt;|&quot;append-only edits&quot;| DB
+
+    style A fill:#4a90d9,color:#fff
+    style B fill:#4a90d9,color:#fff
+    style C fill:#4a90d9,color:#fff
+    style D fill:#7ab648,color:#fff
+    style E fill:#7ab648,color:#fff
+</code></pre>
+<p>The pipeline is <strong>observable</strong> and <strong>step-based</strong>.</p>
+<hr />
+<h3 id="32-asynchronous-execution">3.2 Asynchronous Execution</h3>
+<ul>
+<li>Processing is <strong>asynchronous</strong> and runs in the background.</li>
+<li>API requests must <strong>never block</strong> waiting for processing to complete.</li>
+<li>Processing is executed internally (in-process worker or equivalent). This document describes an in-process execution
+  model; story-specific scope boundaries live in
+  <a href="../../04-delivery/implementation-plan/"><code>docs/projects/veterinary-medical-records/04-delivery/implementation-plan.md</code></a>.</li>
+</ul>
+<hr />
+<h3 id="33-processing-runs">3.3 Processing Runs</h3>
+<ul>
+<li>Each processing attempt creates a <strong>new processing run</strong>.</li>
+<li>Processing runs are:</li>
+<li>immutable</li>
+<li>append-only</li>
+<li>A document may have many historical runs.</li>
+</ul>
+<h4 id="active-run-rule">Active Run Rule</h4>
+<ul>
+<li>
+<p><strong>Only one processing run may be <code>RUNNING</code> per document at any time</strong>.</p>
+</li>
+<li>
+<p>States:</p>
+</li>
+<li><code>QUEUED</code></li>
+<li><code>RUNNING</code></li>
+<li><code>COMPLETED</code></li>
+<li><code>FAILED</code></li>
+<li><code>TIMED_OUT</code></li>
+</ul>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --&gt; QUEUED : run created
+    QUEUED --&gt; RUNNING : scheduler picks (no other RUNNING)
+    RUNNING --&gt; COMPLETED : all steps succeed
+    RUNNING --&gt; FAILED : step fails / unrecoverable
+    RUNNING --&gt; TIMED_OUT : exceeds 120 s wall-clock
+    RUNNING --&gt; FAILED : crash recovery (PROCESS_TERMINATED)
+    COMPLETED --&gt; [*]
+    FAILED --&gt; [*]
+    TIMED_OUT --&gt; [*]
+</code></pre>
+<p>Multiple <code>QUEUED</code> runs may exist per document (append-only history).</p>
+<p>If a reprocess is requested while a run is <code>RUNNING</code>:</p>
+<ul>
+<li>A new run is created in <code>QUEUED</code></li>
+<li>It starts only after the <code>RUNNING</code> run finishes or times out</li>
+<li><code>RUNNING</code> runs are <strong>never cancelled</strong></li>
+</ul>
+<hr />
+<h2 id="4-reprocessing-rules">4. Reprocessing Rules</h2>
+<ul>
+<li>Reprocessing is <strong>manual only</strong> (explicit user action).</li>
+<li>The system must not automatically create new runs.</li>
+<li>Reprocessing:</li>
+<li>creates a new processing run</li>
+<li>never overwrites previous data</li>
+<li>Retries inside a run (e.g. transient step retry) are allowed, but must not create new runs.</li>
+</ul>
+<hr />
+<h2 id="5-review-editing-rules">5. Review &amp; Editing Rules</h2>
+<p>UI and API MUST prevent conflicting edits while processing is active. If a client attempts to edit/review while a
+<code>RUNNING</code> run exists, the API MUST respond with:</p>
+<ul>
+<li><code>409 Conflict</code> (<code>error_code = CONFLICT</code>) and <code>details.reason = REVIEW_BLOCKED_BY_ACTIVE_RUN</code>.</li>
+</ul>
+<hr />
+<h2 id="6-data-persistence-rules">6. Data Persistence Rules</h2>
+<h3 id="61-general-principles">6.1 General Principles</h3>
+<ul>
+<li>Never overwrite extracted or structured data.</li>
+<li>All generated artifacts are versioned.</li>
+<li>History must be preserved for auditability.</li>
+</ul>
+<hr />
+<h3 id="62-storage">6.2 Storage</h3>
+<ul>
+<li>Primary database: <strong>SQLite</strong> (<a href="../adr/ADR-ARCH-0002-sqlite-database/">ADR-ARCH-0002</a>)</li>
+<li>Large artifacts (original uploaded files, raw extracted text):</li>
+<li>stored in the filesystem</li>
+<li>referenced from the database</li>
+<li>Use JSON columns where flexibility is required.</li>
+</ul>
+<hr />
+<h3 id="63-structured-data-versioning">6.3 Structured Data &amp; Versioning</h3>
+<ul>
+<li>Structured interpretations are stored as <strong>versioned records</strong>.</li>
+<li>Any user edit creates a <strong>new version</strong>.</li>
+<li>Previous versions are retained.</li>
+<li>Exactly one interpretation version is <strong>active</strong> at a time per run (<a href="#a31-structured-interpretations">A3.1</a>).</li>
+<li>Structural changes (add/remove/rename field) set an internal <code>pending_review = true</code> flag
+  (<a href="#a32-field-level-changes">A3.2</a>).</li>
+<li>Field-level change history must be tracked.</li>
+</ul>
+<hr />
+<h2 id="7-confidence-technical-contract">7. Confidence (Technical Contract)</h2>
+<ul>
+<li>Each structured field MUST carry a <code>confidence</code> number in range 0–1 (see
+  <a href="#appendix-d--structured-interpretation-schema-canonical-normative">Appendix D</a>).</li>
+<li>Confidence is a stored <strong>attention signal</strong> only.</li>
+<li>The meaning/governance of confidence in veterinarian workflows is defined in
+  <a href="../../01-product/product-design/"><code>docs/projects/veterinary-medical-records/01-product/product-design.md</code></a>.</li>
+</ul>
+<h3 id="context-deterministic">Context (Deterministic)</h3>
+<ul>
+<li>Purpose: deterministic aggregation key for signals and <code>field_mapping_confidence</code>.</li>
+<li>Context fields: <code>doc_family</code>/<code>document_type</code>, <code>language</code>, <code>country</code>, <code>layout_fingerprint</code>, <code>extractor_version</code>,
+  <code>schema_contract</code>.</li>
+<li>Context is serialized into a stable canonical representation and/or hash key for storage and aggregation.</li>
+<li>Exclusions: do not include <code>veterinarian_id</code>; avoid <code>clinic_id</code> as a first-class key (use <code>layout_fingerprint</code>).</li>
+<li>This contract remains deterministic and stable for current MVP semantics.</li>
+</ul>
+<h3 id="learnable-unit-key-mapping_id">Learnable Unit Key (<code>mapping_id</code>)</h3>
+<ul>
+<li><code>mapping_id</code> is a stable strategy identifier (string enum-style scheme), e.g., <code>label_regex::&lt;label&gt;</code>,
+  <code>anchor::&lt;anchor_id&gt;</code>, <code>fallback::&lt;heuristic_name&gt;</code>.</li>
+<li>Calibration storage/aggregation key is: (<code>context_key</code>, <code>field_key</code>, <code>mapping_id</code>).</li>
+</ul>
+<h3 id="policy-thresholds-hysteresis">Policy Thresholds &amp; Hysteresis</h3>
+<ul>
+<li>Thresholds and hysteresis parameters MUST live in a versioned config file (for example
+  <code>config/confidence_policy.yaml</code>) and include a policy version field.</li>
+<li>UX confidence bands are derived from <code>field_mapping_confidence</code> (low/mid/high; exact numeric cutoffs may be configured
+  per policy version).</li>
+<li>Hysteresis uses separate enter/exit thresholds for policy-state transitions.</li>
+<li>Minimum volume is required before policy-state transitions are applied.</li>
+</ul>
+<h3 id="mvp-payload-storage-implications">MVP payload &amp; storage implications</h3>
+<p>Minimum field-level payload for calibration-aware review must support:</p>
+<ul>
+<li><code>field_mapping_confidence</code> (0–1), the primary veterinarian-facing confidence signal.</li>
+<li><code>policy_state</code> (<code>neutral|boosted|demoted|suppressed</code>).</li>
+<li><code>mapping_id</code> (stable strategy identifier).</li>
+<li><code>context_key</code> (derived from Context).</li>
+<li><code>candidate_confidence</code> (optional, diagnostic only, not shown by default).</li>
+</ul>
+<h3 id="confidence-breakdown-for-veterinarian-tooltip-mvp-visibility-contract">Confidence breakdown for veterinarian tooltip (MVP visibility contract)</h3>
+<ul>
+<li><code>field_mapping_confidence</code> remains the primary veterinarian-facing confidence signal.</li>
+<li>Tooltip-only breakdown components (MVP):</li>
+<li><code>field_candidate_confidence</code> (<code>number</code> in <code>[0,1]</code>): candidate-level reliability signal shown as percentage.</li>
+<li><code>field_review_history_adjustment</code> (<code>number</code>): explanatory cross-document/system-level delta derived from calibration
+    aggregates.<ul>
+<li>Unit: signed percentage points.</li>
+<li>Example: <code>+7</code> -&gt; <code>+7%</code>, <code>-4</code> -&gt; <code>-4%</code>, <code>0</code> -&gt; <code>0%</code>.</li>
+<li>Frontend contract: render-only presentation; no recomputation/recalibration in UI.</li>
+</ul>
+</li>
+<li>Mapping composition invariant (MVP):</li>
+<li><code>field_mapping_confidence = clamp01(field_candidate_confidence + field_review_history_adjustment / 100)</code>.</li>
+<li>UI invariant:</li>
+<li>the confidence dot/band uses <code>field_mapping_confidence</code>,</li>
+<li>tooltip breakdown is explanatory only,</li>
+<li>no document-level policy UI is exposed.</li>
+<li>Missingness behavior:</li>
+<li><code>field_candidate_confidence</code> should be present for fields with value.</li>
+<li><code>field_review_history_adjustment</code> must be present and deterministic; use <code>0</code> when no review history is available.</li>
+<li>Terminology clarification:</li>
+<li><code>field_candidate_confidence</code> = diagnostic pre-mapping score shown in tooltip.</li>
+<li><code>text_extraction_reliability</code> is not part of the tooltip MVP contract.</li>
+</ul>
+<h3 id="confidence_policyyaml-minimum-spec"><code>confidence_policy.yaml</code> (minimum spec)</h3>
+<p>Required keys:</p>
+<ul>
+<li><code>policy_version</code></li>
+<li><code>band_cutoffs</code> (<code>low_max</code>, <code>mid_max</code>)</li>
+<li>enter/exit thresholds (hysteresis)</li>
+<li><code>min_volume</code></li>
+</ul>
+<p>Deterministic policy-state selection rules:</p>
+<ul>
+<li>Apply threshold/hysteresis transitions only when <code>volume &gt;= min_volume</code>.</li>
+<li><code>neutral</code> is the default when <code>volume &lt; min_volume</code> or no transition rule is matched.</li>
+<li>Threshold sets must be mutually exclusive by design; if overlap is misconfigured, fail config validation.</li>
+<li><code>suppressed</code> is supported by the enum and may be disabled by default in MVP unless explicit thresholds are configured.</li>
+<li>If <code>thresholds.suppressed</code> is absent, <code>suppressed</code> is never entered.</li>
+</ul>
+<p>Band mapping rule:</p>
+<ul>
+<li><code>low</code> if <code>field_mapping_confidence &lt; low_max</code>; <code>mid</code> if <code>field_mapping_confidence &lt; mid_max</code>; otherwise <code>high</code>.</li>
+</ul>
+<p>Compact example:</p>
+<pre><code class="language-yaml">policy_version: &quot;v1&quot;
+band_cutoffs: { low_max: 0.50, mid_max: 0.75 }
+thresholds:
+  boosted: { enter: 0.82, exit: 0.74 }
+  demoted: { enter: 0.38, exit: 0.46 }
+min_volume: 5
+</code></pre>
+<h3 id="reviewed-signal-semantics-deterministic">Reviewed signal semantics (deterministic)</h3>
+<ul>
+<li>When a document is marked reviewed and a field remains unchanged, emit a weak-positive signal for that mapping in
+  context.</li>
+<li><code>unchanged</code> is determined by equality of <code>normalized_value</code> at review time against the active interpreted value after
+  applying persisted overrides.</li>
+<li>Placeholder/empty handling is deterministic: placeholder text is not a value; unchanged requires both sides
+  null/empty-equivalent (null, empty string, or whitespace-only) or both sides equal normalized strings.</li>
+<li>Signal effects are prospective only and never auto-change Global Schema keys/order.</li>
+</ul>
+<hr />
+<h2 id="cross-cutting-concerns-summary">Cross-Cutting Concerns Summary</h2>
+<p>This section consolidates references to cross-cutting concerns documented
+throughout this specification. Each concern is described in full at its
+canonical location; this summary provides a single V9 viewpoint index.</p>
+<table>
+<thead>
+<tr>
+<th>Concern</th>
+<th>Canonical Section</th>
+<th>Key Policy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Error handling</td>
+<td><a href="#8-error-handling--states">§8</a></td>
+<td>Failures explicit and classified; user-facing messages mapped</td>
+</tr>
+<tr>
+<td>Observability &amp; logging</td>
+<td><a href="#9-observability">§9</a></td>
+<td>Structured logs only; never block processing</td>
+</tr>
+<tr>
+<td>Configuration</td>
+<td><a href="../deployment/#3-environment-variables">deployment.md §3</a></td>
+<td>All config via env vars; no hardcoded secrets</td>
+</tr>
+<tr>
+<td>Rate limiting</td>
+<td><a href="#13-security-boundary">§13</a></td>
+<td>Upload 10/min, download 30/min via <code>slowapi</code></td>
+</tr>
+<tr>
+<td>Security boundary</td>
+<td><a href="#13-security-boundary">§13</a></td>
+<td>Optional bearer token; UUID validation on all IDs</td>
+</tr>
+<tr>
+<td>Data versioning</td>
+<td><a href="#6-data-persistence-rules">§6</a></td>
+<td>Append-only; never overwrite artifacts</td>
+</tr>
+<tr>
+<td>Confidence policy</td>
+<td><a href="#7-confidence-technical-contract">§7</a></td>
+<td>Per-field 0–1 score; band cutoffs configurable</td>
+</tr>
+<tr>
+<td>Scope ownership</td>
+<td><a href="#11-scope-ownership">§11</a></td>
+<td>Backend owns domain logic; frontend owns UX</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-error-handling-states">8. Error Handling &amp; States</h2>
+<ul>
+<li>Failures must be explicit and classified:</li>
+<li><code>UPLOAD_FAILED</code></li>
+<li><code>EXTRACTION_FAILED</code></li>
+<li><code>INTERPRETATION_FAILED</code></li>
+<li>
+<p><code>PROCESS_TERMINATED</code> (crash/restart recovery only; <a href="#b13-crash--restart-semantics">B1.3</a>)</p>
+</li>
+<li>
+<p>Document status must always reflect the <strong>last known state</strong>.</p>
+</li>
+<li>Failed runs remain visible and auditable.</li>
+<li>Stuck runs must be detectable via timeout and transitioned to <code>TIMED_OUT</code>.</li>
+</ul>
+<h3 id="81-user-facing-error-messages">8.1 User-facing error messages</h3>
+<p>Raw API error strings are <strong>never shown directly</strong> in toast notifications. The frontend <code>errorMessages.ts</code> module
+applies regex-based pattern matching to classify errors and map them to user-friendly Spanish messages:</p>
+<table>
+<thead>
+<tr>
+<th>Pattern</th>
+<th>User message</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rate.?limit\|too many</code></td>
+<td>"Demasiadas solicitudes. Intenta de nuevo en unos segundos."</td>
+</tr>
+<tr>
+<td><code>file.*too large\|size.*exceed</code></td>
+<td>"El archivo es demasiado grande. El límite es 50 MB."</td>
+</tr>
+<tr>
+<td><code>not found\|404</code></td>
+<td>"Documento no encontrado."</td>
+</tr>
+<tr>
+<td><code>network\|fetch\|timeout</code></td>
+<td>"Error de conexión. Verifica tu conexión a internet."</td>
+</tr>
+<tr>
+<td>(+ 4 more patterns)</td>
+<td>See <code>frontend/src/lib/errorMessages.ts</code> for full map</td>
+</tr>
+</tbody>
+</table>
+<p>Unmatched errors fall back to a generic message. This ensures UX consistency regardless of backend error format changes.</p>
+<hr />
+<h2 id="9-observability">9. Observability</h2>
+<h3 id="91-logging">9.1 Logging</h3>
+<p>The system must emit <strong>structured logs</strong> only.</p>
+<p>Each log entry must include:</p>
+<ul>
+<li><code>document_id</code></li>
+<li><code>run_id</code></li>
+<li><code>step_name</code> (if applicable)</li>
+<li><code>event_type</code></li>
+<li><code>timestamp</code></li>
+<li><code>error_code</code> (if any)</li>
+<li><code>context_key</code>, <code>field_key</code>, and <code>mapping_id</code> for mapping-confidence events</li>
+<li>old/new <code>field_mapping_confidence</code> and any policy-state transition (<code>neutral|boosted|demoted|suppressed</code>)</li>
+</ul>
+<p>Observability requirement for confidence calibration:</p>
+<ul>
+<li>The system must provide enough traceability to explain why a field is low/high confidence in a given context.</li>
+</ul>
+<p>Logs must be best-effort and must <strong>never block processing</strong>.</p>
+<hr />
+<h3 id="92-future-observability">9.2 Future Observability</h3>
+<p>Metrics and persistent event tracing may be introduced by a future user story; the current stories rely on structured
+logs.</p>
+<hr />
+<h2 id="10-api-notes">10. API Notes</h2>
+<p>This repository’s API is intended for the project UI and internal integration. If public exposure, formal versioning, or
+hardening is introduced, it should be defined via a dedicated user story and updated contracts.</p>
+<hr />
+<h2 id="11-scope-ownership">11. Scope Ownership</h2>
+<p>Story-specific scope boundaries are defined per user story in
+<a href="../../04-delivery/implementation-plan/"><code>docs/projects/veterinary-medical-records/04-delivery/implementation-plan.md</code></a>
+(Scope Clarification). This Technical Design defines the technical contracts and invariants needed to implement those
+stories.</p>
+<hr />
+<h2 id="12-data-lifecycle">12. Data Lifecycle</h2>
+<p>Data lifecycle behaviors (retention, deletion, export) must be introduced by a dedicated user story and corresponding
+design updates.</p>
+<hr />
+<h2 id="13-security-boundary">13. Security Boundary</h2>
+<p>Authentication and authorization are <strong>minimal and optional</strong> for the current exercise.</p>
+<p>The backend supports an optional bearer-token boundary via <code>AUTH_TOKEN</code>:</p>
+<ul>
+<li>If <code>AUTH_TOKEN</code> is unset or empty, authentication is disabled and behavior remains unchanged for evaluator flows.</li>
+<li>If <code>AUTH_TOKEN</code> is set, endpoints under <code>/api/*</code> require <code>Authorization: Bearer &lt;AUTH_TOKEN&gt;</code>.</li>
+</ul>
+<p>This keeps local evaluation friction low while enabling a minimal protection layer for deployments that need a basic
+access gate.</p>
+<h3 id="current-threat-model-assessment-scope">Current threat model (assessment scope)</h3>
+<p>This repository targets a single-evaluator, local-first assessment workflow.
+That intentionally narrows the active threat model:</p>
+<ul>
+<li>trusted operator on localhost,</li>
+<li>no multi-tenant isolation,</li>
+<li>no public internet exposure by default,</li>
+<li>no delegated user accounts or role hierarchy.</li>
+</ul>
+<p>Those scope limits do <strong>not</strong> remove security obligations; they explain why the
+current implementation prioritizes request validation, dependency hygiene, and a
+minimal access gate over production-grade authN/authZ.
+See <a href="#14-known-limitations">§14 Known Limitations</a> for the complete operational
+scope and explicit deferred hardening items.</p>
+<h3 id="design-decisions">Design decisions</h3>
+<ul>
+<li><strong>Optional auth middleware</strong> is included only for <code>/api/*</code> routes and is disabled by default.</li>
+<li><strong>Upload validation</strong> enforces file-type checks and content-type verification, but does not enforce authentication.</li>
+<li><strong>Rate limiting</strong> is applied via <code>slowapi</code> middleware on upload (10/min) and download (30/min) endpoints. Limits are
+  configurable via <code>VET_RECORDS_RATE_LIMIT_UPLOAD</code> and <code>VET_RECORDS_RATE_LIMIT_DOWNLOAD</code> environment variables.</li>
+<li><strong>UUID validation</strong> on all <code>document_id</code> and <code>run_id</code> path parameters prevents path traversal and malformed ID
+  injection (returns 422).</li>
+<li><strong>Security audit in CI</strong> runs <code>pip-audit --strict</code> and <code>npm audit --audit-level=high</code> on every PR.</li>
+</ul>
+<h3 id="input-validation-and-request-boundaries">Input validation and request boundaries</h3>
+<ul>
+<li>File uploads are validated before processing begins: type/content checks,
+  configured size limits, and explicit storage boundaries reduce accidental or
+  malformed ingestion.</li>
+<li>Path and route identifiers use UUID validation, so repository/storage access
+  never accepts arbitrary filesystem-like path fragments.</li>
+<li>Review mutations operate on schema-validated structured interpretations rather
+  than free-form backend objects; invalid payloads fail before persistence.</li>
+</ul>
+<h3 id="sql-injection-and-query-safety">SQL injection and query safety</h3>
+<p>The persistence layer uses raw SQL by design
+(<a href="../adr/ADR-ARCH-0003-raw-sql-repository-pattern/">ADR-ARCH-0003</a>), so query
+safety must be explicit.</p>
+<ul>
+<li>Repository code uses parameterized statements/placeholders for runtime values.</li>
+<li>Query structure is owned by repository modules, not assembled from user input
+  in route handlers.</li>
+<li>UUID/path validation narrows the set of values reaching the repository layer.</li>
+<li>CI security auditing complements, but does not replace, code review of query
+  construction.</li>
+</ul>
+<h3 id="frontend-xss-boundary">Frontend XSS boundary</h3>
+<ul>
+<li>The frontend is a React SPA, so standard JSX rendering keeps text values
+  escaped by default.</li>
+<li>The review experience renders backend-provided values as data, not as trusted
+  HTML fragments.</li>
+<li>Evidence snippets and structured interpretation fields must remain plain text
+  unless a dedicated sanitization policy is introduced later.</li>
+</ul>
+<h3 id="production-path">Production path</h3>
+<p>For a production deployment in a regulated veterinary domain, the following would be required:</p>
+<ol>
+<li><strong>Token-based authentication</strong> at the API gateway level (e.g., OAuth 2.0 / JWT).</li>
+<li><strong>Role-based authorization</strong> on document and processing endpoints.</li>
+<li><strong>Abuse prevention</strong> — rate limiting is now in place (see <a href="#14-known-limitations">§14</a> row 6); advanced patterns
+   (per-user quotas, adaptive limits) would be a production evolution.</li>
+<li><strong>Audit logging</strong> of access events on protected resources.</li>
+<li><strong>Streaming upload with early size rejection</strong> to prevent memory-based DoS (see
+   <a href="../../04-delivery/future-improvements/">future-improvements.md</a> item #9).</li>
+</ol>
+<p>The current architecture supports this evolution: the hexagonal design and explicit port/adapter boundaries allow
+inserting an auth adapter without modifying domain or application layers. See
+<a href="../../04-delivery/future-improvements/">future-improvements.md</a> item #15 for the roadmap entry.</p>
+<hr />
+<h2 id="14-known-limitations">14. Known Limitations</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Limitation</th>
+<th>Impact</th>
+<th>Mitigation / Roadmap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Single-process model — API and scheduler share one event loop</td>
+<td>No horizontal scaling for processing</td>
+<td><a href="../adr/ADR-ARCH-0004-in-process-async-processing/">ADR-ARCH-0004</a>; optional worker profile in <a href="../../04-delivery/future-improvements/">Known Limitations</a> #14</td>
+</tr>
+<tr>
+<td>2</td>
+<td>SQLite — single-writer constraint</td>
+<td>Write contention under concurrent uploads</td>
+<td>WAL mode + busy timeout applied (Iteration 2); PostgreSQL adapter in roadmap (#17)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Minimal authentication boundary</td>
+<td>Root endpoints remain open; token auth is optional and static</td>
+<td>Optional bearer-token auth implemented (Iteration 3, <a href="#13-security-boundary">§13</a>); full authN/authZ is a production evolution</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>AppWorkspace.tsx</code> at ~2,200 LOC (down from ~5,800)</td>
+<td>Core orchestrator still large; 28 hooks + 3 panel components extracted (−62%)</td>
+<td>Decomposition across Iterations 3, 7, 8, 13, 14; remaining LOC is render orchestration — further splits yield diminishing returns</td>
+</tr>
+<tr>
+<td>5</td>
+<td>~~<code>routes.py</code> at ~940 LOC~~ <strong>✅ Resolved</strong></td>
+<td>Routes fully decomposed into 6 domain modules (all &lt; 420 LOC) + 18-LOC aggregator</td>
+<td>Done (Iteration 6)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>~~No rate limiting on API endpoints~~ <strong>✅ Resolved</strong></td>
+<td>Rate limiting applied via <code>slowapi</code> on upload (10/min) and download (30/min)</td>
+<td>Done (Iteration 10, F16-D)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>~~No DB indexes on FK columns~~ <strong>✅ Resolved</strong></td>
+<td>4 secondary indexes added on <code>processing_runs</code>, <code>artifacts</code>, <code>document_status_history</code></td>
+<td>Done (Iteration 10, F16-A)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>~~SQLite repository monolith (751 LOC, 4 aggregates)~~ <strong>✅ Resolved</strong></td>
+<td>Split into 3 aggregate modules + façade: <code>sqlite_document_repo.py</code> (241), <code>sqlite_run_repo.py</code> (302), <code>sqlite_calibration_repo.py</code> (123)</td>
+<td>Done (Iteration 11, F18-S)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>~~No latency baselines~~ <strong>✅ Resolved</strong></td>
+<td>P50/P95 benchmarks for list/get/upload endpoints; P95 &lt; 500ms enforced</td>
+<td>Done (Iteration 11, F18-P)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>~~Raw API errors shown to users~~ <strong>✅ Resolved</strong></td>
+<td><code>errorMessages.ts</code> maps 8 error patterns to user-friendly Spanish toasts</td>
+<td>Done (Iteration 11, F18-O)</td>
+</tr>
+<tr>
+<td>11</td>
+<td>~~Limited E2E coverage (20 tests)~~ <strong>✅ Resolved</strong></td>
+<td>Expanded to 65 tests across 21 spec files covering all 4 phases of the E2E plan</td>
+<td>Done (Iteration 12, F19-A→E)</td>
+</tr>
+<tr>
+<td>12</td>
+<td>~~No accessibility testing~~ <strong>✅ Resolved</strong></td>
+<td><code>@axe-core/playwright</code> WCAG 2.1 AA audit integrated; 0 critical violations; aria-labels + focus management added</td>
+<td>Done (Iteration 12, F19-I + F19-J)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="15-final-instruction">15. Final Instruction</h2>
+<p>Follow:</p>
+<ul>
+<li>this document for <strong>architecture and behavior</strong></li>
+<li><code>implementation-plan.md</code> for <strong>scope and sequencing</strong></li>
+</ul>
+<p>If any conflict exists, <strong>STOP and ask for clarification</strong>.</p>
+<p>Keep the implementation aligned with this design. Optimize only when required by a user story. Implement exactly what is
+described.</p>
+<hr />
+<h1 id="appendix-a-contracts-states-invariants-normative">Appendix A — Contracts, States &amp; Invariants (Normative)</h1>
+<blockquote>
+<p><strong>Scope:</strong> system-wide authoritative rules — state model, invariants, concurrency, and governance.
+If any conflict exists between this appendix and other documents (User Stories, Implementation Plan, examples), <strong>this
+appendix takes precedence</strong>.</p>
+</blockquote>
+<p>Its purpose is to remove ambiguity for implementation (human or AI-assisted) and to prevent divergent interpretations.</p>
+<hr />
+<h2 id="a1-state-model-source-of-truth">A1. State Model &amp; Source of Truth</h2>
+<h3 id="a11-processing-run-state-authoritative">A1.1 Processing Run State (authoritative)</h3>
+<p>Each <code>ProcessingRun</code> has exactly one state at any time:</p>
+<ul>
+<li><code>QUEUED</code></li>
+<li><code>RUNNING</code></li>
+<li><code>COMPLETED</code></li>
+<li><code>FAILED</code></li>
+<li><code>TIMED_OUT</code></li>
+</ul>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --&gt; QUEUED : run created
+    QUEUED --&gt; RUNNING : scheduler picks (only if no other RUNNING run)
+    RUNNING --&gt; COMPLETED : all steps succeed
+    RUNNING --&gt; FAILED : step fails / crash recovery (PROCESS_TERMINATED)
+    RUNNING --&gt; TIMED_OUT : exceeds 120s wall-clock
+    COMPLETED --&gt; [*]
+    FAILED --&gt; [*]
+    TIMED_OUT --&gt; [*]
+
+    note right of QUEUED : Multiple QUEUED runs may coexist.\nReprocess during RUNNING creates new QUEUED run.
+    note right of FAILED : failure_type recorded:\nEXTRACTION_FAILED\nEXTRACTION_LOW_QUALITY\nINTERPRETATION_FAILED\nPROCESS_TERMINATED
+</code></pre>
+<!-- Sources: backend/app/domain/models.py (ProcessingRunState enum), backend/app/application/processing/orchestrator.py (transitions), backend/app/domain/status.py (failure types) -->
+
+<h4 id="rules">Rules</h4>
+<ul>
+<li>States are <strong>append-only transitions</strong> (no rollback).</li>
+<li>Only one run may be <code>RUNNING</code> per document.</li>
+<li>Runs are immutable once terminal (<code>COMPLETED</code>, <code>FAILED</code>, <code>TIMED_OUT</code>).</li>
+</ul>
+<hr />
+<h3 id="a12-document-status-derived-not-stored">A1.2 Document Status (derived, not stored)</h3>
+<p><code>Document.status</code> is <strong>derived</strong>, never manually set.</p>
+<p>Derivation rules:</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Document Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>No processing run exists</td>
+<td><code>UPLOADED</code></td>
+</tr>
+<tr>
+<td>Latest run is <code>QUEUED</code> or <code>RUNNING</code></td>
+<td><code>PROCESSING</code></td>
+</tr>
+<tr>
+<td>Latest run is <code>COMPLETED</code></td>
+<td><code>COMPLETED</code></td>
+</tr>
+<tr>
+<td>Latest run is <code>FAILED</code></td>
+<td><code>FAILED</code></td>
+</tr>
+<tr>
+<td>Latest run is <code>TIMED_OUT</code></td>
+<td><code>TIMED_OUT</code></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-mermaid">flowchart TD
+    DOC[&quot;Document&quot;] --&gt; Q{&quot;Has runs?&quot;}
+    Q --&gt;|No| UPLOADED[&quot;UPLOADED&quot;]
+    Q --&gt;|Yes| LR{&quot;Latest run state?&quot;}
+    LR --&gt;|QUEUED / RUNNING| PROCESSING[&quot;PROCESSING&quot;]
+    LR --&gt;|COMPLETED| COMPLETED[&quot;COMPLETED&quot;]
+    LR --&gt;|FAILED| FAILED[&quot;FAILED&quot;]
+    LR --&gt;|TIMED_OUT| TIMED_OUT[&quot;TIMED_OUT&quot;]
+
+    style UPLOADED fill:#95a5a6,color:#fff
+    style PROCESSING fill:#f39c12,color:#fff
+    style COMPLETED fill:#27ae60,color:#fff
+    style FAILED fill:#e74c3c,color:#fff
+    style TIMED_OUT fill:#e74c3c,color:#fff
+</code></pre>
+<h4 id="rule">Rule</h4>
+<ul>
+<li>Document status always reflects the <strong>latest run</strong>, not the latest completed run.</li>
+</ul>
+<hr />
+<h3 id="a13-review-status-human-workflow-only">A1.3 Review Status (human workflow only)</h3>
+<p>Review status is <strong>independent</strong> from processing.</p>
+<p>Allowed values:</p>
+<ul>
+<li><code>IN_REVIEW</code> (default)</li>
+<li><code>REVIEWED</code></li>
+</ul>
+<pre><code class="language-mermaid">stateDiagram-v2
+    [*] --&gt; IN_REVIEW : document created
+    IN_REVIEW --&gt; REVIEWED : POST /documents/{id}/reviewed
+    REVIEWED --&gt; IN_REVIEW : any field edit
+    note right of REVIEWED : Reprocessing does NOT change review status
+</code></pre>
+<h4 id="rules_1">Rules</h4>
+<ul>
+<li>Stored at document level.</li>
+<li>Editing structured data automatically reverts <code>REVIEWED → IN_REVIEW</code>.</li>
+<li>Reprocessing does <strong>not</strong> change review status.</li>
+<li>Review status never blocks processing, editing, or governance.</li>
+</ul>
+<hr />
+<h3 id="a14-source-of-truth-summary">A1.4 Source of Truth Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Source of Truth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Processing progress</td>
+<td><code>ProcessingRun.state</code></td>
+</tr>
+<tr>
+<td>Document lifecycle</td>
+<td>Derived from runs</td>
+</tr>
+<tr>
+<td>Human workflow</td>
+<td><code>ReviewStatus</code></td>
+</tr>
+<tr>
+<td>Interpretation data</td>
+<td>Versioned interpretations</td>
+</tr>
+<tr>
+<td>Governance</td>
+<td>Governance candidates/logs</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="a2-processing-run-invariants">A2. Processing Run Invariants</h2>
+<ul>
+<li>Every processing attempt creates <strong>exactly one</strong> <code>ProcessingRun</code>.</li>
+<li>Runs are <strong>append-only</strong> and never overwritten.</li>
+<li>Artifacts (raw text, interpretations, confidence) are <strong>run-scoped</strong>.</li>
+<li>Reprocessing:</li>
+<li>creates a new run,</li>
+<li>never mutates previous runs or artifacts,</li>
+<li>may remain <code>QUEUED</code> if another run is <code>RUNNING</code>.</li>
+</ul>
+<hr />
+<h2 id="a3-interpretation-versioning-invariants">A3. Interpretation &amp; Versioning Invariants</h2>
+<h3 id="a31-structured-interpretations">A3.1 Structured Interpretations</h3>
+<ul>
+<li>Interpretations are versioned records linked to a run.</li>
+<li>Any edit creates a <strong>new interpretation version</strong>.</li>
+<li>Previous versions are retained and immutable.</li>
+<li>Exactly one interpretation version is <strong>active</strong> at a time per run.</li>
+</ul>
+<h4 id="active-version-invariant-operational-normative">Active version invariant (Operational, normative)</h4>
+<ul>
+<li>When creating a new InterpretationVersion for a run:</li>
+<li>It MUST be done in a single transaction:<ol>
+<li>set all previous versions for that <code>run_id</code> to <code>is_active = false</code></li>
+<li>insert the new version with <code>is_active = true</code> and <code>version_number = previous_max + 1</code></li>
+</ol>
+</li>
+<li>At no point may two rows be active for the same <code>run_id</code>.</li>
+</ul>
+<hr />
+<h3 id="a32-field-level-changes">A3.2 Field-Level Changes</h3>
+<ul>
+<li>All edits produce field-level change log entries.</li>
+<li>Change logs are append-only.</li>
+<li>Structural changes (add/remove/rename field):</li>
+<li>set internal <code>pending_review = true</code>,</li>
+<li>do <strong>not</strong> affect veterinarian workflow.</li>
+</ul>
+<hr />
+<h2 id="a4-confidence-rules">A4. Confidence Rules</h2>
+<ul>
+<li>Confidence is:</li>
+<li>contextual,</li>
+<li>conservative,</li>
+<li>explainable.</li>
+<li>Confidence:</li>
+<li>guides attention,</li>
+<li>never blocks actions,</li>
+<li>never implies correctness.</li>
+<li>Confidence updates:</li>
+<li>are local,</li>
+<li>are non-immediate,</li>
+<li>never trigger automation.</li>
+</ul>
+<hr />
+<h2 id="a5-api-contract-principles">A5. API Contract Principles</h2>
+<p>These principles apply to <strong>all endpoints</strong>:</p>
+<ul>
+<li>APIs are <strong>internal</strong>.</li>
+<li>Contracts are explicit and deterministic.</li>
+<li>Responses always include enough context for the UI to explain:</li>
+<li>current state,</li>
+<li>latest run,</li>
+<li>failure category (if any).</li>
+<li>No endpoint:</li>
+<li>triggers implicit schema changes,</li>
+<li>blocks veterinarian workflows.</li>
+</ul>
+<h3 id="a51-run-resolution-rule">A5.1 Run Resolution Rule</h3>
+<ul>
+<li>UI obtains <code>run_id</code> via document endpoints.</li>
+<li>“Latest completed run” is used for review.</li>
+<li>“Latest run” is used for status and processing visibility.</li>
+</ul>
+<hr />
+<h2 id="a6-concurrency-idempotency-rules">A6. Concurrency &amp; Idempotency Rules</h2>
+<ul>
+<li>At most one <code>RUNNING</code> run per document is allowed (multiple <code>QUEUED</code> runs may exist).</li>
+<li>Guards must exist at persistence level (transactional or equivalent).</li>
+<li>Repeated user actions (upload, reprocess, mark reviewed):</li>
+<li>must be safe to retry,</li>
+<li>must not create inconsistent state.</li>
+</ul>
+<hr />
+<h2 id="a7-governance-invariants">A7. Governance Invariants</h2>
+<ul>
+<li>Governance operates <strong>only at schema level</strong>.</li>
+<li>Governance decisions:</li>
+<li>never modify existing documents,</li>
+<li>never trigger reprocessing implicitly,</li>
+<li>apply prospectively only.</li>
+<li>All governance decisions are:</li>
+<li>append-only,</li>
+<li>auditable,</li>
+<li>reviewer-facing only.</li>
+</ul>
+<hr />
+<h2 id="a8-audit-observability-rules">A8. Audit &amp; Observability Rules</h2>
+<ul>
+<li>All critical actions emit structured logs.</li>
+<li>Logs:</li>
+<li>include relevant identifiers (<code>document_id</code>, <code>run_id</code>, <code>candidate_id</code>),</li>
+<li>are best-effort,</li>
+<li>never block user flows.</li>
+<li>Audit trails (governance):</li>
+<li>are immutable,</li>
+<li>read-only,</li>
+<li>stored separately from document data.</li>
+</ul>
+<h3 id="a81-event-type-taxonomy-authoritative">A8.1 Event Type Taxonomy (Authoritative)</h3>
+<p><code>event_type</code> must be one of the following values.</p>
+<p>Run-level:</p>
+<ul>
+<li><code>RUN_CREATED</code></li>
+<li><code>RUN_STARTED</code></li>
+<li><code>RUN_COMPLETED</code></li>
+<li><code>RUN_FAILED</code></li>
+<li><code>RUN_TIMED_OUT</code></li>
+<li><code>RUN_RECOVERED_AS_FAILED</code> (startup recovery of orphaned RUNNING runs)</li>
+</ul>
+<p>Step-level:</p>
+<ul>
+<li><code>STEP_STARTED</code></li>
+<li><code>STEP_SUCCEEDED</code></li>
+<li><code>STEP_FAILED</code></li>
+<li><code>STEP_RETRIED</code></li>
+</ul>
+<p>User actions:</p>
+<ul>
+<li><code>DOCUMENT_UPLOADED</code></li>
+<li><code>REPROCESS_REQUESTED</code></li>
+<li><code>DOCUMENT_LANGUAGE_OVERRIDDEN</code></li>
+<li><code>MARK_REVIEWED</code></li>
+<li><code>INTERPRETATION_EDITED</code></li>
+</ul>
+<p>Reviewer actions:</p>
+<ul>
+<li><code>GOVERNANCE_DECISION_RECORDED</code></li>
+<li><code>SCHEMA_CONTRACT_CREATED</code></li>
+</ul>
+<p>Rules:</p>
+<ul>
+<li>Structured logs remain best-effort and never block processing.</li>
+<li>Each log entry must include:</li>
+<li><code>document_id</code></li>
+<li><code>run_id</code> (nullable only when not yet created)</li>
+<li><code>step_name</code> (nullable)</li>
+<li><code>event_type</code></li>
+<li><code>timestamp</code></li>
+<li><code>error_code</code> (nullable)</li>
+</ul>
+<hr />
+<h2 id="a10-final-rule">A10. Final Rule</h2>
+<p>If a future feature, story, or implementation choice conflicts with any rule in this appendix:</p>
+<p><strong>STOP.<br />
+Clarify the conflict.<br />
+Do not guess or infer behavior.</strong></p>
+<p>This appendix is the final authority.</p>
+<hr />
+<hr />
+<h1 id="appendix-b-operational-clarifications-normative">Appendix B — Operational Clarifications (Normative)</h1>
+<blockquote>
+<p><strong>Scope:</strong> processing model (B1), persistent data model (B2), API endpoint map (B3), idempotency (B4), filesystem rules (B5), blocking rules (B6), testability (B7).</p>
+</blockquote>
+<p>This appendix adds <strong>explicit operational and implementation-level clarifications</strong> to the Technical Design Document.<br />
+It does <strong>not</strong> introduce new features, infrastructure, or behavior.<br />
+It exists solely to remove ambiguity and prevent implicit decisions during implementation.</p>
+<p>If any conflict exists between this appendix and other documents,
+<strong><a href="#appendix-a--contracts-states--invariants-normative">Appendix A</a> and this appendix take precedence</strong>.</p>
+<hr />
+<h2 id="b1-asynchronous-in-process-processing-model-authoritative">B1. Asynchronous In-Process Processing Model (Authoritative)</h2>
+<h3 id="b11-assumed-execution-model">B1.1 Assumed Execution Model</h3>
+<p>Background processing is executed <strong>in-process</strong>, using a controlled background task runner (e.g. internal task loop or
+executor).</p>
+<p>If future user stories introduce multi-instance execution or external workers/queues, they must define the additional
+coordination contracts explicitly.</p>
+<p>This choice prioritizes simplicity and debuggability over throughput.</p>
+<hr />
+<h3 id="b12-single-running-run-guarantee">B1.2 Single <code>RUNNING</code> Run Guarantee</h3>
+<p>Definitions:</p>
+<ul>
+<li>A <strong>running run</strong> is a <code>ProcessingRun</code> in state <code>RUNNING</code>.</li>
+</ul>
+<p>Rules:</p>
+<ul>
+<li>At most <strong>one <code>RUNNING</code> run per document</strong> is allowed.</li>
+<li>This invariant is enforced at the <strong>persistence layer</strong>, not in memory.</li>
+<li>Any attempt to create a new run when a <code>RUNNING</code> run exists must:</li>
+<li>be accepted as a new run in <code>QUEUED</code> (append-only),</li>
+<li>and will only start once no other run is <code>RUNNING</code> for that document.</li>
+</ul>
+<p>No background worker may start a run without verifying this invariant.</p>
+<hr />
+<h3 id="b121-persistence-level-guard-pattern-sqlite-authoritative">B1.2.1 Persistence-Level Guard Pattern (SQLite, Authoritative)</h3>
+<p>To enforce “at most one <code>RUNNING</code> run per document”, run creation and run start transitions must follow a
+persistence-level guard pattern that prevents race conditions.</p>
+<p>Definitions:</p>
+<ul>
+<li>A running run is a run with state <code>RUNNING</code>.</li>
+</ul>
+<p>Pattern (normative):</p>
+<ul>
+<li>Create or start a run only under a write-locking transaction (e.g., <code>BEGIN IMMEDIATE</code> in SQLite).</li>
+<li>Under the same transaction scope:</li>
+<li>Query whether a <code>RUNNING</code> run exists for the target <code>document_id</code>.</li>
+<li>Apply the rules below.</li>
+</ul>
+<p>Rules:</p>
+<ul>
+<li>Creating a run:</li>
+<li>Always allowed to insert a new run in <code>QUEUED</code> (append-only history).</li>
+<li>Starting a run (<code>QUEUED → RUNNING</code>):</li>
+<li>Allowed only if <strong>no other run is <code>RUNNING</code></strong> for that <code>document_id</code> (multiple <code>QUEUED</code> runs may exist).</li>
+<li>The check and the state transition must happen under the same lock/transaction scope.</li>
+</ul>
+<p>No worker may transition a run to <code>RUNNING</code> without verifying these invariants at persistence level.</p>
+<hr />
+<h3 id="b13-crash-restart-semantics">B1.3 Crash &amp; Restart Semantics</h3>
+<p>On application startup:</p>
+<ul>
+<li>Any run found in state <code>RUNNING</code> is considered <strong>orphaned</strong>.</li>
+<li>Orphaned runs must be transitioned to <code>FAILED</code> with <code>failure_type = PROCESS_TERMINATED</code>.</li>
+</ul>
+<p>Rationale:</p>
+<ul>
+<li>Avoids “stuck” runs.</li>
+<li>Keeps the state machine monotonic and explainable.</li>
+</ul>
+<hr />
+<h3 id="b14-retry-timeout-policy">B1.4 Retry &amp; Timeout Policy</h3>
+<ul>
+<li>Retries:</li>
+<li>Are local to a single run.</li>
+<li>Are limited to a small, fixed number (e.g. 1–2 retries).</li>
+<li>Do not create new runs.</li>
+<li>Timeouts:</li>
+<li>A run exceeding a fixed execution window transitions to <code>TIMED_OUT</code>.</li>
+<li><code>TIMED_OUT</code> is a terminal state.</li>
+</ul>
+<p>Reprocessing always creates a <strong>new run</strong>.</p>
+<h3 id="b141-fixed-defaults-normative">B1.4.1 Fixed defaults (Normative)</h3>
+<ul>
+<li>Step retry limit: 2 attempts total (1 initial + 1 retry).</li>
+<li>Run timeout: 120 seconds wall-clock from <code>RUN_STARTED</code>.</li>
+</ul>
+<hr />
+<h3 id="b15-in-process-scheduler-semantics-authoritative">B1.5 In-Process Scheduler Semantics (Authoritative)</h3>
+<p>The system includes an in-process scheduler that periodically attempts to start queued runs.</p>
+<p>Rules:</p>
+<ul>
+<li>Selection:</li>
+<li>For each document, the scheduler must prefer the <strong>oldest</strong> <code>QUEUED</code> run (by creation time).</li>
+<li>Start condition:</li>
+<li>A <code>QUEUED</code> run may start only if no run is <code>RUNNING</code> for that document.</li>
+<li>Transition:</li>
+<li>The scheduler must apply the persistence guard pattern
+    (<a href="#b121-persistence-level-guard-pattern-sqlite-authoritative">B1.2.1</a>) when transitioning <code>QUEUED → RUNNING</code>.</li>
+<li>Best-effort:</li>
+<li>Scheduler execution is best-effort and must not block API requests.</li>
+<li>Crash/restart relies on <a href="#b13-crash--restart-semantics">B1.3</a> (startup recovery) and future scheduler cycles.</li>
+</ul>
+<hr />
+<h3 id="b151-scheduler-tick-fairness-normative">B1.5.1 Scheduler tick &amp; fairness (Normative)</h3>
+<ul>
+<li>The scheduler runs on a fixed tick (e.g. every 1s).</li>
+<li>On each tick, it attempts to start runs in FIFO order by <code>created_at</code>.</li>
+<li>It MUST NOT busy-loop; it sleeps between ticks.</li>
+<li>If a start attempt fails due to transient DB lock/contention, it logs <code>STEP_RETRIED</code> (or a dedicated scheduler event)
+  and retries on the next tick.</li>
+</ul>
+<h2 id="b2-minimal-persistent-data-model-textual-erd">B2. Minimal Persistent Data Model (Textual ERD)</h2>
+<p>This section defines the <strong>minimum required persistent entities</strong> and invariants. It is <strong>not</strong> a SQL schema, but an
+authoritative structural contract.</p>
+<pre><code class="language-mermaid">erDiagram
+    Document ||--o{ ProcessingRun : &quot;document_id (FK)&quot;
+    Document ||--o{ DocumentStatusHistory : &quot;document_id (FK)&quot;
+    ProcessingRun ||--o{ Artifact : &quot;run_id (FK)&quot;
+    ProcessingRun ||--o{ InterpretationVersion : &quot;run_id (FK)&quot;
+    InterpretationVersion ||--o{ FieldChangeLog : &quot;interpretation_id (FK)&quot;
+
+    Document {
+        text document_id PK
+        text original_filename
+        text content_type
+        int file_size
+        text storage_path
+        text created_at
+        text updated_at
+        text review_status &quot;IN_REVIEW | REVIEWED&quot;
+        text reviewed_at &quot;nullable&quot;
+        text reviewed_by &quot;nullable&quot;
+        text reviewed_run_id &quot;nullable&quot;
+    }
+    DocumentStatusHistory {
+        text id PK
+        text document_id FK
+        text status
+        text run_id &quot;nullable&quot;
+        text created_at
+    }
+    ProcessingRun {
+        text run_id PK
+        text document_id FK
+        text state &quot;QUEUED | RUNNING | COMPLETED | FAILED | TIMED_OUT&quot;
+        text created_at
+        text started_at &quot;nullable&quot;
+        text completed_at &quot;nullable&quot;
+        text failure_type &quot;nullable&quot;
+    }
+    Artifact {
+        text artifact_id PK
+        text run_id FK
+        text artifact_type &quot;RAW_TEXT | STEP_STATUS | STRUCTURED_INTERPRETATION&quot;
+        text payload &quot;JSON&quot;
+        text created_at
+    }
+    InterpretationVersion {
+        text interpretation_id PK
+        text run_id FK
+        int version_number
+        text data &quot;JSON&quot;
+        bool is_active
+    }
+    FieldChangeLog {
+        text change_id PK
+        text interpretation_id FK
+        text field_path
+        text old_value
+        text new_value
+        text change_type
+    }
+    CalibrationAggregate {
+        text context_key &quot;PK (composite)&quot;
+        text field_key &quot;PK (composite)&quot;
+        text mapping_id &quot;nullable&quot;
+        text mapping_id_scope_key &quot;PK (composite)&quot;
+        text policy_version &quot;PK (composite)&quot;
+        int accept_count
+        int edit_count
+        text updated_at
+    }
+</code></pre>
+<p>This ERD shows the 7 persistent entities: 5 operational core entities (Document, ProcessingRun, Artifact, InterpretationVersion, FieldChangeLog) plus DocumentStatusHistory (audit trail) and CalibrationAggregate (confidence calibration). Column types reflect the SQLite implementation (<code>text</code> for UUIDs and timestamps, <code>int</code> for counters). See <code>backend/app/infra/database.py</code> for the authoritative SQL schema.</p>
+<hr />
+<h3 id="b21-document">B2.1 Document</h3>
+<p><strong>Purpose</strong>: Represents an uploaded document.</p>
+<p>Key fields:</p>
+<ul>
+<li><code>document_id</code> (PK)</li>
+<li><code>original_filename</code></li>
+<li><code>content_type</code></li>
+<li><code>file_size</code></li>
+<li><code>storage_path</code></li>
+<li><code>created_at</code></li>
+</ul>
+<p>Stored workflow fields:</p>
+<ul>
+<li><code>review_status</code> (<code>IN_REVIEW | REVIEWED</code>)</li>
+<li><code>language_override</code> (nullable; see B3.1 “Language override endpoint”)</li>
+</ul>
+<p>Derived / external:</p>
+<ul>
+<li><code>status</code> (derived; see <a href="#a12-document-status-derived-not-stored">Appendix A</a>)</li>
+</ul>
+<p>Invariants:</p>
+<ul>
+<li>A document must exist before any run.</li>
+<li>A document is never deleted.</li>
+</ul>
+<hr />
+<h3 id="b22-processingrun">B2.2 ProcessingRun</h3>
+<p><strong>Purpose</strong>: Represents one processing attempt.</p>
+<p>Key fields:</p>
+<ul>
+<li><code>run_id</code> (PK)</li>
+<li><code>document_id</code> (FK)</li>
+<li><code>state</code></li>
+<li><code>started_at</code></li>
+<li><code>completed_at</code></li>
+<li><code>failure_type</code> (nullable)</li>
+<li><code>language_used</code></li>
+<li><code>schema_contract_used</code></li>
+</ul>
+<p>Invariants:</p>
+<ul>
+<li>Append-only.</li>
+<li>At most one <code>RUNNING</code> run per document (multiple <code>QUEUED</code> runs may exist).</li>
+<li>Terminal states are immutable.</li>
+</ul>
+<hr />
+<h3 id="b23-artifacts">B2.3 Artifacts</h3>
+<p><strong>Purpose</strong>: Stores run-scoped outputs (raw text, metadata).</p>
+<p>Key fields:</p>
+<ul>
+<li><code>artifact_id</code></li>
+<li><code>run_id</code> (FK)</li>
+<li><code>artifact_type</code></li>
+<li><code>payload</code> (JSON or FS reference)</li>
+<li><code>created_at</code></li>
+</ul>
+<p>Invariants:</p>
+<ul>
+<li>Artifacts are immutable.</li>
+<li>Artifacts are always linked to exactly one run.</li>
+</ul>
+<h4 id="artifacttype-closed-set-normative">ArtifactType (Closed Set, normative)</h4>
+<ul>
+<li><code>RAW_TEXT</code> (filesystem reference)</li>
+<li><code>STEP_STATUS</code> (JSON payload; <a href="#appendix-c--step-model--run-execution-semantics-normative">Appendix C</a>)</li>
+</ul>
+<hr />
+<h3 id="b24-interpretationversion">B2.4 InterpretationVersion</h3>
+<p><strong>Purpose</strong>: Versioned structured interpretation.</p>
+<p>Key fields:</p>
+<ul>
+<li><code>interpretation_id</code></li>
+<li><code>run_id</code> (FK)</li>
+<li><code>version_number</code></li>
+<li><code>data</code> (JSON)</li>
+<li><code>created_at</code></li>
+<li><code>is_active</code></li>
+</ul>
+<p>Invariants:</p>
+<ul>
+<li>Append-only.</li>
+<li>Exactly one active version per run.</li>
+</ul>
+<hr />
+<h3 id="b25-fieldchangelog">B2.5 FieldChangeLog</h3>
+<p><strong>Purpose</strong>: Captures human edits.</p>
+<p>Key fields:</p>
+<ul>
+<li><code>change_id</code></li>
+<li><code>interpretation_id</code></li>
+<li><code>field_path</code></li>
+<li><code>old_value</code></li>
+<li><code>new_value</code></li>
+<li><code>change_type</code></li>
+<li><code>created_at</code></li>
+</ul>
+<p>Invariants:</p>
+<ul>
+<li>Append-only.</li>
+<li>Never blocks veterinarian workflow.</li>
+</ul>
+<hr />
+<h4 id="b251-field-path-format-authoritative">B2.5.1 Field path format (Authoritative)</h4>
+<p><code>field_path</code> MUST be stable across versions and MUST NOT rely on array indices.</p>
+<p>Format (normative):</p>
+<ul>
+<li><code>field_path = "fields.{field_id}.value"</code></li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li><code>field_id</code> refers to <code>StructuredField.field_id</code> in <a href="#d5-structuredfield-authoritative">Appendix D</a>.</li>
+<li>This allows a reviewer to trace changes even if the <code>fields[]</code> order changes between versions.</li>
+</ul>
+<hr />
+<h3 id="b26-api-error-response-format-naming-authority-normative">B2.6 API Error Response Format &amp; Naming Authority (Normative)</h3>
+<h3 id="api-error-response-format-normative">API Error Response Format (Normative)</h3>
+<p>All API errors MUST return a JSON body with a stable, machine-readable structure:</p>
+<pre><code class="language-json">{
+  &quot;error_code&quot;: &quot;STRING_ENUM&quot;,
+  &quot;message&quot;: &quot;Human-readable explanation&quot;,
+  &quot;details&quot;: { &quot;optional&quot;: &quot;object&quot; }
+}
+</code></pre>
+<p>Rules:</p>
+<ul>
+<li><code>error_code</code> is stable and suitable for frontend branching.</li>
+<li><code>message</code> is safe for user display (no stack traces).</li>
+<li><code>details</code> is optional and must not expose filesystem paths or secrets.</li>
+</ul>
+<hr />
+<h3 id="api-naming-authority-normative">API Naming Authority (Normative)</h3>
+<p>The authoritative endpoint map is defined in <strong><a href="#b3-minimal-api-endpoint-map-authoritative">Appendix B3</a> (+
+<a href="#b31-run-resolution-per-endpoint-authoritative">B3.1</a>)</strong>.</p>
+<p>If any user story lists different endpoint paths, treat them as non-normative examples and implement the authoritative
+map.</p>
+<hr />
+<h3 id="b27-schemaversion-authoritative">B2.7 SchemaVersion (Authoritative)</h3>
+<p><strong>Purpose</strong>: Stores canonical schema contract snapshots used by new processing runs.</p>
+<p>Key fields:</p>
+<ul>
+<li><code>schema_contract_id</code> (PK)</li>
+<li><code>version_number</code> (monotonic integer)</li>
+<li><code>schema_definition</code> (JSON)</li>
+<li><code>created_at</code></li>
+<li><code>created_by</code> (reviewer identity)</li>
+<li><code>change_summary</code> (nullable)</li>
+</ul>
+<p>Invariants:</p>
+<ul>
+<li>Append-only; schema contract snapshots are immutable.</li>
+<li>“Current schema” is resolved as the schema contract snapshot with the highest <code>version_number</code>.</li>
+<li>New processing runs MUST persist <code>schema_contract_used</code> resolved at run creation time (<a href="#b22-processingrun">B2.2</a>).</li>
+</ul>
+<hr />
+<h3 id="b28-structuralchangecandidate-authoritative">B2.8 StructuralChangeCandidate (Authoritative)</h3>
+<p><strong>Purpose</strong>: Represents an aggregated, reviewer-facing candidate for schema evolution derived from repeated
+document-level edit patterns.</p>
+<p>Key fields:</p>
+<ul>
+<li><code>candidate_id</code> (PK)</li>
+<li><code>change_type</code> (closed set; e.g. <code>NEW_KEY | KEY_RENAME | KEY_DEPRECATION | KEY_MAPPING</code>)</li>
+<li><code>source_key</code> (nullable)</li>
+<li><code>target_key</code></li>
+<li><code>occurrence_count</code></li>
+<li><code>status</code> (<code>PENDING | APPROVED | REJECTED | DEFERRED</code>)</li>
+<li><code>created_at</code></li>
+<li><code>updated_at</code></li>
+<li><code>evidence_samples</code> (JSON; small, representative samples: page + snippet + optional document reference)</li>
+</ul>
+<p>Invariants:</p>
+<ul>
+<li>Candidates are reviewer-facing only.</li>
+<li>Candidate details are never exposed in veterinarian workflows.</li>
+<li>Status changes MUST be traceable via append-only <code>GovernanceDecision</code> (<a href="#b29-governancedecision-authoritative">B2.9</a>).</li>
+<li>Candidate decisions apply prospectively only (<a href="#a7-governance-invariants">A7</a>).</li>
+</ul>
+<hr />
+<h3 id="b29-governancedecision-authoritative">B2.9 GovernanceDecision (Authoritative)</h3>
+<p><strong>Purpose</strong>: Append-only audit log of reviewer governance actions (schema evolution decisions).</p>
+<p>Key fields:</p>
+<ul>
+<li><code>decision_id</code> (PK)</li>
+<li><code>candidate_id</code> (nullable)</li>
+<li><code>decision_type</code> (closed set; <code>APPROVE | REJECT | DEFER | FLAG_CRITICAL</code>)</li>
+<li><code>previous_status</code> (nullable)</li>
+<li><code>new_status</code> (nullable)</li>
+<li><code>schema_contract_id</code> (nullable; present when approval creates a new schema contract snapshot)</li>
+<li><code>reviewer_id</code></li>
+<li><code>reason</code> (nullable)</li>
+<li><code>created_at</code></li>
+</ul>
+<p>Invariants:</p>
+<ul>
+<li>Append-only and immutable.</li>
+<li>Stored separately from document-level data (<a href="#a8-audit--observability-rules">A8</a>).</li>
+<li>Reviewer actions never modify existing documents or trigger implicit reprocessing (<a href="#a7-governance-invariants">A7</a>).</li>
+</ul>
+<hr />
+<h2 id="b3-minimal-api-endpoint-map-authoritative">B3. Minimal API Endpoint Map (Authoritative)</h2>
+<p>This section defines the <strong>minimum endpoint surface</strong>.</p>
+<hr />
+<h3 id="document-level">Document-Level</h3>
+<ul>
+<li><code>POST /documents/upload</code></li>
+<li>Upload a document (PDF only in the current implementation).</li>
+<li><code>GET /documents</code></li>
+<li>List documents with derived status.</li>
+<li><code>GET /documents/{id}</code></li>
+<li>Document metadata + latest run info.</li>
+<li><code>GET /documents/{id}/download</code></li>
+<li>Download (and when supported, preview) the original uploaded file.</li>
+<li><code>POST /documents/{id}/reprocess</code></li>
+<li>Create new processing run.</li>
+<li><code>POST /documents/{id}/reviewed</code></li>
+<li>Mark as reviewed.</li>
+<li><code>PATCH /documents/{id}/language</code></li>
+<li>Set or clear a document-level language override (affects subsequent runs only).</li>
+<li><code>GET /documents/{id}/processing-history</code></li>
+<li>Read-only processing history (runs + step statuses).</li>
+</ul>
+<h3 id="supported-upload-types-normative">Supported upload types (Normative)</h3>
+<p>The system MUST accept only PDF uploads in the current implementation:</p>
+<ul>
+<li><code>.pdf</code></li>
+<li><code>application/pdf</code></li>
+</ul>
+<p>Rules:</p>
+<ul>
+<li>Any other content type MUST return:</li>
+<li>HTTP 415</li>
+<li><code>error_code = UNSUPPORTED_MEDIA_TYPE</code></li>
+<li>MIME type detection MUST be based on server-side inspection, not only filename.</li>
+</ul>
+<hr />
+<h3 id="run-review">Run / Review</h3>
+<ul>
+<li><code>GET /documents/{id}/review</code></li>
+<li>Returns:<ul>
+<li>latest completed run,</li>
+<li>active interpretation,</li>
+<li>confidence and evidence.</li>
+</ul>
+</li>
+<li><code>GET /runs/{run_id}/artifacts/raw-text</code></li>
+<li>Retrieve extracted text.</li>
+<li><code>POST /runs/{run_id}/interpretations</code></li>
+<li>Apply veterinarian edits by creating a new interpretation version (append-only).</li>
+</ul>
+<p>Rules:</p>
+<ul>
+<li>Status views use <strong>latest run</strong>.</li>
+<li>Review views use <strong>latest completed run</strong>.</li>
+</ul>
+<hr />
+<h3 id="reviewer-governance-reviewer-facing-only">Reviewer / Governance (Reviewer-facing only)</h3>
+<ul>
+<li><code>GET /reviewer/structural-changes</code></li>
+<li>List pending structural change candidates.</li>
+<li><code>POST /reviewer/structural-changes/{candidate_id}/decision</code></li>
+<li>Record a governance decision (approve/reject/defer).</li>
+<li><code>GET /reviewer/schema/current</code></li>
+<li>Retrieve the current canonical schema contract snapshot.</li>
+<li><code>GET /reviewer/governance/audit-trail</code></li>
+<li>Retrieve append-only governance decision history.</li>
+</ul>
+<hr />
+<h3 id="b31-run-resolution-per-endpoint-authoritative">B3.1 Run Resolution per Endpoint (Authoritative)</h3>
+<ul>
+<li><code>GET /documents</code> Returns each document with:</li>
+<li>derived <code>document_status</code> (from latest run; <a href="#a12-document-status-derived-not-stored">A1.2</a>),</li>
+<li><code>latest_run_id</code>, <code>latest_run_state</code> (nullable if none exists),</li>
+<li><code>latest_run_failure_type</code> (nullable),</li>
+<li><code>latest_run_language_used</code> (nullable),</li>
+<li>
+<p><code>latest_run_schema_contract_used</code> (nullable).</p>
+</li>
+<li>
+<p><code>GET /documents/{id}</code> Returns:</p>
+</li>
+<li>document metadata,</li>
+<li>derived <code>document_status</code>,</li>
+<li><code>latest_run</code> summary (id, state, timestamps, failure_type, language_used, schema_contract_used).</li>
+<li>
+<p><code>language_override</code> (nullable).</p>
+</li>
+<li>
+<p><code>GET /documents/{id}/review</code> Resolves <strong>latest completed run</strong>:</p>
+</li>
+<li>if none exists, return an explicit error (e.g., 409) with reason <code>NO_COMPLETED_RUN</code>.</li>
+</ul>
+<p>Rationale (authoritative):</p>
+<ul>
+<li><code>/documents/{id}/review</code> is a derived “review view” that requires a completed run; if none exists yet, this is a
+  <strong>state conflict</strong>, not a missing resource.</li>
+</ul>
+<p>Returns:
+  - <code>latest_completed_run_id</code>,
+  - active interpretation for that run,
+  - confidence + evidence.</p>
+<p>Rule:</p>
+<ul>
+<li>Status views always use <strong>latest run</strong>.</li>
+<li>Review views always use <strong>latest completed run</strong>.</li>
+</ul>
+<h4 id="response-shape-minimum-normative">Response shape (minimum, normative)</h4>
+<p><code>GET /documents/{id}/review</code> returns:</p>
+<ul>
+<li><code>document_id</code></li>
+<li><code>latest_completed_run</code>: { <code>run_id</code>, <code>state</code>, <code>completed_at</code>, <code>failure_type</code> }</li>
+<li><code>active_interpretation</code>: { <code>interpretation_id</code>, <code>version_number</code>, <code>data</code> }</li>
+<li><code>raw_text_artifact</code>: { <code>run_id</code>, <code>available</code>: boolean } (do not inline raw text here)</li>
+</ul>
+<h4 id="field-candidate-suggestions-standard-review-payload">Field Candidate Suggestions (standard review payload)</h4>
+<ul>
+<li>Contract location:</li>
+<li>Candidate suggestions are included inside <code>active_interpretation.data.fields[]</code> entries in the standard review
+    payload.</li>
+<li>
+<p>The field is optional for backward compatibility.</p>
+</li>
+<li>
+<p>Field-level shape (normative):</p>
+</li>
+<li>Each <code>StructuredField</code> MAY include <code>candidate_suggestions</code>.</li>
+<li><code>candidate_suggestions</code> is an array with max length <code>5</code>.</li>
+<li>Items are ordered by <code>confidence</code> descending; tie-breaking MUST be deterministic.</li>
+<li>
+<p>Candidate item shape:</p>
+<ul>
+<li><code>value</code> (string)</li>
+<li><code>confidence</code> (number in <code>[0,1]</code>)</li>
+<li><code>evidence</code> (optional object)</li>
+<li><code>page</code> (optional integer)</li>
+<li><code>snippet</code> (optional string)</li>
+</ul>
+</li>
+<li>
+<p>Behavior:</p>
+</li>
+<li><code>candidate_suggestions</code> is part of the standard payload and is not debug-only.</li>
+<li>Clients MAY ignore <code>candidate_suggestions</code>.</li>
+<li>
+<p>If no candidates exist for a field, <code>candidate_suggestions</code> SHOULD be omitted.</p>
+</li>
+<li>
+<p>Constraints:</p>
+</li>
+<li>This extension does not change confidence composition or semantics.</li>
+<li>This extension does not require frontend-side confidence computation changes.</li>
+</ul>
+<hr />
+<h3 id="processing-history-endpoint-minimum-normative">Processing history endpoint (minimum, normative)</h3>
+<p><code>GET /documents/{id}/processing-history</code> returns:</p>
+<ul>
+<li><code>document_id</code></li>
+<li><code>runs[]</code> ordered by <code>created_at</code> ascending (chronological)</li>
+<li><code>run_id</code></li>
+<li><code>state</code></li>
+<li><code>failure_type</code> (nullable)</li>
+<li><code>started_at</code> (nullable)</li>
+<li><code>completed_at</code> (nullable)</li>
+<li><code>steps[]</code> (derived from STEP_STATUS artifacts;
+    <a href="#appendix-c--step-model--run-execution-semantics-normative">Appendix C</a>)<ul>
+<li><code>step_name</code></li>
+<li><code>step_status</code></li>
+<li><code>attempt</code></li>
+<li><code>started_at</code> (nullable)</li>
+<li><code>ended_at</code> (nullable)</li>
+<li><code>error_code</code> (nullable)</li>
+</ul>
+</li>
+</ul>
+<p>Rules:</p>
+<ul>
+<li>Read-only; does not introduce actions.</li>
+<li>Uses persisted artifacts as the source of truth (<a href="#c4-relationship-between-step-artifacts-and-logs-normative">C4</a>).</li>
+</ul>
+<hr />
+<h3 id="language-override-endpoint-minimum-normative">Language override endpoint (minimum, normative)</h3>
+<p><code>PATCH /documents/{id}/language</code>:</p>
+<ul>
+<li>Request body:</li>
+<li><code>language_override</code> (string ISO 639-1 like <code>"en"</code>, or <code>null</code> to clear)</li>
+<li>Response body includes:</li>
+<li><code>document_id</code></li>
+<li><code>language_override</code> (nullable)</li>
+</ul>
+<p>Rules:</p>
+<ul>
+<li>Does not trigger processing or reprocessing.</li>
+<li>Affects only <strong>new</strong> runs created after the override is set.</li>
+<li>Must not block review or editing workflows.</li>
+</ul>
+<hr />
+<h3 id="interpretation-edit-endpoint-minimum-normative">Interpretation edit endpoint (minimum, normative)</h3>
+<p><code>POST /runs/{run_id}/interpretations</code> creates a new, active interpretation version for the run (append-only).</p>
+<p>Request body (minimum):</p>
+<ul>
+<li><code>base_version_number</code> (integer; must match the currently active version number)</li>
+<li><code>changes[]</code></li>
+<li><code>op</code> (<code>ADD | UPDATE | DELETE</code>)</li>
+<li><code>field_id</code> (uuid; required for <code>UPDATE | DELETE</code>)</li>
+<li><code>key</code> (string; required for <code>ADD</code>)</li>
+<li><code>value</code> (string|number|boolean|null; required for <code>ADD | UPDATE</code>)</li>
+<li><code>value_type</code> (string; required for <code>ADD | UPDATE</code>)</li>
+</ul>
+<p>Response body (minimum):</p>
+<ul>
+<li><code>run_id</code></li>
+<li><code>interpretation_id</code></li>
+<li><code>version_number</code> (new active version number)</li>
+<li><code>data</code> (Structured Interpretation Schema visit-grouped canonical contract;
+  <a href="#appendix-d--structured-interpretation-schema-canonical-normative">Appendix D</a>)</li>
+</ul>
+<p>Rules:</p>
+<ul>
+<li>Human edits MUST produce <code>origin = "human"</code> fields (<a href="#d5-structuredfield-authoritative">Appendix D</a>) and append
+  <code>FieldChangeLog</code> entries (<a href="#b25-fieldchangelog">B2.5</a>).</li>
+<li>This endpoint never mutates existing interpretation versions (<a href="#a3-interpretation--versioning-invariants">A3</a>).</li>
+</ul>
+<hr />
+<h3 id="reviewer-governance-endpoints-minimum-normative">Reviewer governance endpoints (minimum, normative)</h3>
+<p><code>GET /reviewer/structural-changes</code> returns:</p>
+<ul>
+<li><code>items[]</code></li>
+<li><code>candidate_id</code></li>
+<li><code>change_type</code></li>
+<li><code>source_key</code> (nullable)</li>
+<li><code>target_key</code></li>
+<li><code>occurrence_count</code></li>
+<li><code>status</code></li>
+<li><code>evidence_samples</code> (JSON; page + snippet + optional document reference)</li>
+<li><code>created_at</code></li>
+<li><code>updated_at</code></li>
+</ul>
+<p><code>POST /reviewer/structural-changes/{candidate_id}/decision</code>:</p>
+<ul>
+<li>Request body (minimum):</li>
+<li><code>decision_type</code> (<code>APPROVE | REJECT | DEFER | FLAG_CRITICAL</code>)</li>
+<li><code>reason</code> (nullable)</li>
+<li>Response body (minimum):</li>
+<li><code>decision_id</code></li>
+<li><code>candidate_id</code> (nullable)</li>
+<li><code>decision_type</code></li>
+<li><code>schema_contract_id</code> (nullable)</li>
+<li><code>created_at</code></li>
+</ul>
+<p><code>GET /reviewer/schema/current</code> returns:</p>
+<ul>
+<li><code>schema_contract_id</code></li>
+<li><code>version_number</code></li>
+<li><code>created_at</code></li>
+<li><code>change_summary</code> (nullable)</li>
+</ul>
+<p><code>GET /reviewer/governance/audit-trail</code> returns:</p>
+<ul>
+<li><code>items[]</code> ordered by <code>created_at</code> ascending</li>
+<li><code>decision_id</code></li>
+<li><code>candidate_id</code> (nullable)</li>
+<li><code>decision_type</code></li>
+<li><code>schema_contract_id</code> (nullable)</li>
+<li><code>reviewer_id</code></li>
+<li><code>reason</code> (nullable)</li>
+<li><code>created_at</code></li>
+</ul>
+<hr />
+<h2 id="b32-endpoint-error-semantics-error-codes-normative">B3.2 Endpoint error semantics &amp; error codes (Normative)</h2>
+<p>This section defines <strong>stable HTTP semantics</strong> and <code>error_code</code> values. It prevents user stories from redefining
+per-endpoint behavior.</p>
+<h3 id="error-response-format-authoritative">Error response format (Authoritative)</h3>
+<p>All error responses MUST follow Appendix <strong>B2.6</strong>:</p>
+<ul>
+<li><code>error_code</code> (stable enum for frontend branching)</li>
+<li><code>message</code> (safe for user display)</li>
+<li><code>details</code> (optional object; must not expose secrets or filesystem paths)</li>
+</ul>
+<h3 id="common-http-statuses">Common HTTP statuses</h3>
+<ul>
+<li><code>400 Bad Request</code></li>
+<li>Invalid request body, missing required fields, invalid parameters.</li>
+<li>
+<p><code>error_code</code>: <code>INVALID_REQUEST</code></p>
+</li>
+<li>
+<p><code>404 Not Found</code></p>
+</li>
+<li>Document or run does not exist.</li>
+<li>
+<p><code>error_code</code>: <code>NOT_FOUND</code></p>
+</li>
+<li>
+<p><code>409 Conflict</code></p>
+</li>
+<li>Request is valid, but cannot be fulfilled due to current state.</li>
+<li>Examples:<ul>
+<li>Review requested but no completed run exists.</li>
+<li>Attempt to edit when blocked by a <code>RUNNING</code> run (if applicable).</li>
+</ul>
+</li>
+<li><code>error_code</code>: <code>CONFLICT</code>, plus a specific reason in <code>details.reason</code>.</li>
+<li>
+<p>Specific reasons (closed set):</p>
+<ul>
+<li><code>NO_COMPLETED_RUN</code></li>
+<li><code>REVIEW_BLOCKED_BY_ACTIVE_RUN</code></li>
+<li><code>RAW_TEXT_NOT_READY</code></li>
+<li><code>RAW_TEXT_NOT_AVAILABLE</code></li>
+<li><code>STALE_INTERPRETATION_VERSION</code></li>
+</ul>
+</li>
+<li>
+<p><code>410 Gone</code></p>
+</li>
+<li>Persistent reference exists, but the underlying filesystem artifact is missing.</li>
+<li>Applies to file downloads and raw text retrieval when stored in filesystem.</li>
+<li>
+<p><code>error_code</code>: <code>ARTIFACT_MISSING</code></p>
+</li>
+<li>
+<p><code>413 Payload Too Large</code></p>
+</li>
+<li>Upload exceeds size limit.</li>
+<li>
+<p><code>error_code</code>: <code>FILE_TOO_LARGE</code></p>
+</li>
+<li>
+<p><code>415 Unsupported Media Type</code></p>
+</li>
+<li>Unsupported upload type.</li>
+<li>
+<p><code>error_code</code>: <code>UNSUPPORTED_MEDIA_TYPE</code></p>
+</li>
+<li>
+<p><code>500 Internal Server Error</code></p>
+</li>
+<li>Unhandled exception or unexpected system failure.</li>
+<li><code>error_code</code>: <code>INTERNAL_ERROR</code></li>
+</ul>
+<h3 id="notes">Notes</h3>
+<ul>
+<li>Frontend MUST branch on <code>error_code</code> (and optional <code>details.reason</code>) only.</li>
+<li>User stories may list example error cases, but must not redefine these semantics.</li>
+<li>Upload type support is defined in Appendix B3 (“Supported upload types (Normative)”).</li>
+</ul>
+<h3 id="upload-size-limit-normative">Upload size limit (Normative)</h3>
+<ul>
+<li>Maximum upload size: 20 MB (default).</li>
+<li>Exceeding the limit returns:</li>
+<li>HTTP 413</li>
+<li><code>error_code = FILE_TOO_LARGE</code></li>
+</ul>
+<h3 id="get-runsrun_idartifactsraw-text-normative">GET /runs/{run_id}/artifacts/raw-text (Normative)</h3>
+<p>Returns:</p>
+<ul>
+<li><code>run_id</code></li>
+<li><code>artifact_type = RAW_TEXT</code></li>
+<li><code>content_type = text/plain</code></li>
+<li><code>text</code> (string)</li>
+</ul>
+<p>Errors:</p>
+<ul>
+<li>404 NOT_FOUND if run does not exist</li>
+<li>409 CONFLICT with <code>details.reason = RAW_TEXT_NOT_READY</code> if run exists but extraction artifact is not produced yet</li>
+<li>409 CONFLICT with <code>details.reason = RAW_TEXT_NOT_AVAILABLE</code> if extraction failed or no raw-text artifact exists for
+  the run</li>
+<li>410 ARTIFACT_MISSING if the artifact reference exists but filesystem content is missing</li>
+</ul>
+<h3 id="post-runsrun_idinterpretations-normative">POST /runs/{run_id}/interpretations (Normative)</h3>
+<p>Errors (minimum):</p>
+<ul>
+<li>404 NOT_FOUND if run does not exist</li>
+<li>409 CONFLICT with <code>details.reason = REVIEW_BLOCKED_BY_ACTIVE_RUN</code> if the run is currently <code>RUNNING</code></li>
+<li>409 CONFLICT with <code>details.reason = STALE_INTERPRETATION_VERSION</code> if the client’s base version is not the active
+  version</li>
+</ul>
+<hr />
+<h2 id="b4-idempotency-safe-retry-rules-authoritative">B4. Idempotency &amp; Safe Retry Rules (Authoritative)</h2>
+<p>The following actions must be safe to retry:</p>
+<ul>
+<li>Upload</li>
+<li>Reprocess</li>
+<li>Mark reviewed</li>
+</ul>
+<p>Mechanisms:</p>
+<ul>
+<li>Persistence-level guards (see B1.2.1).</li>
+<li>Explicit checks for invariants (single <code>RUNNING</code> run rule + run-start guard).</li>
+<li>No reliance on client-provided idempotency keys.</li>
+</ul>
+<p>“Safe to retry” means:</p>
+<ul>
+<li>Retrying does not corrupt state.</li>
+<li>Retrying may create additional append-only records (where specified), but must never produce inconsistent state.</li>
+</ul>
+<h3 id="b41-endpoint-semantics">B4.1 Endpoint Semantics</h3>
+<h4 id="post-documentsupload">POST /documents/upload</h4>
+<ul>
+<li>Retrying may create a new document (no deduplication).</li>
+<li>The system must avoid partial persistence:</li>
+<li>no DB row without filesystem artifact on success,</li>
+<li>no filesystem artifact without DB row on success.</li>
+</ul>
+<h4 id="post-documentsidreprocess">POST /documents/{id}/reprocess</h4>
+<ul>
+<li>Always creates a new <code>ProcessingRun</code> in <code>QUEUED</code>.</li>
+<li>Retrying may create multiple queued runs. This is acceptable.</li>
+<li>The system must remain consistent:</li>
+<li>runs are append-only,</li>
+<li>only one run may be <code>RUNNING</code> per document at any time.</li>
+</ul>
+<h4 id="post-documentsidreviewed">POST /documents/{id}/reviewed</h4>
+<ul>
+<li>Idempotent:</li>
+<li>if already <code>REVIEWED</code>, return success without change,</li>
+<li>if <code>IN_REVIEW</code>, set to <code>REVIEWED</code>.</li>
+</ul>
+<p>Non-negotiable invariant:</p>
+<ul>
+<li>The system must never end up with two runs <code>RUNNING</code> for the same document, regardless of retries.</li>
+</ul>
+<hr />
+<h2 id="b5-filesystem-management-rules">B5. Filesystem Management Rules</h2>
+<ul>
+<li>Files are stored under deterministic paths:</li>
+<li><code>/storage/{document_id}/original.pdf</code></li>
+</ul>
+<p>Note:</p>
+<ul>
+<li>
+<p>Additional extensions may be introduced when non-PDF upload types are supported.</p>
+</li>
+<li>
+<p>Writes must be atomic.</p>
+</li>
+<li>DB persistence must complete <strong>before</strong> returning success.</li>
+<li>Temporary files must be cleaned up on failure.</li>
+</ul>
+<p>Inconsistencies:</p>
+<ul>
+<li>FS exists, DB missing → treat as invalid artifact.</li>
+<li>DB exists, FS missing → surface explicit error on access.</li>
+</ul>
+<p>No background cleanup is required.</p>
+<hr />
+<h2 id="b6-blocking-rules-normative">B6. Blocking Rules (Normative)</h2>
+<p>The following <strong>never block veterinarians</strong>:</p>
+<ul>
+<li>Pending review</li>
+<li>Low confidence</li>
+<li>Failed processing</li>
+<li>Schema governance</li>
+</ul>
+<p>Only explicit user actions change review state.</p>
+<hr />
+<h2 id="b7-testability-expectations">B7. Testability Expectations</h2>
+<p>Expected test layers:</p>
+<ul>
+<li>Unit tests:</li>
+<li>state transitions,</li>
+<li>derivation rules,</li>
+<li>idempotency guards.</li>
+<li>Integration tests:</li>
+<li>upload → process → review path,</li>
+<li>reprocessing behavior,</li>
+<li>crash recovery behavior.</li>
+</ul>
+<hr />
+<h2 id="final-rule">Final Rule</h2>
+<p>If an implementation decision is not explicitly covered by:</p>
+<ul>
+<li>the main Technical Design,</li>
+<li><a href="#appendix-a--contracts-states--invariants-normative">Appendix A</a>,</li>
+<li>or this appendix,</li>
+</ul>
+<p><strong>STOP and clarify before implementing.</strong></p>
+<p>No implicit behavior is allowed.</p>
+<hr />
+<h1 id="appendix-c-step-model-run-execution-semantics-normative">Appendix C — Step Model &amp; Run Execution Semantics (Normative)</h1>
+<blockquote>
+<p><strong>Scope:</strong> step names (C1), run state derivation (C2), error codes (C3), step/log relationship (C4).</p>
+</blockquote>
+<p>This appendix makes the “step-based pipeline” explicit without adding infrastructure or new required entities. It uses
+run-scoped artifacts (<a href="#b23-artifacts">B2.3</a>) to track step lifecycle.</p>
+<p>If any conflict exists, <a href="#appendix-a--contracts-states--invariants-normative">Appendix A</a>,
+<a href="#appendix-b--operational-clarifications-normative">Appendix B</a>, and this appendix take precedence.</p>
+<hr />
+<h2 id="c1-processing-step-model-authoritative">C1. Processing Step Model (Authoritative)</h2>
+<p>A <code>ProcessingRun</code> is executed as a sequence of steps. Step state is tracked as <strong>run-scoped artifacts</strong>:</p>
+<ul>
+<li><code>artifact_type = STEP_STATUS</code></li>
+<li><code>payload</code> is JSON (schema below)</li>
+</ul>
+<h3 id="c11-stepname-closed-set">C1.1 StepName (Closed Set)</h3>
+<ul>
+<li><code>EXTRACTION</code></li>
+<li><code>INTERPRETATION</code></li>
+</ul>
+<h3 id="c12-stepstatus-closed-set">C1.2 StepStatus (Closed Set)</h3>
+<ul>
+<li><code>NOT_STARTED</code></li>
+<li><code>RUNNING</code></li>
+<li><code>SUCCEEDED</code></li>
+<li><code>FAILED</code></li>
+</ul>
+<h3 id="c13-step-artifact-payload-json">C1.3 Step Artifact Payload (JSON)</h3>
+<p>Must include:</p>
+<ul>
+<li><code>step_name</code> (StepName)</li>
+<li><code>step_status</code> (StepStatus)</li>
+<li><code>attempt</code> (integer, starts at 1)</li>
+<li><code>started_at</code> (nullable)</li>
+<li><code>ended_at</code> (nullable)</li>
+<li><code>error_code</code> (nullable)</li>
+<li><code>details</code> (nullable; small JSON)</li>
+</ul>
+<h3 id="c14-append-only-rule">C1.4 Append-Only Rule</h3>
+<ul>
+<li>Step changes are append-only: each update is a new artifact record.</li>
+<li>The “current step status” is derived from the latest <code>STEP_STATUS</code> artifact for that <code>step_name</code>.</li>
+</ul>
+<hr />
+<h2 id="c2-run-state-derivation-from-steps-authoritative">C2. Run State Derivation from Steps (Authoritative)</h2>
+<p>Rules:</p>
+<ul>
+<li>A run is <code>RUNNING</code> if any required step is <code>RUNNING</code>.</li>
+<li>A run is <code>FAILED</code> if any required step ends <code>FAILED</code>.</li>
+<li>A run is <code>COMPLETED</code> only if all required steps end <code>SUCCEEDED</code>.</li>
+<li>Timeouts transition the run to <code>TIMED_OUT</code> (terminal) regardless of step statuses.</li>
+</ul>
+<hr />
+<h2 id="c3-error-codes-and-failure-mapping-authoritative">C3. Error Codes and Failure Mapping (Authoritative)</h2>
+<ul>
+<li><code>error_code</code> is step-level and recorded in the step artifact.</li>
+<li><code>failure_type</code> is run-level and recorded on the run.</li>
+</ul>
+<p>Mapping:</p>
+<ul>
+<li>Step <code>EXTRACTION</code> failure → run <code>failure_type = EXTRACTION_FAILED</code></li>
+<li>Step <code>INTERPRETATION</code> failure → run <code>failure_type = INTERPRETATION_FAILED</code></li>
+<li>Startup recovery orphaned <code>RUNNING</code> → run terminal failure with reason <code>PROCESS_TERMINATED</code></li>
+<li>Log <code>RUN_RECOVERED_AS_FAILED</code></li>
+</ul>
+<p>Rule:</p>
+<ul>
+<li>Step artifacts never overwrite previous artifacts.</li>
+<li>Terminal run states are immutable.</li>
+</ul>
+<hr />
+<h2 id="c4-relationship-between-step-artifacts-and-logs-normative">C4. Relationship between Step Artifacts and Logs (Normative)</h2>
+<ul>
+<li>Step artifacts (<code>artifact_type = STEP_STATUS</code>) are the source of truth for step state.</li>
+<li>Structured logs emit corresponding <code>STEP_*</code> events best-effort.</li>
+<li>If logs and artifacts disagree, artifacts win.</li>
+</ul>
+<hr />
+<h1 id="appendix-d-structured-interpretation-schema-canonical-normative">Appendix D — Structured Interpretation Schema (Canonical) (Normative)</h1>
+<blockquote>
+<p><strong>Scope:</strong> JSON schema for structured interpretations — field model (D4-D5), evidence (D6), confidence semantics (D7), visit-grouped canonical contract (D9).</p>
+</blockquote>
+<p>This appendix defines the <strong>authoritative minimum JSON schema</strong> for structured interpretations. It exists to remove
+ambiguity for implementation (especially AI-assisted coding) and to support:</p>
+<ul>
+<li><strong>Review in context</strong> (US-07)</li>
+<li><strong>Editing with traceability</strong> (US-08)</li>
+</ul>
+<p>If any conflict exists, <strong><a href="#appendix-a--contracts-states--invariants-normative">Appendix A</a>,
+<a href="#appendix-b--operational-clarifications-normative">Appendix B</a>,
+<a href="#appendix-c--step-model--run-execution-semantics-normative">Appendix C</a>, and this appendix take precedence</strong>.</p>
+<h2 id="d1-scope-and-design-principles">D1. Scope and Design Principles</h2>
+<p>This is a deliberately small contract, <strong>not a full medical ontology</strong>.</p>
+<ul>
+<li><strong>Assistive, not authoritative</strong>: outputs are explainable and editable.</li>
+<li><strong>Non-blocking</strong>: confidence and governance never block veterinarians.</li>
+<li><strong>Run-scoped &amp; append-only</strong>: nothing is overwritten; every interpretation belongs to a processing run.</li>
+<li><strong>Approximate evidence</strong>: page + snippet; no PDF coordinates are required.</li>
+<li><strong>Canonical structure</strong>: deterministic visit grouping and explicit rendering taxonomy.</li>
+</ul>
+<p>Note (materialization boundary):</p>
+<ul>
+<li>Machine interpretation payloads may be partial with respect to Global Schema.</li>
+<li>Backend contracts in this document define valid structured payload shape; they do not require backend-side full-schema
+  backfilling.</li>
+<li>UI rendering is expected to materialize and display the full Global Schema (including empty values for missing keys),
+  as defined by product authority.</li>
+</ul>
+<h2 id="d2-versioning">D2. Versioning</h2>
+<ul>
+<li><code>schema_contract</code> is a string. Current value: <code>"visit-grouped-canonical"</code>.</li>
+<li>Future versions must be explicit and intentional.</li>
+<li>Additive changes are preferred; breaking changes require a new version.</li>
+<li>The canonical visit-grouped contract uses deterministic visit grouping via a <code>visits[]</code> container while preserving
+  <code>StructuredField</code> semantics.</li>
+</ul>
+<h2 id="d3-relationship-to-persistent-model-authoritative">D3. Relationship to Persistent Model (Authoritative)</h2>
+<p>The JSON object defined in this appendix is stored as the <code>data</code> payload of <code>InterpretationVersion</code>
+(<a href="#b24-interpretationversion">B2.4</a>).</p>
+<h2 id="d4-top-level-object-structuredinterpretation-json">D4. Top-Level Object: StructuredInterpretation (JSON)</h2>
+<pre><code class="language-json">{
+  &quot;schema_contract&quot;: &quot;visit-grouped-canonical&quot;,
+  &quot;document_id&quot;: &quot;uuid&quot;,
+  &quot;processing_run_id&quot;: &quot;uuid&quot;,
+  &quot;created_at&quot;: &quot;2026-02-05T12:34:56Z&quot;,
+  &quot;medical_record_view&quot;: {
+    &quot;version&quot;: &quot;mvp-1&quot;,
+    &quot;sections&quot;: [
+      &quot;clinic&quot;,
+      &quot;patient&quot;,
+      &quot;owner&quot;,
+      &quot;visits&quot;,
+      &quot;notes&quot;,
+      &quot;other&quot;,
+      &quot;report_info&quot;
+    ],
+    &quot;field_slots&quot;: []
+  },
+  &quot;fields&quot;: [],
+  &quot;visits&quot;: [],
+  &quot;other_fields&quot;: []
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th style="text-align: right;">Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>schema_contract</td>
+<td>string</td>
+<td style="text-align: right;">✓</td>
+<td>Always <code>"visit-grouped-canonical"</code></td>
+</tr>
+<tr>
+<td>document_id</td>
+<td>uuid</td>
+<td style="text-align: right;">✓</td>
+<td>Convenience for debugging</td>
+</tr>
+<tr>
+<td>processing_run_id</td>
+<td>uuid</td>
+<td style="text-align: right;">✓</td>
+<td>Links to a specific processing attempt</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>ISO 8601 string</td>
+<td style="text-align: right;">✓</td>
+<td>Snapshot creation time</td>
+</tr>
+<tr>
+<td>medical_record_view</td>
+<td><code>MedicalRecordViewTemplate</code></td>
+<td style="text-align: right;">✓</td>
+<td>Deterministic panel template</td>
+</tr>
+<tr>
+<td>fields</td>
+<td>array of <code>StructuredField</code></td>
+<td style="text-align: right;">✓</td>
+<td>Non-visit-scoped fields</td>
+</tr>
+<tr>
+<td>visits</td>
+<td>array of <code>VisitGroup</code></td>
+<td style="text-align: right;">✓</td>
+<td>Visit-scoped deterministic grouping</td>
+</tr>
+<tr>
+<td>other_fields</td>
+<td>array of <code>StructuredField</code></td>
+<td style="text-align: right;">✓</td>
+<td>Explicit unmapped/other bucket</td>
+</tr>
+</tbody>
+</table>
+<h2 id="d5-structuredfield-authoritative">D5. StructuredField (Authoritative)</h2>
+<p>A single extracted or edited data point with confidence and optional evidence.</p>
+<pre><code class="language-json">{
+  &quot;field_id&quot;: &quot;uuid&quot;,
+  &quot;key&quot;: &quot;pet_name&quot;,
+  &quot;value&quot;: &quot;Luna&quot;,
+  &quot;value_type&quot;: &quot;string&quot;,
+  &quot;confidence&quot;: 0.82,
+  &quot;is_critical&quot;: true,
+  &quot;origin&quot;: &quot;machine&quot;,
+  &quot;evidence&quot;: { &quot;page&quot;: 2, &quot;snippet&quot;: &quot;Patient: Luna&quot; }
+}
+</code></pre>
+<h3 id="field-identity-rule-authoritative">Field identity rule (Authoritative)</h3>
+<ul>
+<li><code>field_id</code> identifies a <strong>specific field instance</strong>, not a conceptual slot.</li>
+<li>Human edits create new interpretation versions (<a href="#a31-structured-interpretations">A3.1</a>) and are tracked via
+  <code>FieldChangeLog</code> (<a href="#b25-fieldchangelog">B2.5</a>).</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th style="text-align: right;">Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>field_id</td>
+<td>uuid</td>
+<td style="text-align: right;">✓</td>
+<td>Stable identifier for this field instance</td>
+</tr>
+<tr>
+<td>key</td>
+<td>string</td>
+<td style="text-align: right;">✓</td>
+<td>Lowercase <code>snake_case</code></td>
+</tr>
+<tr>
+<td>value</td>
+<td>string | number | boolean | null</td>
+<td style="text-align: right;">✓</td>
+<td>Dates stored as ISO strings</td>
+</tr>
+<tr>
+<td>value_type</td>
+<td><code>"string"</code> | <code>"number"</code> | <code>"boolean"</code> | <code>"date"</code> | <code>"unknown"</code></td>
+<td style="text-align: right;">✓</td>
+<td>Explicit typing</td>
+</tr>
+<tr>
+<td>scope</td>
+<td><code>"document"</code> | <code>"visit"</code></td>
+<td style="text-align: right;">✗</td>
+<td>Contract taxonomy hint (canonical preferred). Backward-compatible optional metadata.</td>
+</tr>
+<tr>
+<td>section</td>
+<td><code>"clinic"</code> | <code>"patient"</code> | <code>"owner"</code> | <code>"visits"</code> | <code>"notes"</code> | <code>"other"</code> | <code>"report_info"</code></td>
+<td style="text-align: right;">✗</td>
+<td>Contract section membership hint (canonical preferred).</td>
+</tr>
+<tr>
+<td>domain</td>
+<td><code>"clinical"</code> | <code>"administrative"</code> | <code>"meta"</code> | <code>"other"</code></td>
+<td style="text-align: right;">✗</td>
+<td>Concept domain classification (contract metadata; not UI behavior).</td>
+</tr>
+<tr>
+<td>classification</td>
+<td><code>"medical_record"</code> | <code>"other"</code></td>
+<td style="text-align: right;">✗</td>
+<td>Explicit render taxonomy marker for deterministic consumers.</td>
+</tr>
+<tr>
+<td>confidence</td>
+<td>number (0–1)</td>
+<td style="text-align: right;">✓</td>
+<td>Attention signal only</td>
+</tr>
+<tr>
+<td>is_critical</td>
+<td>boolean</td>
+<td style="text-align: right;">✓</td>
+<td>Derived: <code>key ∈ CRITICAL_KEYS</code> (Appendix D7.4)</td>
+</tr>
+<tr>
+<td>origin</td>
+<td><code>"machine"</code> | <code>"human"</code></td>
+<td style="text-align: right;">✓</td>
+<td>Distinguishes machine output vs human edits</td>
+</tr>
+<tr>
+<td>evidence</td>
+<td><code>Evidence</code></td>
+<td style="text-align: right;">✗</td>
+<td>Optional; expected for machine output when available</td>
+</tr>
+</tbody>
+</table>
+<h2 id="d6-evidence-approximate-by-design">D6. Evidence (Approximate by Design)</h2>
+<pre><code class="language-json">{ &quot;page&quot;: 2, &quot;snippet&quot;: &quot;Patient: Luna&quot; }
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th style="text-align: right;">Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>page</td>
+<td>integer</td>
+<td style="text-align: right;">✓</td>
+<td>1-based page index</td>
+</tr>
+<tr>
+<td>snippet</td>
+<td>string</td>
+<td style="text-align: right;">✓</td>
+<td>Short excerpt shown to the user</td>
+</tr>
+</tbody>
+</table>
+<h2 id="d7-semantics-rules-authoritative">D7. Semantics &amp; Rules (Authoritative)</h2>
+<h3 id="d71-confidence">D7.1 Confidence</h3>
+<ul>
+<li>Confidence never blocks: editing, marking reviewed, or accessing data.</li>
+<li>UI may render qualitatively (e.g., low / medium / high).</li>
+</ul>
+<h3 id="d72-multiple-values">D7.2 Multiple Values</h3>
+<p>Repeated concepts (e.g., medications) are represented by multiple fields with the same <code>key</code> and different <code>field_id</code>s.</p>
+<h3 id="d73-governance-future-facing">D7.3 Governance (Future-Facing)</h3>
+<p>Structural changes (new keys, key remapping) may later be marked as pending review for schema evolution. This is never
+exposed or actionable in veterinarian-facing workflows.</p>
+<h3 id="d74-critical-concepts-authoritative">D7.4 Critical Concepts (Authoritative)</h3>
+<p>Derivation (authoritative):</p>
+<ul>
+<li><code>StructuredField.is_critical = (StructuredField.key ∈ CRITICAL_KEYS)</code></li>
+</ul>
+<p>Rules (technical, authoritative):</p>
+<ul>
+<li><code>is_critical</code> MUST be derived from the field key (not model-decided).</li>
+<li><code>CRITICAL_KEYS</code> is a closed set (no heuristics, no model output).</li>
+<li>This designation MUST NOT block workflows; it only drives UI signaling and internal flags.</li>
+</ul>
+<p>Source of truth for <code>CRITICAL_KEYS</code>:</p>
+<ul>
+<li>Defined in <a href="../../01-product/product-design/"><code>docs/projects/veterinary-medical-records/01-product/product-design.md</code></a>
+  (product authority).</li>
+<li>The complete Global Schema key list, fixed ordering, section grouping, repeatability rules, and cross-key fallback
+  rules (including <code>document_date</code> fallback to <code>visit_date</code>) are also governed by
+  <a href="../../01-product/product-design/"><code>docs/projects/veterinary-medical-records/01-product/product-design.md</code></a>.</li>
+</ul>
+<hr />
+<h2 id="d8-example-multiple-fields">D8. Example (Multiple Fields)</h2>
+<pre><code class="language-json">{
+  &quot;schema_contract&quot;: &quot;visit-grouped-canonical&quot;,
+  &quot;document_id&quot;: &quot;doc-123&quot;,
+  &quot;processing_run_id&quot;: &quot;run-456&quot;,
+  &quot;created_at&quot;: &quot;2026-02-05T12:34:56Z&quot;,
+  &quot;medical_record_view&quot;: {
+    &quot;version&quot;: &quot;mvp-1&quot;,
+    &quot;sections&quot;: [
+      &quot;clinic&quot;,
+      &quot;patient&quot;,
+      &quot;owner&quot;,
+      &quot;visits&quot;,
+      &quot;notes&quot;,
+      &quot;other&quot;,
+      &quot;report_info&quot;
+    ],
+    &quot;field_slots&quot;: []
+  },
+  &quot;fields&quot;: [
+    {
+      &quot;field_id&quot;: &quot;f1&quot;,
+      &quot;key&quot;: &quot;pet_name&quot;,
+      &quot;value&quot;: &quot;Luna&quot;,
+      &quot;value_type&quot;: &quot;string&quot;,
+      &quot;confidence&quot;: 0.82,
+      &quot;is_critical&quot;: true,
+      &quot;origin&quot;: &quot;machine&quot;,
+      &quot;evidence&quot;: { &quot;page&quot;: 2, &quot;snippet&quot;: &quot;Patient: Luna&quot; }
+    }
+  ],
+  &quot;visits&quot;: [
+    {
+      &quot;visit_id&quot;: &quot;visit-1&quot;,
+      &quot;visit_date&quot;: &quot;2026-02-05&quot;,
+      &quot;admission_date&quot;: null,
+      &quot;discharge_date&quot;: null,
+      &quot;reason_for_visit&quot;: &quot;Vomiting&quot;,
+      &quot;fields&quot;: [
+        {
+          &quot;field_id&quot;: &quot;vf1&quot;,
+          &quot;key&quot;: &quot;diagnosis&quot;,
+          &quot;value&quot;: &quot;Gastroenteritis&quot;,
+          &quot;value_type&quot;: &quot;string&quot;,
+          &quot;confidence&quot;: 0.78,
+          &quot;is_critical&quot;: false,
+          &quot;origin&quot;: &quot;machine&quot;
+        }
+      ]
+    }
+  ],
+  &quot;other_fields&quot;: []
+}
+</code></pre>
+<h2 id="d9-structured-interpretation-schema-visit-grouped-canonical-normative">D9. Structured Interpretation Schema (Visit-grouped Canonical) (Normative)</h2>
+<p>The canonical visit-grouped contract defines deterministic visit grouping for multi-visit documents.</p>
+<ul>
+<li>Multi-visit PDFs exist; UI must not heuristic-group.</li>
+<li>The canonical contract enables deterministic grouping by introducing <code>visits[]</code>.</li>
+<li>Canon note for Medical Record panel: <code>canonical contract</code> is canonical for this surface.</li>
+</ul>
+<h3 id="d91-top-level-object-structuredinterpretation-canonical-visit-grouped-json">D9.1 Top-Level Object: StructuredInterpretation (Canonical Visit-grouped) (JSON)</h3>
+<pre><code class="language-json">{
+  &quot;schema_contract&quot;: &quot;visit-grouped-canonical&quot;,
+  &quot;document_id&quot;: &quot;uuid&quot;,
+  &quot;processing_run_id&quot;: &quot;uuid&quot;,
+  &quot;created_at&quot;: &quot;2026-02-05T12:34:56Z&quot;,
+  &quot;medical_record_view&quot;: {
+    &quot;version&quot;: &quot;mvp-1&quot;,
+    &quot;sections&quot;: [
+      &quot;clinic&quot;,
+      &quot;patient&quot;,
+      &quot;owner&quot;,
+      &quot;visits&quot;,
+      &quot;notes&quot;,
+      &quot;other&quot;,
+      &quot;report_info&quot;
+    ],
+    &quot;field_slots&quot;: []
+  },
+  &quot;fields&quot;: [],
+  &quot;visits&quot;: [],
+  &quot;other_fields&quot;: []
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th style="text-align: right;">Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>schema_contract</td>
+<td>string</td>
+<td style="text-align: right;">✓</td>
+<td>Always <code>"visit-grouped-canonical"</code></td>
+</tr>
+<tr>
+<td>document_id</td>
+<td>uuid</td>
+<td style="text-align: right;">✓</td>
+<td>Convenience for debugging</td>
+</tr>
+<tr>
+<td>processing_run_id</td>
+<td>uuid</td>
+<td style="text-align: right;">✓</td>
+<td>Links to a specific processing attempt</td>
+</tr>
+<tr>
+<td>created_at</td>
+<td>ISO 8601 string</td>
+<td style="text-align: right;">✓</td>
+<td>Snapshot creation time</td>
+</tr>
+<tr>
+<td>medical_record_view</td>
+<td><code>MedicalRecordViewTemplate</code></td>
+<td style="text-align: right;">✓</td>
+<td>Deterministic panel template for Medical Record MVP rendering (US-44); contract uses stable section ids (not localized labels).</td>
+</tr>
+<tr>
+<td>fields</td>
+<td>array of <code>StructuredField</code></td>
+<td style="text-align: right;">✓</td>
+<td>Non-visit-scoped fields only</td>
+</tr>
+<tr>
+<td>visits</td>
+<td>array of <code>VisitGroup</code></td>
+<td style="text-align: right;">✓</td>
+<td>Deterministic grouping container for visit-scoped data</td>
+</tr>
+<tr>
+<td>other_fields</td>
+<td>array of <code>StructuredField</code></td>
+<td style="text-align: right;">✓</td>
+<td>Explicit unmapped/other bucket for deterministic rendering; FE MUST render “Otros campos detectados” only from this bucket.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="d91a-medical-record-view-template-field-slots-normative-us-44">D9.1.a Medical Record View Template / Field Slots (Normative, US-44)</h3>
+<p><code>medical_record_view</code> defines deterministic render intent for the Medical Record MVP panel without frontend heuristics.</p>
+<pre><code class="language-json">{
+  &quot;version&quot;: &quot;mvp-1&quot;,
+  &quot;sections&quot;: [
+    &quot;clinic&quot;,
+    &quot;patient&quot;,
+    &quot;owner&quot;,
+    &quot;visits&quot;,
+    &quot;notes&quot;,
+    &quot;other&quot;,
+    &quot;report_info&quot;
+  ],
+  &quot;field_slots&quot;: [
+    {
+      &quot;concept_id&quot;: &quot;clinic.nhc&quot;,
+      &quot;section&quot;: &quot;clinic&quot;,
+      &quot;scope&quot;: &quot;document&quot;,
+      &quot;canonical_key&quot;: &quot;nhc&quot;,
+      &quot;aliases&quot;: [&quot;medical_record_number&quot;],
+      &quot;label_key&quot;: &quot;nhc&quot;
+    }
+  ]
+}
+</code></pre>
+<p><code>field_slots[]</code> minimum shape:</p>
+<ul>
+<li><code>concept_id</code> (stable concept identifier, string)</li>
+<li><code>section</code> (stable section id, string: <code>clinic|patient|owner|visits|notes|other|report_info</code>)</li>
+<li><code>scope</code> (<code>"document" | "visit"</code>)</li>
+<li><code>canonical_key</code> (canonical payload key, string)</li>
+<li><code>aliases</code> (optional string array)</li>
+<li><code>label_key</code> (optional label token/string)</li>
+</ul>
+<p>Minimum MVP document-level slots (required when interpretation is in ready state):</p>
+<ul>
+<li><code>clinic_name</code>, <code>clinic_address</code>, <code>vet_name</code>, <code>nhc</code></li>
+<li><code>pet_name</code>, <code>species</code>, <code>breed</code>, <code>sex</code>, <code>age</code>, <code>dob</code>, <code>microchip_id</code>, <code>weight</code>, <code>reproductive_status</code></li>
+<li><code>owner_name</code>, <code>owner_address</code></li>
+<li><code>notes</code>, <code>language</code></li>
+</ul>
+<p>Localization boundary:</p>
+<ul>
+<li>Contract carries stable section ids and canonical keys.</li>
+<li>Human-readable section labels (for example <code>Centro Veterinario</code>, <code>Notas internas</code>) are defined by UX, not by contract
+  payload strings.</li>
+</ul>
+<p>Normative rendering rules:</p>
+<ol>
+<li>Frontend MUST render all <code>scope = "document"</code> slots from <code>medical_record_view.field_slots[]</code> in the section declared
+   by the slot.</li>
+<li>If no resolved value exists for a required document slot in ready state, frontend MUST render placeholder <code>—</code>.</li>
+<li>Frontend MUST NOT infer section membership or required fields from key presence; it MUST use <code>medical_record_view</code>.</li>
+<li>Alias resolution to canonical concept (for example <code>medical_record_number</code> -&gt; <code>nhc</code>) MUST be resolved by
+   producer/contract metadata before rendering; frontend MUST NOT guess.</li>
+<li>In <code>ready</code> state, frontend placeholder rendering MUST be driven by <code>medical_record_view.field_slots[]</code> as source of
+   truth, including slots without resolved entries in top-level <code>fields[]</code>.</li>
+</ol>
+<h3 id="d92-visitgroup-normative">D9.2 VisitGroup (Normative)</h3>
+<pre><code class="language-json">{
+  &quot;visit_id&quot;: &quot;uuid&quot;,
+  &quot;visit_date&quot;: &quot;2026-02-05&quot;,
+  &quot;admission_date&quot;: &quot;2026-02-05&quot;,
+  &quot;discharge_date&quot;: &quot;2026-02-07&quot;,
+  &quot;reason_for_visit&quot;: &quot;Vomiting&quot;,
+  &quot;fields&quot;: []
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th style="text-align: right;">Required</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>visit_id</td>
+<td>uuid</td>
+<td style="text-align: right;">✓</td>
+<td>Stable identifier for the visit group within this interpretation version</td>
+</tr>
+<tr>
+<td>visit_date</td>
+<td>ISO 8601 date string</td>
+<td style="text-align: right;">✓ (nullable)</td>
+<td>Critical concept; may be <code>null</code> if unknown</td>
+</tr>
+<tr>
+<td>admission_date</td>
+<td>ISO 8601 date string</td>
+<td style="text-align: right;">✗</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>discharge_date</td>
+<td>ISO 8601 date string</td>
+<td style="text-align: right;">✗</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>reason_for_visit</td>
+<td>string</td>
+<td style="text-align: right;">✗</td>
+<td>Optional</td>
+</tr>
+<tr>
+<td>fields</td>
+<td>array of <code>StructuredField</code></td>
+<td style="text-align: right;">✓</td>
+<td>Visit-scoped structured fields (clinical); <code>StructuredField</code> is unchanged from D5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="d93-scoping-rules-normative">D9.3 Scoping Rules (Normative)</h3>
+<p>For <code>canonical contract</code>:</p>
+<ol>
+<li>Top-level <code>fields[]</code> MUST contain only non-visit-scoped keys (clinic/patient/owner/notes metadata and any future
+   non-visit keys).</li>
+<li>Visit-scoped concepts MUST appear inside exactly one <code>visits[].fields[]</code> entry set, not in top-level <code>fields[]</code>.</li>
+<li>“Otros campos detectados” MUST be contract-driven through explicit <code>other_fields[]</code>; FE MUST NOT reclassify and MUST
+   NOT source this section from <code>fields[]</code> or <code>visits[]</code>.</li>
+<li>Medical Record panel membership is contract metadata (<code>scope</code>, <code>section</code>, <code>domain</code>, <code>classification</code>) and not UI
+   inference.</li>
+</ol>
+<p>Visit-scoped keys (MUST be inside <code>visits[].fields[]</code>):</p>
+<ul>
+<li><code>symptoms</code></li>
+<li><code>diagnosis</code></li>
+<li><code>procedure</code></li>
+<li><code>medication</code></li>
+<li><code>treatment_plan</code></li>
+<li><code>allergies</code></li>
+<li><code>vaccinations</code></li>
+<li><code>lab_result</code></li>
+<li><code>imaging</code></li>
+</ul>
+<p>Visit metadata keys are represented as <code>VisitGroup</code> properties:</p>
+<ul>
+<li><code>visit_date</code></li>
+<li><code>admission_date</code></li>
+<li><code>discharge_date</code></li>
+<li><code>reason_for_visit</code></li>
+</ul>
+<p>Document-level Medical Record keys (MUST be represented by <code>medical_record_view.field_slots[]</code>; resolved values are
+emitted in top-level <code>fields[]</code> with <code>scope = "document"</code>, <code>classification = "medical_record"</code>):</p>
+<ul>
+<li>Clinic section (<code>section = "clinic"</code>): <code>clinic_name</code>, <code>clinic_address</code>, <code>vet_name</code>, <code>nhc</code>.</li>
+<li>Patient section (<code>section = "patient"</code>): <code>pet_name</code>, <code>species</code>, <code>breed</code>, <code>sex</code>, <code>age</code>, <code>dob</code>, <code>microchip_id</code>,
+  <code>weight</code>, <code>reproductive_status</code>.</li>
+<li>Owner section (<code>section = "owner"</code>): <code>owner_name</code>, <code>owner_address</code>.</li>
+<li>Notes section (<code>section = "notes"</code>): <code>notes</code>.</li>
+</ul>
+<p>Section-id normalization (normative):</p>
+<ul>
+<li>Producers/contract adapters MUST map <code>section = "review_notes"</code> to stable <code>section = "notes"</code> before consumer
+  rendering.</li>
+<li>Producers/contract adapters MUST map <code>section = "visit"</code> to stable <code>section = "visits"</code> before consumer rendering.</li>
+<li>Frontend consumers MUST NOT infer or heuristically remap section ids.</li>
+<li>Report info section (<code>section = "report_info"</code>): <code>language</code>.</li>
+</ul>
+<p>Reproductive status concept (normative):</p>
+<ul>
+<li>Canonical key is <code>reproductive_status</code>.</li>
+<li><code>repro_status</code> aliases MUST be mapped to canonical <code>reproductive_status</code> in contract metadata.</li>
+</ul>
+<p>Owner address concept (normative):</p>
+<ul>
+<li><code>owner_address</code> is the explicit owner address concept for Medical Record taxonomy.</li>
+<li><code>owner_id</code> is an identifier concept and MUST NOT be interpreted as address in Medical Record taxonomy.</li>
+</ul>
+<p>NHC (normative):</p>
+<ul>
+<li>Preferred key is <code>nhc</code> (Número de historial clínico), document-level, clinic section.</li>
+<li><code>medical_record_number</code> aliases MUST map to <code>nhc</code>.</li>
+<li>Deterministic taxonomy rule: producers MUST map both key variants to the same Medical Record concept (<code>NHC</code>) in
+  contract metadata; frontend consumers MUST NOT infer this mapping heuristically.</li>
+</ul>
+<p>Age and DOB (normative compatibility):</p>
+<ul>
+<li><code>age</code> and <code>dob</code> are both valid patient fields.</li>
+<li>Backend may emit either or both; the contract does not require deriving one from the other in frontend consumers.</li>
+</ul>
+<p>Medical Record boundary (contract taxonomy):</p>
+<ul>
+<li>Medical Record panel rendering MUST rely on contract classification (<code>classification = "medical_record"</code> and
+  domain/section metadata), not frontend denylists.</li>
+<li>Non-clinical claim concepts are excluded from Medical Record taxonomy by classification/domain.</li>
+</ul>
+<p>Medical Record panel eligibility taxonomy (normative summary):</p>
+<ul>
+<li><code>Centro Veterinario</code>: <code>clinic_name</code>, <code>clinic_address</code>, <code>vet_name</code>, <code>nhc</code>.</li>
+<li><code>Paciente</code>: <code>pet_name</code>, <code>species</code>, <code>breed</code>, <code>sex</code>, <code>age</code>, <code>dob</code>, <code>microchip_id</code>, <code>weight</code>, <code>reproductive_status</code>.</li>
+<li><code>Propietario</code>: <code>owner_name</code>, <code>owner_address</code> (<code>owner_id</code> excluded from Medical Record taxonomy).</li>
+<li><code>Visitas</code>: visit metadata (<code>visit_date</code>, <code>admission_date</code>, <code>discharge_date</code>, <code>reason_for_visit</code>) + visit-scoped fields
+  inside <code>visits[].fields[]</code>.</li>
+<li><code>Notas internas</code>: <code>notes</code>.</li>
+<li><code>Información del informe</code>: <code>language</code> and equivalent report metadata.</li>
+<li><code>Otros campos detectados</code>: explicit contract bucket only (<code>other_fields[]</code>), never UI-side classification.</li>
+</ul>
+<p>Date normalization (canonical contract target):</p>
+<ul>
+<li>Canonical date representation for <code>visit_date</code>, <code>admission_date</code>, and <code>discharge_date</code> is ISO 8601 date string
+  (<code>YYYY-MM-DD</code>).</li>
+<li>Transitional note: non-ISO inputs (for example <code>dd/mm/yyyy</code>) may exist upstream; producers should normalize to
+  canonical ISO in payload output.</li>
+</ul>
+<h3 id="d94-determinism-and-unassigned-rule-normative">D9.4 Determinism and Unassigned Rule (Normative)</h3>
+<p>If an extracted clinical field cannot be deterministically linked to a specific visit, it MUST be placed under a
+synthetic <code>VisitGroup</code> with:</p>
+<ul>
+<li><code>visit_id = "unassigned"</code></li>
+<li><code>visit_date = null</code></li>
+<li><code>admission_date = null</code></li>
+<li><code>discharge_date = null</code></li>
+<li><code>reason_for_visit = null</code></li>
+</ul>
+<p>Contract clarification:</p>
+<ul>
+<li><code>visit_id = "unassigned"</code> is an explicit contract value (not a frontend heuristic or fallback label).</li>
+<li>A payload where all visit-scoped concepts are contained in a single synthetic <code>unassigned</code> group is valid for
+  <code>canonical contract</code>.</li>
+</ul>
+<p>This rule prevents UI-side heuristic grouping and keeps all visit-scoped items contained in <code>visits[]</code>.</p>
+<p>Sufficient evidence boundary for assigned VisitGroup creation (US-45, deterministic):</p>
+<ul>
+<li>Producer MAY create an assigned <code>VisitGroup</code> (<code>visit_id != "unassigned"</code>) only when a date token is normalizable
+  to ISO (<code>YYYY-MM-DD</code>) and the same evidence includes
+  visit context (<code>visita|consulta|control|revisión|seguimiento|ingreso|alta</code>) without non-visit context.</li>
+<li>Non-visit/administrative contexts (for example DOB/nacimiento, microchip/chip, invoice/factura,
+  report/informe/emisión/documento date references) MUST NOT create assigned VisitGroups.</li>
+<li>If a field evidence snippet contains ambiguous date tokens without sufficient visit context, that field MUST remain in
+  <code>unassigned</code>.</li>
+</ul>
+<h3 id="d95-contract-note-normative">D9.5 Contract Note (Normative)</h3>
+<ul>
+<li>Frontend may branch rendering by <code>schema_contract</code> in general integrations, but this document defines contract shape
+  only (UX owns layout).</li>
+</ul>
+<h3 id="d96-authoritative-contract-boundary-for-medical-record-rendering">D9.6 Authoritative Contract Boundary for Medical Record Rendering</h3>
+<ul>
+<li>This appendix is the technical source of truth for payload taxonomy and deterministic buckets (<code>fields[]</code>, <code>visits[]</code>,
+  <code>other_fields[]</code>, and classification metadata).</li>
+<li>Frontend consumers MUST render Medical Record structure from contract metadata only; they MUST NOT infer
+  grouping/classification heuristically.</li>
+<li>UX labels/copy are defined in
+  <a href="../../01-product/ux-design/"><code>docs/projects/veterinary-medical-records/01-product/ux-design.md</code></a>; this appendix
+  defines contract semantics only.</li>
+</ul>
+<hr />
+<h1 id="appendix-e-minimal-libraries-for-pdf-text-extraction-language-detection-normative">Appendix E — Minimal Libraries for PDF Text Extraction &amp; Language Detection (Normative)</h1>
+<blockquote>
+<p><strong>Scope:</strong> PDF extraction library choice (E1), language detection library (E2), dependency justification (E3).</p>
+</blockquote>
+<p>This appendix closes the minimum dependency decisions required to implement:</p>
+<ul>
+<li>Text extraction (step <code>EXTRACTION</code>, <a href="#appendix-c--step-model--run-execution-semantics-normative">Appendix C</a>),</li>
+<li>Language detection (persisted as <code>ProcessingRun.language_used</code>, <a href="#b22-processingrun">B2.2</a>).</li>
+</ul>
+<p>If any conflict exists, <a href="#appendix-a--contracts-states--invariants-normative">Appendix A</a> and
+<a href="#appendix-b--operational-clarifications-normative">Appendix B</a> take precedence for invariants and persistence rules.</p>
+<h2 id="e1-pdf-text-extraction">E1. PDF Text Extraction</h2>
+<p>Decision (Authoritative):</p>
+<ul>
+<li>Use <strong>PyMuPDF</strong> (<code>pymupdf</code>, imported as <code>fitz</code>) as the sole PDF text extraction library.</li>
+</ul>
+<p>Rationale:</p>
+<ul>
+<li>Good text extraction quality for “digital text” PDFs.</li>
+<li>Fast and simple to integrate in an in-process worker.</li>
+<li>Keeps the dependency surface small (single primary extractor).</li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li>If a PDF yields empty/near-empty extracted text, the run may fail as <code>EXTRACTION_FAILED</code>.</li>
+</ul>
+<h2 id="e2-language-detection">E2. Language Detection</h2>
+<p>Decision (Authoritative):</p>
+<ul>
+<li>Use <strong>langdetect</strong> as the language detection library.</li>
+</ul>
+<p>Rationale:</p>
+<ul>
+<li>Lightweight dependency sufficient for this scope.</li>
+<li>Provides deterministic-enough output to populate <code>ProcessingRun.language_used</code>.</li>
+</ul>
+<p>Rules:</p>
+<ul>
+<li>Language detection is best-effort and must never block processing.</li>
+<li>If detection fails, <code>language_used</code> is set to <code>"unknown"</code> (or equivalent) and processing continues.</li>
+</ul>
+<h2 id="e3-dependency-justification-repository-requirement">E3. Dependency Justification (Repository Requirement)</h2>
+<p>The repository must include a short justification (e.g., in <a href="../../../"><code>README.md</code></a> or an ADR) explaining:</p>
+<ul>
+<li>Why PyMuPDF was chosen for extraction,</li>
+<li>Why langdetect was chosen for language detection.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

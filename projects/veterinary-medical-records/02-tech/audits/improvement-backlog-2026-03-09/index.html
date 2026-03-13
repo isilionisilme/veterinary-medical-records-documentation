@@ -1,0 +1,1906 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Wiki-style technical documentation for the Veterinary Medical Records project">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>Improvement Backlog — Architecture Review 2026-03-09 - Veterinary Medical Records Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#improvement-backlog-architecture-review-2026-03-09" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="Veterinary Medical Records Documentation" class="md-header__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Veterinary Medical Records Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Improvement Backlog — Architecture Review 2026-03-09
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="Veterinary Medical Records Documentation" class="md-nav__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Veterinary Medical Records Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shared Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Shared Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../shared/01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../shared/02-tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../shared/03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../shared/04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../shared/99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3_1" id="__nav_1_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+<p><strong>Table of Contents</strong> <em>generated with <a href="https://github.com/thlorenz/doctoc">DocToc</a></em></p>
+<ul>
+<li><a href="#improvement-backlog--architecture-review-2026-03-09">Improvement Backlog — Architecture Review 2026-03-09</a></li>
+<li><a href="#priority-levels">Priority Levels</a></li>
+<li><a href="#immediate-5-items">Immediate (5 items)</a><ul>
+<li><a href="#arch-01-decompose-review_servicepy">ARCH-01: Decompose <code>review_service.py</code></a></li>
+<li><a href="#arch-02-decompose-candidate_miningpy">ARCH-02: Decompose <code>candidate_mining.py</code></a></li>
+<li><a href="#arch-03-add-ci-complexity-gates">ARCH-03: Add CI complexity gates</a></li>
+<li><a href="#arch-04-fix-infra-application-dependency-violation">ARCH-04: Fix infra-application dependency violation</a></li>
+<li><a href="#arch-05-add-structured-logging-to-critical-paths">ARCH-05: Add structured logging to critical paths</a></li>
+</ul>
+</li>
+<li><a href="#short-term-10-items">Short-term (10 items)</a><ul>
+<li><a href="#arch-06-create-security-architecture-documentation">ARCH-06: Create security architecture documentation</a></li>
+<li><a href="#arch-07-create-production-deployment-documentation">ARCH-07: Create production deployment documentation</a></li>
+<li><a href="#arch-08-expose-_shared-functions-publicly">ARCH-08: Expose <code>_shared</code> functions publicly</a></li>
+<li><a href="#arch-09-add-er-diagram-to-technical-designmd">ARCH-09: Add ER diagram to technical-design.md</a></li>
+<li><a href="#arch-10-write-missing-adrs">ARCH-10: Write missing ADRs</a></li>
+<li><a href="#arch-11-add-monitoringalerting-strategy-documentation">ARCH-11: Add monitoring/alerting strategy documentation</a></li>
+<li><a href="#arch-12-add-capacity-planning-documentation">ARCH-12: Add capacity planning documentation</a></li>
+<li><a href="#arch-13-implement-production-authentication">ARCH-13: Implement production authentication</a></li>
+<li><a href="#arch-14-add-content-validation-for-pdf-uploads">ARCH-14: Add content validation for PDF uploads</a></li>
+<li><a href="#arch-15-explicitly-declare-pydantic-in-requirementstxt">ARCH-15: Explicitly declare pydantic in requirements.txt</a></li>
+</ul>
+</li>
+<li><a href="#strategic-9-items">Strategic (9 items)</a><ul>
+<li><a href="#arch-16-create-re-accretion-prevention-adr">ARCH-16: Create re-accretion prevention ADR</a></li>
+<li><a href="#arch-17-simplify-extraction_observability-subsystem">ARCH-17: Simplify extraction_observability/ subsystem</a></li>
+<li><a href="#arch-18-extract-frontend-state-management-layer">ARCH-18: Extract frontend state management layer</a></li>
+<li><a href="#arch-19-create-operational-runbooks">ARCH-19: Create operational runbooks</a></li>
+<li><a href="#arch-20-add-metrics-collection-infrastructure">ARCH-20: Add metrics collection infrastructure</a></li>
+<li><a href="#arch-21-add-rate-limiting-to-write-endpoints">ARCH-21: Add rate limiting to write endpoints</a></li>
+<li><a href="#arch-22-parameterize-pragma-table_info-call">ARCH-22: Parameterize PRAGMA table_info call</a></li>
+<li><a href="#arch-23-add-configuration-reference-documentation">ARCH-23: Add configuration reference documentation</a></li>
+<li><a href="#arch-24-replace-wildcard-re-export-with-explicit-imports">ARCH-24: Replace wildcard re-export with explicit imports</a></li>
+</ul>
+</li>
+<li><a href="#summary-by-category">Summary by Category</a></li>
+<li><a href="#effort-distribution">Effort Distribution</a></li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+<hr />
+<p>title: "Improvement Backlog — Architecture Review 2026-03-09" type: explanation status: active audience: all
+last-updated: 2026-03-09</p>
+<hr />
+<h1 id="improvement-backlog-architecture-review-2026-03-09">Improvement Backlog — Architecture Review 2026-03-09</h1>
+<blockquote>
+<p>Prioritized action items from the <a href="../architecture-review-2026-03-09/">architecture review</a>. Each item includes source
+phase, severity, effort estimate, and acceptance criteria.</p>
+</blockquote>
+<p><strong>Generated:</strong> 2026-03-09 <strong>Baseline audit:</strong> 2026-02-23 <strong>Total items:</strong> 24 <strong>Distribution:</strong> 5 Immediate, 10
+Short-term, 9 Strategic</p>
+<hr />
+<h2 id="priority-levels">Priority Levels</h2>
+<table>
+<thead>
+<tr>
+<th>Priority</th>
+<th>Definition</th>
+<th>Timeline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IMMEDIATE</strong></td>
+<td>Causes active regression or blocks quality; do now</td>
+<td>Next sprint</td>
+</tr>
+<tr>
+<td><strong>SHORT-TERM</strong></td>
+<td>Significant gap but not actively degrading; plan soon</td>
+<td>2-3 sprints</td>
+</tr>
+<tr>
+<td><strong>STRATEGIC</strong></td>
+<td>Improves long-term health; schedule when capacity allows</td>
+<td>Quarter</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="immediate-5-items">Immediate (5 items)</h2>
+<h3 id="arch-01-decompose-review_servicepy">ARCH-01: Decompose <code>review_service.py</code></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 2 (P-1), Phase 3 (§3.1)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>CRITICAL</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>L (8-16h)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Code Principles / Code Quality</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Problem:</strong> 1,532 LOC, 9 distinct responsibilities, max CC 99, 15 commits since Feb. God Module pattern.</p>
+<p><strong>Action:</strong> Extract into 4+ focused modules:</p>
+<ol>
+<li><code>VisitAssignmentEngine</code> — visit scoping, segment extraction, clause parsing</li>
+<li><code>SegmentParser</code> + <code>ClauseClassifier</code> — replace CC-99 function with strategy-based classification</li>
+<li><code>AgeNormalizer</code> — consolidate 5 age-related functions</li>
+<li><code>ReviewPayloadProjector</code> — decouple review shape from canonical form</li>
+</ol>
+<p><strong>Acceptance criteria:</strong></p>
+<ul>
+<li>No file &gt; 400 LOC</li>
+<li>No function CC &gt; 20</li>
+<li>All existing tests pass without modification (refactor, not rewrite)</li>
+<li>Public API (<code>review_document</code>, <code>get_canonical_review</code>) unchanged</li>
+</ul>
+<hr />
+<h3 id="arch-02-decompose-candidate_miningpy">ARCH-02: Decompose <code>candidate_mining.py</code></h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 2 (P-2), Phase 3 (§3.2)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>CRITICAL</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>L (8-16h)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Code Principles / Code Quality</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Problem:</strong> 1,013 LOC, 767-LOC single function (<code>_mine_interpretation_candidates</code>), CC 163 (highest in codebase), inner
+closure with 25+ field-specific validation blocks.</p>
+<p><strong>Action:</strong></p>
+<ol>
+<li>Split into per-entity-type <code>FieldCandidateExtractor</code> strategies (labeled, heuristic, microchip, address, date)</li>
+<li>Extract <code>CandidateValidator</code> with per-field validation rules</li>
+<li>Move 40+ compiled regex patterns into <code>FieldPattern</code> registry</li>
+<li>Replace multi-pass line iteration with single <code>MedicalDocumentParser</code></li>
+</ol>
+<p><strong>Acceptance criteria:</strong></p>
+<ul>
+<li>No function &gt; 100 LOC</li>
+<li>No function CC &gt; 20</li>
+<li>All existing tests pass</li>
+<li><code>mine_candidates()</code> public API unchanged</li>
+</ul>
+<hr />
+<h3 id="arch-03-add-ci-complexity-gates">ARCH-03: Add CI complexity gates</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 3 (§6), Phase 2 (Q-2)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>HIGH</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>S (2-4h)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Build &amp; CI</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Problem:</strong> Re-accretion pattern — decomposed files grow back into hotspots without automated guardrails.</p>
+<p><strong>Action:</strong></p>
+<ol>
+<li>Add <code>radon cc --min C</code> check to CI (warn on CC 11-20)</li>
+<li>Add <code>radon cc --min E</code> check to CI (fail on CC &gt; 30)</li>
+<li>Add LOC gate: fail if any Python file exceeds 500 LOC</li>
+<li>Document thresholds in an ADR</li>
+</ol>
+<p><strong>Acceptance criteria:</strong></p>
+<ul>
+<li>CI fails on new functions with CC &gt; 30</li>
+<li>CI warns on new functions with CC &gt; 10</li>
+<li>CI fails on new files &gt; 500 LOC</li>
+<li>Gate runs in &lt; 30s</li>
+</ul>
+<hr />
+<h3 id="arch-04-fix-infra-application-dependency-violation">ARCH-04: Fix infra-application dependency violation</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 3 (§1.3 Violation 3)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>MEDIUM</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>S (1-2h)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Architecture</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Problem:</strong> <code>infra/scheduler_lifecycle.py</code> imports directly from <code>application/processing</code>, inverting the hexagonal
+dependency direction.</p>
+<p><strong>Action:</strong></p>
+<ol>
+<li>Create <code>ports/scheduler_port.py</code> with <code>SchedulerPort</code> ABC</li>
+<li>Application layer implements the port</li>
+<li><code>scheduler_lifecycle.py</code> depends on <code>SchedulerPort</code> (not application directly)</li>
+<li>Wire in <code>main.py</code> composition root</li>
+</ol>
+<p><strong>Acceptance criteria:</strong></p>
+<ul>
+<li><code>grep -r "from backend.app.application" backend/app/infra/</code> returns 0 results</li>
+<li>All existing tests pass</li>
+<li>Scheduler behavior unchanged</li>
+</ul>
+<hr />
+<h3 id="arch-05-add-structured-logging-to-critical-paths">ARCH-05: Add structured logging to critical paths</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 2 (O-1)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>MEDIUM</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>S (2-4h)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Observability</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Problem:</strong> 22 log statements across 317 functions (7% coverage). <code>review_service.py</code> and <code>candidate_mining.py</code> have
+zero logging.</p>
+<p><strong>Action:</strong></p>
+<ol>
+<li>Add entry/exit logging to <code>review_document()</code>, <code>get_canonical_review()</code></li>
+<li>Add extraction-start/extraction-complete logging to <code>mine_candidates()</code></li>
+<li>Add error logging with context for all exception handlers in hotspot files</li>
+<li>Follow existing <code>logging.getLogger(__name__)</code> pattern</li>
+</ol>
+<p><strong>Acceptance criteria:</strong></p>
+<ul>
+<li>Every public function in hotspot files has at least entry-level logging</li>
+<li>Error handlers include contextual information (document_id, run_id)</li>
+<li>Log format consistent with existing codebase pattern</li>
+</ul>
+<hr />
+<h2 id="short-term-10-items">Short-term (10 items)</h2>
+<h3 id="arch-06-create-security-architecture-documentation">ARCH-06: Create security architecture documentation</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 1 (GAP-001, GAP-003, GAP-005)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>CRITICAL</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>M (4-8h)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Documentation</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action:</strong> Create <code>02-tech/security-architecture.md</code> covering:</p>
+<ul>
+<li>Authentication strategy (current state + production target)</li>
+<li>Threat model (STRIDE for PDF upload, API endpoints, stored data)</li>
+<li>Encryption strategy (TLS termination, data-at-rest for PII in SQLite)</li>
+<li>Rate limiting policy (current + planned)</li>
+<li>Upload validation strategy</li>
+</ul>
+<hr />
+<h3 id="arch-07-create-production-deployment-documentation">ARCH-07: Create production deployment documentation</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 1 (GAP-002)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>CRITICAL</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>M (4-8h)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Documentation</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action:</strong> Create deployment section or standalone doc covering:</p>
+<ul>
+<li>Production topology (single-server, cloud, or hybrid)</li>
+<li>Scaling strategy (acknowledged single-process limit from ADR-0001)</li>
+<li>Backup and disaster recovery for SQLite + filesystem</li>
+<li>Environment configuration reference</li>
+</ul>
+<hr />
+<h3 id="arch-08-expose-_shared-functions-publicly">ARCH-08: Expose <code>_shared</code> functions publicly</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 3 (encapsulation warning), Phase 2 (P-3)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>MEDIUM</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>XS (30min)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Code Principles</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action:</strong> Re-export <code>_locate_visit_date_occurrences_from_raw_text</code> through <code>application/documents/__init__.py</code>. Update
+import in <code>api/routes_review.py</code>.</p>
+<p><strong>Acceptance criteria:</strong></p>
+<ul>
+<li>No imports from <code>_shared</code> or <code>_</code>-prefixed modules in api/ layer</li>
+<li>All tests pass</li>
+</ul>
+<hr />
+<h3 id="arch-09-add-er-diagram-to-technical-designmd">ARCH-09: Add ER diagram to technical-design.md</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 1 (GAP-006)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>HIGH</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>S (1-2h)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Documentation</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action:</strong> Add Mermaid ER diagram showing: Document, ProcessingRun, Artifacts, InterpretationVersion, FieldChangeLog.
+Include relationship cardinality and foreign keys.</p>
+<hr />
+<h3 id="arch-10-write-missing-adrs">ARCH-10: Write missing ADRs</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 1 (GAP-008)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>HIGH</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>M (2-4h per ADR)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Documentation</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action:</strong> Create ADRs for at least:</p>
+<ul>
+<li>ADR-ARCH-0005: Frontend stack (React + TanStack Query + Vite)</li>
+<li>ADR-ARCH-0006: Confidence scoring algorithm design</li>
+</ul>
+<hr />
+<h3 id="arch-11-add-monitoringalerting-strategy-documentation">ARCH-11: Add monitoring/alerting strategy documentation</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 1 (GAP-004)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>HIGH</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>S (2-4h)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Documentation</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action:</strong> Document: what to monitor, SLO definitions (availability, error rate, processing latency), alerting rules,
+dashboard requirements.</p>
+<hr />
+<h3 id="arch-12-add-capacity-planning-documentation">ARCH-12: Add capacity planning documentation</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 1 (GAP-007)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>HIGH</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>S (2-4h)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Documentation</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action:</strong> Document expected data volumes, storage growth projections, SQLite row limits, concurrent processing limits,
+maximum document count.</p>
+<hr />
+<h3 id="arch-13-implement-production-authentication">ARCH-13: Implement production authentication</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 2 (S-1)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>HIGH</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>L (8-16h)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action:</strong> Implement proper auth (OAuth2/JWT) for production. Current optional bearer token is insufficient.</p>
+<p><strong>Prerequisite:</strong> ARCH-06 (security architecture doc) should define the strategy first.</p>
+<hr />
+<h3 id="arch-14-add-content-validation-for-pdf-uploads">ARCH-14: Add content validation for PDF uploads</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 2 (S-3)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>MEDIUM</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>S (2-4h)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action:</strong> Add content-type validation (magic bytes check). Consider ClamAV integration for production deployments.</p>
+<hr />
+<h3 id="arch-15-explicitly-declare-pydantic-in-requirementstxt">ARCH-15: Explicitly declare pydantic in requirements.txt</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 2 (D-1)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>LOW</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>XS (5min)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Dependencies</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action:</strong> Add <code>pydantic</code> with pinned version to requirements.txt.</p>
+<hr />
+<h2 id="strategic-9-items">Strategic (9 items)</h2>
+<h3 id="arch-16-create-re-accretion-prevention-adr">ARCH-16: Create re-accretion prevention ADR</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 3 (§5.3)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>HIGH</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>S (1-2h)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Architecture</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action:</strong> Document architectural decision: maximum file LOC (500), maximum function CC (20), enforcement via CI gates
+(ARCH-03). Record rationale based on observed regression pattern.</p>
+<hr />
+<h3 id="arch-17-simplify-extraction_observability-subsystem">ARCH-17: Simplify extraction_observability/ subsystem</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 2 (P-4)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>MEDIUM</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>M (4-8h)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Code Quality</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action:</strong> Review <code>triage.py</code> (CC 64) — <code>_suspicious_accepted_flags</code> may be over-engineered. Consider simplifying
+classification logic or extracting into data-driven rules.</p>
+<hr />
+<h3 id="arch-18-extract-frontend-state-management-layer">ARCH-18: Extract frontend state management layer</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 3 (§3.4)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>MEDIUM</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>M (4-8h)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Frontend Architecture</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action:</strong> Extract AppWorkspace's 15 useState hooks into React Context + useReducer pattern to reduce state hub
+concentration.</p>
+<hr />
+<h3 id="arch-19-create-operational-runbooks">ARCH-19: Create operational runbooks</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 1 (GAP-011)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>MEDIUM</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>M (4-8h)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Documentation</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action:</strong> Create <code>03-ops/runbook.md</code> covering: backup procedures, database maintenance, log rotation, common failure
+modes, recovery steps.</p>
+<hr />
+<h3 id="arch-20-add-metrics-collection-infrastructure">ARCH-20: Add metrics collection infrastructure</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 2 (O-2)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>MEDIUM</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>M (4-8h)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Observability</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action:</strong> Add basic metrics: request latency histogram, processing duration, document count. Consider Prometheus or
+OpenTelemetry.</p>
+<hr />
+<h3 id="arch-21-add-rate-limiting-to-write-endpoints">ARCH-21: Add rate limiting to write endpoints</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 2 (S-4)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>LOW</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>S (1-2h)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action:</strong> Add rate limits to review, reprocess, and edit endpoints. Follow existing <code>slowapi</code> pattern.</p>
+<hr />
+<h3 id="arch-22-parameterize-pragma-table_info-call">ARCH-22: Parameterize PRAGMA table_info call</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 2 (S-2)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>LOW (MEDIUM pattern risk)</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>XS (30min)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Security</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action:</strong> Replace <code>f"PRAGMA table_info({table})"</code> with assertion that table is in known set, or use allowlisted table
+names.</p>
+<hr />
+<h3 id="arch-23-add-configuration-reference-documentation">ARCH-23: Add configuration reference documentation</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 1 (GAP-014)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>MEDIUM</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>S (1-2h)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Documentation</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action:</strong> Add comprehensive configuration reference table to backend-implementation.md covering all env vars and
+settings.</p>
+<hr />
+<h3 id="arch-24-replace-wildcard-re-export-with-explicit-imports">ARCH-24: Replace wildcard re-export with explicit imports</h3>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>Phase 2 (DC-1)</td>
+</tr>
+<tr>
+<td>Severity</td>
+<td>LOW</td>
+</tr>
+<tr>
+<td>Effort</td>
+<td>XS (30min)</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Code Quality</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Action:</strong> Replace <code>from backend.app.application.documents import *</code> in <code>document_service.py</code> with explicit named
+imports.</p>
+<hr />
+<h2 id="summary-by-category">Summary by Category</h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Items</th>
+<th>Immediate</th>
+<th>Short-term</th>
+<th>Strategic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code Principles / Quality</td>
+<td>6</td>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Documentation</td>
+<td>7</td>
+<td>0</td>
+<td>5</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>4</td>
+<td>0</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Architecture</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Build &amp; CI</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Observability</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Dependencies</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Frontend</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>24</strong></td>
+<td><strong>5</strong></td>
+<td><strong>10</strong></td>
+<td><strong>9</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="effort-distribution">Effort Distribution</h2>
+<table>
+<thead>
+<tr>
+<th>Effort</th>
+<th>Count</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>XS (&lt; 1h)</td>
+<td>4</td>
+<td>Quick fixes</td>
+</tr>
+<tr>
+<td>S (1-4h)</td>
+<td>9</td>
+<td>Half-day tasks</td>
+</tr>
+<tr>
+<td>M (4-8h)</td>
+<td>7</td>
+<td>Full-day tasks</td>
+</tr>
+<tr>
+<td>L (8-16h)</td>
+<td>4</td>
+<td>Multi-day tasks</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "toc.integrate"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1341 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Wiki-style technical documentation for the Veterinary Medical Records project">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>Frontend Implementation Notes - Veterinary Medical Records Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#frontend-implementation-notes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-header__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Veterinary Medical Records Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Frontend Implementation Notes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-nav__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Veterinary Medical Records Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shared Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Shared Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/02-tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3_1" id="__nav_1_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<!-- markdownlint-disable MD013 -->
+
+<h1 id="frontend-implementation-notes">Frontend Implementation Notes</h1>
+<p><strong>Breadcrumbs:</strong> <a href="../../../README.md">Docs</a> / <a href="../../../">Projects</a> / veterinary-medical-records / 02-tech</p>
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+<ul>
+<li><a href="#purpose">Purpose</a></li>
+<li><a href="#frontend-stack">Frontend Stack</a></li>
+<li><a href="#project-structure">Project Structure</a></li>
+<li><a href="#frontend-architecture">Frontend Architecture</a></li>
+<li><a href="#server-state-management-patterns">Server State Management Patterns</a></li>
+<li><a href="#pdf-review-and-evidence-rendering">PDF Review and Evidence Rendering</a></li>
+<li><a href="#review-rendering-backbone-global-schema">Review Rendering Backbone (Global Schema)</a></li>
+<li><a href="#continuous-scroll-preview">Continuous Scroll Preview</a></li>
+<li><a href="#pdfjs-wiring-vite">PDF.js wiring (Vite)</a></li>
+<li><a href="#paging-and-navigation-rules">Paging and navigation rules</a></li>
+<li><a href="#file-type-support">File-Type Support</a></li>
+<li><a href="#additional-file-types">Additional File Types</a></li>
+<li><a href="#highlight-strategy-progressive-enhancement">Highlight Strategy (Progressive Enhancement)</a></li>
+<li><a href="#confidence-rendering">Confidence Rendering</a></li>
+<li><a href="#confidence-rendering-rules-ux-contract">Confidence rendering rules (UX contract)</a></li>
+<li><a href="#confidence-tooltip-breakdown-rendering-mvp">Confidence tooltip breakdown rendering (MVP)</a></li>
+<li><a href="#reviewed-toggle-ui-behavior">Reviewed toggle UI behavior</a></li>
+<li><a href="#api-integration">API Integration</a></li>
+<li><a href="#contract-authority-backend">Contract authority (backend)</a></li>
+<li><a href="#error-handling-authoritative-rule">Error handling (authoritative rule)</a></li>
+<li><a href="#sequencing-authority">Sequencing (Authority)</a></li>
+<li><a href="#testing-strategy">Testing Strategy</a></li>
+<li><a href="#implementation-note">Implementation note</a></li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+<h2 id="purpose">Purpose</h2>
+<blockquote>
+<p><strong>How to read this page</strong></p>
+<p>This document is <strong>implementation guidance</strong> for frontend work. It describes <em>how</em> to build the UI,
+not <em>what</em> it should mean or <em>how</em> it should behave.</p>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>Sections</th>
+<th>Focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Stack &amp; structure</strong></td>
+<td>Frontend Stack, Project Structure, Architecture</td>
+<td>Technology choices, directory layout, module organization.</td>
+</tr>
+<tr>
+<td><strong>Core features</strong></td>
+<td>PDF Review, Review Rendering, Continuous Scroll, File-Type Support, Highlight</td>
+<td>PDF rendering, evidence navigation, progressive highlight.</td>
+</tr>
+<tr>
+<td><strong>Contracts</strong></td>
+<td>Confidence Rendering, API Integration, Sequencing</td>
+<td>Confidence UX contract, API wiring, implementation order.</td>
+</tr>
+<tr>
+<td><strong>Quality</strong></td>
+<td>Testing Strategy</td>
+<td>E2E and unit test expectations.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Authority boundaries:</strong></p>
+<ul>
+<li>UX semantics and workflow rules → <a href="../../01-product/ux-design/">ux-design.md</a></li>
+<li>Product meaning and governance → <a href="../../01-product/product-design/">product-design.md</a></li>
+<li>Backend API contracts → <a href="../technical-design/">technical-design.md</a> Appendix B3</li>
+<li>Backend implementation → <a href="../backend-implementation/">backend-implementation.md</a></li>
+</ul>
+</blockquote>
+<p>This document describes <strong>how the frontend should be implemented</strong> to satisfy the UX and backend contracts defined
+elsewhere in the repository documentation. Reading order, document authority, and cross-document precedence are defined
+in <a href="../../../README.md"><code>docs/README.md</code></a>. If anything here appears to conflict with other documentation, <strong>STOP and ask</strong>.</p>
+<p>It must remain <strong>implementation-only</strong>:</p>
+<ul>
+<li>UI stack and technical choices</li>
+<li>frontend architecture and patterns</li>
+<li>PDF rendering + scrolling strategy</li>
+<li>UI implementation strategies for complex interaction requirements</li>
+<li>frontend testing strategy</li>
+</ul>
+<p>It does <strong>not</strong> redefine:</p>
+<ul>
+<li>product meaning / governance</li>
+<li>UX semantics or workflow guarantees</li>
+<li>backend contracts (endpoints, payloads, error semantics)</li>
+<li>user story scope, order, or acceptance criteria</li>
+</ul>
+<hr />
+<h2 id="frontend-stack">Frontend Stack</h2>
+<p>The frontend is implemented using:</p>
+<ul>
+<li>
+<p><strong>React + TypeScript (Vite)</strong><br />
+  Chosen to explicitly satisfy the React frontend requirement while keeping setup fast and standard.</p>
+</li>
+<li>
+<p><strong>Tailwind CSS</strong><br />
+  Used for styling, layout, responsiveness, and dark mode support with minimal custom CSS.</p>
+</li>
+<li>
+<p><strong>Local UI primitives</strong><br />
+  Prefer lightweight, local components under <code>/frontend/src/components/ui/*</code>. Do not add a UI component library unless
+  required to satisfy accessibility or interaction requirements, and justify any new dependency.</p>
+</li>
+<li>
+<p><strong>Lean design system contract</strong> Follow
+  <a href="../../01-product/design-system/"><code>docs/projects/veterinary-medical-records/01-product/design-system.md</code></a> for tokens, primitives,
+  wrappers, and guard rules.</p>
+</li>
+<li>
+<p><strong>TanStack Query</strong><br />
+  Used for server state management (loading, error, invalidation) without introducing global client state complexity.</p>
+</li>
+<li>
+<p><strong>Lucide React</strong><br />
+  Lightweight and consistent iconography.</p>
+</li>
+<li>
+<p><strong>Framer Motion (minimal usage)</strong><br />
+  Used only for subtle transitions (e.g., skeleton → content), never for core logic.</p>
+</li>
+<li>
+<p><strong>PDF.js (<code>pdfjs-dist</code>)</strong><br />
+  Used to render PDFs and support evidence-based review and highlighting.</p>
+</li>
+</ul>
+<hr />
+<h2 id="project-structure">Project Structure</h2>
+<p>The repository uses a single repo with explicit separation:</p>
+<ul>
+<li><code>/frontend</code> contains all React code.</li>
+<li><code>/backend</code> remains the FastAPI application.</li>
+<li><code>/docs</code> contains repository documentation (see <a href="../../../README.md"><code>docs/README.md</code></a> for structure and reading order).</li>
+</ul>
+<p>The frontend is built and served independently but lives in the same repository.</p>
+<hr />
+<h2 id="frontend-architecture">Frontend Architecture</h2>
+<p>The frontend is implemented as a small set of explicit, testable modules.</p>
+<pre><code class="language-mermaid">graph TD
+    subgraph &quot;frontend/src/&quot;
+        LIB[&quot;lib/&lt;br&gt;API client, query helpers,&lt;br&gt;error messages&quot;]
+        COMP[&quot;components/&lt;br&gt;document list, review layout,&lt;br&gt;PDF viewer&quot;]
+        UI[&quot;components/ui/&lt;br&gt;buttons, badges, panels&quot;]
+        HOOKS[&quot;hooks/&lt;br&gt;custom hooks&quot;]
+    end
+    subgraph &quot;External&quot;
+        API[&quot;Backend API&quot;]
+        PDFJS[&quot;PDF.js&quot;]
+    end
+
+    COMP --&gt; LIB
+    COMP --&gt; UI
+    COMP --&gt; HOOKS
+    LIB --&gt; API
+    COMP --&gt; PDFJS
+
+    style LIB fill:#2d333b,stroke:#6d5dfc,color:#e6edf3
+    style COMP fill:#2d333b,stroke:#6d5dfc,color:#e6edf3
+    style UI fill:#2d333b,stroke:#6d5dfc,color:#e6edf3
+    style HOOKS fill:#2d333b,stroke:#6d5dfc,color:#e6edf3
+    style API fill:#161b22,stroke:#30363d,color:#8b949e
+    style PDFJS fill:#161b22,stroke:#30363d,color:#8b949e
+</code></pre>
+<p>Suggested structure:</p>
+<ul>
+<li><code>/frontend/src/lib/</code></li>
+<li>API client (one fetch wrapper that normalizes errors).</li>
+<li>Query keys and TanStack Query helpers.</li>
+<li><code>/frontend/src/components/</code></li>
+<li>View components (document list, review layout).</li>
+<li>PDF viewer + evidence navigation helpers.</li>
+<li><code>/frontend/src/components/ui/</code></li>
+<li>Small, reusable UI primitives (buttons, badges, panels).</li>
+</ul>
+<p>State rules:</p>
+<ul>
+<li><strong>Server state</strong> (documents, status, review payloads, raw text) lives in TanStack Query only.</li>
+<li><strong>Local UI state</strong> (selected field, raw text panel open, current active page) lives in the view component(s).</li>
+<li>Avoid introducing a global client-state store.</li>
+</ul>
+<hr />
+<h2 id="server-state-management-patterns">Server State Management Patterns</h2>
+<p>TanStack Query is the only authority for frontend server state. The goal is to
+keep backend-derived data consistent across the document list, review panel,
+raw text, and technical-history views without introducing a second cache layer.</p>
+<p>Recommended responsibilities:</p>
+<ul>
+<li><code>QueryClient</code> is created once at app bootstrap and shared across the SPA.</li>
+<li>Query keys are centralized under <code>/frontend/src/lib/</code> so list/detail/history
+  invalidation stays deterministic.</li>
+<li>Mutations never write ad-hoc client copies of backend entities; they refetch
+  or invalidate the affected keys.</li>
+</ul>
+<p>Suggested query-key shape:</p>
+<ul>
+<li><code>['documents']</code> → document list + derived status groups</li>
+<li><code>['document', documentId]</code> → current document detail</li>
+<li><code>['review', documentId]</code> → active structured interpretation for review</li>
+<li><code>['raw-text', documentId, runId]</code> → run-scoped extracted text</li>
+<li><code>['history', documentId]</code> → processing run history / technical details</li>
+</ul>
+<p>Typical composition patterns:</p>
+<ul>
+<li>The review workspace reads the selected document from <code>['document',
+  documentId]</code> and composes child views from narrower keys (<code>['review',
+  documentId]</code>, <code>['history', documentId]</code>).</li>
+<li>Polling is allowed only for processing-related keys while a run is <code>QUEUED</code>
+  or <code>RUNNING</code>; once terminal, polling stops and the terminal payload is reused.</li>
+<li>PDF viewer state (active page, zoom, pinned source panel) stays local and is
+  never stored in TanStack Query.</li>
+</ul>
+<p>Mutation and invalidation rules:</p>
+<ul>
+<li>Field edit success → invalidate <code>['review', documentId]</code> and
+  <code>['document', documentId]</code> so review status and active interpretation stay in
+  sync.</li>
+<li>Mark reviewed / reopen success → invalidate <code>['documents']</code>,
+  <code>['document', documentId]</code>, and <code>['review', documentId]</code>.</li>
+<li>Reprocess success → invalidate <code>['documents']</code>, <code>['document', documentId]</code>,
+  <code>['history', documentId]</code>, and any run-scoped review/raw-text keys.</li>
+</ul>
+<p>Implementation guardrails:</p>
+<ul>
+<li>Prefer <code>staleTime</code> / <code>refetchInterval</code> configuration over manual timers.</li>
+<li>Keep optimistic UI minimal; authoritative state comes from the backend.</li>
+<li>Do not duplicate status derivation in the client; render backend-derived or
+  contract-defined states only.</li>
+</ul>
+<hr />
+<h2 id="pdf-review-and-evidence-rendering">PDF Review and Evidence Rendering</h2>
+<p>Document review is implemented using <strong>evidence-based navigation</strong>, not precise spatial annotation.</p>
+<p>The frontend must consume the "evidence" fields exactly as defined by backend contracts in the authoritative
+documentation (see <a href="../../../README.md"><code>docs/README.md</code></a>) (do not invent fields or semantics here).</p>
+<p>Frontend behavior:</p>
+<ul>
+<li>when a field is selected, the PDF viewer navigates to the referenced page,</li>
+<li>the snippet is displayed as explicit evidence,</li>
+<li>the review flow remains usable even if highlighting fails.</li>
+</ul>
+<p>This ensures:</p>
+<ul>
+<li>traceability,</li>
+<li>explainability,</li>
+<li>and zero blocking of the review experience.</li>
+</ul>
+<hr />
+<h2 id="review-rendering-backbone-global-schema">Review Rendering Backbone (Global Schema)</h2>
+<p>Rendering authority for the full key universe, ordering, section grouping, repeatability, and fallback rules is
+<a href="../../01-product/product-design/"><code>docs/projects/veterinary-medical-records/01-product/product-design.md</code></a> (Global Schema).</p>
+<p>Frontend implementation guidance:</p>
+<ul>
+<li>Use Global Schema as the review rendering backbone.</li>
+<li>Render all keys in stable order, grouped by the same sections (A-G), even when values are missing.</li>
+<li>Show explicit empty states/placeholders for missing values; do not hide keys only because the model omitted them.</li>
+<li>If <code>document_date</code> is missing, display the Product Design fallback to <code>visit_date</code>.</li>
+</ul>
+<p>Repeatable keys: <code>medication</code>, <code>diagnosis</code>, <code>procedure</code>, <code>lab_result</code>, <code>line_item</code>, <code>symptoms</code>, <code>vaccinations</code>,
+<code>imaging</code>.</p>
+<ul>
+<li>Always render the repeatable field container.</li>
+<li>Render an explicit empty-list state when there are no items.</li>
+<li>Scope note: payloads may include billing repeatables (for example <code>line_item</code>) even when Medical Record MVP UI scope
+  excludes non-clinical concepts.</li>
+</ul>
+<p>Value typing:</p>
+<ul>
+<li>Respect the existing contract value types: <code>string | date | number | boolean | unknown</code>.</li>
+<li>For ambiguous or unit-bearing values, default to <code>string</code>.</li>
+<li>Do not introduce new parsing obligations beyond existing backend/frontend contracts.</li>
+</ul>
+<hr />
+<h2 id="continuous-scroll-preview">Continuous Scroll Preview</h2>
+<p>The document preview renders PDF pages in a single vertical scroll so users can read continuously without manual page
+switching.</p>
+<p>Implementation uses <code>pdfjs-dist</code> for PDF rendering. Rendering must be incremental (lazy) to avoid blocking the UI on
+large PDFs.</p>
+<h3 id="pdfjs-wiring-vite">PDF.js wiring (Vite)</h3>
+<p>PDF.js must be configured with an explicit worker (required for production builds). In Vite, use a worker URL import and
+assign it to <code>GlobalWorkerOptions.workerSrc</code>.</p>
+<h3 id="paging-and-navigation-rules">Paging and navigation rules</h3>
+<ul>
+<li>Evidence <code>page</code> values are <strong>1-based</strong> (as defined in
+  <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a>). Keep viewer navigation
+  1-based.</li>
+<li>"Next" / "Previous" scroll within the viewer's scroll container only (no global page scroll hijacking).</li>
+<li>Track active page based on scroll position (IntersectionObserver), keeping the page index in sync with what is
+  visible.</li>
+<li>Show placeholders while a page is loading/rendering; empty/blank content must be treated as a normal transient state.</li>
+</ul>
+<p>Navigation buttons remain available:</p>
+<ul>
+<li><strong>Next</strong> scrolls to the top of the next page in the continuous stack.</li>
+<li><strong>Previous</strong> scrolls to the top of the previous page.</li>
+</ul>
+<p>Tests should validate the scroll + navigation behavior at the component level, without relying on pixel-perfect
+rendering.</p>
+<hr />
+<h2 id="file-type-support">File-Type Support</h2>
+<p>End-to-end review is implemented for PDFs.</p>
+<p>Frontend implications:</p>
+<ul>
+<li>Preview behavior is implemented for PDFs via PDF.js (continuous scroll).</li>
+<li>Download behavior must work for PDFs via <code>GET /documents/{id}/download</code>.</li>
+</ul>
+<h2 id="additional-file-types">Additional File Types</h2>
+<p>Format expansion is handled by dedicated user stories in
+<a href="../../04-delivery/implementation-plan/"><code>docs/projects/veterinary-medical-records/04-delivery/implementation-plan.md</code></a> (US-19 and
+US-20).</p>
+<hr />
+<h2 id="highlight-strategy-progressive-enhancement">Highlight Strategy (Progressive Enhancement)</h2>
+<p>Text highlighting inside the PDF is implemented as <strong>progressive enhancement</strong>, never as a dependency for usability.</p>
+<p>Implementation approach:</p>
+<ul>
+<li>render the PDF using PDF.js,</li>
+<li>use the text layer to search for the provided snippet on the target page,</li>
+<li>highlight the closest or first matching occurrence.</li>
+</ul>
+<p>If matching fails:</p>
+<ul>
+<li>no highlight is shown,</li>
+<li>page navigation and snippet evidence remain visible,</li>
+<li>the UI does not attempt to fake precision.</li>
+</ul>
+<hr />
+<h2 id="confidence-rendering">Confidence Rendering</h2>
+<p>Confidence is rendered as <strong>visual attention signals</strong>, not as control mechanisms. Confidence semantics are
+owned by <a href="../../01-product/product-design/"><code>docs/projects/veterinary-medical-records/01-product/product-design.md</code></a>, and interaction
+behavior is owned by <a href="../../01-product/ux-design/"><code>docs/projects/veterinary-medical-records/01-product/ux-design.md</code></a>.</p>
+<p>Frontend representation:</p>
+<ul>
+<li>qualitative signal first (e.g. color or emphasis),</li>
+<li>numeric confidence visible inline or via tooltip.</li>
+</ul>
+<p>The frontend must treat confidence as:</p>
+<ul>
+<li>non-blocking,</li>
+<li>non-authoritative,</li>
+<li>and purely assistive.</li>
+</ul>
+<p>No frontend logic may interpret confidence as correctness or validation.</p>
+<h3 id="confidence-rendering-rules-ux-contract">Confidence rendering rules (UX contract)</h3>
+<ul>
+<li>Show <code>field_mapping_confidence</code> by default in veterinarian UI; <code>candidate_confidence</code> is diagnostic-only and must
+  never be rendered in veterinarian UI unless explicit debug mode is enabled.</li>
+<li>Derive low/mid/high confidence bands from <code>field_mapping_confidence</code> using cutoffs from the active policy version
+  (temporary hardcoded cutoffs are acceptable only until policy config wiring is complete).</li>
+<li>When backend provides <code>policy_version</code> + cutoffs, frontend must consume those values instead of hardcoding band
+  thresholds.</li>
+<li>Avoid visual churn on confidence updates: do not animate rapid oscillations; treat updates as stable presentation
+  changes.</li>
+<li>Smoothing/calibration mechanics are backend responsibilities and must not be reimplemented in frontend.</li>
+<li>Do not expose governance terms such as <code>pending_review</code>, <code>reviewer</code>, or <code>governance</code> in veterinarian-facing UI.</li>
+</ul>
+<h3 id="confidence-tooltip-breakdown-rendering-mvp">Confidence tooltip breakdown rendering (MVP)</h3>
+<ul>
+<li>Tooltip may show numeric <code>field_mapping_confidence</code> and breakdown components, but <code>field_mapping_confidence</code> remains
+  the primary visual signal.</li>
+<li>Frontend must render only values provided by backend.</li>
+<li>Frontend must not implement confidence composition math; backend provides composed <code>field_mapping_confidence</code>.</li>
+<li>Edge cases:</li>
+<li>no history: show <code>Ajuste por histórico de revisiones: 0%</code>.</li>
+<li>missing candidate confidence: show <code>Fiabilidad del candidato: No disponible</code>.</li>
+<li>Positive/negative/neutral adjustment styling must use existing semantic tokens/classes; do not introduce new colors.</li>
+<li>Keep veterinarian copy free of governance terminology.</li>
+</ul>
+<h3 id="reviewed-toggle-ui-behavior">Reviewed toggle UI behavior</h3>
+<ul>
+<li>Provide a single action toggle: <code>Mark as reviewed</code> / <code>Reopen</code>.</li>
+<li>After toggle, refetch both document-list status and current document review payload to avoid stale UI state.</li>
+<li>Toggling reviewed state must not reset or discard edited field values.</li>
+</ul>
+<hr />
+<h2 id="api-integration">API Integration</h2>
+<p>Server state is managed exclusively via <strong>TanStack Query</strong>.</p>
+<h3 id="contract-authority-backend">Contract authority (backend)</h3>
+<ul>
+<li>Endpoint paths, payload shapes, and error semantics are owned by
+  <a href="../technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> (Appendix B3/B3.2).</li>
+<li>This document references contracts for implementation convenience only; if any conflict exists,
+  <a href="../technical-design/"><code>technical-design.md</code></a> wins.</li>
+</ul>
+<h3 id="error-handling-authoritative-rule">Error handling (authoritative rule)</h3>
+<p>The frontend MUST branch on <code>error_code</code> (and optional <code>details.reason</code>) only. It must not branch on HTTP status alone,
+message strings, or backend stack traces.</p>
+<p>Implement a single API wrapper that:</p>
+<ul>
+<li>Parses the normative error response shape <code>{ error_code, message, details? }</code> (Appendix B2.6).</li>
+<li>Throws/returns a typed error that downstream UI code can switch on via <code>error_code</code> and <code>details.reason</code>.</li>
+</ul>
+<p>Patterns:</p>
+<ul>
+<li><code>useQuery</code> for fetching:</li>
+<li>document lists,</li>
+<li>document status,</li>
+<li>document interpretations.</li>
+<li><code>useMutation</code> for:</li>
+<li>persisting field edits,</li>
+<li>marking documents as reviewed.</li>
+<li>query invalidation is used to keep UI state consistent after mutations.</li>
+</ul>
+<p>No custom caching or duplication of server state logic is introduced.</p>
+<hr />
+<h2 id="sequencing-authority">Sequencing (Authority)</h2>
+<p>Implementation sequencing and scope are owned by
+<a href="../../04-delivery/implementation-plan/"><code>docs/projects/veterinary-medical-records/04-delivery/implementation-plan.md</code></a>. This document
+must not introduce or reorder stories; it only provides implementation notes within each story.</p>
+<hr />
+<h2 id="testing-strategy">Testing Strategy</h2>
+<p>Use Vitest + React Testing Library (already used by the repository frontend).</p>
+<p>Minimum coverage:</p>
+<ul>
+<li>Continuous scroll: Next/Previous navigation scrolls to the correct page container.</li>
+<li>Active page tracking: scrolling updates the active page label deterministically.</li>
+<li>Progressive enhancement: highlight failures do not block review (no crashes; snippet still visible).</li>
+<li>Error states: UI branches on <code>error_code</code> and <code>details.reason</code> only (e.g., <code>CONFLICT</code> with <code>NO_COMPLETED_RUN</code>).</li>
+</ul>
+<hr />
+<h2 id="implementation-note">Implementation note</h2>
+<p>Keep the review experience explainable and non-blocking; introduce additional tooling only when required by a user
+story.</p>
+<p>For deterministic CI and local builds, keep test/setup files out of the production TypeScript compilation scope and
+validate them through Vitest in the test job.</p>
+<!-- markdownlint-disable-next-line MD013 -->
+
+<p>Repository operations recommendation: protect <code>main</code> and require both <code>quality</code> and <code>frontend_test_build</code> checks before merge.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

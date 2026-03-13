@@ -1,0 +1,1515 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Wiki-style technical documentation for the Veterinary Medical Records project">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+    
+    
+      
+        <title>Implementation Plan - Veterinary Medical Records Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#note-for-readers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-header__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Veterinary Medical Records Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Implementation Plan
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Veterinary Medical Records Documentation" class="md-nav__button md-logo" aria-label="Veterinary Medical Records Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Veterinary Medical Records Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_2" id="__nav_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shared Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Shared Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/02-tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/04-delivery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../shared/99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3" id="__nav_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1_3_1" id="__nav_1_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_1_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    2026-03-02 Veterinary Medical Records
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01-product/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01-product
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02-tech/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02-tech
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03-ops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03-ops
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04-delivery
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../99-archive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    99-archive
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--active"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="note-for-readers">Note for readers:</h1>
+<p><strong>Breadcrumbs:</strong> <a href="../../../README.md">Docs</a> / <a href="../../../">Projects</a> / veterinary-medical-records / 04-delivery</p>
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#purpose">Purpose</a></li>
+<li><a href="#how-to-use-this-document">How to use this document</a></li>
+<li><a href="#contract-boundary-non-negotiable">Contract boundary (non-negotiable)</a></li>
+<li><a href="#scope">Scope</a></li>
+<li><a href="#execution-rules">Execution Rules</a></li>
+<li><a href="#implementation-plan">Implementation Plan</a></li>
+<li><a href="#release-1--document-upload--access">Release 1 — Document upload &amp; access</a><ul>
+<li><a href="#goal">Goal</a></li>
+<li><a href="#scope-1">Scope</a></li>
+<li><a href="#user-stories-in-order">User Stories (in order)</a></li>
+</ul>
+</li>
+<li><a href="#release-2--automatic-processing--traceability">Release 2 — Automatic processing &amp; traceability</a><ul>
+<li><a href="#goal-1">Goal</a></li>
+<li><a href="#scope-2">Scope</a></li>
+<li><a href="#format-support-note">Format support note</a></li>
+<li><a href="#user-stories-in-order-1">User Stories (in order)</a></li>
+</ul>
+</li>
+<li><a href="#release-3--extraction-transparency-trust--debuggability">Release 3 — Extraction transparency (trust &amp; debuggability)</a><ul>
+<li><a href="#goal-2">Goal</a></li>
+<li><a href="#scope-3">Scope</a></li>
+<li><a href="#user-stories-in-order-2">User Stories (in order)</a></li>
+</ul>
+</li>
+<li><a href="#release-4--assisted-review-in-context-high-value--higher-risk">Release 4 — Assisted review in context (high value / higher risk)</a><ul>
+<li><a href="#goal-3">Goal</a></li>
+<li><a href="#scope-4">Scope</a></li>
+<li><a href="#user-stories-in-order-3">User Stories (in order)</a></li>
+</ul>
+</li>
+<li><a href="#release-5--editing--learning-signals-human-corrections">Release 5 — Editing &amp; learning signals (human corrections)</a><ul>
+<li><a href="#goal-4">Goal</a></li>
+<li><a href="#scope-5">Scope</a></li>
+<li><a href="#user-stories-in-order-4">User Stories (in order)</a></li>
+</ul>
+</li>
+<li><a href="#release-6--explicit-overrides--workflow-closure">Release 6 — Explicit overrides &amp; workflow closure</a><ul>
+<li><a href="#goal-5">Goal</a></li>
+<li><a href="#scope-6">Scope</a></li>
+<li><a href="#user-stories-in-order-5">User Stories (in order)</a></li>
+</ul>
+</li>
+<li><a href="#release-7--edit-workflow-hardening">Release 7 — Edit workflow hardening</a><ul>
+<li><a href="#goal-6">Goal</a></li>
+<li><a href="#scope-7">Scope</a></li>
+<li><a href="#user-stories-in-order-6">User Stories (in order)</a></li>
+</ul>
+</li>
+<li><a href="#release-8--evidence-navigation--document-interaction">Release 8 — Evidence navigation &amp; document interaction</a><ul>
+<li><a href="#goal-7">Goal</a></li>
+<li><a href="#scope-8">Scope</a></li>
+<li><a href="#user-stories-in-order-7">User Stories (in order)</a></li>
+</ul>
+</li>
+<li><a href="#release-9--extraction-quality--language">Release 9 — Extraction quality &amp; language</a><ul>
+<li><a href="#goal-8">Goal</a></li>
+<li><a href="#scope-9">Scope</a></li>
+<li><a href="#user-stories-in-order-8">User Stories (in order)</a></li>
+</ul>
+</li>
+<li><a href="#release-10--ux-polish--upload-ergonomics">Release 10 — UX polish &amp; upload ergonomics</a><ul>
+<li><a href="#goal-9">Goal</a></li>
+<li><a href="#scope-10">Scope</a></li>
+<li><a href="#user-stories-in-order-9">User Stories (in order)</a></li>
+</ul>
+</li>
+<li><a href="#release-11--help-content-externalization--i18n">Release 11 — Help, content externalization &amp; i18n</a><ul>
+<li><a href="#goal-10">Goal</a></li>
+<li><a href="#scope-11">Scope</a></li>
+<li><a href="#user-stories-in-order-10">User Stories (in order)</a></li>
+</ul>
+</li>
+<li><a href="#release-12--additional-formats--ocr">Release 12 — Additional formats &amp; OCR</a><ul>
+<li><a href="#goal-11">Goal</a></li>
+<li><a href="#scope-12">Scope</a></li>
+<li><a href="#user-stories-in-order-11">User Stories (in order)</a></li>
+</ul>
+</li>
+<li><a href="#release-13--schema-evolution-isolated-reviewer-workflows">Release 13 — Schema evolution (isolated reviewer workflows)</a><ul>
+<li><a href="#goal-12">Goal</a></li>
+<li><a href="#scope-13">Scope</a></li>
+<li><a href="#user-stories-in-order-12">User Stories (in order)</a></li>
+</ul>
+</li>
+<li><a href="#release-14--research--operational-readiness">Release 14 — Research &amp; operational readiness</a><ul>
+<li><a href="#goal-13">Goal</a></li>
+<li><a href="#scope-14">Scope</a></li>
+<li><a href="#user-stories-in-order-13">User Stories (in order)</a></li>
+</ul>
+</li>
+<li><a href="#release-15--extraction-field-expansion-golden-loops">Release 15 — Extraction field expansion (golden loops)</a><ul>
+<li><a href="#goal-14">Goal</a></li>
+<li><a href="#scope-15">Scope</a></li>
+<li><a href="#user-stories-in-order-14">User Stories (in order)</a></li>
+</ul>
+</li>
+<li><a href="#release-16--multi-visit-detection--per-visit-extraction">Release 16 — Multi-visit detection &amp; per-visit extraction</a><ul>
+<li><a href="#goal-15">Goal</a></li>
+<li><a href="#scope-16">Scope</a></li>
+<li><a href="#user-stories-in-order-15">User Stories (in order)</a></li>
+</ul>
+</li>
+<li><a href="#release-17--engineering-quality--project-governance">Release 17 — Engineering quality &amp; project governance</a><ul>
+<li><a href="#goal-16">Goal</a></li>
+<li><a href="#scope-17">Scope</a></li>
+<li><a href="#user-stories-in-order-16">User Stories (in order)</a></li>
+</ul>
+</li>
+<li><a href="#release-18--frontend-observability-for-evaluators">Release 18 — Frontend observability for evaluators</a><ul>
+<li><a href="#goal-17">Goal</a></li>
+<li><a href="#scope-18">Scope</a></li>
+<li><a href="#user-stories-in-order-17">User Stories (in order)</a></li>
+</ul>
+</li>
+<li><a href="#release-19--critical-architecture-remediation">Release 19 — Critical architecture remediation</a><ul>
+<li><a href="#goal-18">Goal</a></li>
+<li><a href="#scope-19">Scope</a></li>
+<li><a href="#items-in-order">Items (in order)</a></li>
+</ul>
+</li>
+<li><a href="#release-20--architecture-hardening">Release 20 — Architecture hardening</a><ul>
+<li><a href="#goal-19">Goal</a></li>
+<li><a href="#scope-20">Scope</a></li>
+<li><a href="#items-in-order-1">Items (in order)</a></li>
+</ul>
+</li>
+<li><a href="#release-21--architecture-polish--operational-maturity">Release 21 — Architecture polish &amp; operational maturity</a><ul>
+<li><a href="#goal-20">Goal</a></li>
+<li><a href="#scope-21">Scope</a></li>
+<li><a href="#items-in-order-2">Items (in order)</a></li>
+</ul>
+</li>
+<li><a href="Backlog/README.md">Backlog Index</a></li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+<p>This document is intended to provide structured context to an AI Coding Assistant during implementation.</p>
+<p>The version of this document written for evaluators and reviewers is available here:
+https://docs.google.com/document/d/1b1rvBJu9bGjv8Z42OdDz9qwjecbqDbpilkn0KkYuD-M</p>
+<p>Reading order, document authority, and precedence rules are defined in <a href="../../../README.md"><code>docs/README.md</code></a>.
+If any conflict is detected, <strong>STOP and ask before proceeding</strong>.</p>
+<h1 id="introduction">Introduction</h1>
+<h2 id="purpose">Purpose</h2>
+<p>This document is the <strong>release sequencing authority</strong> for the project.</p>
+<p>It defines:
+- the <strong>order of implementation</strong>,
+- the <strong>release assignment</strong> of each user story and improvement,
+- the <strong>backlog references</strong> that own story-level scope and acceptance criteria.</p>
+<p>This document does <strong>not</strong> define:
+- product meaning or governance,
+- UX semantics or interaction contracts,
+- architecture, system invariants, or API contracts,
+- cross-cutting implementation principles,
+- backend/frontend implementation details.</p>
+<p>Those are defined in their respective authoritative documents as described in <a href="../../../README.md"><code>docs/README.md</code></a>.</p>
+<p>Features or behaviors not explicitly listed here are not part of this plan.</p>
+<hr />
+<h2 id="how-to-use-this-document">How to use this document</h2>
+<p>The AI Coding Assistant must:
+- enter via <a href="../../../../AGENTS.md"><code>AGENTS.md</code></a> and load only the router module(s) relevant to the current task/story,
+- implement user stories <strong>strictly in the order defined here</strong>,
+- treat the acceptance criteria in the linked backlog item files as <strong>exit conditions</strong>, not suggestions.</p>
+<p>Ordering rule:
+- Story order is defined by the <strong>order of release sections and item lists in this document</strong>, not by story numeric identifiers.</p>
+<p>If a user story appears underspecified or conflicts with an authoritative document,
+<strong>STOP and ask before implementing</strong>.</p>
+<hr />
+<h2 id="contract-boundary-non-negotiable">Contract boundary (non-negotiable)</h2>
+<p>This plan MUST NOT specify or restate cross-cutting technical contracts, even as “examples”:
+- endpoint paths, request/response payload shapes, or per-endpoint semantics,
+- error codes or error semantics,
+- persistence schemas/tables/entities or field-level models,
+- structured interpretation schema fields,
+- logging <code>event_type</code> values,
+- library/framework choices, module structure, or code patterns.</p>
+<p>If a story depends on any of the above, it MUST include an <strong>Authoritative References</strong> section naming the canonical doc and section (e.g. "TECHNICAL_DESIGN Appendix B3").
+At execution time, the agent MUST NOT open those canonical docs directly; instead, enter via <a href="../../../../AGENTS.md"><code>AGENTS.md</code></a> and load only the router module that covers the needed section.</p>
+<hr />
+<h2 id="scope">Scope</h2>
+<p>This plan defines releases and backlog item ordering.
+Work is implemented sequentially following the release/item order in this document.</p>
+<p>All scope boundaries, acceptance criteria, and story-specific references must be expressed in each backlog item file under <a href="Backlog/README.md"><code>Backlog/</code></a>.
+If a behavior is not described by the currently scheduled stories, it should be introduced via a dedicated user story (and any required design updates).</p>
+<hr />
+<h2 id="execution-rules">Execution Rules</h2>
+<ul>
+<li>Work is executed <strong>one user story at a time</strong></li>
+<li>A story is complete only when all acceptance criteria pass</li>
+<li>No story may redefine contracts owned elsewhere</li>
+<li>Any change to contracts requires updating the authoritative document first</li>
+</ul>
+<hr />
+<h1 id="implementation-plan">Implementation Plan</h1>
+<h2 id="release-1-document-upload-access">Release 1 — Document upload &amp; access</h2>
+<h3 id="goal">Goal</h3>
+<p>Allow users to upload documents and access them reliably, establishing a stable and observable foundation.</p>
+<h3 id="scope_1">Scope</h3>
+<ul>
+<li>Upload documents</li>
+<li>Persist original documents</li>
+<li>Initialize and expose document status</li>
+<li>Download and preview original documents</li>
+<li>List uploaded documents with their status</li>
+</ul>
+<h3 id="user-stories-in-order">User Stories (in order)</h3>
+<ul>
+<li><a href="Backlog/us-01-upload-document-api.md">US-01 — Upload document (API)</a></li>
+<li><a href="Backlog/us-02-view-document-status.md">US-02 — View document status</a></li>
+<li><a href="Backlog/us-03-download-preview-original-document.md">US-03 — Download / preview original document</a></li>
+<li><a href="Backlog/us-04-list-uploaded-documents-and-their-status.md">US-04 — List uploaded documents and their status</a></li>
+</ul>
+<hr />
+<h2 id="release-2-automatic-processing-traceability">Release 2 — Automatic processing &amp; traceability</h2>
+<h3 id="goal_1">Goal</h3>
+<p>Automatically process uploaded <strong>PDF</strong> documents in a <strong>non-blocking</strong> way, with full traceability and safe reprocessing.</p>
+<h3 id="scope_2">Scope</h3>
+<ul>
+<li>Automatic processing after upload (PDF)</li>
+<li>Explicit processing states</li>
+<li>Failure classification</li>
+<li>Manual reprocessing</li>
+<li>Append-only processing history</li>
+</ul>
+<h3 id="format-support-note">Format support note</h3>
+<p>Supported upload types are defined by <a href="../../02-tech/technical-design/"><code>docs/projects/veterinary-medical-records/02-tech/technical-design.md</code></a> Appendix B3. DOCX and image format expansion are sequenced as the final stories (US-19 and US-20).</p>
+<h3 id="user-stories-in-order_1">User Stories (in order)</h3>
+<ul>
+<li><a href="Backlog/us-05-process-document.md">US-05 — Process document</a></li>
+<li><a href="Backlog/us-21-upload-medical-documents-end-user-ui.md">US-21 — Upload medical documents (end-user UI)</a></li>
+<li><a href="Backlog/us-11-view-document-processing-history.md">US-11 — View document processing history</a></li>
+</ul>
+<hr />
+<h2 id="release-3-extraction-transparency-trust-debuggability">Release 3 — Extraction transparency (trust &amp; debuggability)</h2>
+<h3 id="goal_2">Goal</h3>
+<p>Make visible and explainable <strong>what the system has read</strong>, before any interpretation is applied.</p>
+<h3 id="scope_3">Scope</h3>
+<ul>
+<li>Raw text extraction visibility</li>
+<li>Language visibility</li>
+<li>Persistent extraction artifacts</li>
+<li>On-demand access via progressive disclosure</li>
+</ul>
+<h3 id="user-stories-in-order_2">User Stories (in order)</h3>
+<ul>
+<li><a href="Backlog/us-06-view-extracted-text.md">US-06 — View extracted text</a></li>
+</ul>
+<hr />
+<h2 id="release-4-assisted-review-in-context-high-value-higher-risk">Release 4 — Assisted review in context (high value / higher risk)</h2>
+<h3 id="goal_3">Goal</h3>
+<p>Enable veterinarians to review the system’s interpretation <strong>in context</strong>, side-by-side with the original document.</p>
+<h3 id="scope_4">Scope</h3>
+<ul>
+<li>Structured extracted data</li>
+<li>Per-field confidence signals</li>
+<li>Evidence via page + snippet (approximate by design)</li>
+<li>Side-by-side document review</li>
+<li>Progressive enhancement (review usable even if highlighting fails)</li>
+<li>Non-blocking, explainable UX</li>
+</ul>
+<h3 id="user-stories-in-order_3">User Stories (in order)</h3>
+<ul>
+<li><a href="Backlog/us-07-review-document-in-context.md">US-07 — Review document in context</a></li>
+<li><a href="Backlog/us-34-search-filters-in-structured-data-panel.md">US-34 — Search &amp; filters in Structured Data panel</a></li>
+<li><a href="Backlog/us-35-resizable-splitter-between-pdf-viewer-and-structur.md">US-35 — Resizable splitter between PDF Viewer and Structured Data panel</a></li>
+<li><a href="Backlog/us-38-mark-document-as-reviewed-toggle.md">US-38 — Mark document as reviewed (toggle)</a></li>
+</ul>
+<hr />
+<h2 id="release-5-editing-learning-signals-human-corrections">Release 5 — Editing &amp; learning signals (human corrections)</h2>
+<h3 id="goal_4">Goal</h3>
+<p>Allow veterinarians to correct structured data naturally, while capturing append-only correction signals—without changing their workflow.</p>
+<h3 id="scope_5">Scope</h3>
+<ul>
+<li>Edit existing structured fields</li>
+<li>Create new structured fields</li>
+<li>Versioned structured records</li>
+<li>Field-level change logs</li>
+<li>Capture append-only correction signals (no behavior change)</li>
+</ul>
+<h3 id="user-stories-in-order_4">User Stories (in order)</h3>
+<ul>
+<li><a href="Backlog/us-36-lean-design-system-tokens-primitives.md">US-36 — Lean design system (tokens + primitives)</a></li>
+<li><a href="Backlog/us-08-edit-structured-data.md">US-08 — Edit structured data</a></li>
+<li><a href="Backlog/us-09-capture-correction-signals.md">US-09 — Capture correction signals</a></li>
+<li><a href="Backlog/us-41-show-top-5-candidate-suggestions-in-field-edit-mod.md">US-41 — Show Top-5 Candidate Suggestions in Field Edit Modal</a></li>
+<li><a href="Backlog/us-39-align-veterinarian-confidence-signal-with-mapping.md">US-39 — Align veterinarian confidence signal with mapping confidence policy</a></li>
+<li><a href="Backlog/us-40-implement-field-level-confidence-tooltip-breakdown.md">US-40 — Implement field-level confidence tooltip breakdown</a> (Implemented 2026-02-18)</li>
+</ul>
+<hr />
+<h2 id="release-6-explicit-overrides-workflow-closure">Release 6 — Explicit overrides &amp; workflow closure</h2>
+<h3 id="goal_5">Goal</h3>
+<p>Focus this release on visit-grouped review rendering (contract-driven) and evaluator-ready workflow closure.</p>
+<h3 id="scope_6">Scope</h3>
+<ul>
+<li>Visit-grouped rendering when <code>canonical contract</code> with deterministic ordering and no UI heuristics</li>
+<li>Evaluator-friendly installation and execution packaging/runbook</li>
+</ul>
+<h3 id="user-stories-in-order_5">User Stories (in order)</h3>
+<ul>
+<li><a href="Backlog/us-32-align-review-rendering-to-global-schema-template.md">US-32 — Align review rendering to Global Schema template</a> (Implemented 2026-02-17)</li>
+<li><a href="Backlog/us-44-medical-record-mvp-update-extracted-data-panel-str.md">US-44 — Medical Record MVP: Update Extracted Data panel structure, labels, and scope</a> (Implemented 2026-02-20)</li>
+<li><a href="Backlog/us-43-render-visitas-agrupadas-cuando-canonical-contract.md">US-43 — Render “Visitas” agrupadas cuando <code>canonical contract</code> (contract-driven, no heuristics)</a></li>
+<li><a href="Backlog/us-45-visit-detection-mvp-deterministic-contract-driven.md">US-45 — Visit Detection MVP (Deterministic, Contract-Driven Coverage Improvement)</a> (Implemented 2026-02-21)</li>
+<li><a href="Backlog/us-46-deterministic-visit-assignment-coverage-mvp-schema.md">US-46 — Deterministic Visit Assignment Coverage MVP (Schema)</a></li>
+<li><a href="Backlog/us-42-provide-evaluator-friendly-installation-execution.md">US-42 — Provide evaluator-friendly installation &amp; execution (Docker-first)</a> (Implemented 2026-02-19)</li>
+</ul>
+<hr />
+<h2 id="release-7-edit-workflow-hardening">Release 7 — Edit workflow hardening</h2>
+<h3 id="goal_6">Goal</h3>
+<p>Make field editing robust and predictable, preventing data loss and ensuring correct modification semantics.</p>
+<h3 id="scope_7">Scope</h3>
+<ul>
+<li>Dirty state tracking and discard confirmation in field edit dialog</li>
+<li>Reset individual fields or all fields to originally detected values</li>
+<li>Correct modification tracking when saving the originally suggested value</li>
+<li>Confidence refresh after editing a reopened reviewed document</li>
+</ul>
+<h3 id="user-stories-in-order_6">User Stories (in order)</h3>
+<ul>
+<li><a href="Backlog/us-47-prevent-losing-unsaved-field-edits-dirty-state-con.md">US-47 — Prevent losing unsaved field edits (dirty state + confirm discard)</a></li>
+<li><a href="Backlog/us-48-reset-field-s-to-original-detected-value.md">US-48 — Reset field(s) to original detected value</a></li>
+<li><a href="Backlog/us-49-treat-save-of-originally-suggested-value-as-unmodi.md">US-49 — Treat save of originally suggested value as unmodified</a></li>
+<li><a href="Backlog/us-59-refresh-visible-confidence-after-edits-on-reopened.md">US-59 — Refresh visible confidence after edits on reopened document</a></li>
+</ul>
+<hr />
+<h2 id="release-8-evidence-navigation-document-interaction">Release 8 — Evidence navigation &amp; document interaction</h2>
+<h3 id="goal_7">Goal</h3>
+<p>Enable precise evidence inspection and text search within the document viewer.</p>
+<h3 id="scope_8">Scope</h3>
+<ul>
+<li>Click-to-navigate from structured field to exact location in document viewer</li>
+<li>Full-text search within the PDF viewer</li>
+<li>PDF zoom controls</li>
+</ul>
+<h3 id="user-stories-in-order_7">User Stories (in order)</h3>
+<ul>
+<li><a href="Backlog/us-50-navigate-to-and-highlight-field-evidence-in-docume.md">US-50 — Navigate to and highlight field evidence in document viewer</a></li>
+<li><a href="Backlog/us-51-text-search-in-pdf-viewer.md">US-51 — Text search in PDF viewer</a></li>
+<li><a href="Backlog/us-33-pdf-viewer-zoom.md">US-33 — PDF Viewer Zoom</a></li>
+</ul>
+<hr />
+<h2 id="release-9-extraction-quality-language">Release 9 — Extraction quality &amp; language</h2>
+<h3 id="goal_8">Goal</h3>
+<p>Improve extraction coverage, visit detection, clinical utility, and language support.</p>
+<h3 id="scope_9">Scope</h3>
+<ul>
+<li>Visit detection heuristic improvements</li>
+<li>General extraction heuristic improvements</li>
+<li>Patient history summary field (antecedentes)</li>
+<li>Document language override and reprocessing</li>
+</ul>
+<h3 id="user-stories-in-order_8">User Stories (in order)</h3>
+<ul>
+<li><a href="Backlog/us-52-improve-visit-detection-heuristics.md">US-52 — Improve visit detection heuristics</a></li>
+<li><a href="Backlog/us-53-improve-general-extraction-heuristics.md">US-53 — Improve general extraction heuristics</a></li>
+<li><a href="Backlog/us-54-patient-history-summary-field-antecedentes.md">US-54 — Patient history summary field (antecedentes)</a></li>
+<li><a href="Backlog/us-10-change-document-language-and-reprocess.md">US-10 — Change document language and reprocess</a></li>
+</ul>
+<hr />
+<h2 id="release-10-ux-polish-upload-ergonomics">Release 10 — UX polish &amp; upload ergonomics</h2>
+<h3 id="goal_9">Goal</h3>
+<p>Improve document interaction ergonomics and visual polish without changing core workflow semantics.</p>
+<h3 id="scope_10">Scope</h3>
+<ul>
+<li>Document list readability and navigation</li>
+<li>Upload convenience (drag-and-drop + bulk)</li>
+<li>Toast behavior</li>
+</ul>
+<h3 id="user-stories-in-order_9">User Stories (in order)</h3>
+<ul>
+<li><a href="Backlog/us-23-improve-document-list-filename-visibility-and-tool.md">US-23 — Improve document list filename visibility and tooltip details</a></li>
+<li><a href="Backlog/us-24-support-global-drag-and-drop-pdf-upload-across-rel.md">US-24 — Support global drag-and-drop PDF upload across relevant screens</a></li>
+<li><a href="Backlog/us-25-upload-a-folder-of-pdfs-bulk.md">US-25 — Upload a folder of PDFs (bulk)</a></li>
+<li><a href="Backlog/us-29-improve-toast-queue-behavior.md">US-29 — Improve toast queue behavior</a></li>
+</ul>
+<hr />
+<h2 id="release-11-help-content-externalization-i18n">Release 11 — Help, content externalization &amp; i18n</h2>
+<h3 id="goal_10">Goal</h3>
+<p>Provide comprehensive in-app help, externalize UI texts for editing/translation, and add multilingual UI support.</p>
+<h3 id="scope_11">Scope</h3>
+<ul>
+<li>Keyboard shortcuts and help modal</li>
+<li>In-app help wiki and entry point</li>
+<li>Contextual help icons throughout UI</li>
+<li>UI text externalization</li>
+<li>Document lifecycle management (soft-delete)</li>
+<li>Multilingual UI and externalized settings</li>
+</ul>
+<h3 id="user-stories-in-order_10">User Stories (in order)</h3>
+<ul>
+<li><a href="Backlog/us-26-add-keyboard-shortcuts-and-help-modal.md">US-26 — Add keyboard shortcuts and help modal</a></li>
+<li><a href="Backlog/us-27-add-in-app-help-wiki-and-entry-point.md">US-27 — Add in-app help wiki and entry point</a></li>
+<li><a href="Backlog/us-55-contextual-help-icons-with-wiki-links-throughout-u.md">US-55 — Contextual help icons with wiki links throughout UI</a></li>
+<li><a href="Backlog/us-56-externalize-ui-texts-to-editable-files.md">US-56 — Externalize UI texts to editable files</a></li>
+<li><a href="Backlog/us-28-delete-uploaded-document-from-list-soft-delete-arc.md">US-28 — Delete uploaded document from list (soft-delete/archive)</a></li>
+<li><a href="Backlog/us-30-change-application-ui-language-multilingual-ui.md">US-30 — Change application UI language (multilingual UI)</a></li>
+<li><a href="Backlog/us-31-externalize-configuration-and-expose-settings-in-u.md">US-31 — Externalize configuration and expose settings in UI</a></li>
+</ul>
+<hr />
+<h2 id="release-12-additional-formats-ocr">Release 12 — Additional formats &amp; OCR</h2>
+<h3 id="goal_11">Goal</h3>
+<p>Expand format support beyond PDF and add optional OCR for scanned documents.</p>
+<h3 id="scope_12">Scope</h3>
+<ul>
+<li>DOCX and image format end-to-end support</li>
+<li>Optional OCR for scanned PDFs and images (depends on image support)</li>
+</ul>
+<h3 id="user-stories-in-order_11">User Stories (in order)</h3>
+<ul>
+<li><a href="Backlog/us-19-add-docx-end-to-end-support.md">US-19 — Add DOCX end-to-end support</a></li>
+<li><a href="Backlog/us-20-add-images-end-to-end-support.md">US-20 — Add Images end-to-end support</a></li>
+<li><a href="Backlog/us-22-optional-ocr-support-for-scanned-medical-records-p.md">US-22 — Optional OCR support for scanned medical records (PDF/Image)</a></li>
+</ul>
+<hr />
+<h2 id="release-13-schema-evolution-isolated-reviewer-workflows">Release 13 — Schema evolution (isolated reviewer workflows)</h2>
+<h3 id="goal_12">Goal</h3>
+<p>Introduce reviewer-facing governance for global schema evolution, fully isolated from veterinarian workflows.</p>
+<h3 id="scope_13">Scope</h3>
+<ul>
+<li>Aggregation of pending structural change candidates</li>
+<li>Reviewer-facing inspection, filtering, and prioritization</li>
+<li>Approval, rejection, and deferral</li>
+<li>Canonical schema evolution governance (prospective only)</li>
+<li>Append-only governance audit trail</li>
+</ul>
+<h3 id="user-stories-in-order_12">User Stories (in order)</h3>
+<ul>
+<li><a href="Backlog/us-13-review-aggregated-pending-structural-changes.md">US-13 — Review aggregated pending structural changes</a></li>
+<li><a href="Backlog/us-14-filter-and-prioritize-pending-structural-changes.md">US-14 — Filter and prioritize pending structural changes</a></li>
+<li><a href="Backlog/us-15-approve-structural-changes-into-the-global-schema.md">US-15 — Approve structural changes into the global schema</a></li>
+<li><a href="Backlog/us-16-reject-or-defer-structural-changes.md">US-16 — Reject or defer structural changes</a></li>
+<li><a href="Backlog/us-17-govern-critical-non-reversible-structural-changes.md">US-17 — Govern critical (non-reversible) structural changes</a></li>
+<li><a href="Backlog/us-18-audit-trail-of-schema-governance-decisions.md">US-18 — Audit trail of schema governance decisions</a></li>
+</ul>
+<hr />
+<h2 id="release-14-research-operational-readiness">Release 14 — Research &amp; operational readiness</h2>
+<h3 id="goal_13">Goal</h3>
+<p>Investigate field standardization opportunities and define operational policies for production readiness.</p>
+<h3 id="scope_14">Scope</h3>
+<ul>
+<li>Research ISO and international standards applicability to structured fields</li>
+<li>Define production DB reset policy for reviewed documents</li>
+</ul>
+<h3 id="user-stories-in-order_13">User Stories (in order)</h3>
+<ul>
+<li><a href="Backlog/us-57-research-field-standardization-iso-international-r.md">US-57 — Research field standardization (ISO, international recommendations)</a></li>
+<li><a href="Backlog/us-58-define-production-db-reset-policy-for-reviewed-doc.md">US-58 — Define production DB reset policy for reviewed documents</a></li>
+</ul>
+<hr />
+<h2 id="release-15-extraction-field-expansion-golden-loops">Release 15 — Extraction field expansion (golden loops)</h2>
+<h3 id="goal_14">Goal</h3>
+<p>Expand extraction coverage to all critical patient and clinic fields via the golden loop pattern, ensuring each field has dedicated fixtures, benchmark tests, labeled patterns, and normalization.</p>
+<h3 id="scope_15">Scope</h3>
+<ul>
+<li>Pet name extraction hardening</li>
+<li>Clinic name extraction hardening</li>
+<li>Clinic address extraction hardening</li>
+<li>Bidirectional clinic enrichment (name ↔ address)</li>
+<li>Date of birth (DOB) extraction hardening</li>
+<li>Microchip ID extraction hardening</li>
+<li>Owner address extraction (active)</li>
+</ul>
+<h3 id="user-stories-in-order_14">User Stories (in order)</h3>
+<ul>
+<li><a href="Backlog/us-69-extract-pet-name-accurately.md">US-69 — Extract pet name accurately</a> (Implemented 2026-03-02)</li>
+<li><a href="Backlog/us-70-extract-clinic-name-accurately.md">US-70 — Extract clinic name accurately</a> (Implemented 2026-03-03)</li>
+<li><a href="Backlog/us-71-extract-clinic-address-accurately.md">US-71 — Extract clinic address accurately</a> (Implemented 2026-03-04)</li>
+<li><a href="Backlog/us-72-complete-clinic-address-from-name-and-vice-versa-o.md">US-72 — Complete clinic address from name (and vice versa) on demand</a> (Implemented 2026-03-04)</li>
+<li><a href="Backlog/us-61-extract-patient-date-of-birth-accurately.md">US-61 — Extract patient date of birth accurately</a> (Implemented 2026-03-05)</li>
+<li><a href="Backlog/us-62-extract-patient-microchip-number-accurately.md">US-62 — Extract patient microchip number accurately</a> (Implemented 2026-03-04)</li>
+<li><a href="Backlog/us-63-extract-owner-address-without-confusing-it-with-th.md">US-63 — Extract owner address without confusing it with clinic address</a></li>
+</ul>
+<hr />
+<h2 id="release-16-multi-visit-detection-per-visit-extraction">Release 16 — Multi-visit detection &amp; per-visit extraction</h2>
+<h3 id="goal_15">Goal</h3>
+<p>Detect all visits in a medical document from raw text boundaries and assign clinical data to each specific visit, with observability for debugging assignment problems.</p>
+<h3 id="scope_16">Scope</h3>
+<ul>
+<li>Multi-visit detection from raw text boundaries</li>
+<li>Per-visit field extraction from segment text</li>
+<li>Visit scoping observability and documentation (conditional)</li>
+</ul>
+<h3 id="user-stories-in-order_15">User Stories (in order)</h3>
+<ul>
+<li><a href="Backlog/us-64-detect-all-visits-in-the-document-even-when-dates.md">US-64 — Detect all visits in the document even when dates are not in explicit fields</a> (Implemented 2026-03-06)</li>
+<li><a href="Backlog/us-65-view-clinical-data-assigned-to-each-specific-visit.md">US-65 — View clinical data assigned to each specific visit</a></li>
+<li><a href="Backlog/us-66-diagnose-visit-to-data-assignment-problems-conditi.md">US-66 — Diagnose visit-to-data assignment problems (conditional)</a></li>
+</ul>
+<hr />
+<h2 id="release-17-engineering-quality-project-governance">Release 17 — Engineering quality &amp; project governance</h2>
+<h3 id="goal_16">Goal</h3>
+<p>Establish modular architecture, comprehensive test coverage, production hardening, local validation pipelines, canonical documentation, and consistent project governance conventions.</p>
+<h3 id="scope_17">Scope</h3>
+<ul>
+<li>Architecture audit, modularization, and component decomposition</li>
+<li>Automated test and E2E coverage in CI</li>
+<li>Security, performance, and resilience hardening</li>
+<li>L1/L2/L3 local validation pipeline</li>
+<li>Canonical documentation restructuring and derivation automation</li>
+<li>Worktree-prefixed branch naming convention</li>
+<li>Documentation improvement (wiki audit, restructure, standardization)</li>
+</ul>
+<h3 id="user-stories-in-order_16">User Stories (in order)</h3>
+<ul>
+<li><a href="Backlog/us-73-modular-architecture-and-maintainable-code.md">US-73 — Modular architecture and maintainable code</a> (Implemented)</li>
+<li><a href="Backlog/us-74-automated-test-and-e2e-coverage-in-ci.md">US-74 — Automated test and E2E coverage in CI</a> (Implemented)</li>
+<li><a href="Backlog/us-75-production-security-performance-and-resilience.md">US-75 — Production security, performance, and resilience</a> (Implemented)</li>
+<li><a href="Backlog/us-76-functional-l1-l2-l3-local-validation-pipeline-on-w.md">US-76 — Functional L1/L2/L3 local validation pipeline on Windows</a> (Implemented)</li>
+<li><a href="Backlog/us-77-canonical-documentation-as-source-of-truth-with-au.md">US-77 — Canonical documentation as source of truth with automatic derivation</a> (Implemented)</li>
+<li><a href="Backlog/us-68-identify-the-source-worktree-of-each-branch-at-a-g.md">US-68 — Identify the source worktree of each branch at a glance</a> (Implemented 2026-03-06)</li>
+<li><a href="Backlog/us-67-auditable-navigable-and-consistent-project-documen.md">US-67 — Auditable, navigable, and consistent project documentation</a></li>
+<li><a href="Backlog/us-79-architecture-health-evaluation-with-quantified-metr.md">US-79 — Architecture health evaluation with quantified metrics and remediation path</a> (In Progress)</li>
+<li><a href="Backlog/completed/imp-01-canonical-operational-execution-policy-alignment.md">IMP-01 — Canonical Operational Execution Policy Alignment</a> (Implemented)</li>
+<li><a href="Backlog/completed/imp-02-router-and-doc-updates-contract-synchronization.md">IMP-02 — Router and DOC_UPDATES Contract Synchronization</a> (Implemented)</li>
+<li><a href="Backlog/completed/imp-03-plan-execution-guard-enforcement-local-ci.md">IMP-03 — Plan Execution Guard Enforcement (Local + CI)</a> (Implemented)</li>
+<li><a href="Backlog/imp-04-active-plan-migration-and-global-index-cleanup.md">IMP-04 — Active Plan Migration and Global Index Cleanup</a> (Planned)</li>
+<li><a href="Backlog/imp-05-plan-root-file-naming-alignment.md">IMP-05 — Plan Root File Naming Alignment</a> (Implemented)</li>
+<li><a href="Backlog/imp-06-preflight-wrapper-integrity-and-l3-entrypoint-hardening.md">IMP-06 — Preflight Wrapper Integrity and L3 Entrypoint Hardening</a> (Planned)</li>
+</ul>
+<hr />
+<h2 id="release-18-frontend-observability-for-evaluators">Release 18 — Frontend observability for evaluators</h2>
+<h3 id="goal_17">Goal</h3>
+<p>Enhance the frontend to provide evaluators with clear, informative processing history including state badges, per-run durations, and per-run raw text access.</p>
+<h3 id="scope_18">Scope</h3>
+<ul>
+<li>Processing history UI enhancements (frontend-only, no backend changes)</li>
+</ul>
+<h3 id="user-stories-in-order_17">User Stories (in order)</h3>
+<ul>
+<li><a href="Backlog/us-78-enhanced-processing-history-ui-for-evaluator-obser.md">US-78 — Enhanced processing history UI for evaluator observability</a></li>
+</ul>
+<hr />
+<h2 id="release-19-critical-architecture-remediation">Release 19 — Critical architecture remediation</h2>
+<h3 id="goal_18">Goal</h3>
+<p>Address the highest-impact architecture findings: decompose God Modules, add CI complexity gates, and close critical documentation gaps (security architecture, production deployment).</p>
+<h3 id="scope_19">Scope</h3>
+<ul>
+<li>Backend God Module decomposition (review_service.py, candidate_mining.py)</li>
+<li>CI complexity and LOC gates</li>
+<li>Security architecture and production deployment documentation</li>
+</ul>
+<h3 id="items-in-order">Items (in order)</h3>
+<ul>
+<li><a href="Backlog/arch-03-add-ci-complexity-gates.md">ARCH-03 — Add CI Complexity Gates</a> (Planned)</li>
+<li><a href="Backlog/completed/arch-01-decompose-review-service.md">ARCH-01 — Decompose <code>review_service.py</code></a> (Implemented)</li>
+<li><a href="Backlog/completed/arch-02-decompose-candidate-mining.md">ARCH-02 — Decompose <code>candidate_mining.py</code></a> (Done)</li>
+<li><a href="Backlog/arch-06-create-security-architecture-documentation.md">ARCH-06 — Create Security Architecture Documentation</a> (Planned)</li>
+<li><a href="Backlog/arch-07-create-production-deployment-documentation.md">ARCH-07 — Create Production Deployment Documentation</a> (Planned)</li>
+</ul>
+<hr />
+<h2 id="release-20-architecture-hardening">Release 20 — Architecture hardening</h2>
+<h3 id="goal_19">Goal</h3>
+<p>Fix remaining hexagonal violations, improve code hygiene, add missing ADRs, close documentation gaps, and implement production security improvements.</p>
+<h3 id="scope_20">Scope</h3>
+<ul>
+<li>Hexagonal architecture violation fixes</li>
+<li>Structured logging for critical paths</li>
+<li>Missing ADRs and documentation (ER diagram, monitoring, ADRs)</li>
+<li>Production authentication, dependency hygiene, and security patterns</li>
+</ul>
+<h3 id="items-in-order_1">Items (in order)</h3>
+<ul>
+<li><a href="Backlog/arch-04-fix-infra-application-hex-violation.md">ARCH-04 — Fix infra→application Dependency Violation</a> (Planned)</li>
+<li><a href="Backlog/completed/arch-08-expose-shared-functions-publicly.md">ARCH-08 — Expose <code>_shared</code> Functions Publicly</a> (Done)</li>
+<li><a href="Backlog/arch-15-declare-pydantic-in-requirements.md">ARCH-15 — Explicitly Declare pydantic in requirements.txt</a> (Planned)</li>
+<li><a href="Backlog/arch-22-parameterize-pragma-table-info.md">ARCH-22 — Parameterize PRAGMA table_info Call</a> (Planned)</li>
+<li><a href="Backlog/arch-24-replace-wildcard-re-export.md">ARCH-24 — Replace Wildcard Re-export with Explicit Imports</a> (Planned)</li>
+<li><a href="Backlog/arch-05-add-structured-logging-critical-paths.md">ARCH-05 — Add Structured Logging to Critical Paths</a> (Planned)</li>
+<li><a href="Backlog/arch-09-add-er-diagram-to-technical-design.md">ARCH-09 — Add ER Diagram to technical-design.md</a> (Planned)</li>
+<li><a href="Backlog/arch-10-write-missing-adrs.md">ARCH-10 — Write Missing ADRs</a> (Planned)</li>
+<li><a href="Backlog/arch-16-create-re-accretion-prevention-adr.md">ARCH-16 — Create Re-accretion Prevention ADR</a> (Planned)</li>
+<li><a href="Backlog/arch-11-add-monitoring-alerting-strategy-docs.md">ARCH-11 — Add Monitoring/Alerting Strategy Documentation</a> (Planned)</li>
+<li><a href="Backlog/arch-13-implement-production-authentication.md">ARCH-13 — Implement Production Authentication</a> (Planned)</li>
+</ul>
+<hr />
+<h2 id="release-21-architecture-polish-operational-maturity">Release 21 — Architecture polish &amp; operational maturity</h2>
+<h3 id="goal_20">Goal</h3>
+<p>Complete remaining architecture improvements: capacity planning, content validation, frontend state management, runtime observability, operational runbooks, and configuration documentation.</p>
+<h3 id="scope_21">Scope</h3>
+<ul>
+<li>Capacity planning and configuration reference documentation</li>
+<li>PDF upload content validation</li>
+<li>Frontend state management refactor</li>
+<li>Runtime metrics collection and rate limiting</li>
+<li>Operational runbooks</li>
+</ul>
+<h3 id="items-in-order_2">Items (in order)</h3>
+<ul>
+<li><a href="Backlog/arch-12-add-capacity-planning-documentation.md">ARCH-12 — Add Capacity Planning Documentation</a> (Planned)</li>
+<li><a href="Backlog/arch-23-add-configuration-reference-docs.md">ARCH-23 — Add Configuration Reference Documentation</a> (Planned)</li>
+<li><a href="Backlog/arch-14-add-content-validation-pdf-uploads.md">ARCH-14 — Add Content Validation for PDF Uploads</a> (Planned)</li>
+<li><a href="Backlog/arch-17-simplify-extraction-observability.md">ARCH-17 — Simplify extraction_observability/ Subsystem</a> (Planned)</li>
+<li><a href="Backlog/arch-19-create-operational-runbooks.md">ARCH-19 — Create Operational Runbooks</a> (Planned)</li>
+<li><a href="Backlog/arch-18-extract-frontend-state-management.md">ARCH-18 — Extract Frontend State Management Layer</a> (Planned)</li>
+<li><a href="Backlog/arch-20-add-metrics-collection-infrastructure.md">ARCH-20 — Add Metrics Collection Infrastructure</a> (Planned)</li>
+<li><a href="Backlog/arch-21-add-rate-limiting-write-endpoints.md">ARCH-21 — Add Rate Limiting to Write Endpoints</a> (Planned)</li>
+</ul>
+<hr />
+<blockquote>
+<p>For detailed User Story and Improvement specifications, see <a href="Backlog/README.md">Backlog Index</a>.</p>
+</blockquote>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.sections", "navigation.expand", "navigation.top", "search.suggest", "search.highlight", "toc.integrate"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
