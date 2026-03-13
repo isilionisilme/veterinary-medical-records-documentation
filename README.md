@@ -130,6 +130,12 @@ Then open:
 - Local non-Docker alternative: `python scripts/sync_mkdocs_docs.py && pip install mkdocs-material==9.* && mkdocs serve`.
 - Source docs remain in `README.md`, `shared/`, and `projects/`; `python scripts/sync_mkdocs_docs.py` regenerates the MkDocs input tree in `.mkdocs/`.
 - Validation suite: `python -m unittest tests.test_docs_contracts`.
+- Windows double-click launchers (`scripts/`):
+  - `01-build-docs.cmd` — sync + `mkdocs build --clean`.
+  - `02-test-build-only.cmd` — run CI gate test (build-only).
+  - `03-test-links-manual.cmd` — manual internal links check (not automatic gate).
+  - `04-test-nav-manual.cmd` — manual MkDocs nav targets check (not automatic gate).
+  - `99-test-suite-completa.cmd` — full docs contracts test suite.
 - Published docs: `.github/workflows/docs.yml` deploys the site to GitHub Pages.
 
 ## Authority & precedence
