@@ -37,6 +37,8 @@ DATE_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 MARKDOWN_LINK_PATTERN = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
 FENCED_CODE_BLOCK_PATTERN = re.compile(r"```.*?```", re.DOTALL)
 BROKEN_LINK_CHECK_EXCLUDED_PATHS = {
+    # Temporary exclusions: these files currently contain known historical link debt.
+    # Keep excluded until links are normalized, then remove from this set.
     Path("projects/veterinary-medical-records/04-delivery/implementation-history.md"),
     Path("projects/veterinary-medical-records/04-delivery/implementation-plan.md"),
 }
@@ -93,6 +95,14 @@ def resolve_repo_target(source_path: Path, target: str) -> Path | None:
     return (source_path.parent / clean_target).resolve()
 
 
+def is_within_repo(target_path: Path) -> bool:
+    try:
+        target_path.relative_to(REPO_ROOT)
+        return True
+    except ValueError:
+        return False
+
+
 def iter_nav_targets(nav_config: object) -> list[str]:
     targets: list[str] = []
     if isinstance(nav_config, list):
@@ -131,6 +141,11 @@ class DocsContractsTest(unittest.TestCase):
             for target in iter_markdown_links(markdown_path):
                 resolved_target = resolve_repo_target(markdown_path, target)
                 if resolved_target is None:
+                    continue
+                if not is_within_repo(resolved_target):
+                    failures.append(
+                        f"{markdown_path.relative_to(REPO_ROOT)} -> {target} -> outside repository"
+                    )
                     continue
                 if resolved_target.exists():
                     continue
