@@ -1,3 +1,11 @@
+---
+title: "Plan Execution Protocol"
+type: reference
+status: active
+audience: contributor
+last-updated: 2026-03-13
+---
+
 # Plan Execution Protocol
 
 > **Canonical source of truth.**

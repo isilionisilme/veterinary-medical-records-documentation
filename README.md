@@ -31,24 +31,25 @@ Human-oriented index for all canonical documentation in this repository.
 ## Folder structure
 
 ```text
-docs/
+.
 ├── shared/           ← standards and guidelines shared across all projects
 ├── projects/         ← per-initiative documentation
 │   └── veterinary-medical-records/
-└── metrics/          ← tooling data (llm_benchmarks)
+├── mkdocs.yml        ← wiki-style navigation and publishing config
+└── Dockerfile.docs   ← local docs container
 ```
 
 ## Sitemap
 
-- `docs/README.md`
-- `docs/shared/`
+- `README.md`
+- `shared/`
   - `01-product/brand-guidelines.md`
   - `01-product/ux-guidelines.md`
   - `02-tech/coding-standards.md`
   - `02-tech/documentation-guidelines.md`
   - `02-tech/llm-benchmarks.md`
   - `03-ops/way-of-working.md`
-- `docs/projects/veterinary-medical-records/`
+- `projects/veterinary-medical-records/`
   - `01-product/design-system.md`
   - `01-product/product-design.md`
   - `01-product/ux-design.md`
@@ -70,9 +71,9 @@ docs/
 
 ## Documentation governance (normative)
 
-- **Canonical source docs (human SoT):** `docs/shared/*` and `docs/projects/*`.
+- **Canonical source docs (human SoT):** `shared/*` and `projects/*`.
 - **Directionality rule:** canonical docs are human-facing sources and should remain self-contained.
-- Human-readable documentation → `docs/shared/` or `docs/projects/`.
+- Human-readable documentation → `shared/` or `projects/`.
 
 ## Shared Documentation
 
@@ -96,7 +97,7 @@ See [projects/README.md](projects/README.md) for the full initiative listing.
 
 ## Evaluator first-pass (recommended, 10-15 min)
 
-1. [README.md](../README.md) — Docker-first quickstart, smoke path, and repository overview.
+1. [README.md](README.md) — documentation hub, navigation model, and canonical document entrypoints.
 2. [product-design.md](projects/veterinary-medical-records/01-product/product-design.md) — problem framing and intended
    outcomes.
 3. [technical-design.md](projects/veterinary-medical-records/02-tech/technical-design.md) — architecture, contracts, and
@@ -113,7 +114,12 @@ See [projects/README.md](projects/README.md) for the full initiative listing.
 
 ## Tooling (optional)
 
-- [metrics/llm_benchmarks/README.md](../metrics/llm_benchmarks/README.md) — assistant usage benchmarks.
+- Local docs site: `docker compose up docs` and open `http://localhost:8081`.
+- To override the default host port, set `DOCS_PORT` before starting Docker Compose.
+- Local non-Docker alternative: `python scripts/sync_mkdocs_docs.py && pip install mkdocs-material==9.* && mkdocs serve`.
+- Source docs remain in `README.md`, `shared/`, and `projects/`; `python scripts/sync_mkdocs_docs.py` regenerates the MkDocs input tree in `.mkdocs/`.
+- Validation suite: `python -m unittest tests.test_docs_contracts`.
+- Published docs: `.github/workflows/docs.yml` deploys the site to GitHub Pages.
 
 ## Authority & precedence
 
@@ -130,12 +136,11 @@ If documents conflict, resolve in this order:
    [frontend-implementation.md](projects/veterinary-medical-records/02-tech/frontend-implementation.md) — implementation
    notes
 
-Shared docs (`docs/shared/*`) apply globally within their scope.
+Shared docs (`shared/*`) apply globally within their scope.
 
 ## Contribution and quality gates
 
-For daily development and pull-request readiness checks, use the local quality-gate commands listed in
-[README.md](../README.md#local-quality-gates-before-pushing).
+For docs-only changes, run `python -m unittest tests.test_docs_contracts` before pushing.
 
 ## Dependency justification (Technical Design Appendix E3)
 

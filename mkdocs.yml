@@ -1,0 +1,67 @@
+site_name: Veterinary Medical Records Documentation
+site_description: Wiki-style technical documentation for the Veterinary Medical Records project
+docs_dir: .mkdocs
+site_dir: _site
+
+theme:
+  name: material
+  palette:
+    scheme: default
+    primary: teal
+    accent: teal
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - toc.integrate
+
+plugins:
+  - search
+
+nav:
+  - Home: index.md
+  - Projects:
+      - Overview: projects/README.md
+      - Veterinary Medical Records:
+          - Product Design: projects/veterinary-medical-records/01-product/product-design.md
+          - UX Design: projects/veterinary-medical-records/01-product/ux-design.md
+          - Design System: projects/veterinary-medical-records/01-product/design-system.md
+          - Architecture: projects/veterinary-medical-records/02-tech/architecture.md
+          - Technical Design: projects/veterinary-medical-records/02-tech/technical-design.md
+          - Backend Implementation: projects/veterinary-medical-records/02-tech/backend-implementation.md
+          - Frontend Implementation: projects/veterinary-medical-records/02-tech/frontend-implementation.md
+          - Event Architecture: projects/veterinary-medical-records/02-tech/event-architecture.md
+          - Extraction Quality: projects/veterinary-medical-records/02-tech/extraction-quality.md
+          - Deployment: projects/veterinary-medical-records/02-tech/deployment.md
+          - ADRs:
+              - Index: projects/veterinary-medical-records/02-tech/adr/index.md
+              - ADR-ARCH-0001 Modular Monolith: projects/veterinary-medical-records/02-tech/adr/ADR-ARCH-0001-modular-monolith.md
+              - ADR-ARCH-0002 SQLite Database: projects/veterinary-medical-records/02-tech/adr/ADR-ARCH-0002-sqlite-database.md
+              - ADR-ARCH-0003 Raw SQL Repository Pattern: projects/veterinary-medical-records/02-tech/adr/ADR-ARCH-0003-raw-sql-repository-pattern.md
+              - ADR-ARCH-0004 In-Process Async Processing: projects/veterinary-medical-records/02-tech/adr/ADR-ARCH-0004-in-process-async-processing.md
+              - ADR-ARCH-0005 Complexity Gate Thresholds: projects/veterinary-medical-records/02-tech/adr/ADR-ARCH-0005-complexity-gate-thresholds.md
+              - ADR-ARCH-0006 Frontend Stack: projects/veterinary-medical-records/02-tech/adr/ADR-ARCH-0006-frontend-stack-react-tanstack-query-vite.md
+              - ADR-ARCH-0007 Re-Accretion Prevention Governance: projects/veterinary-medical-records/02-tech/adr/ADR-ARCH-0007-re-accretion-prevention-governance.md
+              - ADR-ARCH-0008 Confidence Scoring Algorithm: projects/veterinary-medical-records/02-tech/adr/ADR-ARCH-0008-confidence-scoring-algorithm.md
+          - Architecture Audit Process: projects/veterinary-medical-records/03-ops/architecture-audit-process.md
+          - Execution Rules: projects/veterinary-medical-records/03-ops/execution-rules.md
+          - Manual QA Regression Checklist: projects/veterinary-medical-records/03-ops/manual-qa-regression-checklist.md
+          - Plan Creation: projects/veterinary-medical-records/03-ops/plan-creation.md
+          - Plan Execution Protocol: projects/veterinary-medical-records/03-ops/plan-execution-protocol.md
+          - Delivery Summary: projects/veterinary-medical-records/04-delivery/delivery-summary.md
+          - Implementation Plan: projects/veterinary-medical-records/04-delivery/implementation-plan.md
+          - Implementation History: projects/veterinary-medical-records/04-delivery/implementation-history.md
+          - Future Improvements: projects/veterinary-medical-records/04-delivery/future-improvements.md
+          - Archive:
+              - 12-Factor Audit: projects/veterinary-medical-records/99-archive/12-factor-audit.md
+              - Codebase Audit: projects/veterinary-medical-records/99-archive/codebase-audit.md
+              - CTO Review Verdict: projects/veterinary-medical-records/99-archive/cto-review-verdict.md
+  - Shared:
+      - Brand Guidelines: shared/01-product/brand-guidelines.md
+      - UX Guidelines: shared/01-product/ux-guidelines.md
+      - Coding Standards: shared/02-tech/coding-standards.md
+      - Documentation Guidelines: shared/02-tech/documentation-guidelines.md
+      - LLM Benchmarks: shared/02-tech/llm-benchmarks.md
+      - Way of Working: shared/03-ops/way-of-working.md
